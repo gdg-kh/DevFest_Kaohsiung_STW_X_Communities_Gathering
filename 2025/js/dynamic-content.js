@@ -12,6 +12,7 @@ class DynamicContentManager {
       staff: [],
       about: [],
       carousel: [],
+      homepage: null,
     };
   }
 
@@ -36,7 +37,7 @@ class DynamicContentManager {
   // 載入所有資料
   async loadAllData() {
     try {
-      const [speakers, twm, thanks, community, staff, about, carousel] = await Promise.all([
+      const [speakers, twm, thanks, community, staff, about, carousel, homepage] = await Promise.all([
         this.loadJSON('data/speakers.json'),
         this.loadJSON('data/twm.json'),
         this.loadJSON('data/thanks.json'),
@@ -44,6 +45,7 @@ class DynamicContentManager {
         this.loadJSON('data/staff.json'),
         this.loadJSON('data/about.json'),
         this.loadJSON('data/carousel.json'),
+        this.loadJSON('data/homepage.json'),
       ]);
 
       this.data.speakers = speakers.speakers || [];
@@ -53,6 +55,7 @@ class DynamicContentManager {
       this.data.staff = staff.staff || [];
       this.data.about = about.about || [];
       this.data.carousel = carousel.slides || [];
+      this.data.homepage = homepage.homepage || null;
 
       this.renderAllContent();
       this.enhanceScheduleWithSpeakers();
@@ -74,6 +77,7 @@ class DynamicContentManager {
   // 渲染所有內容
   renderAllContent() {
     this.renderCarousel();
+    this.renderHomepage();
     this.renderSpeakers();
     this.renderTwm();
     this.renderThanks();
@@ -210,6 +214,161 @@ class DynamicContentManager {
     }
 
     return slideDiv;
+  }
+
+  // 渲染首頁內容
+  renderHomepage() {
+    if (!this.data.homepage) return;
+    this.renderHeroInfo();
+    this.renderIntroduceList();
+  }
+
+  // 渲染 Hero 資訊區塊
+  renderHeroInfo() {
+    const heroInfo = document.querySelector('.hero-info');
+    if (!heroInfo || !this.data.homepage) return;
+
+    // 更新活動標題
+    const title = heroInfo.querySelector('h1');
+    if (title) {
+      title.textContent = this.getText(this.data.homepage.event);
+    }
+
+    // 更新活動日期/地點
+    const eventDate = heroInfo.querySelector('.event-date');
+    if (eventDate && this.data.homepage.info) {
+      eventDate.innerHTML = this.getText(this.data.homepage.info);
+    }
+
+    // 更新地圖連結
+    const mapLink = heroInfo.querySelector('.location-link');
+    if (mapLink) {
+      if (this.data.homepage.google_map) {
+        mapLink.href = this.data.homepage.google_map;
+      }
+      if (this.data.homepage.view_map_text) {
+        mapLink.textContent = this.getText(this.data.homepage.view_map_text);
+      }
+    }
+
+    // 更新報名按鈕
+    const ctaButton = heroInfo.querySelector('.cta-button');
+    if (ctaButton) {
+      if (this.data.homepage.register_link) {
+        ctaButton.href = this.data.homepage.register_link;
+      }
+      if (this.data.homepage.register_text) {
+        ctaButton.textContent = this.getText(this.data.homepage.register_text);
+      }
+    }
+  }
+
+  // 渲染介紹列表
+  renderIntroduceList() {
+    const container = document.querySelector('.event-info-grid');
+    if (!container || !this.data.homepage?.introduce_list) return;
+
+    container.innerHTML = '';
+
+    // 依照 index 分組
+    const grouped = this.groupByIndex(this.data.homepage.introduce_list);
+
+    // 渲染每一層
+    grouped.forEach((group) => {
+      const layerDiv = this.createIntroduceLayer(group);
+      container.appendChild(layerDiv);
+    });
+  }
+
+  // 依 index 分組
+  groupByIndex(items) {
+    const grouped = {};
+    items.forEach((item) => {
+      if (!grouped[item.index]) {
+        grouped[item.index] = [];
+      }
+      grouped[item.index].push(item);
+    });
+    return Object.values(grouped);
+  }
+
+  // 建立介紹層
+  createIntroduceLayer(items) {
+    const layerDiv = document.createElement('div');
+
+    // 根據 layout 判斷使用的 class
+    const hasThird = items.some((item) => item.layout === 'third');
+    layerDiv.className = hasThird ? 'info-layer-three' : 'info-layer';
+
+    items.forEach((item) => {
+      const card = this.createIntroduceCard(item);
+      layerDiv.appendChild(card);
+    });
+
+    return layerDiv;
+  }
+
+  // 建立介紹卡片
+  createIntroduceCard(item) {
+    const card = document.createElement('div');
+
+    // 根據 layout 決定 class
+    const layoutClassMap = {
+      full: 'info-card-full',
+      half: 'info-card-half',
+      third: 'info-card-third',
+    };
+
+    card.className = `info-card ${layoutClassMap[item.layout] || 'info-card-full'}`;
+
+    // 套用自訂顏色
+    if (item.background_color) {
+      card.style.setProperty('--card-bg-color', item.background_color);
+    }
+    if (item.line_color) {
+      card.style.setProperty('--card-border-color', item.line_color);
+    }
+
+    // 建立標題
+    const title = document.createElement('h3');
+    title.className = 'info-title';
+    title.textContent = this.getText(item.title);
+    if (item.title_color) {
+      title.style.color = item.title_color;
+    }
+
+    // 建立內容
+    const description = document.createElement('p');
+    description.className = 'info-description';
+    description.innerHTML = this.getText(item.content);
+    if (item.content_color) {
+      description.style.color = item.content_color;
+    }
+
+    card.appendChild(title);
+    card.appendChild(description);
+
+    // 加入圖片（如果有）
+    if (item.images && item.images !== '') {
+      const imageContainer = this.createImageContainer(item.images);
+      card.appendChild(imageContainer);
+    }
+
+    return card;
+  }
+
+  // 建立圖片容器
+  createImageContainer(imageSrc) {
+    const container = document.createElement('div');
+    container.className = 'info-card-images';
+
+    const img = document.createElement('img');
+    img.src = imageSrc;
+    img.alt = 'Event information illustration';
+    img.loading = 'lazy';
+
+    container.appendChild(img);
+    return container;
   }
 
   // 渲染講者

@@ -4345,3 +4345,47 @@ html.page-switching {
     border-radius: 0;
   }
 }
+
+/* ========================================
+   動態首頁卡片樣式
+   ======================================== */
+
+/* 動態背景色支援 */
+.info-card::before {
+  background-color: var(--card-bg-color, #ccf6c5);
+}
+
+/* 動態邊框色支援 */
+.info-card:hover {
+  border-color: var(--card-border-color, #34a853);
+}
+
+/* 圖片容器樣式 */
+.info-card-images {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.info-card-images img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--md-sys-elevation-2);
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.info-card-images img:hover {
+  transform: scale(1.05);
+  box-shadow: var(--md-sys-elevation-3);
+}
+
+/* 行動裝置響應式 */
+@media (max-width: 768px) {
+  .info-card-images {
+    margin-top: 16px;
+  }
+
+  .info-card-images img {
+    border-radius: 8px;
+  }
+}

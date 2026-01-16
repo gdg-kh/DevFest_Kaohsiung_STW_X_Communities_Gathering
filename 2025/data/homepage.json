@@ -1,0 +1,390 @@
+{
+  "homepage": {
+    "event": {
+      "zh": "DevFest 高雄場 X 南臺灣技術社群大聚 2025",
+      "en": "DevFest Kaohsiung X S. TW Communities Gathering 2025",
+      "ja": "DevFest Kaohsiung X S. TW Communities Gathering 2025"
+    },
+    "info": {
+      "zh": "📆 11/22 (六) — 11/23 (日) <br class=\"break-on-mobile\">in KO-IN 智高點",
+      "en": "📆 Nov 22 (Sat) - 23 (Sun) <br class=\"break-on-mobile\">at Kaohsiung Intelligence Navigator (KO-IN)",
+      "ja": "📆 11月22日（土）- 23日（日）<br class=\"break-on-mobile\">KO-IN スマートポイント"
+    },
+    "google_map": "https://maps.app.goo.gl/b8XVFSexNqeD1aMa8",
+    "facebook_link": "https://www.facebook.com/share/p/1Ab34kEKmA/",
+    "register_link": "https://gdg-kaohsiung.kktix.cc/events/devfest2025scs2025",
+    "register_text": {
+      "zh": "立即報名",
+      "en": "Register Now",
+      "ja": "参加申込"
+    },
+    "view_map_text": {
+      "zh": "📍 查看地圖",
+      "en": "📍 View Map",
+      "ja": "📍 地図を見る"
+    },
+    "introduce_list": [
+      {
+        "index": 0,
+        "layout": "full",
+        "title": {
+          "zh": "📝 關於活動",
+          "en": "📝 About the Event",
+          "ja": "📝 イベントについて"
+        },
+        "content": {
+          "zh": "今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會，英文名稱為「DevFest Kaohsiung X S. TW Communities Gathering 2025」，中文名稱為「DevFest 高雄場 X 南臺灣技術社群大聚 2025」。<br><br>讓我們帶你快速的捕捉這場活動的重點",
+          "en": "This year, GDG Kaohsiung and Developer Buffet are co-hosting the software community annual conference in Kaohsiung, officially named \"DevFest Kaohsiung X S. TW Communities Gathering 2025\".<br><br>Let us help you quickly capture the highlights of this event",
+          "ja": "今年、GDG Kaohsiungと開発者Buffetが共同で高雄でソフトウェアコミュニティ年次大会を開催します。正式名称は「DevFest Kaohsiung X S. TW Communities Gathering 2025」です。<br><br>このイベントのハイライトを素早くキャッチしましょう"
+        },
+        "images": "",
+        "title_color": "#4285f4",
+        "content_color": "#1e1e1e",
+        "background_color": "#c3ecf6",
+        "line_color": "#4285f4"
+      },
+      {
+        "index": 1,
+        "layout": "half",
+        "title": {
+          "zh": "🧐 DevFest 高雄場 是什麼？",
+          "en": "🧐 What is DevFest Kaohsiung?",
+          "ja": "🧐 DevFest高雄とは？"
+        },
+        "content": {
+          "zh": "DevFest 是由 GDG (Google Developer Groups) 社群主辦的年度技術盛會，也是全球最大的開發者社群科技大會，因為是全球年會，在字尾增加城市名稱區別不同場次。<br><br>DevFest 高雄場是 GDG Kaohsiung 社群舉辦的軟體年會。我們致力將外地的技術大神帶到高雄，讓高雄的開發者不用舟車勞頓就能與頂尖講者交流；我們更希望能打造一個專屬「高雄」的技術年會，邀請高雄在地講者上台分享，有更多曝光的機會！",
+          "en": "DevFest is an annual technology event hosted by GDG (Google Developer Groups) communities, and is the world's largest developer community tech conference. Since it's a global annual event, city names are added to distinguish different venues.<br><br>DevFest Kaohsiung is a software annual conference organized by the GDG Kaohsiung community. We are committed to bringing tech experts from other cities to Kaohsiung, allowing Kaohsiung developers to interact with top speakers without long travels; we also hope to create a unique \"Kaohsiung\" tech annual conference, inviting local Kaohsiung speakers to share on stage for more exposure opportunities!",
+          "ja": "DevFestはGDG（Google Developer Groups）コミュニティが主催する年次技術イベントで、世界最大の開発者コミュニティ技術大会でもあります。世界年次大会であるため、異なる開催地を区別するために都市名を追加しています。<br><br>DevFest高雄はGDG Kaohsiungコミュニティが開催するソフトウェア年次大会です。私たちは他都市の技術エキスパートを高雄に招き、高雄の開発者が長距離移動することなくトップスピーカーと交流できるようにすることを目指しています。また、「高雄」独自の技術年次大会を創造し、高雄地元のスピーカーにステージで共有する機会を提供し、より多くの露出機会を得られることを期待しています！"
+        },
+        "images": "",
+        "title_color": "#4285f4",
+        "content_color": "#1e1e1e",
+        "background_color": "#c3ecf6",
+        "line_color": "#4285f4"
+      },
+      {
+        "index": 1,
+        "layout": "half",
+        "title": {
+          "zh": "🧐 南臺灣技術社群大聚 是什麼？",
+          "en": "🧐 What is S. TW Communities Gathering?",
+          "ja": "🧐 南台湾技術コミュニティ大集合とは？"
+        },
+        "content": {
+          "zh": "這是一個給技術社群組織者、技術活動參與者的交流活動。大多數在南部的社群都是單打獨鬥，努力經營著聚會維持著科技人的充電環境。我們希望透過這場聚會找到社群們以及參與者，讓社群被發現，同時也讓社群之間有機會交流籌備或經營的經驗，並且從中找到更多夥伴。<br><br>這場聚會是由眾多社群擔任主辦單位合力舉辦，以互動與趣味為核心安排了許多內容，目標是讓大家更能聚焦在「交流」。",
+          "en": "This is a networking event for tech community organizers and tech event participants. Most communities in the south are working alone, striving to organize meetups to maintain a recharging environment for tech people. We hope to find communities and participants through this gathering, make communities discoverable, and give communities opportunities to exchange experiences in organizing or management, finding more partners in the process.<br><br>This gathering is co-hosted by numerous communities as co-organizers, with many interactive and fun contents arranged with the core goal of helping everyone focus more on \"networking\".",
+          "ja": "これは技術コミュニティ主催者、技術イベント参加者のための交流イベントです。南部のほとんどのコミュニティは単独で活動しており、ミートアップを企画・運営して技術者の充電環境を維持するために努力しています。私たちはこの集会を通してコミュニティや参加者を見つけ、コミュニティが発見され、同時にコミュニティ間で企画や運営の経験を交流し、その中でより多くのパートナーを見つける機会を提供したいと考えています。<br><br>この集会は多数のコミュニティが主催者として協力して開催し、交流と楽しさを中心に多くのコンテンツを用意し、皆さんが「交流」により集中できることを目標としています。"
+        },
+        "images": "",
+        "title_color": "#4285f4",
+        "content_color": "#1e1e1e",
+        "background_color": "#c3ecf6",
+        "line_color": "#4285f4"
+      },
+      {
+        "index": 2,
+        "layout": "full",
+        "title": {
+          "zh": "🎤 DevFest 2025 高雄場",
+          "en": "🎤 DevFest 2025 Kaohsiung",
+          "ja": "🎤 DevFest 2025 高雄"
+        },
+        "content": {
+          "zh": "議程講座：11/22（星期六） 08:30~18:00<br>生成大賽：11/23（星期日） 11:00~17:00",
+          "en": "Conference Sessions: Nov 22 (Saturday) 08:30~18:00<br>Generation Contest: Nov 23 (Sunday) 11:00~17:00",
+          "ja": "セッション講座：11月22日（土曜日）08:30~18:00<br>生成コンテスト：11月23日（日曜日）11:00~17:00"
+        },
+        "images": "",
+        "title_color": "#34a853",
+        "content_color": "#1e1e1e",
+        "background_color": "#ccf6c5",
+        "line_color": "#34a853"
+      },
+      {
+        "index": 3,
+        "layout": "half",
+        "title": {
+          "zh": "🚀 第一日議程主題：實作 (Implements)",
+          "en": "🚀 Day 1 Session Theme: Implementation (Implements)",
+          "ja": "🚀 第1日セッションテーマ：実装（Implements）"
+        },
+        "content": {
+          "zh": "從一個想法到一行程式碼，從一次部署到深遠的影響力。2025 年的 DevFest Kaohsiung，我們聚焦於 「實作 (Implements)」！我們不僅僅是探討理論，更要拿起鍵盤，敲打程式碼，把想法化為現實。<br><br>呼應 DevFest 全球主題 \"Building Safe, Secure and Scalable Solutions with AI and Cloud\"，您將會看到實戰經驗分享，無論你想學習成功的架構、想知道前人踩過哪些坑，或是想了解如何用技術讓世界更美好，這裡都有能啟發你的內容。",
+          "en": "From an idea to a line of code, from one deployment to far-reaching impact. At DevFest Kaohsiung 2025, we focus on \"Implementation (Implements)\"! We're not just exploring theories, but picking up keyboards, typing code, and turning ideas into reality.<br><br>Echoing the global DevFest theme \"Building Safe, Secure and Scalable Solutions with AI and Cloud\", you will see practical experience sharing. Whether you want to learn successful architectures, know what pitfalls predecessors stepped on, or understand how to use technology to make the world better, there's content here that can inspire you.",
+          "ja": "1つのアイデアから1行のコードまで、1回のデプロイから深遠な影響力まで。2025年のDevFest Kaohsiungでは、「実装（Implements）」に焦点を当てています！理論を探求するだけでなく、キーボードを手に取り、コードを打ち、アイデアを現実に変えましょう。<br><br>DevFestグローバルテーマ「Building Safe, Secure and Scalable Solutions with AI and Cloud」に呼応し、実戦経験の共有をご覧いただけます。成功したアーキテクチャを学びたい、先人が踏んだ落とし穴を知りたい、技術を使って世界をより良くする方法を理解したい、どのような場合でも、ここにはあなたを刺激できる内容があります。"
+        },
+        "images": "",
+        "title_color": "#34a853",
+        "content_color": "#1e1e1e",
+        "background_color": "#ccf6c5",
+        "line_color": "#34a853"
+      },
+      {
+        "index": 3,
+        "layout": "half",
+        "title": {
+          "zh": "🏆 第二日工作坊主題：第二屆 AI 生成大賽",
+          "en": "🏆 Day 2 Workshop Theme: 2nd AI Generation Contest",
+          "ja": "🏆 第2日ワークショップテーマ：第2回AI生成コンテスト"
+        },
+        "content": {
+          "zh": "廣受好評的 AI 生成大賽又來啦！第二天的活動中，我們有二場生成大賽對應不同主體，先讓講者進行工作坊教學，再依照內容進行生成創作，流程如下<br><br>1. 會前準備：請自行攜帶充飽電的筆記型電腦。<br>2. 現場實作：我們將提供價值 $5 美元的 GCP 抵免額，讓您無負擔進行生成創作。<br>3. 創意挑戰：隨機公布創作主題，請運用該工作坊提供的工具生成對應的創作。<br>4. 優勝獎勵：每個場次的「最佳生成創作者」將可獲得活動紀念品乙個。",
+          "en": "The well-received AI Generation Contest is back! In the second day activities, we have two generation contests corresponding to different subjects. Speakers will first conduct workshop teaching, then create generative content based on the material, with the following process:<br><br>1. Pre-event preparation: Please bring your fully charged laptop.<br>2. On-site implementation: We will provide $5 USD worth of GCP credits for burden-free generative creation.<br>3. Creative challenge: Randomly announce creation themes, use workshop-provided tools to generate corresponding creations.<br>4. Winner rewards: The \"Best Generative Creator\" from each session will receive an event souvenir.",
+          "ja": "好評だったAI生成コンテストが帰ってきました！第2日の活動では、異なるテーマに対応する2つの生成コンテストを用意しています。まずスピーカーがワークショップで指導し、その後内容に基づいて生成創作を行います。プロセスは以下の通りです：<br><br>1. 事前準備：充電済みのノートパソコンをご持参ください。<br>2. 現場実装：5米ドル相当のGCPクレジットを提供し、負担なく生成創作を行えます。<br>3. 創造チャレンジ：創作テーマをランダムに発表し、ワークショップ提供のツールを使用して対応する創作を生成してください。<br>4. 優勝報酬：各セッションの「最優秀生成創作者」はイベント記念品を1個獲得できます。"
+        },
+        "images": "",
+        "title_color": "#34a853",
+        "content_color": "#1e1e1e",
+        "background_color": "#ccf6c5",
+        "line_color": "#34a853"
+      },
+      {
+        "index": 4,
+        "layout": "third",
+        "title": {
+          "zh": "📸 拍立得 Fest（限量免費）",
+          "en": "📸 Polaroid Fest (Limited Free)",
+          "ja": "📸 ポラロイドフェスト（数量限定無料）"
+        },
+        "content": {
+          "zh": "活動期間提供拍立得拍照服務，留下珍貴的活動回憶。",
+          "en": "Polaroid photography service provided during the event to preserve precious event memories.",
+          "ja": "イベント期間中にポラロイド撮影サービスを提供し、貴重なイベントの思い出を残します。"
+        },
+        "images": "",
+        "title_color": "#34a853",
+        "content_color": "#1e1e1e",
+        "background_color": "#ccf6c5",
+        "line_color": "#34a853"
+      },
+      {
+        "index": 4,
+        "layout": "third",
+        "title": {
+          "zh": "🍕 Pizza Time（限量免費）",
+          "en": "🍕 Pizza Time (Limited Free)",
+          "ja": "🍕 ピザタイム（数量限定無料）"
+        },
+        "content": {
+          "zh": "下午茶時間享用美味 Pizza 和現場製作韓式雞蛋燒，為大腦充電繼續精彩議程。",
+          "en": "Enjoy delicious pizza and freshly made Korean egg bread during afternoon tea time, recharging your brain for continued exciting sessions.",
+          "ja": "アフタヌーンティー時間に美味しいピザと現場で作る韓国風卵焼きを楽しみ、脳を充電して素晴らしいセッションを続けましょう。"
+        },
+        "images": "",
+        "title_color": "#34a853",
+        "content_color": "#1e1e1e",
+        "background_color": "#ccf6c5",
+        "line_color": "#34a853"
+      },
+      {
+        "index": 4,
+        "layout": "third",
+        "title": {
+          "zh": "🍽️ After Buffet（自費）",
+          "en": "🍽️ After Buffet (Self-funded)",
+          "ja": "🍽️ アフタービュッフェ（自費）"
+        },
+        "content": {
+          "zh": "議程結束，Buffet 開始！讓我們一起到「高雄商旅 Urban Café 都會美饌」享用美味的 After Buffet，邊吃邊聊邊交流。<br><br><a href=\"https://maps.app.goo.gl/y9jiDaV2RFedoLkk7\" target=\"_blank\" rel=\"noopener noreferrer\">查看地圖</a>",
+          "en": "Sessions end, Buffet begins! Let's enjoy delicious After Buffet together at \"KH Hotel Urban Café\", eating, chatting, and networking.<br><br><a href=\"https://maps.app.goo.gl/y9jiDaV2RFedoLkk7\" target=\"_blank\" rel=\"noopener noreferrer\">View Map</a>",
+          "ja": "セッション終了、ビュッフェ開始！一緒に「高雄商旅 Urban Café 都会美饌」で美味しいアフタービュッフェを楽しみ、食べながら話しながら交流しましょう。<br><br><a href=\"https://maps.app.goo.gl/y9jiDaV2RFedoLkk7\" target=\"_blank\" rel=\"noopener noreferrer\">地図を見る</a>"
+        },
+        "images": "",
+        "title_color": "#34a853",
+        "content_color": "#1e1e1e",
+        "background_color": "#ccf6c5",
+        "line_color": "#34a853"
+      },
+      {
+        "index": 5,
+        "layout": "full",
+        "title": {
+          "zh": "🧑‍🤝‍🧑 南臺灣技術社群大聚",
+          "en": "🧑‍🤝‍🧑 S. TW Communities Gathering",
+          "ja": "🧑‍🤝‍🧑 南台湾技術コミュニティ大集合"
+        },
+        "content": {
+          "zh": "11/23（星期日） 11:00~17:00",
+          "en": "Nov 23 (Sunday) 11:00~17:00",
+          "ja": "11月23日（日曜日）11:00~17:00"
+        },
+        "images": "",
+        "title_color": "#f9ab00",
+        "content_color": "#1e1e1e",
+        "background_color": "#ffe7a5",
+        "line_color": "#f9ab00"
+      },
+      {
+        "index": 6,
+        "layout": "half",
+        "title": {
+          "zh": "⭐ 眾多技術人的聊天交流或 Lightning Talk",
+          "en": "⭐ Numerous tech people chatting, networking, or Lightning Talks",
+          "ja": "⭐ 多数の技術者による交流・ライトニングトーク"
+        },
+        "content": {
+          "zh": "在這場活動旨在聚集眾多的技術社群組織者、技術工作者們參與 (包括但不限於： Mobile、前端、後端、AI、敏捷、系統、DevOps、設計、PM、Marketing Tech 等等)，在這個活動中可以有機會與不同領域的參與者們聊天交流、切磋技術、交流辦活動的想法，必定會有滿滿的收穫。<br><br>如果你有一個小議題或專案想要和所有人分享，這場活動中有一個時段與開放式舞台 (含投影設備) 提供登記閃電講，時間約在 3 - 5 分鐘，可以利用這個機會曝光你的議題或專案分享。",
+          "en": "This event aims to gather numerous tech community organizers and tech workers (including but not limited to: Mobile, Frontend, Backend, AI, Agile, Systems, DevOps, Design, PM, Marketing Tech, etc.). In this event, you can have opportunities to chat and network with participants from different fields, discuss technology, exchange event organizing ideas, and definitely have great gains.<br><br>If you have a small topic or project you want to share with everyone, this event has a time slot and open stage (with projection equipment) for lightning talk registration, approximately 3-5 minutes, which you can use to expose your topic or project sharing.",
+          "ja": "このイベントは多数の技術コミュニティ主催者、技術従事者の参加を目指しています（以下を含みますが、これらに限定されません：モバイル、フロントエンド、バックエンド、AI、アジャイル、システム、DevOps、デザイン、PM、マーケティングテックなど）。このイベントでは、異なる分野の参加者との交流、技術議論、イベント企画のアイデア交換の機会があり、必ず豊富な収穫を得られるでしょう。<br><br>皆さんと共有したい小さなトピックやプロジェクトがあれば、このイベントでは時間枠とオープンステージ（投影設備付き）でライトニングトーク登録を提供し、時間は約3-5分です。この機会を利用してあなたのトピックやプロジェクトシェアを露出できます。"
+        },
+        "images": "",
+        "title_color": "#f9ab00",
+        "content_color": "#1e1e1e",
+        "background_color": "#ffe7a5",
+        "line_color": "#f9ab00"
+      },
+      {
+        "index": 6,
+        "layout": "half",
+        "title": {
+          "zh": "⭐ 首次引入南臺灣的技術創作市集",
+          "en": "⭐ First-time introduction of Tech Works Market to Southern Taiwan",
+          "ja": "⭐ 南台湾初導入のテック創作マーケット"
+        },
+        "content": {
+          "zh": "發想自日本的「技術書典」，這是一個專為技術社群打造的創作展示平台。透過實體攤位，創作者可以直接與會眾互動，展示並販售自己的技術創作作品，讓知識與創意在社群中流動。<br><br><a href=\"https://forms.gle/ZpXHk8VbA7q9bsWQ9\" target=\"_blank\" rel=\"noopener noreferrer\">報名擺攤</a>",
+          "en": "Inspired by Japan's \"Gijutsu-shoten\", this is a creative showcase platform designed specifically for the tech community. Through physical booths, creators can directly interact with attendees, showcasing and selling their technical creations, allowing knowledge and creativity to flow within the community.<br><br><a href=\"https://forms.gle/ZpXHk8VbA7q9bsWQ9\" target=\"_blank\" rel=\"noopener noreferrer\">Apply for Booth</a>",
+          "ja": "日本の「技術書典」からインスパイアされた、技術コミュニティ専用の創作展示プラットフォームです。物理的なブースを通じて、創作者は参加者と直接交流し、自身の技術創作作品を展示・販売し、知識と創造性をコミュニティ内で流動させます。<br><br><a href=\"https://forms.gle/ZpXHk8VbA7q9bsWQ9\" target=\"_blank\" rel=\"noopener noreferrer\">ブース出店申込</a>"
+        },
+        "images": "",
+        "title_color": "#f9ab00",
+        "content_color": "#1e1e1e",
+        "background_color": "#ffe7a5",
+        "line_color": "#f9ab00"
+      },
+      {
+        "index": 7,
+        "layout": "half",
+        "title": {
+          "zh": "⭐ 主題討論會議室",
+          "en": "⭐ Themed Discussion Meeting Rooms",
+          "ja": "⭐ テーマディスカッション会議室"
+        },
+        "content": {
+          "zh": "提供了兩個會議室，讓參與者可以自行登記，呼朋引伴在會議室中聊天或分享較長的議題。在與他人進行眾多議題的交流中，很有可能會找到一個聚焦的議題和聽眾，此時非常推薦你立刻登記會議室坐下來和大家進行一個時段的議題深度交流。",
+          "en": "Two meeting rooms are provided for participants to self-register, gather friends to chat or share longer topics in the meeting rooms. In exchanges with others on numerous topics, you might find a focused topic and audience. We highly recommend you immediately register a meeting room to sit down with everyone for in-depth topic exchanges during a time slot.",
+          "ja": "2つの会議室を提供し、参加者が自由に登録して友人を誘い、会議室でより長いトピックについて話し合ったり共有したりできます。他の人と多数のトピックについて交流する中で、焦点を絞ったトピックと聴衆を見つける可能性があります。その時は、すぐに会議室を登録して皆さんと座り、一定時間深いトピック交流を行うことを強くお勧めします。"
+        },
+        "images": "",
+        "title_color": "#f9ab00",
+        "content_color": "#1e1e1e",
+        "background_color": "#ffe7a5",
+        "line_color": "#f9ab00"
+      },
+      {
+        "index": 7,
+        "layout": "half",
+        "title": {
+          "zh": "⭐ 食物、點心、飲料",
+          "en": "⭐ Food, Snacks, Drinks",
+          "ja": "⭐ 食べ物・お菓子・飲み物"
+        },
+        "content": {
+          "zh": "知識的交流可能會需要更多的美好零食來刺激，本次活動提供零食點心等下午茶供參與者自由取用。",
+          "en": "Knowledge exchange might need more wonderful snacks as stimulation. This event provides afternoon tea snacks and treats for participants to freely enjoy.",
+          "ja": "知識の交流にはより多くの素晴らしいスナックが刺激として必要かもしれません。今回のイベントでは、参加者が自由に楽しめるスナックやお菓子などのアフタヌーンティーを提供します。"
+        },
+        "images": "",
+        "title_color": "#f9ab00",
+        "content_color": "#1e1e1e",
+        "background_color": "#ffe7a5",
+        "line_color": "#f9ab00"
+      },
+      {
+        "index": 8,
+        "layout": "full",
+        "title": {
+          "zh": "✨ 活動小撇步",
+          "en": "✨ Event Tips",
+          "ja": "✨ イベントのコツ"
+        },
+        "content": {
+          "zh": "一些小提示和建議，幫助你更好地享受這次活動。",
+          "en": "Some tips and suggestions to help you better enjoy this event.",
+          "ja": "このイベントをより楽しむためのヒントと提案。"
+        },
+        "images": "",
+        "title_color": "#ea4335",
+        "content_color": "#1e1e1e",
+        "background_color": "#f8d8d8",
+        "line_color": "#ea4335"
+      },
+      {
+        "index": 9,
+        "layout": "half",
+        "title": {
+          "zh": "🚇 離捷運站最近的場地",
+          "en": "🚇 Venue Closest to MRT Station",
+          "ja": "🚇 MRT駅に最も近い会場"
+        },
+        "content": {
+          "zh": "今年我們一樣在交通更便利的「KO-IN 智高點」，距離捷運橘線信義國小站 3 號出口僅需 1 分鐘步程，出站即達！<br><br>Google Map：<a href=\"https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7\" target=\"_blank\" rel=\"noopener noreferrer\">查看地圖</a>",
+          "en": "This year we're again at the more conveniently located \"Kaohsiung Intelligence Navigator (KO-IN)\", just 1 minute walk from Exit 3 of Xinyi Elementary School Station on the Orange Line, arrive immediately upon exit!<br><br>Google Map: <a href=\"https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7\" target=\"_blank\" rel=\"noopener noreferrer\">View Map</a>",
+          "ja": "今年も交通がより便利な「KO-IN スマートポイント」で開催します。MRTオレンジライン信義小学校駅3番出口から徒歩わずか1分、駅を出ればすぐ到着！<br><br>Google Map：<a href=\"https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7\" target=\"_blank\" rel=\"noopener noreferrer\">地図を見る</a>"
+        },
+        "images": "",
+        "title_color": "#ea4335",
+        "content_color": "#1e1e1e",
+        "background_color": "#f8d8d8",
+        "line_color": "#ea4335"
+      },
+      {
+        "index": 9,
+        "layout": "half",
+        "title": {
+          "zh": "🥤 請記得自備容器",
+          "en": "🥤 Please Remember to Bring Your Own Container",
+          "ja": "🥤 容器持参をお忘れなく"
+        },
+        "content": {
+          "zh": "跟往年一樣，我們定時補充飲品，讓您隨時補充能量！別忘了攜帶您的環保杯，現場不提供一次性容器，一起為地球盡一份心力。",
+          "en": "Like previous years, we regularly refill beverages for you to recharge anytime! Don't forget to bring your eco-friendly cup, as disposable containers are not provided on-site. Let's do our part for the planet together.",
+          "ja": "例年同様、定期的に飲み物を補充し、いつでもエネルギー補給できます！エコカップの持参をお忘れなく。会場では使い捨て容器を提供しませんので、一緒に地球のために力を尽くしましょう。"
+        },
+        "images": "",
+        "title_color": "#ea4335",
+        "content_color": "#1e1e1e",
+        "background_color": "#f8d8d8",
+        "line_color": "#ea4335"
+      },
+      {
+        "index": 10,
+        "layout": "half",
+        "title": {
+          "zh": "✨ GDG 活動行為準則 (Code of Conduct)",
+          "en": "✨ GDG Event Code of Conduct",
+          "ja": "✨ GDGイベント行動規範（Code of Conduct）"
+        },
+        "content": {
+          "zh": "所有參與者皆需遵守 GDG 活動行為準則，以確保所有人都能在一個安全友善的環境中學習與交流。<br><br>詳細內容請參閱：<a href=\"https://gdg.tw/code_of_conduct/\" target=\"_blank\" rel=\"noopener noreferrer\">GDG 行為準則</a>",
+          "en": "All participants must follow the GDG Event Code of Conduct to ensure everyone can learn and network in a safe and friendly environment.<br><br>For details, please refer to: <a href=\"https://gdg.tw/code_of_conduct/\" target=\"_blank\" rel=\"noopener noreferrer\">GDG Code of Conduct</a>",
+          "ja": "すべての参加者はGDGイベント行動規範を遵守し、すべての人が安全で友好的な環境で学習・交流できることを保証する必要があります。<br><br>詳細内容は以下をご参照ください：<a href=\"https://gdg.tw/code_of_conduct/\" target=\"_blank\" rel=\"noopener noreferrer\">GDG行動規範</a>"
+        },
+        "images": "",
+        "title_color": "#ea4335",
+        "content_color": "#1e1e1e",
+        "background_color": "#f8d8d8",
+        "line_color": "#ea4335"
+      },
+      {
+        "index": 10,
+        "layout": "half",
+        "title": {
+          "zh": "✔️ 蒐集個人資料告知事項暨個人資料提供同意聲明",
+          "en": "✔️ Personal Data Collection Notice and Consent Statement",
+          "ja": "✔️ 個人データ収集通知事項および個人データ提供同意声明"
+        },
+        "content": {
+          "zh": "我們尊重並保護您的個人隱私<br><br>詳細內容請參閱：<a href=\"https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4\" target=\"_blank\" rel=\"noopener noreferrer\">隱私權政策</a>",
+          "en": "We respect and protect your personal privacy<br><br>For details, please refer to: <a href=\"https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4\" target=\"_blank\" rel=\"noopener noreferrer\">Privacy Policy</a>",
+          "ja": "私たちはあなたの個人プライバシーを尊重し保護します<br><br>詳細内容は以下をご参照ください：<a href=\"https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4\" target=\"_blank\" rel=\"noopener noreferrer\">プライバシーポリシー</a>"
+        },
+        "images": "",
+        "title_color": "#ea4335",
+        "content_color": "#1e1e1e",
+        "background_color": "#f8d8d8",
+        "line_color": "#ea4335"
+      }
+    ]
+  }
+}
