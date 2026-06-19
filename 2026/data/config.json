@@ -1,0 +1,69 @@
+{
+  "site": {
+    "title": "DevFest 2026 高雄場｜活動預告",
+    "description": "DevFest 2026 高雄場，2026/11/14 即將登場。",
+    "lang": "zh-Hant"
+  },
+  "event": {
+    "name": "DevFest 2026 高雄場",
+    "tagline": "2026 年，我們再次相聚高雄。",
+    "dateText": "2026 / 11 / 14（六）08:30",
+    "locationText": "高雄",
+    "countdownTarget": "2026-11-14T08:30:00+08:00",
+    "countdownTitle": "距離活動開始還有",
+    "countdownEndedText": "活動已經開始！"
+  },
+  "countdownLabels": {
+    "days": "天",
+    "hours": "時",
+    "minutes": "分",
+    "seconds": "秒"
+  },
+  "surveys": {
+    "sectionTitle": "一起參與 2026",
+    "sectionSubtitle": "填寫意願問卷，搶先成為活動的一份子",
+    "items": [
+      {
+        "id": "speaker",
+        "icon": "🎤",
+        "title": "講者意願問卷",
+        "description": "想上台分享你的技術與故事？",
+        "buttonText": "我要報名講者",
+        "url": "https://forms.gle/REPLACE_ME"
+      },
+      {
+        "id": "volunteer",
+        "icon": "🙌",
+        "title": "志工意願問卷",
+        "description": "加入志工團隊，一起打造活動。",
+        "buttonText": "我要當志工",
+        "url": "https://forms.gle/REPLACE_ME"
+      },
+      {
+        "id": "booth",
+        "icon": "🛒",
+        "title": "擺攤意願問卷",
+        "description": "在技術創作市集展示你的作品。",
+        "buttonText": "我要擺攤",
+        "url": "https://forms.gle/REPLACE_ME"
+      },
+      {
+        "id": "sponsor",
+        "icon": "🤝",
+        "title": "活動贊助意願問卷",
+        "description": "成為贊助夥伴，支持技術社群。",
+        "buttonText": "我要贊助",
+        "url": "https://forms.gle/REPLACE_ME"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2026 GDG Kaohsiung X Developer Buffet",
+    "links": [
+      {
+        "text": "GDG Kaohsiung",
+        "url": "https://gdg.community.dev/gdg-kaohsiung/"
+      }
+    ]
+  }
+}
