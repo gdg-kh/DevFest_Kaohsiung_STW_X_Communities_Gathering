@@ -242,3 +242,55 @@ body {
     min-width: 3.75rem;
   }
 }
+
+/* 桌機：整頁鎖在單一視窗高度內，不需捲動 */
+@media (min-width: 769px) {
+  body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .site {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 0;
+  }
+
+  .hero {
+    padding: 1rem 0 0.5rem;
+  }
+
+  .countdown {
+    padding: 0.5rem 0;
+  }
+
+  .countdown__title {
+    margin-bottom: 1rem;
+  }
+
+  .surveys {
+    padding: 0.5rem 0;
+  }
+
+  .surveys__subtitle {
+    margin-bottom: 1.5rem;
+  }
+
+  /* 四張卡片並排一行，壓縮垂直高度 */
+  .surveys__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .survey-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer {
+    padding: 1.25rem;
+  }
+}
