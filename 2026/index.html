@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-bind="site.title">DevFest 2026 高雄場｜活動預告</title>
+    <meta
+      name="description"
+      data-bind-attr="content:site.description"
+      content="DevFest 2026 高雄場，活動預告。"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gdgkh.cc/2026/" />
+    <meta
+      property="og:title"
+      data-bind-attr="content:site.title"
+      content="DevFest 2026 高雄場｜活動預告"
+    />
+    <meta
+      property="og:description"
+      data-bind-attr="content:site.description"
+      content="DevFest 2026 高雄場，活動預告。"
+    />
+    <meta property="og:locale" content="zh_TW" />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="site">
+      <!-- Hero -->
+      <section class="hero">
+        <p class="hero__tagline" data-bind="event.tagline"></p>
+        <h1 class="hero__title" data-bind="event.name"></h1>
+        <p class="hero__meta">
+          <span class="hero__date" data-bind="event.dateText"></span>
+          <span class="hero__dot" aria-hidden="true">·</span>
+          <span class="hero__location" data-bind="event.locationText"></span>
+        </p>
+        <a
+          class="hero__review"
+          data-bind="event.reviewText"
+          data-bind-attr="href:event.reviewUrl"
+        ></a>
+      </section>
+
+      <!-- Countdown -->
+      <section class="countdown" aria-label="活動倒數計時">
+        <h2 class="countdown__title" id="countdown-title" data-bind="event.countdownTitle"></h2>
+        <div class="countdown__timer" id="countdown-timer">
+          <div class="countdown__segment">
+            <span class="countdown__number" id="days">00</span>
+            <span class="countdown__label" id="label-days"></span>
+          </div>
+          <span class="countdown__separator" aria-hidden="true">:</span>
+          <div class="countdown__segment">
+            <span class="countdown__number" id="hours">00</span>
+            <span class="countdown__label" id="label-hours"></span>
+          </div>
+          <span class="countdown__separator" aria-hidden="true">:</span>
+          <div class="countdown__segment">
+            <span class="countdown__number" id="minutes">00</span>
+            <span class="countdown__label" id="label-minutes"></span>
+          </div>
+          <span class="countdown__separator" aria-hidden="true">:</span>
+          <div class="countdown__segment">
+            <span class="countdown__number" id="seconds">00</span>
+            <span class="countdown__label" id="label-seconds"></span>
+          </div>
+        </div>
+        <p class="countdown__ended" id="countdown-ended" hidden></p>
+      </section>
+
+      <!-- Surveys -->
+      <section class="surveys" aria-label="意願問卷">
+        <h2 class="surveys__title" data-bind="surveys.sectionTitle"></h2>
+        <p class="surveys__subtitle" data-bind="surveys.sectionSubtitle"></p>
+        <div class="surveys__grid" id="surveys-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright" data-bind="footer.copyright"></p>
+      <nav class="footer__links" id="footer-links" aria-label="相關連結"></nav>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

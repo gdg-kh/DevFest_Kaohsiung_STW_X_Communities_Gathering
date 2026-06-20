@@ -1,0 +1,324 @@
+/*
+ * DevFest 2026 高雄場 — 活動預告頁
+ * 精簡基礎樣式，方便日後重新設計時整包替換。
+ */
+
+:root {
+  --color-blue: #4285f4;
+  --color-green: #34a853;
+  --color-yellow: #f9ab00;
+  --color-red: #ea4335;
+  --color-text: #1e1e1e;
+  --color-muted: #5f6368;
+  --color-bg: #ffffff;
+  --color-surface: #f6f8fc;
+  --radius: 16px;
+  --max-width: 960px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Google Sans', 'Roboto', 'Noto Sans TC', sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+.site {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 5rem 0 3rem;
+}
+
+.hero__tagline {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__meta {
+  margin-top: 1.25rem;
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.hero__dot {
+  margin: 0 0.6rem;
+  color: var(--color-muted);
+}
+
+.hero__review {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.75rem;
+  border: 2px solid var(--color-blue);
+  border-radius: 999px;
+  color: var(--color-blue);
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.hero__review:hover {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+  color: #fff;
+}
+
+/* Countdown */
+.countdown {
+  text-align: center;
+  padding: 2rem 0 4rem;
+}
+
+.countdown__title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+
+.countdown__timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.countdown__segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 4.5rem;
+  padding: 1rem 0.5rem;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+}
+
+.countdown__number {
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-blue);
+}
+
+.countdown__label {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+.countdown__separator {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.countdown__ended {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-green);
+}
+
+/* Surveys */
+.surveys {
+  text-align: center;
+  padding: 2rem 0 4rem;
+}
+
+.surveys__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.surveys__subtitle {
+  color: var(--color-muted);
+  margin-bottom: 2.5rem;
+}
+
+.surveys__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.survey-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.survey-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.survey-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.survey-card__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.survey-card__desc {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.survey-card__button {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: var(--color-blue);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.survey-card:hover .survey-card__button {
+  background: var(--color-green);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid #ececec;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.footer__links {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer__links a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+.footer__links a:hover {
+  text-decoration: underline;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .hero {
+    padding: 3.5rem 0 2rem;
+  }
+
+  .surveys__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .countdown__segment {
+    min-width: 3.75rem;
+  }
+}
+
+/* 桌機：整頁鎖在單一視窗高度內，不需捲動 */
+@media (min-width: 769px) {
+  body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .site {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 0;
+  }
+
+  .hero {
+    padding: 1rem 0 0.5rem;
+  }
+
+  .hero__review {
+    margin-top: 0.75rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .countdown {
+    padding: 0.5rem 0;
+  }
+
+  .countdown__title {
+    margin-bottom: 1rem;
+  }
+
+  .surveys {
+    padding: 0.5rem 0;
+  }
+
+  .surveys__subtitle {
+    margin-bottom: 1.5rem;
+  }
+
+  /* 四張卡片並排一行，壓縮垂直高度 */
+  .surveys__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .survey-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer {
+    padding: 1.25rem;
+  }
+}

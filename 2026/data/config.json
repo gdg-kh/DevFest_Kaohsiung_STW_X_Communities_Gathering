@@ -1,0 +1,71 @@
+{
+  "site": {
+    "title": "DevFest 2026 高雄場｜活動預告",
+    "description": "DevFest 2026 高雄場，2026/11/14 即將登場。",
+    "lang": "zh-Hant"
+  },
+  "event": {
+    "name": "DevFest 2026 高雄場",
+    "tagline": "2026 年，我們再次相聚高雄。",
+    "dateText": "",
+    "locationText": "",
+    "countdownTarget": "2026-11-14T08:30:00+08:00",
+    "countdownTitle": "距離 2026/11/14（星期六）活動開始還有",
+    "countdownEndedText": "活動已經開始！",
+    "reviewText": "看 2025 去年回顧 →",
+    "reviewUrl": "/2025/"
+  },
+  "countdownLabels": {
+    "days": "天",
+    "hours": "時",
+    "minutes": "分",
+    "seconds": "秒"
+  },
+  "surveys": {
+    "sectionTitle": "",
+    "sectionSubtitle": "填寫意願問卷，搶先成為活動的一份子",
+    "items": [
+      {
+        "id": "speaker",
+        "icon": "🎤",
+        "title": "講者意願問卷",
+        "description": "如果您有興趣上台分享，歡迎留下資訊，我們會在議程邀稿時第一時間通知您",
+        "buttonText": "連結",
+        "url": "https://forms.gle/B56e4iRz9BBe3R7W7"
+      },
+      {
+        "id": "volunteer",
+        "icon": "🙌",
+        "title": "志工意願問卷",
+        "description": "如果您有興趣一起打造高雄最好玩的研討會，歡迎留下資訊，我們會與您進一步連絡",
+        "buttonText": "連結",
+        "url": "https://forms.gle/CEkRWm7gd8u5RZYE7"
+      },
+      {
+        "id": "booth",
+        "icon": "🛒",
+        "title": "擺攤意願問卷",
+        "description": "今年我們也會在當天同步舉辦「第二屆技術創作市集」，如果您是社群組織者或者想要販賣自己的同人技術書，歡迎留下資訊，我們會與您進一步連絡",
+        "buttonText": "連結",
+        "url": "https://forms.gle/VX3vgjDoGt638cE56"
+      },
+      {
+        "id": "sponsor",
+        "icon": "🤝",
+        "title": "活動贊助意願問卷",
+        "description": "如果您有興趣贊助活動，讓我們能辦的更精緻，歡迎留下資訊，我們會與您進一步連絡",
+        "buttonText": "連結",
+        "url": "https://forms.gle/NJ8DpfKGf5fGG6Mw9"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "",
+    "links": [
+      {
+        "text": "GDG Kaohsiung 臉書社團",
+        "url": "https://www.facebook.com/groups/GDGKaohsiung"
+      }
+    ]
+  }
+}
