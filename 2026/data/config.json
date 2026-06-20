@@ -11,7 +11,9 @@
     "locationText": "",
     "countdownTarget": "2026-11-14T08:30:00+08:00",
     "countdownTitle": "距離 2026/11/14（星期六）活動開始還有",
-    "countdownEndedText": "活動已經開始！"
+    "countdownEndedText": "活動已經開始！",
+    "reviewText": "看 2025 去年回顧 →",
+    "reviewUrl": "/2025/"
   },
   "countdownLabels": {
     "days": "天",

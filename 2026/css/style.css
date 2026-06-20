@@ -71,6 +71,28 @@ body {
   color: var(--color-muted);
 }
 
+.hero__review {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.75rem;
+  border: 2px solid var(--color-blue);
+  border-radius: 999px;
+  color: var(--color-blue);
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.hero__review:hover {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+  color: #fff;
+}
+
 /* Countdown */
 .countdown {
   text-align: center;
@@ -263,6 +285,12 @@ body {
 
   .hero {
     padding: 1rem 0 0.5rem;
+  }
+
+  .hero__review {
+    margin-top: 0.75rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.95rem;
   }
 
   .countdown {
