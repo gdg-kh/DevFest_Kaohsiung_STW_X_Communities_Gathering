@@ -265,8 +265,8 @@ body {
   }
 }
 
-/* 桌機：整頁鎖在單一視窗高度內，不需捲動 */
-@media (min-width: 769px) {
+/* 桌機：當視窗夠寬且夠高時，整頁鎖在單一視窗高度內，不需捲動 */
+@media (min-width: 769px) and (min-height: 760px) {
   body {
     height: 100vh;
     display: flex;
