@@ -7,10 +7,10 @@
   "event": {
     "name": "DevFest 2026 高雄場",
     "tagline": "2026 年，我們再次相聚高雄。",
-    "dateText": "2026/11/14（星期六）",
-    "locationText": "高雄",
+    "dateText": "",
+    "locationText": "",
     "countdownTarget": "2026-11-14T08:30:00+08:00",
-    "countdownTitle": "距離活動開始還有",
+    "countdownTitle": "距離 2026/11/14（星期六）活動開始還有",
     "countdownEndedText": "活動已經開始！"
   },
   "countdownLabels": {
@@ -20,24 +20,24 @@
     "seconds": "秒"
   },
   "surveys": {
-    "sectionTitle": "一起參與 2026",
+    "sectionTitle": "",
     "sectionSubtitle": "填寫意願問卷，搶先成為活動的一份子",
     "items": [
       {
         "id": "speaker",
         "icon": "🎤",
         "title": "講者意願問卷",
-        "description": "想上台分享你的技術與故事？",
-        "buttonText": "我要報名講者",
-        "url": "https://forms.gle/REPLACE_ME"
+        "description": "如果您有興趣上台分享，歡迎留下資訊，我們會在議程邀稿時第一時間通知您？",
+        "buttonText": "連結",
+        "url": "https://forms.gle/B56e4iRz9BBe3R7W7"
       },
       {
         "id": "volunteer",
         "icon": "🙌",
         "title": "志工意願問卷",
-        "description": "加入志工團隊，一起打造活動。",
+        "description": "如果您有興趣一起打造高雄最好玩的研討會，歡迎留下資訊",
         "buttonText": "我要當志工",
-        "url": "https://forms.gle/REPLACE_ME"
+        "url": "https://forms.gle/CEkRWm7gd8u5RZYE7"
       },
       {
         "id": "booth",
@@ -58,11 +58,11 @@
     ]
   },
   "footer": {
-    "copyright": "© 2026 GDG Kaohsiung X Developer Buffet",
+    "copyright": "",
     "links": [
       {
-        "text": "GDG Kaohsiung",
-        "url": "https://gdg.community.dev/gdg-kaohsiung/"
+        "text": "GDG Kaohsiung 臉書社團",
+        "url": "https://www.facebook.com/groups/GDGKaohsiung"
       }
     ]
   }
