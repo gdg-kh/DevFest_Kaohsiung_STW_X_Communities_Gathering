@@ -27,7 +27,7 @@
         "id": "speaker",
         "icon": "🎤",
         "title": "講者意願問卷",
-        "description": "如果您有興趣上台分享，歡迎留下資訊，我們會在議程邀稿時第一時間通知您？",
+        "description": "如果您有興趣上台分享，歡迎留下資訊，我們會在議程邀稿時第一時間通知您",
         "buttonText": "連結",
         "url": "https://forms.gle/B56e4iRz9BBe3R7W7"
       },
@@ -35,25 +35,25 @@
         "id": "volunteer",
         "icon": "🙌",
         "title": "志工意願問卷",
-        "description": "如果您有興趣一起打造高雄最好玩的研討會，歡迎留下資訊",
-        "buttonText": "我要當志工",
+        "description": "如果您有興趣一起打造高雄最好玩的研討會，歡迎留下資訊，我們會與您進一步連絡",
+        "buttonText": "連結",
         "url": "https://forms.gle/CEkRWm7gd8u5RZYE7"
       },
       {
         "id": "booth",
         "icon": "🛒",
         "title": "擺攤意願問卷",
-        "description": "在技術創作市集展示你的作品。",
-        "buttonText": "我要擺攤",
-        "url": "https://forms.gle/REPLACE_ME"
+        "description": "今年我們也會在當天同步舉辦「第二屆技術創作市集」，如果您是社群組織者或者想要販賣自己的同人技術書，歡迎留下資訊，我們會與您進一步連絡",
+        "buttonText": "連結",
+        "url": "https://forms.gle/VX3vgjDoGt638cE56"
       },
       {
         "id": "sponsor",
         "icon": "🤝",
         "title": "活動贊助意願問卷",
-        "description": "成為贊助夥伴，支持技術社群。",
-        "buttonText": "我要贊助",
-        "url": "https://forms.gle/REPLACE_ME"
+        "description": "如果您有興趣贊助活動，讓我們能辦的更精緻，歡迎留下資訊，我們會與您進一步連絡",
+        "buttonText": "連結",
+        "url": "https://forms.gle/NJ8DpfKGf5fGG6Mw9"
       }
     ]
   },
