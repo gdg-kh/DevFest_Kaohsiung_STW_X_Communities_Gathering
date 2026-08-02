@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "check:2026": "node 2026/scripts/check.mjs",
+    "generate:2026": "node 2026/scripts/generate.mjs",
+    "serve:2026": "npx serve 2026",
+    "docs:build": "node docs/build-tasks.mjs"
+  }
+}
