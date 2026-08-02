@@ -1,71 +1,181 @@
 {
   "site": {
-    "title": "DevFest 2026 高雄場｜活動預告",
-    "description": "DevFest 2026 高雄場，2026/11/14 即將登場。",
-    "lang": "zh-Hant"
+    "eventName": {
+      "zh-Hant": "GDG Kaohsiung 2026"
+    },
+    "year": 2026,
+    "eventDate": "2026-11-14",
+    "eventStart": "2026-11-14T08:30:00+08:00",
+    "baseUrl": "https://gdgkh.cc/2026/",
+    "venue": {
+      "zh-Hant": "KO-IN 智高點"
+    },
+    "venueAddress": {
+      "zh-Hant": "800 高雄市新興區中正三路 25 號"
+    },
+    "venueMapUrl": "https://maps.app.goo.gl/tsrtSkCcmjxoYs4cA"
   },
-  "event": {
-    "name": "DevFest 2026 高雄場",
-    "tagline": "2026 年，我們再次相聚高雄。",
-    "dateText": "",
-    "locationText": "",
-    "countdownTarget": "2026-11-14T08:30:00+08:00",
-    "countdownTitle": "距離 2026/11/14（星期六）活動開始還有",
-    "countdownEndedText": "活動已經開始！",
-    "reviewText": "看 2025 去年回顧 →",
-    "reviewUrl": "/2025/"
-  },
-  "countdownLabels": {
-    "days": "天",
-    "hours": "時",
-    "minutes": "分",
-    "seconds": "秒"
-  },
-  "surveys": {
-    "sectionTitle": "",
-    "sectionSubtitle": "填寫意願問卷，搶先成為活動的一份子",
-    "items": [
-      {
-        "id": "speaker",
-        "icon": "🎤",
-        "title": "講者意願問卷",
-        "description": "如果您有興趣上台分享，歡迎留下資訊，我們會在議程邀稿時第一時間通知您",
-        "buttonText": "連結",
-        "url": "https://forms.gle/B56e4iRz9BBe3R7W7"
-      },
-      {
-        "id": "volunteer",
-        "icon": "🙌",
-        "title": "志工意願問卷",
-        "description": "如果您有興趣一起打造高雄最好玩的研討會，歡迎留下資訊，我們會與您進一步連絡",
-        "buttonText": "連結",
-        "url": "https://forms.gle/CEkRWm7gd8u5RZYE7"
-      },
-      {
-        "id": "booth",
-        "icon": "🛒",
-        "title": "擺攤意願問卷",
-        "description": "今年我們也會在當天同步舉辦「第二屆技術創作市集」，如果您是社群組織者或者想要販賣自己的同人技術書，歡迎留下資訊，我們會與您進一步連絡",
-        "buttonText": "連結",
-        "url": "https://forms.gle/VX3vgjDoGt638cE56"
-      },
-      {
-        "id": "sponsor",
-        "icon": "🤝",
-        "title": "活動贊助意願問卷",
-        "description": "如果您有興趣贊助活動，讓我們能辦的更精緻，歡迎留下資訊，我們會與您進一步連絡",
-        "buttonText": "連結",
-        "url": "https://forms.gle/NJ8DpfKGf5fGG6Mw9"
-      }
+  "i18n": {
+    "defaultLang": "zh-Hant",
+    "fallbackLang": "zh-Hant",
+    "languages": [
+      { "code": "zh-Hant", "label": "繁體中文", "enabled": true },
+      { "code": "en", "label": "English", "enabled": false },
+      { "code": "ja", "label": "日本語", "enabled": false }
     ]
+  },
+  "analytics": {
+    "ga4Id": "G-BMV35Q9F1G"
   },
   "footer": {
-    "copyright": "",
+    "codeOfConduct": {
+      "url": "https://gdg.tw/code_of_conduct/"
+    },
     "links": [
       {
-        "text": "GDG Kaohsiung 臉書社團",
+        "platform": "facebook",
+        "label": { "zh-Hant": "臉書社團" },
         "url": "https://www.facebook.com/groups/GDGKaohsiung"
       }
-    ]
+    ],
+    "copyright": {
+      "zh-Hant": "© 2026 GDG Kaohsiung"
+    }
+  },
+  "sponsorMarquee": {
+    "enabled": true,
+    "speedPxPerSecond": 60,
+    "direction": "left",
+    "pauseOnHover": true,
+    "position": "afterAbout"
+  },
+  "freeTicket": {
+    "enabled": true,
+    "formUrl": "https://forms.gle/B56e4iRz9BBe3R7W7",
+    "closeAt": "2026-10-15T23:59:59+08:00",
+    "reviewDays": 3
+  },
+  "virtualSpace": {
+    "enabled": true,
+    "url": "https://leapie.leapdesign.ai/",
+    "embed": false,
+    "qrImage": "images/virtual-space-qr.png"
+  },
+  "menu": [
+    {
+      "id": "about",
+      "enabled": true,
+      "order": 1,
+      "label": { "zh-Hant": "活動介紹" }
+    },
+    {
+      "id": "speakers",
+      "enabled": true,
+      "order": 2,
+      "label": { "zh-Hant": "講者介紹" }
+    },
+    {
+      "id": "agenda",
+      "enabled": true,
+      "order": 3,
+      "label": { "zh-Hant": "議程時間表" }
+    },
+    {
+      "id": "virtual",
+      "enabled": true,
+      "order": 4,
+      "label": { "zh-Hant": "虛擬會場" }
+    },
+    {
+      "id": "staff",
+      "enabled": true,
+      "order": 5,
+      "label": { "zh-Hant": "工作人員" }
+    },
+    {
+      "id": "thanks",
+      "enabled": true,
+      "order": 6,
+      "label": { "zh-Hant": "特別感謝" }
+    },
+    {
+      "id": "booths",
+      "enabled": true,
+      "order": 7,
+      "label": { "zh-Hant": "活動擺攤" }
+    },
+    {
+      "id": "lastyear",
+      "enabled": true,
+      "order": 8,
+      "type": "external",
+      "placement": "home",
+      "url": "https://gdgkh.cc/2025/",
+      "label": { "zh-Hant": "去年頁面" }
+    },
+    {
+      "id": "organizer",
+      "enabled": true,
+      "order": 9,
+      "placement": "home",
+      "label": { "zh-Hant": "主辦單位" }
+    },
+    {
+      "id": "ticket",
+      "enabled": true,
+      "order": 10,
+      "type": "cta",
+      "url": "https://example.com/ticket",
+      "label": { "zh-Hant": "點我購票" }
+    }
+  ],
+  "ui": {
+    "detailButton": { "zh-Hant": "看詳細" },
+    "closeButton": { "zh-Hant": "關閉" },
+    "sessionLabel": { "zh-Hant": "議程" },
+    "sessionAbstractLabel": { "zh-Hant": "議程介紹" },
+    "groupLabel": { "zh-Hant": "分類" },
+    "tagsLabel": { "zh-Hant": "標籤" },
+    "linksLabel": { "zh-Hant": "連結" },
+    "roleLabel": { "zh-Hant": "志工職務" },
+    "backToTop": { "zh-Hant": "回到頂端" },
+    "langLabel": { "zh-Hant": "語言" },
+    "ticketCta": { "zh-Hant": "點我購票" },
+    "speakerNumberPrefix": { "zh-Hant": "號" },
+    "allTracksLabel": { "zh-Hant": "全部軌道" },
+    "emptyStateText": { "zh-Hant": "資料準備中，請稍後再來看看" },
+    "eventStartedText": { "zh-Hant": "活動已開始" },
+    "countdownDays": { "zh-Hant": "天" },
+    "countdownHours": { "zh-Hant": "時" },
+    "countdownMinutes": { "zh-Hant": "分" },
+    "countdownSeconds": { "zh-Hant": "秒" },
+    "mapZoomHint": { "zh-Hant": "點擊地圖放大檢視" },
+    "viewerResetLabel": { "zh-Hant": "重設縮放" },
+    "viewerCloseLabel": { "zh-Hant": "關閉檢視器" },
+    "viewerZoomHint": { "zh-Hant": "滾輪縮放，拖曳平移，雙擊還原" },
+    "virtualEnterButton": { "zh-Hant": "進入虛擬會場" },
+    "virtualQrHint": { "zh-Hant": "手機掃描 QR code 快速進入" },
+    "virtualMapCrossLink": { "zh-Hant": "看實體場地地圖" },
+    "navMoreLabel": { "zh-Hant": "更多" },
+    "lastYearCardText": { "zh-Hant": "看看去年的活動紀錄" },
+    "organizerCardTitle": { "zh-Hant": "主辦單位" },
+    "freeTicketLink": { "zh-Hant": "查看資格並申請" },
+    "freeTicketFormButton": { "zh-Hant": "前往申請表單" },
+    "freeTicketEligibilityLabel": { "zh-Hant": "申請資格" },
+    "freeTicketProcessLabel": { "zh-Hant": "審核流程" },
+    "freeTicketCardButton": { "zh-Hant": "我可能符合資格" },
+    "directTicketCardButton": { "zh-Hant": "直接報名" },
+    "freeTicketReviewNote": { "zh-Hant": "送出申請後，主辦單位會於三個工作天內回覆審核結果" },
+    "sponsorMarqueeTitle": { "zh-Hant": "特別感謝" },
+    "ballotHeaderText": { "zh-Hant": "GDG Kaohsiung 感謝票" },
+    "cocLinkText": { "zh-Hant": "行為準則" },
+    "addToCalendarLabel": { "zh-Hant": "加入行事曆" },
+    "downloadIcsLabel": { "zh-Hant": "下載 ICS 檔案" },
+    "googleCalendarLabel": { "zh-Hant": "加入 Google 日曆" },
+    "addAllSessionsLabel": { "zh-Hant": "加入整天議程" },
+    "loadErrorText": { "zh-Hant": "資料載入失敗，請重新整理頁面" },
+    "retryButtonLabel": { "zh-Hant": "重試" },
+    "notFoundText": { "zh-Hant": "找不到這個頁面" },
+    "backHomeLabel": { "zh-Hant": "回到首頁" }
   }
 }
