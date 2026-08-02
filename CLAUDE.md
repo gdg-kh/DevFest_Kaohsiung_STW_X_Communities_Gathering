@@ -217,11 +217,20 @@ The site features two content management approaches:
 **Typical Workflow**:
 
 1. Create feature/hotfix branch from `master` or `develop`
-2. Make changes to source files (JSON data, templates, or core code)
+2. Make changes to source files (JSON data, templates, or code)
 3. If JSON data changed, run `npm run generate:all`
 4. Run `npm run lint:fix` and `npm run format`
 5. Commit both source changes and generated files
 6. Merge to `develop` for testing, then to `master` for production
+
+### 2026 正式版建置期間的推送限制
+
+2026 正式版尚未完成前（施工單 T01–T22 未全部驗收合格），**禁止將 feature 分支合併並推送到 `master`**。
+
+- 原因：現行 `/2026/index.html` 是線上生效的預告頁；若中間狀態被部署到 GitHub Pages 會讓線上頁面壞掉（缺 CSS / JS / 資料）。
+- 允許：本地開發、推送到 feature 分支的 remote、合併到 `develop`。
+- 完成條件：跑過 `2026/doc/gdgkh-2026-docs/docs/design/08-assets-perf.md` 的上線前驗證清單，且 `npm run check:2026` 通過。
+- 上線動作：一次 commit 刪除舊預告頁四個檔案（`2026/index.html`、`2026/css/`、`2026/js/`、`2026/data/config.json` 舊版）並加入所有新檔案，避免中間狀態壞站。
 
 ## CSS Architecture
 
