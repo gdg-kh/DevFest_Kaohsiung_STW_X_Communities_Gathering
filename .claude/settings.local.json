@@ -1,6 +1,18 @@
 {
   "permissions": {
-    "allow": ["Bash(cat:*)", "Bash(npx serve . -p 8000)", "Bash(npm run lint)", "Bash(git add:*)", "Bash(git reset:*)"],
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(npx serve . -p 8000)",
+      "Bash(npm run lint)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git checkout *)",
+      "Bash(git merge *)",
+      "Bash(git push *)",
+      "Bash([ -d \"/Users/andyawd/Project/GdgkhCc/2026/$dir\" ])",
+      "Bash(node *)",
+      "Bash(npx prettier *)"
+    ],
     "deny": [],
     "ask": []
   }
