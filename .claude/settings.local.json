@@ -12,7 +12,8 @@
       "Bash([ -d \"/Users/andyawd/Project/GdgkhCc/2026/$dir\" ])",
       "Bash(node *)",
       "Bash(npx prettier *)",
-      "Bash(grep -nE '#fbbc04|#000\\([^0-9a-f]|$\\)|#000000|#fff\\([^0-9a-f]|$\\)|#ffffff' 2026/assets/css/tokens.css)"
+      "Bash(grep -nE '#fbbc04|#000\\([^0-9a-f]|$\\)|#000000|#fff\\([^0-9a-f]|$\\)|#ffffff' 2026/assets/css/tokens.css)",
+      "Bash(grep -nE '#[0-9a-fA-F]{3,8}' 2026/assets/css/base.css)"
     ],
     "deny": [],
     "ask": []
