@@ -1,0 +1,511 @@
+{
+  "about": {
+    "sections": [
+      {
+        "id": "intro",
+        "title": { "zh-Hant": "關於 DevFest 2026" },
+        "body": {
+          "zh-Hant": "GDG Kaohsiung 一年一度的年度技術盛會。\n匯聚南台灣開發者，一起探索最新技術趨勢。"
+        }
+      },
+      {
+        "id": "history",
+        "title": { "zh-Hant": "我們的故事" },
+        "body": {
+          "zh-Hant": "自 2013 年成立以來，GDG Kaohsiung 持續為在地社群舉辦技術活動與交流聚會。"
+        }
+      },
+      {
+        "id": "vision",
+        "title": { "zh-Hant": "活動願景" },
+        "body": {
+          "zh-Hant": "打造南台灣最盛大的開發者嘉年華，串連社群、產業與人才。"
+        }
+      }
+    ]
+  },
+  "sessionGroups": [
+    { "id": "android", "order": 1, "name": { "zh-Hant": "Android" }, "color": "#34a853" },
+    { "id": "web", "order": 2, "name": { "zh-Hant": "Web" }, "color": "#4285f4" },
+    { "id": "ai", "order": 3, "name": { "zh-Hant": "AI" }, "color": "#ea4335" },
+    { "id": "cloud", "order": 4, "name": { "zh-Hant": "Cloud" }, "color": "#f9ab00" }
+  ],
+  "tracks": [
+    { "id": "track_1", "order": 1, "name": { "zh-Hant": "第一會場" }, "color": "#ea4335" }
+  ],
+  "speakers": [
+    {
+      "id": "andy_wang",
+      "order": 1,
+      "name": { "zh-Hant": "王小明" },
+      "bio": {
+        "zh-Hant": "資深 Android 工程師。\n專精於 Kotlin 與 Jetpack Compose 開發。"
+      },
+      "sessionIds": ["gemini_android"],
+      "links": [
+        { "platform": "github", "label": { "zh-Hant": "GitHub" }, "url": "https://github.com/andywang" },
+        { "platform": "x", "label": { "zh-Hant": "X" }, "url": "https://x.com/andywang" }
+      ]
+    },
+    {
+      "id": "sarah_chen",
+      "order": 2,
+      "name": { "zh-Hant": "陳雅芳" },
+      "bio": { "zh-Hant": "前端架構師，熱衷於 Web 標準推廣。" },
+      "sessionIds": ["web_platform"],
+      "links": [
+        { "platform": "website", "label": { "zh-Hant": "個人網站" }, "url": "https://sarahchen.dev" }
+      ]
+    },
+    {
+      "id": "ming_hao_lin",
+      "order": 3,
+      "name": { "zh-Hant": "林明浩" },
+      "bio": { "zh-Hant": "AI 研究員與講師。" },
+      "sessionIds": ["ai_workshop"],
+      "links": [
+        {
+          "platform": "linkedin",
+          "label": { "zh-Hant": "LinkedIn" },
+          "url": "https://linkedin.com/in/minghaolin"
+        }
+      ]
+    },
+    {
+      "id": "yuki_tanaka",
+      "order": 4,
+      "name": { "zh-Hant": "田中優希" },
+      "bio": {
+        "zh-Hant": "來自日本的 AI 工程師。\n擅長生成式模型的實務應用與教育推廣。"
+      },
+      "sessionIds": ["ai_workshop"],
+      "links": [
+        { "platform": "medium", "label": { "zh-Hant": "Medium" }, "url": "https://medium.com/@yukitanaka" }
+      ]
+    },
+    {
+      "id": "david_wu",
+      "order": 5,
+      "name": { "zh-Hant": "吳志豪" },
+      "bio": { "zh-Hant": "Google Cloud 認證架構師。" },
+      "sessionIds": ["cloud_deployment"],
+      "links": [
+        { "platform": "youtube", "label": { "zh-Hant": "YouTube" }, "url": "https://youtube.com/@davidwu" }
+      ]
+    },
+    {
+      "id": "jessica_huang",
+      "order": 6,
+      "name": { "zh-Hant": "黃嘉宜" },
+      "bio": { "zh-Hant": "Android GDE，專注在應用架構與跨螢幕體驗。" },
+      "sessionIds": ["android_jetpack"],
+      "links": [
+        {
+          "platform": "facebook",
+          "label": { "zh-Hant": "Facebook" },
+          "url": "https://facebook.com/jessicahuang"
+        }
+      ]
+    },
+    {
+      "id": "kevin_liu",
+      "order": 7,
+      "name": { "zh-Hant": "劉俊傑" },
+      "bio": { "zh-Hant": "Web 效能優化專家。" },
+      "sessionIds": ["web_performance"],
+      "links": [
+        { "platform": "threads", "label": { "zh-Hant": "Threads" }, "url": "https://threads.net/@kevinliu" }
+      ]
+    },
+    {
+      "id": "patricia_chang",
+      "order": 8,
+      "name": { "zh-Hant": "張珮綺" },
+      "bio": { "zh-Hant": "雲端解決方案架構師。" },
+      "sessionIds": ["cloud_architecture"],
+      "links": [
+        { "platform": "email", "label": { "zh-Hant": "Email" }, "url": "mailto:patricia@example.com" }
+      ]
+    }
+  ],
+  "sessions": [
+    {
+      "id": "opening_ceremony",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "開幕式" },
+      "abstract": { "zh-Hant": "歡迎詞與活動介紹。" },
+      "tags": [],
+      "speakerIds": [],
+      "start": "2026-11-14T09:00",
+      "end": "2026-11-14T09:30",
+      "type": "opening",
+      "links": []
+    },
+    {
+      "id": "gemini_android",
+      "groupId": "ai",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "Gemini 在 Android 的應用" },
+      "abstract": { "zh-Hant": "介紹如何在 Android 上整合 Gemini API 打造智慧體驗。" },
+      "tags": [{ "zh-Hant": "初學者" }, { "zh-Hant": "Android" }],
+      "speakerIds": ["andy_wang"],
+      "start": "2026-11-14T09:30",
+      "end": "2026-11-14T10:10",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "web_platform",
+      "groupId": "web",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "現代 Web 平台的新特性" },
+      "abstract": { "zh-Hant": "分享最新的 Web API 與瀏覽器能力。" },
+      "tags": [{ "zh-Hant": "Web" }],
+      "speakerIds": ["sarah_chen"],
+      "start": "2026-11-14T10:20",
+      "end": "2026-11-14T11:00",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "ai_workshop",
+      "groupId": "ai",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "生成式 AI 實戰工作坊" },
+      "abstract": { "zh-Hant": "手把手帶你打造第一個 AI 應用。" },
+      "tags": [{ "zh-Hant": "進階" }, { "zh-Hant": "AI" }],
+      "speakerIds": ["ming_hao_lin", "yuki_tanaka"],
+      "start": "2026-11-14T11:10",
+      "end": "2026-11-14T11:50",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "lunch_break",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "午餐時間" },
+      "abstract": { "zh-Hant": "享用美味便當並自由交流。" },
+      "tags": [],
+      "speakerIds": [],
+      "start": "2026-11-14T12:00",
+      "end": "2026-11-14T13:00",
+      "type": "lunch",
+      "links": []
+    },
+    {
+      "id": "cloud_deployment",
+      "groupId": "cloud",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "Cloud Run 部署實戰" },
+      "abstract": { "zh-Hant": "用 Cloud Run 快速部署容器化應用。" },
+      "tags": [{ "zh-Hant": "Cloud" }],
+      "speakerIds": ["david_wu"],
+      "start": "2026-11-14T13:00",
+      "end": "2026-11-14T13:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "android_jetpack",
+      "groupId": "android",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "Jetpack Compose 進階技巧" },
+      "abstract": { "zh-Hant": "深入 Compose 的效能與架構設計。" },
+      "tags": [{ "zh-Hant": "Android" }, { "zh-Hant": "進階" }],
+      "speakerIds": ["jessica_huang"],
+      "start": "2026-11-14T13:50",
+      "end": "2026-11-14T14:30",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "coffee_break",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "下午茶時間" },
+      "abstract": { "zh-Hant": "咖啡與甜點時光。" },
+      "tags": [],
+      "speakerIds": [],
+      "start": "2026-11-14T14:30",
+      "end": "2026-11-14T14:50",
+      "type": "break",
+      "links": []
+    },
+    {
+      "id": "web_performance",
+      "groupId": "web",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "Web 效能極致優化" },
+      "abstract": { "zh-Hant": "Core Web Vitals 全面提升的實戰技巧。" },
+      "tags": [{ "zh-Hant": "Web" }, { "zh-Hant": "效能" }],
+      "speakerIds": ["kevin_liu"],
+      "start": "2026-11-14T14:50",
+      "end": "2026-11-14T15:30",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "cloud_architecture",
+      "groupId": "cloud",
+      "trackId": "track_1",
+      "title": { "zh-Hant": "多雲架構設計思維" },
+      "abstract": { "zh-Hant": "跨雲平台的架構策略與最佳實踐。" },
+      "tags": [{ "zh-Hant": "Cloud" }, { "zh-Hant": "架構" }],
+      "speakerIds": ["patricia_chang"],
+      "start": "2026-11-14T15:40",
+      "end": "2026-11-14T16:20",
+      "type": "talk",
+      "links": []
+    }
+  ],
+  "staff": [
+    {
+      "id": "mei_ling",
+      "order": 1,
+      "name": { "zh-Hant": "李美玲" },
+      "role": { "zh-Hant": "報到組" },
+      "bio": {
+        "zh-Hant": "熱心公益的社群志工。\n連續三年參與 DevFest 籌辦工作。"
+      },
+      "links": []
+    },
+    {
+      "id": "chris_lee",
+      "order": 2,
+      "name": { "zh-Hant": "李啟明" },
+      "role": { "zh-Hant": "議程組" },
+      "bio": { "zh-Hant": "負責議程規劃與講者聯繫。" },
+      "links": []
+    },
+    {
+      "id": "amanda_lin",
+      "order": 3,
+      "name": { "zh-Hant": "林安婷" },
+      "role": { "zh-Hant": "行政組" },
+      "bio": { "zh-Hant": "掌管活動大小事的行政中樞。" },
+      "links": [
+        {
+          "platform": "linkedin",
+          "label": { "zh-Hant": "LinkedIn" },
+          "url": "https://linkedin.com/in/amandalin"
+        }
+      ]
+    },
+    {
+      "id": "roger_pan",
+      "order": 4,
+      "name": { "zh-Hant": "潘冠宇" },
+      "role": { "zh-Hant": "場務組" },
+      "bio": { "zh-Hant": "負責場地與器材協調。" },
+      "links": []
+    },
+    {
+      "id": "ivy_kuo",
+      "order": 5,
+      "name": { "zh-Hant": "郭怡雯" },
+      "role": { "zh-Hant": "設計組" },
+      "bio": { "zh-Hant": "視覺設計與品牌統籌。" },
+      "links": [
+        {
+          "platform": "instagram",
+          "label": { "zh-Hant": "Instagram" },
+          "url": "https://instagram.com/ivykuo"
+        }
+      ]
+    },
+    {
+      "id": "sam_hsu",
+      "order": 6,
+      "name": { "zh-Hant": "許承翰" },
+      "role": { "zh-Hant": "技術組" },
+      "bio": { "zh-Hant": "官網開發與現場技術支援。" },
+      "links": []
+    }
+  ],
+  "thanksGroups": [
+    { "id": "gold", "order": 1, "name": { "zh-Hant": "黃金級贊助" } },
+    { "id": "silver", "order": 2, "name": { "zh-Hant": "白銀級贊助" } },
+    { "id": "partner", "order": 3, "name": { "zh-Hant": "合作夥伴" } }
+  ],
+  "thanks": [
+    {
+      "id": "example_co",
+      "groupId": "gold",
+      "order": 1,
+      "name": { "zh-Hant": "範例科技股份有限公司" },
+      "description": { "zh-Hant": "領先的雲端服務供應商。" },
+      "marquee": true,
+      "links": [
+        { "platform": "website", "label": { "zh-Hant": "官方網站" }, "url": "https://example.com" }
+      ]
+    },
+    {
+      "id": "future_tech",
+      "groupId": "gold",
+      "order": 2,
+      "name": { "zh-Hant": "未來科技" },
+      "description": {
+        "zh-Hant": "專注於 AI 與資料分析。\n提供企業級的解決方案。"
+      },
+      "marquee": true,
+      "links": []
+    },
+    {
+      "id": "cloud_labs",
+      "groupId": "silver",
+      "order": 1,
+      "name": { "zh-Hant": "雲端實驗室" },
+      "description": { "zh-Hant": "新創雲端服務團隊。" },
+      "marquee": false,
+      "links": []
+    },
+    {
+      "id": "dev_studio",
+      "groupId": "silver",
+      "order": 2,
+      "name": { "zh-Hant": "開發者工作室" },
+      "description": { "zh-Hant": "軟體開發外包服務。" },
+      "marquee": false,
+      "links": []
+    },
+    {
+      "id": "ai_valley",
+      "groupId": "silver",
+      "order": 3,
+      "name": { "zh-Hant": "AI 谷" },
+      "description": { "zh-Hant": "AI 產品孵化基地。" },
+      "marquee": true,
+      "links": []
+    },
+    {
+      "id": "kh_incubator",
+      "groupId": "partner",
+      "order": 1,
+      "name": { "zh-Hant": "高雄新創育成中心" },
+      "description": { "zh-Hant": "提供新創團隊完整資源。" },
+      "marquee": true,
+      "links": []
+    },
+    {
+      "id": "community_hub",
+      "groupId": "partner",
+      "order": 2,
+      "name": { "zh-Hant": "社群交流中心" },
+      "description": { "zh-Hant": "串連南部技術社群。" },
+      "links": []
+    }
+  ],
+  "boothGroups": [
+    { "id": "community", "order": 1, "name": { "zh-Hant": "社群攤位" } },
+    { "id": "sponsor", "order": 2, "name": { "zh-Hant": "贊助攤位" } }
+  ],
+  "booths": [
+    {
+      "id": "kotlin_tw",
+      "groupId": "community",
+      "order": 1,
+      "name": { "zh-Hant": "Kotlin 台灣" },
+      "description": { "zh-Hant": "推廣 Kotlin 語言的在地社群。" },
+      "links": []
+    },
+    {
+      "id": "flutter_kh",
+      "groupId": "community",
+      "order": 2,
+      "name": { "zh-Hant": "Flutter 高雄" },
+      "description": { "zh-Hant": "Flutter 開發者的南台灣聚點。" },
+      "links": []
+    },
+    {
+      "id": "gdsc_nsysu",
+      "groupId": "community",
+      "order": 3,
+      "name": { "zh-Hant": "GDSC 中山大學" },
+      "description": { "zh-Hant": "Google 學生開發者社群。" },
+      "links": []
+    },
+    {
+      "id": "sample_corp",
+      "groupId": "sponsor",
+      "order": 1,
+      "name": { "zh-Hant": "示範企業" },
+      "description": { "zh-Hant": "現場招募與產品展示。" },
+      "links": [
+        { "platform": "website", "label": { "zh-Hant": "官方網站" }, "url": "https://sample-corp.com" }
+      ]
+    },
+    {
+      "id": "demo_startup",
+      "groupId": "sponsor",
+      "order": 2,
+      "name": { "zh-Hant": "示範新創" },
+      "description": { "zh-Hant": "新一代雲端工具展示。" },
+      "links": []
+    }
+  ],
+  "organizers": [
+    {
+      "id": "gdg_kaohsiung",
+      "order": 1,
+      "name": { "zh-Hant": "GDG Kaohsiung" },
+      "description": { "zh-Hant": "高雄在地的 Google Developer Group。" },
+      "links": [
+        {
+          "platform": "facebook",
+          "label": { "zh-Hant": "臉書社團" },
+          "url": "https://www.facebook.com/groups/GDGKaohsiung"
+        }
+      ]
+    },
+    {
+      "id": "stw_communities",
+      "order": 2,
+      "name": { "zh-Hant": "南台灣社群聯盟" },
+      "description": { "zh-Hant": "串連南部各技術社群的合作組織。" },
+      "links": []
+    }
+  ],
+  "registration": {
+    "orderNotice": { "zh-Hant": "報到時請出示票券 QR Code 與證件。" },
+    "directTitle": { "zh-Hant": "現場報到流程" },
+    "directSummary": {
+      "zh-Hant": "抵達會場後至一樓報到桌，掃描票券即可領取識別證與紀念品。"
+    }
+  },
+  "freeTicket": {
+    "title": { "zh-Hant": "免費票申請" },
+    "summary": { "zh-Hant": "提供給學生與弱勢族群的免費票申請通道。" },
+    "eligibility": [
+      { "zh-Hant": "在學學生（需出示學生證）" },
+      { "zh-Hant": "身心障礙人士（需出示證明）" },
+      { "zh-Hant": "低收入戶（需出示相關文件）" }
+    ],
+    "process": [
+      { "zh-Hant": "填寫線上申請表" },
+      { "zh-Hant": "上傳身分證明文件" },
+      { "zh-Hant": "等待審核通知（約三個工作天）" },
+      { "zh-Hant": "審核通過後取得電子票券" }
+    ],
+    "notes": { "zh-Hant": "申請截止後不再受理，請於期限內完成申請。" },
+    "closedText": { "zh-Hant": "免費票申請已截止，感謝您的支持。" }
+  },
+  "virtualSpace": {
+    "title": { "zh-Hant": "虛擬會場" },
+    "description": { "zh-Hant": "無法親臨現場的朋友，可以透過虛擬會場參與活動。" },
+    "notes": [
+      { "zh-Hant": "建議使用桌上型電腦或筆電獲得最佳體驗。" },
+      { "zh-Hant": "請確保網路頻寬穩定。" }
+    ]
+  },
+  "venueMaps": [
+    {
+      "id": "floor_1",
+      "file": "venue-map-1f.png",
+      "caption": { "zh-Hant": "一樓平面圖" }
+    },
+    {
+      "id": "floor_2",
+      "file": "venue-map-2f.png",
+      "caption": { "zh-Hant": "二樓平面圖" }
+    }
+  ]
+}
