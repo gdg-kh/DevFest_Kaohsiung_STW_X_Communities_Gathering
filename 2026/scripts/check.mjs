@@ -323,8 +323,9 @@ for (const file of [...jsFiles, ...mjsFiles, ...htmlFiles]) {
 }
 
 for (const file of [...jsFiles, ...cssFiles, ...htmlFiles]) {
-  if (path.basename(file) === 'tokens.css') {
-    continue;
+  const base = path.basename(file);
+  if (base === 'tokens.css' || base === 'editor.html') {
+    continue; // tokens.css 是色碼定義處；editor.html 是後台單檔工具，含大量非品牌灰階
   }
   const text = fs.readFileSync(file, 'utf8');
   const hexes = text.match(/#[0-9a-fA-F]{3,8}\b/g) || [];
