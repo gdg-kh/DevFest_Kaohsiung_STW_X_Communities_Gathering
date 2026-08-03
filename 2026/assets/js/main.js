@@ -343,7 +343,26 @@ function renderLoadError(err) {
   document.body.classList.remove('gk-loading');
 }
 
+function applyTokenColorMetas() {
+  const nodes = document.querySelectorAll('meta[data-gk-token-color]');
+  if (nodes.length === 0) {
+    return;
+  }
+  const styles = getComputedStyle(document.documentElement);
+  for (const node of nodes) {
+    const varName = node.getAttribute('data-gk-token-color');
+    if (!varName) {
+      continue;
+    }
+    const value = styles.getPropertyValue(varName).trim();
+    if (value) {
+      node.setAttribute('content', value);
+    }
+  }
+}
+
 async function bootstrap() {
+  applyTokenColorMetas();
   let data;
   try {
     data = await loadData();
