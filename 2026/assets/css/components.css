@@ -669,3 +669,57 @@
     font-size: var(--gk-fs-small);
   }
 }
+
+.gk-calendar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gk-sp-2);
+}
+
+.gk-calendar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gk-sp-2) var(--gk-sp-4);
+  font-family: var(--gk-font-display);
+  font-weight: var(--gk-fw-medium);
+  font-size: var(--gk-fs-small);
+  color: var(--gk-ink);
+  background-color: var(--gk-paper);
+  border: 2px solid var(--gk-ink);
+  border-radius: var(--gk-radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform var(--gk-transition),
+    background-color var(--gk-transition);
+}
+
+.gk-calendar-button:hover,
+.gk-calendar-button:focus-visible {
+  transform: translate(-2px, -2px);
+  background-color: var(--gk-yellow);
+  text-decoration: none;
+}
+
+.gk-calendar-button-google {
+  background-color: var(--gk-blue);
+  color: var(--gk-paper);
+}
+
+.gk-calendar-button-google:hover,
+.gk-calendar-button-google:focus-visible {
+  background-color: var(--gk-blue);
+  color: var(--gk-paper);
+}
+
+.gk-calendar-button-all {
+  background-color: var(--gk-ink);
+  color: var(--gk-paper);
+}
+
+.gk-calendar-button-all:hover,
+.gk-calendar-button-all:focus-visible {
+  background-color: var(--gk-ink);
+  color: var(--gk-paper);
+}
