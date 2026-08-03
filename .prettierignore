@@ -16,3 +16,9 @@ test-*.html
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# 2026 產生器輸出（由 generate:2026 覆寫，不手改）
+2026/share/
+
+# 2026 施工文件（外部參考資料，非本專案原始碼）
+2026/doc/
