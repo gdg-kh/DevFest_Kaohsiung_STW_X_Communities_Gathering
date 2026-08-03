@@ -13,7 +13,11 @@
       "Bash(node *)",
       "Bash(npx prettier *)",
       "Bash(grep -nE '#fbbc04|#000\\([^0-9a-f]|$\\)|#000000|#fff\\([^0-9a-f]|$\\)|#ffffff' 2026/assets/css/tokens.css)",
-      "Bash(grep -nE '#[0-9a-fA-F]{3,8}' 2026/assets/css/base.css)"
+      "Bash(grep -nE '#[0-9a-fA-F]{3,8}' 2026/assets/css/base.css)",
+      "Bash(git -C /Users/andyawd/Project/GdgkhCc branch --show-current)",
+      "Bash(git -C /Users/andyawd/Project/GdgkhCc status)",
+      "Bash(npx eslint *)",
+      "Bash(git commit -m ' *)"
     ],
     "deny": [],
     "ask": []
