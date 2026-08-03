@@ -34,7 +34,7 @@ function readQueryLang() {
   try {
     const params = new URLSearchParams(window.location.search);
     return params.get('lang');
-  } catch (_err) {
+  } catch {
     return null;
   }
 }
@@ -45,7 +45,7 @@ function readStorageLang() {
   }
   try {
     return localStorage.getItem(STORAGE_KEY);
-  } catch (_err) {
+  } catch {
     return null;
   }
 }
@@ -56,7 +56,7 @@ function writeStorageLang(code) {
   }
   try {
     localStorage.setItem(STORAGE_KEY, code);
-  } catch (_err) {
+  } catch {
     // ignore
   }
 }
