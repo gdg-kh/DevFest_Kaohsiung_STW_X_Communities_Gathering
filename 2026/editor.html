@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GDG Kaohsiung 2026 內容編輯器</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        --gk-red: #ea4335;
+        --gk-blue: #4285f4;
+        --gk-yellow: #f9ab00;
+        --gk-green: #34a853;
+        --gk-ink: #1e1e1e;
+        --gk-paper: #f0f0f0;
+        --gk-line: #d0d0d0;
+        --gk-font-body:
+          system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans TC', 'PingFang TC',
+          'Microsoft JhengHei', sans-serif;
+        --gk-font-mono:
+          'Google Sans Mono', ui-monospace, SFMono-Regular, 'SF Mono', Consolas, monospace;
+        --gk-sp-1: 4px;
+        --gk-sp-2: 8px;
+        --gk-sp-3: 12px;
+        --gk-sp-4: 16px;
+        --gk-sp-5: 24px;
+        --gk-sp-6: 32px;
+        --gk-radius-sm: 4px;
+        --gk-radius-md: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      body {
+        font-family: var(--gk-font-body);
+        color: var(--gk-ink);
+        background: var(--gk-paper);
+        font-size: 15px;
+        line-height: 1.5;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      button {
+        font-family: inherit;
+        font-size: inherit;
+        cursor: pointer;
+      }
+
+      .gk-header {
+        background: var(--gk-ink);
+        color: var(--gk-paper);
+        padding: var(--gk-sp-3) var(--gk-sp-5);
+        display: flex;
+        align-items: center;
+        gap: var(--gk-sp-5);
+        flex-wrap: wrap;
+      }
+
+      .gk-title {
+        font-weight: 700;
+        font-size: 16px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: var(--gk-sp-2);
+      }
+
+      .gk-title-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--gk-red);
+        display: inline-block;
+      }
+
+      .gk-toolbar {
+        display: flex;
+        gap: var(--gk-sp-2);
+        flex-wrap: wrap;
+        margin-left: auto;
+      }
+
+      .gk-btn {
+        border: 1px solid transparent;
+        background: transparent;
+        color: var(--gk-paper);
+        padding: var(--gk-sp-2) var(--gk-sp-3);
+        border-radius: var(--gk-radius-sm);
+        font-weight: 500;
+        transition:
+          background 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .gk-btn:hover,
+      .gk-btn:focus-visible {
+        background: rgba(240, 240, 240, 0.12);
+        outline: none;
+      }
+
+      .gk-btn-primary {
+        background: var(--gk-blue);
+        color: var(--gk-paper);
+      }
+
+      .gk-btn-primary:hover,
+      .gk-btn-primary:focus-visible {
+        background: #3367d6;
+      }
+
+      .gk-btn-danger {
+        background: transparent;
+        color: var(--gk-red);
+        border-color: rgba(234, 67, 53, 0.4);
+      }
+
+      .gk-btn-danger:hover,
+      .gk-btn-danger:focus-visible {
+        background: rgba(234, 67, 53, 0.12);
+      }
+
+      .gk-btn-secondary {
+        background: var(--gk-paper);
+        color: var(--gk-ink);
+        border-color: var(--gk-line);
+      }
+
+      .gk-btn-secondary:hover,
+      .gk-btn-secondary:focus-visible {
+        background: #e0e0e0;
+      }
+
+      .gk-main {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        flex: 1;
+        min-height: 0;
+      }
+
+      .gk-sidebar {
+        background: #fff;
+        border-right: 1px solid var(--gk-line);
+        padding: var(--gk-sp-4) 0;
+        overflow-y: auto;
+      }
+
+      .gk-sidebar-heading {
+        font-size: 12px;
+        font-weight: 700;
+        color: #666;
+        padding: 0 var(--gk-sp-5) var(--gk-sp-2);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .gk-nav {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .gk-nav-item {
+        margin: 0;
+      }
+
+      .gk-nav-btn {
+        width: 100%;
+        text-align: left;
+        border: none;
+        background: transparent;
+        padding: var(--gk-sp-3) var(--gk-sp-5);
+        color: var(--gk-ink);
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        gap: var(--gk-sp-3);
+      }
+
+      .gk-nav-btn:hover,
+      .gk-nav-btn:focus-visible {
+        background: #f5f5f5;
+        outline: none;
+      }
+
+      .gk-nav-btn.is-active {
+        background: #e8f0fe;
+        border-left-color: var(--gk-blue);
+        color: var(--gk-blue);
+      }
+
+      .gk-nav-badge {
+        margin-left: auto;
+        font-size: 12px;
+        color: #666;
+        background: #eee;
+        padding: 2px 8px;
+        border-radius: 999px;
+      }
+
+      .gk-nav-btn.is-active .gk-nav-badge {
+        background: var(--gk-blue);
+        color: var(--gk-paper);
+      }
+
+      .gk-content {
+        padding: var(--gk-sp-5);
+        overflow-y: auto;
+      }
+
+      .gk-panel {
+        background: #fff;
+        border: 1px solid var(--gk-line);
+        border-radius: var(--gk-radius-md);
+        padding: var(--gk-sp-5);
+      }
+
+      .gk-panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--gk-sp-4);
+        gap: var(--gk-sp-3);
+        flex-wrap: wrap;
+      }
+
+      .gk-panel-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .gk-panel-hint {
+        color: #666;
+        margin: 0 0 var(--gk-sp-4);
+        font-size: 14px;
+      }
+
+      .gk-preview {
+        background: #1e1e1e;
+        color: #f0f0f0;
+        padding: var(--gk-sp-4);
+        border-radius: var(--gk-radius-sm);
+        font-family: var(--gk-font-mono);
+        font-size: 13px;
+        white-space: pre;
+        overflow: auto;
+        max-height: 60vh;
+        margin: 0;
+      }
+
+      .gk-empty {
+        text-align: center;
+        padding: var(--gk-sp-6);
+        color: #666;
+      }
+
+      .gk-empty-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 0 var(--gk-sp-2);
+        color: var(--gk-ink);
+      }
+
+      .gk-empty-actions {
+        display: flex;
+        justify-content: center;
+        gap: var(--gk-sp-3);
+        margin-top: var(--gk-sp-4);
+        flex-wrap: wrap;
+      }
+
+      .gk-toast {
+        position: fixed;
+        bottom: var(--gk-sp-5);
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--gk-ink);
+        color: var(--gk-paper);
+        padding: var(--gk-sp-3) var(--gk-sp-5);
+        border-radius: var(--gk-radius-md);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 200;
+        max-width: 90vw;
+      }
+
+      .gk-toast.is-error {
+        background: var(--gk-red);
+      }
+
+      .gk-toast.is-success {
+        background: var(--gk-green);
+      }
+
+      .gk-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(30, 30, 30, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding: var(--gk-sp-4);
+      }
+
+      .gk-modal {
+        background: #fff;
+        border-radius: var(--gk-radius-md);
+        max-width: 640px;
+        width: 100%;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .gk-modal-header {
+        padding: var(--gk-sp-4) var(--gk-sp-5);
+        border-bottom: 1px solid var(--gk-line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .gk-modal-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .gk-modal-body {
+        padding: var(--gk-sp-5);
+        overflow-y: auto;
+        flex: 1;
+      }
+
+      .gk-modal-footer {
+        padding: var(--gk-sp-4) var(--gk-sp-5);
+        border-top: 1px solid var(--gk-line);
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--gk-sp-2);
+      }
+
+      .gk-select {
+        display: block;
+        margin: var(--gk-sp-2) 0 var(--gk-sp-4);
+        padding: var(--gk-sp-2);
+        border: 1px solid var(--gk-line);
+        border-radius: var(--gk-radius-sm);
+        font-family: inherit;
+        font-size: inherit;
+      }
+
+      .gk-textarea {
+        width: 100%;
+        min-height: 240px;
+        border: 1px solid var(--gk-line);
+        border-radius: var(--gk-radius-sm);
+        padding: var(--gk-sp-3);
+        font-family: var(--gk-font-mono);
+        font-size: 13px;
+        resize: vertical;
+      }
+
+      .gk-modal-hint {
+        color: #666;
+        font-size: 13px;
+        margin: 0 0 var(--gk-sp-2);
+      }
+
+      .gk-status-line {
+        display: flex;
+        gap: var(--gk-sp-4);
+        font-size: 13px;
+        color: #666;
+        padding: var(--gk-sp-2) var(--gk-sp-5);
+        background: #fafafa;
+        border-top: 1px solid var(--gk-line);
+        flex-wrap: wrap;
+      }
+
+      .gk-status-item strong {
+        color: var(--gk-ink);
+        font-weight: 700;
+      }
+
+      @media (max-width: 768px) {
+        .gk-main {
+          grid-template-columns: 1fr;
+        }
+
+        .gk-sidebar {
+          border-right: none;
+          border-bottom: 1px solid var(--gk-line);
+          max-height: 200px;
+        }
+
+        .gk-toolbar {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="gk-header" role="banner">
+      <h1 class="gk-title">
+        <span class="gk-title-dot" aria-hidden="true"></span>
+        GDG Kaohsiung 2026 內容編輯器
+      </h1>
+      <div class="gk-toolbar" id="toolbar" role="toolbar" aria-label="編輯器工具列"></div>
+    </header>
+
+    <div class="gk-main">
+      <nav class="gk-sidebar" aria-label="分類">
+        <p class="gk-sidebar-heading">分類</p>
+        <ul class="gk-nav" id="nav"></ul>
+      </nav>
+      <main class="gk-content" id="content"></main>
+    </div>
+
+    <div class="gk-status-line" id="statusLine"></div>
+
+    <input type="file" id="fileInput" accept=".json,application/json" multiple hidden />
+
+    <script type="module">
+      const DRAFT_KEY = 'gk_admin_draft';
+
+      const CATEGORIES = [
+        {
+          id: 'site',
+          label: '網站設定',
+          source: 'config',
+          path: ['site', 'i18n', 'analytics', 'footer'],
+        },
+        { id: 'menu', label: '選單', source: 'config', path: ['menu'] },
+        { id: 'ui', label: '介面文字', source: 'config', path: ['ui'] },
+        { id: 'about', label: '活動介紹', source: 'content', path: ['about'] },
+        { id: 'sessionGroups', label: '議程群組', source: 'content', path: ['sessionGroups'] },
+        { id: 'tracks', label: '會場', source: 'content', path: ['tracks'] },
+        { id: 'speakers', label: '講者', source: 'content', path: ['speakers'] },
+        { id: 'sessions', label: '議程', source: 'content', path: ['sessions'] },
+        { id: 'staff', label: '工作人員', source: 'content', path: ['staff'] },
+        { id: 'thanks', label: '特別感謝', source: 'content', path: ['thanks', 'thanksGroups'] },
+        { id: 'booths', label: '擺攤', source: 'content', path: ['booths', 'boothGroups'] },
+        { id: 'organizers', label: '主辦單位', source: 'content', path: ['organizers'] },
+      ];
+
+      const state = {
+        config: {},
+        content: {},
+        activeCategory: 'site',
+      };
+
+      let toastTimer = 0;
+
+      function el(tag, opts, children) {
+        const node = document.createElement(tag);
+        if (opts) {
+          if (opts.class) {
+            node.className = opts.class;
+          }
+          if (opts.text !== undefined && opts.text !== null) {
+            node.textContent = String(opts.text);
+          }
+          if (opts.attrs) {
+            Object.keys(opts.attrs).forEach((key) => {
+              const value = opts.attrs[key];
+              if (value === false || value === null || value === undefined) {
+                return;
+              }
+              node.setAttribute(key, value === true ? '' : String(value));
+            });
+          }
+          if (opts.on) {
+            Object.keys(opts.on).forEach((event) => {
+              node.addEventListener(event, opts.on[event]);
+            });
+          }
+        }
+        if (children) {
+          const list = Array.isArray(children) ? children : [children];
+          list.forEach((child) => {
+            if (child === null || child === undefined || child === false) {
+              return;
+            }
+            if (typeof child === 'string' || typeof child === 'number') {
+              node.appendChild(document.createTextNode(String(child)));
+            } else {
+              node.appendChild(child);
+            }
+          });
+        }
+        return node;
+      }
+
+      function clear(node) {
+        while (node.firstChild) {
+          node.removeChild(node.firstChild);
+        }
+      }
+
+      function showToast(message, type) {
+        const existing = document.querySelector('.gk-toast');
+        if (existing) {
+          existing.remove();
+        }
+        if (toastTimer) {
+          clearTimeout(toastTimer);
+          toastTimer = 0;
+        }
+        const toast = el('div', {
+          class: `gk-toast${type ? ` is-${type}` : ''}`,
+          text: message,
+          attrs: { role: 'status', 'aria-live': 'polite' },
+        });
+        document.body.appendChild(toast);
+        toastTimer = window.setTimeout(() => {
+          toast.remove();
+          toastTimer = 0;
+        }, 3200);
+      }
+
+      function saveDraft() {
+        try {
+          const payload = JSON.stringify({
+            config: state.config,
+            content: state.content,
+          });
+          localStorage.setItem(DRAFT_KEY, payload);
+        } catch (err) {
+          console.error('儲存草稿失敗', err);
+          showToast('儲存草稿失敗（可能已超出瀏覽器儲存空間）', 'error');
+        }
+      }
+
+      function loadDraft() {
+        try {
+          const raw = localStorage.getItem(DRAFT_KEY);
+          if (!raw) {
+            return false;
+          }
+          const parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === 'object') {
+            state.config = parsed.config && typeof parsed.config === 'object' ? parsed.config : {};
+            state.content =
+              parsed.content && typeof parsed.content === 'object' ? parsed.content : {};
+            return true;
+          }
+          return false;
+        } catch (err) {
+          console.error('還原草稿失敗', err);
+          return false;
+        }
+      }
+
+      function clearDraft() {
+        localStorage.removeItem(DRAFT_KEY);
+        state.config = {};
+        state.content = {};
+      }
+
+      function createEmptyTemplate() {
+        state.config = {
+          site: {
+            eventName: { 'zh-Hant': 'GDG Kaohsiung 2026' },
+            year: 2026,
+            eventDate: '2026-11-14',
+            eventStart: '2026-11-14T08:30:00+08:00',
+            baseUrl: 'https://gdgkh.cc/2026/',
+            venue: { 'zh-Hant': '' },
+          },
+          i18n: {
+            defaultLang: 'zh-Hant',
+            fallbackLang: 'zh-Hant',
+            languages: [
+              { code: 'zh-Hant', label: '繁體中文', enabled: true },
+              { code: 'en', label: 'English', enabled: false },
+              { code: 'ja', label: '日本語', enabled: false },
+            ],
+          },
+          analytics: { ga4Id: '' },
+          footer: {
+            codeOfConduct: { url: '' },
+            links: [],
+            copyright: { 'zh-Hant': '© 2026 GDG Kaohsiung' },
+          },
+          menu: [],
+          ui: {
+            detailButton: { 'zh-Hant': '看詳細' },
+            closeButton: { 'zh-Hant': '關閉' },
+          },
+        };
+        state.content = {
+          about: { sections: [] },
+          sessionGroups: [],
+          tracks: [],
+          speakers: [],
+          sessions: [],
+          staff: [],
+          thanksGroups: [],
+          thanks: [],
+          boothGroups: [],
+          booths: [],
+          organizers: [],
+        };
+        saveDraft();
+      }
+
+      function parseJson(text) {
+        const trimmed = String(text || '').trim();
+        if (!trimmed) {
+          throw new Error('內容是空的');
+        }
+        return JSON.parse(trimmed);
+      }
+
+      function detectKind(parsed) {
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+          return null;
+        }
+        const configKeys = ['site', 'i18n', 'menu', 'ui', 'footer', 'analytics'];
+        const contentKeys = [
+          'speakers',
+          'sessions',
+          'staff',
+          'thanks',
+          'booths',
+          'organizers',
+          'about',
+        ];
+        const configHits = configKeys.filter((key) => key in parsed).length;
+        const contentHits = contentKeys.filter((key) => key in parsed).length;
+        if (configHits > contentHits) {
+          return 'config';
+        }
+        if (contentHits > configHits) {
+          return 'content';
+        }
+        if (configHits === 0 && contentHits === 0) {
+          return null;
+        }
+        return contentHits >= configHits ? 'content' : 'config';
+      }
+
+      function importParsed(parsed, forcedKind) {
+        const kind = forcedKind || detectKind(parsed);
+        if (!kind) {
+          throw new Error('無法判斷這份 JSON 是 config 還是 content，請指定。');
+        }
+        if (kind === 'config') {
+          state.config = parsed;
+        } else {
+          state.content = parsed;
+        }
+        saveDraft();
+        return kind;
+      }
+
+      function readFileAsText(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result || ''));
+          reader.onerror = () => reject(new Error(`讀取 ${file.name} 失敗`));
+          reader.readAsText(file);
+        });
+      }
+
+      async function handleFileList(fileList) {
+        const files = Array.from(fileList || []);
+        if (files.length === 0) {
+          return;
+        }
+        const results = [];
+        for (const file of files) {
+          try {
+            const text = await readFileAsText(file);
+            const parsed = parseJson(text);
+            const forced = /config/i.test(file.name)
+              ? 'config'
+              : /content/i.test(file.name)
+                ? 'content'
+                : null;
+            const kind = importParsed(parsed, forced);
+            results.push({ file: file.name, kind });
+          } catch (err) {
+            showToast(`匯入 ${file.name} 失敗：${err.message}`, 'error');
+            return;
+          }
+        }
+        renderAll();
+        const summary = results.map((item) => `${item.file} → ${item.kind}`).join('，');
+        showToast(`匯入成功：${summary}`, 'success');
+      }
+
+      function openPasteModal() {
+        const backdrop = el('div', {
+          class: 'gk-modal-backdrop',
+          attrs: { role: 'dialog', 'aria-modal': 'true' },
+        });
+        const textarea = el('textarea', {
+          class: 'gk-textarea',
+          attrs: {
+            placeholder: '把 config.json 或 content.json 的內容貼在這裡',
+            'aria-label': 'JSON 內容',
+          },
+        });
+        const kindSelect = el(
+          'select',
+          { class: 'gk-select', attrs: { 'aria-label': '資料類型' } },
+          [
+            el('option', { text: '自動判斷', attrs: { value: '' } }),
+            el('option', { text: 'config.json', attrs: { value: 'config' } }),
+            el('option', { text: 'content.json', attrs: { value: 'content' } }),
+          ]
+        );
+        const closeModal = () => {
+          backdrop.remove();
+          document.removeEventListener('keydown', onKey);
+        };
+        const onKey = (event) => {
+          if (event.key === 'Escape') {
+            closeModal();
+          }
+        };
+        const modal = el('div', { class: 'gk-modal' }, [
+          el('div', { class: 'gk-modal-header' }, [
+            el('h2', { class: 'gk-modal-title', text: '貼上 JSON' }),
+            el('button', {
+              class: 'gk-btn gk-btn-secondary',
+              text: '關閉',
+              attrs: { type: 'button', 'aria-label': '關閉對話框' },
+              on: { click: closeModal },
+            }),
+          ]),
+          el('div', { class: 'gk-modal-body' }, [
+            el('p', {
+              class: 'gk-modal-hint',
+              text: '會依照內容自動判斷是 config 或 content；如果判斷錯誤請手動選擇。',
+            }),
+            el('label', { text: '資料類型', attrs: { for: 'kindSelectField' } }),
+            kindSelect,
+            textarea,
+          ]),
+          el('div', { class: 'gk-modal-footer' }, [
+            el('button', {
+              class: 'gk-btn gk-btn-secondary',
+              text: '取消',
+              attrs: { type: 'button' },
+              on: { click: closeModal },
+            }),
+            el('button', {
+              class: 'gk-btn gk-btn-primary',
+              text: '匯入',
+              attrs: { type: 'button' },
+              on: {
+                click: () => {
+                  try {
+                    const parsed = parseJson(textarea.value);
+                    const forced = kindSelect.value || null;
+                    const kind = importParsed(parsed, forced);
+                    closeModal();
+                    renderAll();
+                    showToast(`匯入成功：${kind}`, 'success');
+                  } catch (err) {
+                    showToast(`JSON 解析失敗：${err.message}`, 'error');
+                  }
+                },
+              },
+            }),
+          ]),
+        ]);
+        kindSelect.id = 'kindSelectField';
+        backdrop.appendChild(modal);
+        backdrop.addEventListener('click', (event) => {
+          if (event.target === backdrop) {
+            closeModal();
+          }
+        });
+        document.body.appendChild(backdrop);
+        document.addEventListener('keydown', onKey);
+        textarea.focus();
+      }
+
+      function download(filename, text) {
+        const blob = new Blob([text], { type: 'application/json;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = el('a', { attrs: { href: url, download: filename } });
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(url), 0);
+      }
+
+      function serialize(source) {
+        const target = source === 'config' ? state.config : state.content;
+        return JSON.stringify(target || {}, null, 2);
+      }
+
+      async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch (err) {
+            console.warn('Clipboard API 失敗，改用 fallback', err);
+          }
+        }
+        const textarea = el('textarea', { attrs: { readonly: true } });
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.top = '-1000px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        let success = false;
+        try {
+          success = document.execCommand('copy');
+        } catch (err) {
+          console.error('複製失敗', err);
+          success = false;
+        }
+        textarea.remove();
+        return success;
+      }
+
+      async function handleCopy(source) {
+        const text = serialize(source);
+        const ok = await copyText(text);
+        if (ok) {
+          showToast(`已複製 ${source}.json 到剪貼簿`, 'success');
+        } else {
+          showToast('複製失敗，請改用下載', 'error');
+        }
+      }
+
+      function confirmClearDraft() {
+        if (!window.confirm('確定要清空草稿嗎？此動作無法復原。')) {
+          return;
+        }
+        clearDraft();
+        renderAll();
+        showToast('草稿已清空', 'success');
+      }
+
+      function buildToolbar() {
+        const toolbar = document.getElementById('toolbar');
+        clear(toolbar);
+        const buttons = [
+          {
+            label: '匯入 JSON',
+            class: 'gk-btn gk-btn-primary',
+            on: () => document.getElementById('fileInput').click(),
+          },
+          { label: '貼上 JSON', class: 'gk-btn', on: openPasteModal },
+          {
+            label: '下載 config.json',
+            class: 'gk-btn',
+            on: () => download('config.json', serialize('config')),
+          },
+          {
+            label: '下載 content.json',
+            class: 'gk-btn',
+            on: () => download('content.json', serialize('content')),
+          },
+          {
+            label: '複製 config.json',
+            class: 'gk-btn',
+            on: () => handleCopy('config'),
+          },
+          {
+            label: '複製 content.json',
+            class: 'gk-btn',
+            on: () => handleCopy('content'),
+          },
+          { label: '清空草稿', class: 'gk-btn gk-btn-danger', on: confirmClearDraft },
+        ];
+        buttons.forEach((btn) => {
+          toolbar.appendChild(
+            el('button', {
+              class: btn.class,
+              text: btn.label,
+              attrs: { type: 'button' },
+              on: { click: btn.on },
+            })
+          );
+        });
+      }
+
+      function countItems(category) {
+        const source = category.source === 'config' ? state.config : state.content;
+        if (!source || typeof source !== 'object') {
+          return 0;
+        }
+        let total = 0;
+        category.path.forEach((key) => {
+          const value = source[key];
+          if (Array.isArray(value)) {
+            total += value.length;
+          } else if (value && typeof value === 'object') {
+            if (Array.isArray(value.sections)) {
+              total += value.sections.length;
+            } else {
+              total += Object.keys(value).length;
+            }
+          }
+        });
+        return total;
+      }
+
+      function buildNav() {
+        const nav = document.getElementById('nav');
+        clear(nav);
+        CATEGORIES.forEach((category) => {
+          const count = countItems(category);
+          const button = el(
+            'button',
+            {
+              class: `gk-nav-btn${state.activeCategory === category.id ? ' is-active' : ''}`,
+              attrs: {
+                type: 'button',
+                'aria-current': state.activeCategory === category.id ? 'page' : false,
+              },
+              on: {
+                click: () => {
+                  state.activeCategory = category.id;
+                  buildNav();
+                  buildContent();
+                },
+              },
+            },
+            [
+              el('span', { text: category.label }),
+              el('span', { class: 'gk-nav-badge', text: String(count) }),
+            ]
+          );
+          nav.appendChild(el('li', { class: 'gk-nav-item' }, [button]));
+        });
+      }
+
+      function isEmptyState() {
+        return Object.keys(state.config).length === 0 && Object.keys(state.content).length === 0;
+      }
+
+      function buildEmpty() {
+        return el('div', { class: 'gk-panel' }, [
+          el('div', { class: 'gk-empty' }, [
+            el('h2', { class: 'gk-empty-title', text: '目前沒有資料' }),
+            el('p', { text: '請匯入現有的 JSON 檔，或載入一份最小可用的空白範本。' }),
+            el('div', { class: 'gk-empty-actions' }, [
+              el('button', {
+                class: 'gk-btn gk-btn-primary',
+                text: '匯入 JSON',
+                attrs: { type: 'button' },
+                on: { click: () => document.getElementById('fileInput').click() },
+              }),
+              el('button', {
+                class: 'gk-btn gk-btn-secondary',
+                text: '貼上 JSON',
+                attrs: { type: 'button' },
+                on: { click: openPasteModal },
+              }),
+              el('button', {
+                class: 'gk-btn gk-btn-secondary',
+                text: '載入空白範本',
+                attrs: { type: 'button' },
+                on: {
+                  click: () => {
+                    createEmptyTemplate();
+                    renderAll();
+                    showToast('已載入空白範本', 'success');
+                  },
+                },
+              }),
+            ]),
+          ]),
+        ]);
+      }
+
+      function extractCategoryData(category) {
+        const source = category.source === 'config' ? state.config : state.content;
+        const snapshot = {};
+        if (source && typeof source === 'object') {
+          category.path.forEach((key) => {
+            if (key in source) {
+              snapshot[key] = source[key];
+            }
+          });
+        }
+        return snapshot;
+      }
+
+      function buildCategoryPanel() {
+        const category = CATEGORIES.find((item) => item.id === state.activeCategory);
+        if (!category) {
+          return buildEmpty();
+        }
+        const snapshot = extractCategoryData(category);
+        const isEmpty = Object.keys(snapshot).length === 0;
+        const panel = el('div', { class: 'gk-panel' }, [
+          el('div', { class: 'gk-panel-header' }, [
+            el('h2', { class: 'gk-panel-title', text: category.label }),
+            el('span', { class: 'gk-nav-badge', text: `${category.source}.json` }),
+          ]),
+          el('p', {
+            class: 'gk-panel-hint',
+            text: `此分類的欄位對應到 ${category.source}.json 的：${category.path.join('、')}`,
+          }),
+          isEmpty
+            ? el('div', { class: 'gk-empty' }, [
+                el('p', { text: '這個分類目前沒有資料，請匯入或載入空白範本後編輯。' }),
+              ])
+            : el('pre', { class: 'gk-preview', text: JSON.stringify(snapshot, null, 2) }),
+          el('p', {
+            class: 'gk-panel-hint',
+            text: '目前顯示唯讀預覽；表單化編輯將於下一階段（T19）加入。',
+          }),
+        ]);
+        return panel;
+      }
+
+      function buildContent() {
+        const content = document.getElementById('content');
+        clear(content);
+        if (isEmptyState()) {
+          content.appendChild(buildEmpty());
+        } else {
+          content.appendChild(buildCategoryPanel());
+        }
+      }
+
+      function buildStatusLine() {
+        const line = document.getElementById('statusLine');
+        clear(line);
+        const configKeys = Object.keys(state.config).length;
+        const contentKeys = Object.keys(state.content).length;
+        line.appendChild(
+          el('span', { class: 'gk-status-item' }, [
+            el('span', { text: 'config.json 欄位：' }),
+            el('strong', { text: String(configKeys) }),
+          ])
+        );
+        line.appendChild(
+          el('span', { class: 'gk-status-item' }, [
+            el('span', { text: 'content.json 欄位：' }),
+            el('strong', { text: String(contentKeys) }),
+          ])
+        );
+        const draftAvailable = Boolean(localStorage.getItem(DRAFT_KEY));
+        line.appendChild(
+          el('span', { class: 'gk-status-item' }, [
+            el('span', { text: '本機草稿：' }),
+            el('strong', { text: draftAvailable ? '已儲存' : '尚未儲存' }),
+          ])
+        );
+      }
+
+      function renderAll() {
+        buildNav();
+        buildContent();
+        buildStatusLine();
+      }
+
+      function bindFileInput() {
+        const input = document.getElementById('fileInput');
+        input.addEventListener('change', () => {
+          handleFileList(input.files);
+          input.value = '';
+        });
+      }
+
+      function init() {
+        buildToolbar();
+        bindFileInput();
+        const restored = loadDraft();
+        renderAll();
+        if (restored) {
+          showToast('已還原上一次的草稿', 'success');
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>
