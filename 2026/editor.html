@@ -642,6 +642,127 @@
         gap: var(--gk-sp-2);
       }
 
+      .gk-modal-wide {
+        max-width: 960px;
+      }
+
+      .gk-translation-stats {
+        display: flex;
+        gap: var(--gk-sp-2);
+        flex-wrap: wrap;
+        margin: var(--gk-sp-3) 0;
+      }
+
+      .gk-translation-chip {
+        background: #eef2ff;
+        color: #1a237e;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+      }
+
+      .gk-translation-chip.is-warn {
+        background: #fff4d6;
+        color: #7a5300;
+      }
+
+      .gk-issue-section {
+        margin-top: var(--gk-sp-4);
+      }
+
+      .gk-issue-heading {
+        margin: 0 0 var(--gk-sp-2);
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .gk-issue-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .gk-issue-item {
+        text-align: left;
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: var(--gk-radius-sm);
+        padding: var(--gk-sp-2) var(--gk-sp-3);
+        background: #fafafa;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .gk-issue-list.is-error .gk-issue-item {
+        background: rgba(234, 67, 53, 0.08);
+        color: var(--gk-red);
+        border-color: rgba(234, 67, 53, 0.4);
+      }
+
+      .gk-issue-list.is-warn .gk-issue-item {
+        background: rgba(249, 171, 0, 0.08);
+        color: #7a5300;
+        border-color: rgba(249, 171, 0, 0.4);
+      }
+
+      .gk-issue-item:hover,
+      .gk-issue-item:focus-visible {
+        filter: brightness(0.97);
+        outline: none;
+      }
+
+      .gk-diff-block {
+        margin-bottom: var(--gk-sp-5);
+      }
+
+      .gk-diff-pane {
+        background: #1e1e1e;
+        color: #f0f0f0;
+        border-radius: var(--gk-radius-sm);
+        font-family: var(--gk-font-mono);
+        font-size: 12px;
+        line-height: 1.55;
+        padding: var(--gk-sp-3);
+        max-height: 400px;
+        overflow: auto;
+        margin: 0;
+        white-space: pre;
+      }
+
+      .gk-diff-line {
+        display: block;
+      }
+
+      .gk-diff-line.is-add {
+        background: rgba(52, 168, 83, 0.25);
+      }
+
+      .gk-diff-line.is-del {
+        background: rgba(234, 67, 53, 0.25);
+      }
+
+      .gk-preview-body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gk-sp-3);
+      }
+
+      .gk-preview-iframe {
+        width: 100%;
+        height: 70vh;
+        border: 1px solid var(--gk-line);
+        border-radius: var(--gk-radius-sm);
+        background: #fff;
+      }
+
+      .gk-array-item.is-highlighted {
+        outline: 3px solid var(--gk-yellow);
+        outline-offset: -2px;
+      }
+
       @media (max-width: 768px) {
         .gk-main {
           grid-template-columns: 1fr;
@@ -724,8 +845,14 @@
         activeCategory: 'site',
       };
 
+      const originalSnapshot = {
+        config: '',
+        content: '',
+      };
+
       const tabState = {};
       let toastTimer = 0;
+      let pendingScrollItem = null;
 
       function el(tag, opts, children) {
         const node = document.createElement(tag);
@@ -970,6 +1097,8 @@
           booths: [],
           organizers: [],
         };
+        originalSnapshot.config = JSON.stringify(state.config, null, 2);
+        originalSnapshot.content = JSON.stringify(state.content, null, 2);
         saveDraft();
       }
 
@@ -1019,6 +1148,7 @@
         } else {
           state.content = parsed;
         }
+        originalSnapshot[kind] = JSON.stringify(parsed, null, 2);
         saveDraft();
         return kind;
       }
@@ -1203,8 +1333,320 @@
           return;
         }
         clearDraft();
+        originalSnapshot.config = '';
+        originalSnapshot.content = '';
         renderAll();
         showToast('草稿已清空', 'success');
+      }
+
+      const TIME_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
+
+      function isValidTime(s) {
+        if (typeof s !== 'string' || !TIME_RE.test(s)) {
+          return false;
+        }
+        const [datePart, timePart] = s.split('T');
+        const [y, mo, d] = datePart.split('-').map(Number);
+        const [h, mi] = timePart.split(':').map(Number);
+        if (mo < 1 || mo > 12 || d < 1 || d > 31 || h > 23 || mi > 59) {
+          return false;
+        }
+        return Boolean(y);
+      }
+
+      function toMinutes(s) {
+        const [datePart, timePart] = s.split('T');
+        const [y, mo, d] = datePart.split('-').map(Number);
+        const [h, mi] = timePart.split(':').map(Number);
+        return ((y * 12 + mo) * 32 + d) * 24 * 60 + h * 60 + mi;
+      }
+
+      function categoryForEntity(entityKey) {
+        const map = {
+          speakers: 'speakers',
+          sessions: 'sessions',
+          staff: 'staff',
+          thanks: 'thanks',
+          thanksGroups: 'thanks',
+          booths: 'booths',
+          boothGroups: 'booths',
+          organizers: 'organizers',
+          sessionGroups: 'sessionGroups',
+          tracks: 'tracks',
+          menu: 'menu',
+          'about.sections': 'about',
+        };
+        return map[entityKey] || null;
+      }
+
+      function validate() {
+        const errors = [];
+        const warnings = [];
+        const trans = {
+          'zh-Hant': { filled: 0, total: 0 },
+          en: { filled: 0, total: 0 },
+          ja: { filled: 0, total: 0 },
+        };
+
+        const countI18n = (obj) => {
+          if (!obj || typeof obj !== 'object') {
+            return;
+          }
+          LANG_CODES.forEach((code) => {
+            trans[code].total += 1;
+            if (obj[code] && String(obj[code]).trim()) {
+              trans[code].filled += 1;
+            }
+          });
+        };
+
+        const walkI18n = (node) => {
+          if (!node || typeof node !== 'object') {
+            return;
+          }
+          if (Array.isArray(node)) {
+            node.forEach(walkI18n);
+            return;
+          }
+          const keys = Object.keys(node);
+          const isI18nLeaf = keys.length > 0 && keys.every((k) => LANG_CODES.includes(k));
+          if (isI18nLeaf) {
+            countI18n(node);
+            return;
+          }
+          keys.forEach((k) => walkI18n(node[k]));
+        };
+
+        walkI18n(state.config);
+        walkI18n(state.content);
+
+        const addUrlWarnings = (item, links, entityKey) => {
+          if (!Array.isArray(links)) {
+            return;
+          }
+          links.forEach((link, index) => {
+            const url = link && link.url;
+            if (!url) {
+              return;
+            }
+            if (!/^https?:\/\//i.test(String(url))) {
+              warnings.push({
+                message: `${entityKey} 「${itemLabel(item)}」的第 ${index + 1} 個連結 url 未使用 http/https：${url}`,
+                categoryId: categoryForEntity(entityKey),
+                itemId: item && item.id,
+              });
+            }
+          });
+        };
+
+        const checkList = (list, entityKey, options) => {
+          const opts = options || {};
+          if (!Array.isArray(list)) {
+            return;
+          }
+          const seenIds = new Set();
+          list.forEach((item, index) => {
+            if (!item || typeof item !== 'object') {
+              return;
+            }
+            if (!item.id) {
+              errors.push({
+                message: `${entityKey} 第 ${index + 1} 筆缺少 id`,
+                categoryId: categoryForEntity(entityKey),
+                itemId: null,
+              });
+            } else {
+              if (isReserved(item.id)) {
+                errors.push({
+                  message: `${entityKey} 「${item.id}」使用了保留字`,
+                  categoryId: categoryForEntity(entityKey),
+                  itemId: item.id,
+                });
+              }
+              if (!/^[a-z0-9_]+$/.test(item.id)) {
+                errors.push({
+                  message: `${entityKey} 「${item.id}」的 id 含非法字元`,
+                  categoryId: categoryForEntity(entityKey),
+                  itemId: item.id,
+                });
+              }
+              if (seenIds.has(item.id)) {
+                errors.push({
+                  message: `${entityKey} 出現重複的 id：${item.id}`,
+                  categoryId: categoryForEntity(entityKey),
+                  itemId: item.id,
+                });
+              }
+              seenIds.add(item.id);
+            }
+            if (opts.requireName) {
+              const nameField = opts.nameField || 'name';
+              const nameZh = item[nameField] && item[nameField]['zh-Hant'];
+              if (!nameZh || !String(nameZh).trim()) {
+                errors.push({
+                  message: `${entityKey} 「${item.id || `第 ${index + 1} 筆`}」的${nameField}（繁中）為空`,
+                  categoryId: categoryForEntity(entityKey),
+                  itemId: item.id,
+                });
+              }
+            }
+            if (opts.checkImage) {
+              const path = opts.checkImage(item);
+              if (!path) {
+                warnings.push({
+                  message: `${entityKey} 「${itemLabel(item)}」缺少圖片路徑`,
+                  categoryId: categoryForEntity(entityKey),
+                  itemId: item.id,
+                });
+              }
+            }
+            addUrlWarnings(item, item.links, entityKey);
+          });
+        };
+
+        checkList(state.content.speakers, 'speakers', { requireName: true });
+        checkList(state.content.sessions, 'sessions', { requireName: true, nameField: 'title' });
+        checkList(state.content.staff, 'staff', { requireName: true });
+        checkList(state.content.thanks, 'thanks', { requireName: true });
+        checkList(state.content.thanksGroups, 'thanksGroups', {});
+        checkList(state.content.booths, 'booths', { requireName: true });
+        checkList(state.content.boothGroups, 'boothGroups', {});
+        checkList(state.content.organizers, 'organizers', { requireName: true });
+        checkList(state.content.sessionGroups, 'sessionGroups', {});
+        checkList(state.content.tracks, 'tracks', {});
+
+        if (state.content.about && Array.isArray(state.content.about.sections)) {
+          checkList(state.content.about.sections, 'about.sections', {});
+          state.content.about.sections.forEach((sec) => {
+            if (sec && (!sec.image || !String(sec.image).trim())) {
+              warnings.push({
+                message: `活動介紹段落「${itemLabel(sec)}」缺少圖片路徑`,
+                categoryId: 'about',
+                itemId: sec.id,
+              });
+            }
+          });
+        }
+
+        if (Array.isArray(state.config.menu)) {
+          checkList(state.config.menu, 'menu', {});
+        }
+
+        const sessionIds = new Set(
+          (state.content.sessions || []).map((s) => s && s.id).filter(Boolean)
+        );
+        const speakerIds = new Set(
+          (state.content.speakers || []).map((s) => s && s.id).filter(Boolean)
+        );
+        const groupIds = new Set(
+          (state.content.sessionGroups || []).map((g) => g && g.id).filter(Boolean)
+        );
+        const trackIds = new Set(
+          (state.content.tracks || []).map((t) => t && t.id).filter(Boolean)
+        );
+
+        (state.content.speakers || []).forEach((sp) => {
+          if (!sp || !Array.isArray(sp.sessionIds)) {
+            return;
+          }
+          sp.sessionIds.forEach((sid) => {
+            if (!sessionIds.has(sid)) {
+              errors.push({
+                message: `講者「${itemLabel(sp)}」引用不存在的議程：${sid}`,
+                categoryId: 'speakers',
+                itemId: sp.id,
+              });
+            }
+          });
+        });
+
+        (state.content.sessions || []).forEach((se) => {
+          if (!se) {
+            return;
+          }
+          if (Array.isArray(se.speakerIds)) {
+            se.speakerIds.forEach((sid) => {
+              if (!speakerIds.has(sid)) {
+                errors.push({
+                  message: `議程「${itemLabel(se)}」引用不存在的講者：${sid}`,
+                  categoryId: 'sessions',
+                  itemId: se.id,
+                });
+              }
+            });
+          }
+          if (se.groupId && !groupIds.has(se.groupId)) {
+            errors.push({
+              message: `議程「${itemLabel(se)}」的 groupId 不存在：${se.groupId}`,
+              categoryId: 'sessions',
+              itemId: se.id,
+            });
+          }
+          if (se.trackId && !trackIds.has(se.trackId)) {
+            errors.push({
+              message: `議程「${itemLabel(se)}」的 trackId 不存在：${se.trackId}`,
+              categoryId: 'sessions',
+              itemId: se.id,
+            });
+          }
+          if (se.start && !isValidTime(se.start)) {
+            errors.push({
+              message: `議程「${itemLabel(se)}」的開始時間格式錯誤：${se.start}`,
+              categoryId: 'sessions',
+              itemId: se.id,
+            });
+          }
+          if (se.end && !isValidTime(se.end)) {
+            errors.push({
+              message: `議程「${itemLabel(se)}」的結束時間格式錯誤：${se.end}`,
+              categoryId: 'sessions',
+              itemId: se.id,
+            });
+          }
+        });
+
+        const sessionsByTrack = {};
+        (state.content.sessions || []).forEach((se) => {
+          if (!se || !se.trackId || !isValidTime(se.start) || !isValidTime(se.end)) {
+            return;
+          }
+          if (!sessionsByTrack[se.trackId]) {
+            sessionsByTrack[se.trackId] = [];
+          }
+          sessionsByTrack[se.trackId].push({
+            id: se.id,
+            label: itemLabel(se),
+            startMin: toMinutes(se.start),
+            endMin: toMinutes(se.end),
+          });
+        });
+        Object.keys(sessionsByTrack).forEach((trackId) => {
+          const items = sessionsByTrack[trackId].sort((a, b) => a.startMin - b.startMin);
+          for (let i = 1; i < items.length; i += 1) {
+            if (items[i].startMin < items[i - 1].endMin) {
+              errors.push({
+                message: `會場 ${trackId} 的議程「${items[i - 1].label}」與「${items[i].label}」時間重疊`,
+                categoryId: 'sessions',
+                itemId: items[i].id,
+              });
+            }
+          }
+        });
+
+        return { errors, warnings, translations: trans };
+      }
+
+      function itemLabel(item) {
+        if (!item) {
+          return '（未命名）';
+        }
+        return (
+          pickText(item.name) ||
+          pickText(item.title) ||
+          pickText(item.label) ||
+          item.id ||
+          '（未命名）'
+        );
       }
 
       function pickText(i18n) {
@@ -1942,7 +2384,15 @@
             el('span', { class: 'gk-array-summary', text: summaryText }),
             controls,
           ]);
-          listEl.appendChild(el('div', { class: 'gk-array-item' }, [head, body]));
+          const itemNode = el(
+            'div',
+            {
+              class: 'gk-array-item',
+              attrs: item.id ? { 'data-item-id': item.id } : {},
+            },
+            [head, body]
+          );
+          listEl.appendChild(itemNode);
         });
 
         if (list.length === 0) {
@@ -1974,6 +2424,25 @@
         ]);
       }
 
+      function buildTranslationHeader() {
+        const wrap = el('div', { class: 'gk-translation-stats' });
+        try {
+          const result = validate();
+          LANG_CODES.forEach((code) => {
+            const stat = result.translations[code];
+            const missing = stat.total - stat.filled;
+            const chip = el('span', {
+              class: `gk-translation-chip${missing > 0 && code !== 'zh-Hant' ? ' is-warn' : ''}`,
+              text: `${LANG_LABELS[code]}：${missing} / ${stat.total} 未填`,
+            });
+            wrap.appendChild(chip);
+          });
+        } catch (err) {
+          console.warn('翻譯統計計算失敗', err);
+        }
+        return wrap;
+      }
+
       function renderCurrentCategory() {
         const container = document.getElementById('content');
         if (!container) {
@@ -1995,6 +2464,7 @@
             el('span', { class: 'gk-array-count', text: `共 ${totalCount} 筆資料` }),
           ])
         );
+        container.appendChild(buildTranslationHeader());
         const onChange = (options) => {
           saveDraft();
           buildNav();
@@ -2010,6 +2480,24 @@
             container.appendChild(renderObjectSection(section, onChange));
           }
         });
+        if (pendingScrollItem) {
+          const target = container.querySelector(
+            `[data-item-id="${cssEscape(pendingScrollItem)}"]`
+          );
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.classList.add('is-highlighted');
+            window.setTimeout(() => target.classList.remove('is-highlighted'), 1600);
+          }
+          pendingScrollItem = null;
+        }
+      }
+
+      function cssEscape(value) {
+        if (window.CSS && typeof window.CSS.escape === 'function') {
+          return window.CSS.escape(value);
+        }
+        return String(value).replace(/[^\w-]/g, '\\$&');
       }
 
       function isEmptyState() {
@@ -2095,6 +2583,251 @@
         });
       }
 
+      function openModal(title, bodyNode, footerNodes) {
+        const backdrop = el('div', {
+          class: 'gk-modal-backdrop',
+          attrs: { role: 'dialog', 'aria-modal': 'true' },
+        });
+        const closeModal = () => {
+          backdrop.remove();
+          document.removeEventListener('keydown', onKey);
+        };
+        const onKey = (event) => {
+          if (event.key === 'Escape') {
+            closeModal();
+          }
+        };
+        const modal = el('div', { class: 'gk-modal gk-modal-wide' }, [
+          el('div', { class: 'gk-modal-header' }, [
+            el('h2', { class: 'gk-modal-title', text: title }),
+            el('button', {
+              class: 'gk-btn gk-btn-secondary',
+              text: '關閉',
+              attrs: { type: 'button', 'aria-label': '關閉對話框' },
+              on: { click: closeModal },
+            }),
+          ]),
+          el('div', { class: 'gk-modal-body' }, [bodyNode]),
+          footerNodes ? el('div', { class: 'gk-modal-footer' }, footerNodes) : null,
+        ]);
+        backdrop.appendChild(modal);
+        backdrop.addEventListener('click', (event) => {
+          if (event.target === backdrop) {
+            closeModal();
+          }
+        });
+        document.body.appendChild(backdrop);
+        document.addEventListener('keydown', onKey);
+        return { close: closeModal };
+      }
+
+      function jumpToItem(categoryId, itemId, modalHandle) {
+        if (categoryId && CATEGORIES.some((cat) => cat.id === categoryId)) {
+          state.activeCategory = categoryId;
+        }
+        pendingScrollItem = itemId || null;
+        buildNav();
+        renderCurrentCategory();
+        if (modalHandle && typeof modalHandle.close === 'function') {
+          modalHandle.close();
+        }
+      }
+
+      function openValidateModal() {
+        const result = validate();
+        const body = el('div', { class: 'gk-validate-body' });
+
+        const summary = el('p', { class: 'gk-modal-hint' });
+        summary.textContent = `錯誤 ${result.errors.length}、警告 ${result.warnings.length}`;
+        body.appendChild(summary);
+
+        const translationRow = el('div', { class: 'gk-translation-stats' });
+        LANG_CODES.forEach((code) => {
+          const stat = result.translations[code];
+          const missing = stat.total - stat.filled;
+          const chip = el('span', {
+            class: `gk-translation-chip${missing > 0 && code !== 'zh-Hant' ? ' is-warn' : ''}`,
+            text: `${LANG_LABELS[code]}：${missing} / ${stat.total} 未填`,
+          });
+          translationRow.appendChild(chip);
+        });
+        body.appendChild(translationRow);
+
+        const listSection = (title, items, level) => {
+          const section = el('div', { class: 'gk-issue-section' });
+          section.appendChild(
+            el('h3', { class: 'gk-issue-heading', text: `${title}（${items.length}）` })
+          );
+          if (items.length === 0) {
+            section.appendChild(el('p', { class: 'gk-field-hint', text: '沒有問題' }));
+            return section;
+          }
+          const ul = el('ul', { class: `gk-issue-list is-${level}` });
+          items.forEach((issue) => {
+            const btn = el('button', {
+              class: 'gk-issue-item',
+              attrs: { type: 'button' },
+              text: issue.message,
+              on: {
+                click: () => jumpToItem(issue.categoryId, issue.itemId, handle),
+              },
+            });
+            ul.appendChild(el('li', {}, [btn]));
+          });
+          section.appendChild(ul);
+          return section;
+        };
+
+        body.appendChild(listSection('錯誤', result.errors, 'error'));
+        body.appendChild(listSection('警告', result.warnings, 'warn'));
+
+        const rerunBtn = el('button', {
+          class: 'gk-btn gk-btn-primary',
+          text: '重新檢查',
+          attrs: { type: 'button' },
+          on: {
+            click: () => {
+              handle.close();
+              openValidateModal();
+            },
+          },
+        });
+
+        const handle = openModal('資料檢查', body, [rerunBtn]);
+      }
+
+      function diffLines(oldText, newText) {
+        const oldLines = oldText ? oldText.split('\n') : [];
+        const newLines = newText ? newText.split('\n') : [];
+        const m = oldLines.length;
+        const n = newLines.length;
+        if (m === 0 && n === 0) {
+          return [];
+        }
+        if (m * n > 400000) {
+          const ops = [];
+          oldLines.forEach((line) => ops.push({ op: 'del', text: line }));
+          newLines.forEach((line) => ops.push({ op: 'add', text: line }));
+          return ops;
+        }
+        const dp = new Array(m + 1);
+        for (let i = 0; i <= m; i += 1) {
+          dp[i] = new Uint32Array(n + 1);
+        }
+        for (let i = m - 1; i >= 0; i -= 1) {
+          for (let j = n - 1; j >= 0; j -= 1) {
+            if (oldLines[i] === newLines[j]) {
+              dp[i][j] = dp[i + 1][j + 1] + 1;
+            } else {
+              dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
+            }
+          }
+        }
+        const ops = [];
+        let i = 0;
+        let j = 0;
+        while (i < m && j < n) {
+          if (oldLines[i] === newLines[j]) {
+            ops.push({ op: 'eq', text: oldLines[i] });
+            i += 1;
+            j += 1;
+          } else if (dp[i + 1][j] >= dp[i][j + 1]) {
+            ops.push({ op: 'del', text: oldLines[i] });
+            i += 1;
+          } else {
+            ops.push({ op: 'add', text: newLines[j] });
+            j += 1;
+          }
+        }
+        while (i < m) {
+          ops.push({ op: 'del', text: oldLines[i] });
+          i += 1;
+        }
+        while (j < n) {
+          ops.push({ op: 'add', text: newLines[j] });
+          j += 1;
+        }
+        return ops;
+      }
+
+      function renderDiffBlock(title, oldText, newText) {
+        const block = el('section', { class: 'gk-diff-block' });
+        block.appendChild(el('h3', { class: 'gk-issue-heading', text: title }));
+        if (!oldText) {
+          block.appendChild(
+            el('p', { class: 'gk-field-hint', text: '沒有匯入原始版本，無法比對；顯示目前內容。' })
+          );
+          block.appendChild(el('pre', { class: 'gk-diff-pane', text: newText || '（空）' }));
+          return block;
+        }
+        const ops = diffLines(oldText, newText);
+        const added = ops.filter((op) => op.op === 'add').length;
+        const removed = ops.filter((op) => op.op === 'del').length;
+        block.appendChild(
+          el('p', {
+            class: 'gk-field-hint',
+            text: `新增 ${added} 行、刪除 ${removed} 行`,
+          })
+        );
+        const pane = el('pre', { class: 'gk-diff-pane' });
+        ops.forEach((entry) => {
+          const line = el('span', {
+            class: `gk-diff-line is-${entry.op}`,
+            text: `${entry.op === 'add' ? '+ ' : entry.op === 'del' ? '- ' : '  '}${entry.text}\n`,
+          });
+          pane.appendChild(line);
+        });
+        block.appendChild(pane);
+        return block;
+      }
+
+      function openDiffModal() {
+        const body = el('div', { class: 'gk-diff-body' });
+        body.appendChild(
+          el('p', { class: 'gk-modal-hint', text: '比較目前草稿與最後一次匯入或空白範本的差異。' })
+        );
+        body.appendChild(
+          renderDiffBlock('config.json', originalSnapshot.config, serialize('config'))
+        );
+        body.appendChild(
+          renderDiffBlock('content.json', originalSnapshot.content, serialize('content'))
+        );
+        openModal('查看變更', body);
+      }
+
+      function openPreviewModal() {
+        const body = el('div', { class: 'gk-preview-body' });
+        body.appendChild(
+          el('p', {
+            class: 'gk-modal-hint',
+            text: '注意：預覽讀取的是 repo 內的 /2026/index.html，不會反映此頁草稿變動。',
+          })
+        );
+        const iframe = el('iframe', {
+          class: 'gk-preview-iframe',
+          attrs: {
+            src: 'index.html',
+            title: '預覽 2026 首頁',
+            loading: 'lazy',
+          },
+        });
+        body.appendChild(iframe);
+        openModal('預覽 2026 首頁', body);
+      }
+
+      async function handleDownload(source) {
+        const result = validate();
+        if (result.errors.length > 0) {
+          const proceed = window.confirm(
+            `目前偵測到 ${result.errors.length} 個紅色錯誤，仍要匯出 ${source}.json 嗎？`
+          );
+          if (!proceed) {
+            return;
+          }
+        }
+        download(`${source}.json`, serialize(source));
+      }
+
       function buildToolbar() {
         const toolbar = document.getElementById('toolbar');
         clear(toolbar);
@@ -2105,15 +2838,18 @@
             on: () => document.getElementById('fileInput').click(),
           },
           { label: '貼上 JSON', class: 'gk-btn', on: openPasteModal },
+          { label: '檢查', class: 'gk-btn', on: openValidateModal },
+          { label: '查看變更', class: 'gk-btn', on: openDiffModal },
+          { label: '預覽', class: 'gk-btn', on: openPreviewModal },
           {
             label: '下載 config.json',
             class: 'gk-btn',
-            on: () => download('config.json', serialize('config')),
+            on: () => handleDownload('config'),
           },
           {
             label: '下載 content.json',
             class: 'gk-btn',
-            on: () => download('content.json', serialize('content')),
+            on: () => handleDownload('content'),
           },
           {
             label: '複製 config.json',
