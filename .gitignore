@@ -29,3 +29,6 @@ pnpm-lock.yaml
 # Generated pages (auto-generated from scripts)
 # Note: These are committed for SEO and direct deployment
 # share/
+
+# 2026 產生器快取（本地增量產生用，不入版）
+2026/.generate-cache.json
