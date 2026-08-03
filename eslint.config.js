@@ -45,6 +45,34 @@ export default [
     },
   },
 
+  // Node.js scripts (ESM) configuration
+  {
+    files: ['**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+      },
+    },
+    rules: {
+      'no-console': 'off',
+      'no-debugger': 'warn',
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'prefer-template': 'warn',
+      eqeqeq: ['error', 'always'],
+      curly: ['error', 'all'],
+      'no-multi-spaces': 'error',
+      'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
+      'arrow-spacing': 'error',
+      'no-duplicate-imports': 'error',
+      'object-shorthand': 'warn',
+      'prefer-arrow-callback': 'warn',
+    },
+  },
+
   // HTML files configuration
   {
     files: ['**/*.html'],
