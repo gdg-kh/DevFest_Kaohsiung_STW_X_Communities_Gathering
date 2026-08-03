@@ -58,6 +58,14 @@
         cursor: pointer;
       }
 
+      input,
+      textarea,
+      select {
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+      }
+
       .gk-header {
         background: var(--gk-ink);
         color: var(--gk-paper);
@@ -140,6 +148,22 @@
       .gk-btn-secondary:hover,
       .gk-btn-secondary:focus-visible {
         background: #e0e0e0;
+      }
+
+      .gk-btn-ghost {
+        background: transparent;
+        color: var(--gk-ink);
+        border-color: var(--gk-line);
+      }
+
+      .gk-btn-ghost:hover,
+      .gk-btn-ghost:focus-visible {
+        background: #f0f0f0;
+      }
+
+      .gk-btn-small {
+        padding: 2px 8px;
+        font-size: 13px;
       }
 
       .gk-main {
@@ -225,6 +249,7 @@
         border: 1px solid var(--gk-line);
         border-radius: var(--gk-radius-md);
         padding: var(--gk-sp-5);
+        margin-bottom: var(--gk-sp-4);
       }
 
       .gk-panel-header {
@@ -246,19 +271,6 @@
         color: #666;
         margin: 0 0 var(--gk-sp-4);
         font-size: 14px;
-      }
-
-      .gk-preview {
-        background: #1e1e1e;
-        color: #f0f0f0;
-        padding: var(--gk-sp-4);
-        border-radius: var(--gk-radius-sm);
-        font-family: var(--gk-font-mono);
-        font-size: 13px;
-        white-space: pre;
-        overflow: auto;
-        max-height: 60vh;
-        margin: 0;
       }
 
       .gk-empty {
@@ -359,8 +371,6 @@
         padding: var(--gk-sp-2);
         border: 1px solid var(--gk-line);
         border-radius: var(--gk-radius-sm);
-        font-family: inherit;
-        font-size: inherit;
       }
 
       .gk-textarea {
@@ -396,6 +406,242 @@
         font-weight: 700;
       }
 
+      .gk-field {
+        margin-bottom: var(--gk-sp-4);
+      }
+
+      .gk-field-label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: var(--gk-sp-1);
+        font-size: 14px;
+      }
+
+      .gk-field-label .gk-required {
+        color: var(--gk-red);
+        margin-left: 2px;
+      }
+
+      .gk-field-hint {
+        color: #666;
+        font-size: 12px;
+        margin-top: var(--gk-sp-1);
+        white-space: pre-wrap;
+      }
+
+      .gk-field-error {
+        color: var(--gk-red);
+        font-size: 12px;
+        margin-top: var(--gk-sp-1);
+      }
+
+      .gk-input,
+      .gk-textarea-field {
+        width: 100%;
+        padding: var(--gk-sp-2) var(--gk-sp-3);
+        border: 1px solid var(--gk-line);
+        border-radius: var(--gk-radius-sm);
+        background: #fff;
+      }
+
+      .gk-input.is-error,
+      .gk-textarea-field.is-error {
+        border-color: var(--gk-red);
+      }
+
+      .gk-input:focus,
+      .gk-textarea-field:focus {
+        outline: 2px solid var(--gk-blue);
+        outline-offset: -1px;
+        border-color: var(--gk-blue);
+      }
+
+      .gk-textarea-field {
+        min-height: 120px;
+        resize: vertical;
+        font-family: inherit;
+        font-size: 14px;
+      }
+
+      .gk-i18n-tabs {
+        display: flex;
+        gap: 2px;
+        margin-bottom: var(--gk-sp-2);
+      }
+
+      .gk-tab {
+        border: 1px solid var(--gk-line);
+        background: #fafafa;
+        padding: var(--gk-sp-1) var(--gk-sp-3);
+        cursor: pointer;
+        border-radius: var(--gk-radius-sm) var(--gk-radius-sm) 0 0;
+        font-size: 13px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .gk-tab.is-active {
+        background: #fff;
+        border-bottom-color: #fff;
+        font-weight: 700;
+      }
+
+      .gk-tab-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gk-red);
+        display: inline-block;
+      }
+
+      .gk-checkbox {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--gk-sp-2);
+      }
+
+      .gk-checkbox input {
+        width: 16px;
+        height: 16px;
+      }
+
+      .gk-array-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gk-sp-3);
+      }
+
+      .gk-array-item {
+        border: 1px solid var(--gk-line);
+        border-radius: var(--gk-radius-md);
+        overflow: hidden;
+      }
+
+      .gk-array-item-head {
+        display: flex;
+        align-items: center;
+        gap: var(--gk-sp-2);
+        padding: var(--gk-sp-2) var(--gk-sp-3);
+        background: #fafafa;
+        border-bottom: 1px solid var(--gk-line);
+        flex-wrap: wrap;
+      }
+
+      .gk-array-order {
+        font-weight: 700;
+        color: #666;
+        min-width: 24px;
+      }
+
+      .gk-array-summary {
+        flex: 1;
+        min-width: 0;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .gk-array-body {
+        padding: var(--gk-sp-4);
+      }
+
+      .gk-array-controls {
+        display: flex;
+        gap: var(--gk-sp-1);
+      }
+
+      .gk-array-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--gk-sp-3);
+        gap: var(--gk-sp-3);
+        flex-wrap: wrap;
+      }
+
+      .gk-array-count {
+        color: #666;
+        font-size: 13px;
+      }
+
+      .gk-links-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gk-sp-2);
+      }
+
+      .gk-link-row {
+        display: grid;
+        grid-template-columns: 140px 1fr auto;
+        gap: var(--gk-sp-2);
+        align-items: start;
+        padding: var(--gk-sp-2);
+        border: 1px solid var(--gk-line);
+        border-radius: var(--gk-radius-sm);
+        background: #fafafa;
+      }
+
+      .gk-link-inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gk-sp-2);
+      }
+
+      .gk-tag-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gk-sp-2);
+      }
+
+      .gk-tag-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--gk-sp-2);
+        align-items: start;
+      }
+
+      .gk-multi {
+        border: 1px solid var(--gk-line);
+        border-radius: var(--gk-radius-sm);
+        padding: var(--gk-sp-2);
+        max-height: 180px;
+        overflow-y: auto;
+        background: #fff;
+      }
+
+      .gk-multi-item {
+        display: flex;
+        align-items: center;
+        gap: var(--gk-sp-2);
+        padding: 2px 4px;
+      }
+
+      .gk-multi-empty {
+        color: #999;
+        font-size: 13px;
+        padding: var(--gk-sp-2);
+      }
+
+      .gk-object-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .gk-inline-fields {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--gk-sp-3);
+      }
+
+      .gk-slug-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--gk-sp-2);
+      }
+
       @media (max-width: 768px) {
         .gk-main {
           grid-template-columns: 1fr;
@@ -410,6 +656,10 @@
         .gk-toolbar {
           width: 100%;
           margin-left: 0;
+        }
+
+        .gk-link-row {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -437,26 +687,36 @@
 
     <script type="module">
       const DRAFT_KEY = 'gk_admin_draft';
-
-      const CATEGORIES = [
-        {
-          id: 'site',
-          label: '網站設定',
-          source: 'config',
-          path: ['site', 'i18n', 'analytics', 'footer'],
-        },
-        { id: 'menu', label: '選單', source: 'config', path: ['menu'] },
-        { id: 'ui', label: '介面文字', source: 'config', path: ['ui'] },
-        { id: 'about', label: '活動介紹', source: 'content', path: ['about'] },
-        { id: 'sessionGroups', label: '議程群組', source: 'content', path: ['sessionGroups'] },
-        { id: 'tracks', label: '會場', source: 'content', path: ['tracks'] },
-        { id: 'speakers', label: '講者', source: 'content', path: ['speakers'] },
-        { id: 'sessions', label: '議程', source: 'content', path: ['sessions'] },
-        { id: 'staff', label: '工作人員', source: 'content', path: ['staff'] },
-        { id: 'thanks', label: '特別感謝', source: 'content', path: ['thanks', 'thanksGroups'] },
-        { id: 'booths', label: '擺攤', source: 'content', path: ['booths', 'boothGroups'] },
-        { id: 'organizers', label: '主辦單位', source: 'content', path: ['organizers'] },
+      const RESERVED_SLUGS = [
+        'data',
+        'assets',
+        'images',
+        'admin',
+        'speaker',
+        'staff',
+        'thanks',
+        'booth',
+        'organizer',
+        'share',
       ];
+      const LINK_PLATFORMS = [
+        'website',
+        'x',
+        'threads',
+        'facebook',
+        'instagram',
+        'linkedin',
+        'github',
+        'youtube',
+        'medium',
+        'blog',
+        'email',
+        'line',
+        'discord',
+        'slideshare',
+      ];
+      const LANG_CODES = ['zh-Hant', 'en', 'ja'];
+      const LANG_LABELS = { 'zh-Hant': '繁體中文', en: 'English', ja: '日本語' };
 
       const state = {
         config: {},
@@ -464,6 +724,7 @@
         activeCategory: 'site',
       };
 
+      const tabState = {};
       let toastTimer = 0;
 
       function el(tag, opts, children) {
@@ -572,6 +833,99 @@
         state.content = {};
       }
 
+      function getSource(source) {
+        return source === 'config' ? state.config : state.content;
+      }
+
+      function getByPath(obj, path) {
+        const parts = String(path).split('.');
+        let cur = obj;
+        for (const part of parts) {
+          if (cur === null || cur === undefined || typeof cur !== 'object') {
+            return undefined;
+          }
+          cur = cur[part];
+        }
+        return cur;
+      }
+
+      function ensureObjectAt(obj, path) {
+        const parts = String(path).split('.');
+        let cur = obj;
+        for (const part of parts) {
+          if (!cur[part] || typeof cur[part] !== 'object' || Array.isArray(cur[part])) {
+            cur[part] = {};
+          }
+          cur = cur[part];
+        }
+        return cur;
+      }
+
+      function ensureArrayAt(obj, path) {
+        const parts = String(path).split('.');
+        let cur = obj;
+        for (let i = 0; i < parts.length - 1; i += 1) {
+          const part = parts[i];
+          if (!cur[part] || typeof cur[part] !== 'object' || Array.isArray(cur[part])) {
+            cur[part] = {};
+          }
+          cur = cur[part];
+        }
+        const last = parts[parts.length - 1];
+        if (!Array.isArray(cur[last])) {
+          cur[last] = [];
+        }
+        return cur[last];
+      }
+
+      function slugify(input) {
+        return String(input || '')
+          .toLowerCase()
+          .replace(/\s+/g, '_')
+          .replace(/[^a-z0-9_]/g, '')
+          .replace(/_+/g, '_')
+          .replace(/^_+|_+$/g, '');
+      }
+
+      function isReserved(slug) {
+        return RESERVED_SLUGS.includes(slug);
+      }
+
+      function findDuplicateSlug(items, slug, currentIndex) {
+        if (!Array.isArray(items) || !slug) {
+          return false;
+        }
+        return items.some((item, index) => index !== currentIndex && item && item.id === slug);
+      }
+
+      function reorderArray(list) {
+        list.forEach((item, index) => {
+          if (item && typeof item === 'object') {
+            item.order = index + 1;
+          }
+        });
+      }
+
+      function moveArrayItem(list, index, direction) {
+        const target = index + direction;
+        if (target < 0 || target >= list.length) {
+          return;
+        }
+        const [item] = list.splice(index, 1);
+        list.splice(target, 0, item);
+        reorderArray(list);
+      }
+
+      function removeArrayItem(list, index) {
+        list.splice(index, 1);
+        reorderArray(list);
+      }
+
+      function pushArrayItem(list, item) {
+        list.push(item);
+        reorderArray(list);
+      }
+
       function createEmptyTemplate() {
         state.config = {
           site: {
@@ -652,7 +1006,7 @@
         if (configHits === 0 && contentHits === 0) {
           return null;
         }
-        return contentHits >= configHits ? 'content' : 'config';
+        return null;
       }
 
       function importParsed(parsed, forcedKind) {
@@ -750,7 +1104,7 @@
               class: 'gk-modal-hint',
               text: '會依照內容自動判斷是 config 或 content；如果判斷錯誤請手動選擇。',
             }),
-            el('label', { text: '資料類型', attrs: { for: 'kindSelectField' } }),
+            el('label', { text: '資料類型' }),
             kindSelect,
             textarea,
           ]),
@@ -782,7 +1136,6 @@
             }),
           ]),
         ]);
-        kindSelect.id = 'kindSelectField';
         backdrop.appendChild(modal);
         backdrop.addEventListener('click', (event) => {
           if (event.target === backdrop) {
@@ -854,6 +1207,894 @@
         showToast('草稿已清空', 'success');
       }
 
+      function pickText(i18n) {
+        if (!i18n || typeof i18n !== 'object') {
+          return '';
+        }
+        for (const code of LANG_CODES) {
+          if (i18n[code]) {
+            return i18n[code];
+          }
+        }
+        return '';
+      }
+
+      function fieldWrap(labelText, control, options) {
+        const opts = options || {};
+        const label = el('label', { class: 'gk-field-label' }, [
+          document.createTextNode(labelText || ''),
+          opts.required ? el('span', { class: 'gk-required', text: '*' }) : null,
+        ]);
+        const children = [label, control];
+        if (opts.hint) {
+          children.push(el('p', { class: 'gk-field-hint', text: opts.hint }));
+        }
+        if (opts.errorSlot) {
+          children.push(opts.errorSlot);
+        }
+        return el('div', { class: 'gk-field' }, children);
+      }
+
+      function renderText(field, host, key, onChange) {
+        const current = host[key];
+        const input = el('input', {
+          class: 'gk-input',
+          attrs: {
+            type: 'text',
+            value: current === undefined || current === null ? '' : String(current),
+            placeholder: field.placeholder || '',
+          },
+          on: {
+            input: (event) => {
+              host[key] = event.target.value;
+              onChange({ skipRender: true });
+            },
+          },
+        });
+        return fieldWrap(field.label, input, { hint: field.hint, required: field.required });
+      }
+
+      function renderTextarea(field, host, key, onChange) {
+        const current = host[key];
+        const textarea = el('textarea', {
+          class: 'gk-textarea-field',
+          on: {
+            input: (event) => {
+              host[key] = event.target.value;
+              onChange({ skipRender: true });
+            },
+          },
+        });
+        textarea.value = current === undefined || current === null ? '' : String(current);
+        return fieldWrap(field.label, textarea, { hint: field.hint, required: field.required });
+      }
+
+      function renderNumber(field, host, key, onChange) {
+        const current = host[key];
+        const input = el('input', {
+          class: 'gk-input',
+          attrs: {
+            type: 'number',
+            value: current === undefined || current === null ? '' : String(current),
+          },
+          on: {
+            input: (event) => {
+              const raw = event.target.value;
+              if (raw === '') {
+                delete host[key];
+              } else {
+                const num = Number(raw);
+                if (!Number.isNaN(num)) {
+                  host[key] = num;
+                }
+              }
+              onChange({ skipRender: true });
+            },
+          },
+        });
+        return fieldWrap(field.label, input, { hint: field.hint, required: field.required });
+      }
+
+      function renderBoolean(field, host, key, onChange) {
+        if (host[key] === undefined && field.default !== undefined) {
+          host[key] = field.default;
+        }
+        const checkbox = el('input', {
+          attrs: { type: 'checkbox' },
+          on: {
+            change: (event) => {
+              host[key] = event.target.checked;
+              onChange();
+            },
+          },
+        });
+        checkbox.checked = Boolean(host[key]);
+        const control = el('label', { class: 'gk-checkbox' }, [
+          checkbox,
+          document.createTextNode(field.checkboxLabel || field.label || ''),
+        ]);
+        return fieldWrap(field.label, control, { hint: field.hint, required: field.required });
+      }
+
+      function renderSelect(field, host, key, onChange, options) {
+        const current = host[key] === undefined ? '' : String(host[key]);
+        const select = el('select', {
+          class: 'gk-input',
+          on: {
+            change: (event) => {
+              host[key] = event.target.value;
+              onChange();
+            },
+          },
+        });
+        const items = Array.isArray(options) ? options : [];
+        if (!field.required) {
+          select.appendChild(
+            el('option', { text: field.emptyLabel || '（未選）', attrs: { value: '' } })
+          );
+        }
+        items.forEach((option) => {
+          const opt = el('option', { text: option.label, attrs: { value: option.value } });
+          if (String(option.value) === current) {
+            opt.selected = true;
+          }
+          select.appendChild(opt);
+        });
+        if (current && !items.some((option) => String(option.value) === current)) {
+          const strayOption = el('option', {
+            text: `${current}（找不到）`,
+            attrs: { value: current },
+          });
+          strayOption.selected = true;
+          select.appendChild(strayOption);
+        }
+        return fieldWrap(field.label, select, { hint: field.hint, required: field.required });
+      }
+
+      function tabKey(host, key) {
+        const suffix = tabState.__nextId || 0;
+        if (!host.__tabId) {
+          Object.defineProperty(host, '__tabId', {
+            value: suffix + 1,
+            enumerable: false,
+            writable: true,
+          });
+          tabState.__nextId = suffix + 1;
+        }
+        return `${host.__tabId}_${key}`;
+      }
+
+      function renderI18nField(field, host, key, onChange, multiline) {
+        if (!host[key] || typeof host[key] !== 'object' || Array.isArray(host[key])) {
+          host[key] = {};
+        }
+        const value = host[key];
+        const stateKey = tabKey(host, key);
+        if (!tabState[stateKey]) {
+          tabState[stateKey] = 'zh-Hant';
+        }
+        const active = tabState[stateKey];
+
+        const tabsRow = el('div', { class: 'gk-i18n-tabs', attrs: { role: 'tablist' } });
+        LANG_CODES.forEach((code) => {
+          const filled = Boolean(value[code] && String(value[code]).trim());
+          const tab = el(
+            'button',
+            {
+              class: `gk-tab${active === code ? ' is-active' : ''}`,
+              attrs: {
+                type: 'button',
+                role: 'tab',
+                'aria-selected': active === code ? 'true' : 'false',
+              },
+              on: {
+                click: () => {
+                  tabState[stateKey] = code;
+                  renderCurrentCategory();
+                },
+              },
+            },
+            [
+              document.createTextNode(LANG_LABELS[code] || code),
+              filled
+                ? null
+                : el('span', { class: 'gk-tab-dot', attrs: { 'aria-label': '未填寫' } }),
+            ]
+          );
+          tabsRow.appendChild(tab);
+        });
+
+        const inputEl = multiline
+          ? el('textarea', {
+              class: 'gk-textarea-field',
+              attrs: {
+                placeholder: `${LANG_LABELS[active] || active}${field.placeholder ? ` · ${field.placeholder}` : ''}`,
+              },
+              on: {
+                input: (event) => {
+                  value[active] = event.target.value;
+                  onChange({ skipRender: true });
+                },
+              },
+            })
+          : el('input', {
+              class: 'gk-input',
+              attrs: {
+                type: 'text',
+                placeholder: `${LANG_LABELS[active] || active}${field.placeholder ? ` · ${field.placeholder}` : ''}`,
+              },
+              on: {
+                input: (event) => {
+                  value[active] = event.target.value;
+                  onChange({ skipRender: true });
+                },
+              },
+            });
+        inputEl.value = value[active] === undefined ? '' : String(value[active]);
+
+        const wrapper = el('div', {}, [tabsRow, inputEl]);
+        return fieldWrap(field.label, wrapper, { hint: field.hint, required: field.required });
+      }
+
+      function renderSlug(field, host, key, onChange, siblings, currentIndex) {
+        const errorSlot = el('p', { class: 'gk-field-error' });
+        const input = el('input', {
+          class: 'gk-input',
+          attrs: {
+            type: 'text',
+            value: host[key] === undefined ? '' : String(host[key]),
+            spellcheck: 'false',
+            autocapitalize: 'off',
+          },
+        });
+
+        const validate = () => {
+          errorSlot.textContent = '';
+          input.classList.remove('is-error');
+          const value = host[key];
+          if (!value) {
+            errorSlot.textContent = '請輸入 id';
+            input.classList.add('is-error');
+            return;
+          }
+          if (isReserved(value)) {
+            errorSlot.textContent = `不可使用保留字：${value}`;
+            input.classList.add('is-error');
+            return;
+          }
+          if (siblings && findDuplicateSlug(siblings, value, currentIndex)) {
+            errorSlot.textContent = '此 id 已被使用，請換一個';
+            input.classList.add('is-error');
+          }
+        };
+
+        input.addEventListener('input', (event) => {
+          const cleaned = slugify(event.target.value);
+          host[key] = cleaned;
+          event.target.value = cleaned;
+          validate();
+          onChange({ skipRender: true });
+        });
+
+        const generateBtn = el('button', {
+          class: 'gk-btn gk-btn-ghost gk-btn-small',
+          text: '由名稱產生',
+          attrs: { type: 'button' },
+          on: {
+            click: () => {
+              const source = pickText(host.name) || pickText(host.title) || pickText(host.label);
+              const cleaned = slugify(source);
+              if (!cleaned) {
+                showToast('目前沒有名稱可以轉換', 'error');
+                return;
+              }
+              host[key] = cleaned;
+              input.value = cleaned;
+              validate();
+              onChange();
+            },
+          },
+        });
+
+        const row = el('div', { class: 'gk-slug-row' }, [input, generateBtn]);
+        validate();
+        return fieldWrap(field.label || 'id', row, {
+          hint: field.hint || '小寫、底線分隔；同分類內不可重複；不可用保留字',
+          required: true,
+          errorSlot,
+        });
+      }
+
+      function renderLinks(field, host, key, onChange) {
+        if (!Array.isArray(host[key])) {
+          host[key] = [];
+        }
+        const links = host[key];
+        const listEl = el('div', { class: 'gk-links-list' });
+
+        const rebuild = () => {
+          clear(listEl);
+          links.forEach((link, index) => {
+            if (!link || typeof link !== 'object') {
+              link = { platform: 'website', url: '', label: {} };
+              links[index] = link;
+            }
+            if (!link.label || typeof link.label !== 'object') {
+              link.label = {};
+            }
+            const platformSelect = el('select', {
+              class: 'gk-input',
+              on: {
+                change: (event) => {
+                  link.platform = event.target.value;
+                  onChange();
+                },
+              },
+            });
+            LINK_PLATFORMS.forEach((platform) => {
+              const opt = el('option', { text: platform, attrs: { value: platform } });
+              if (link.platform === platform) {
+                opt.selected = true;
+              }
+              platformSelect.appendChild(opt);
+            });
+            if (link.platform && !LINK_PLATFORMS.includes(link.platform)) {
+              const strayOption = el('option', {
+                text: `${link.platform}（未知）`,
+                attrs: { value: link.platform },
+              });
+              strayOption.selected = true;
+              platformSelect.appendChild(strayOption);
+            }
+
+            const urlInput = el('input', {
+              class: 'gk-input',
+              attrs: { type: 'url', placeholder: 'https://...', value: link.url || '' },
+              on: {
+                input: (event) => {
+                  link.url = event.target.value;
+                  onChange({ skipRender: true });
+                },
+              },
+            });
+
+            const labelField = renderI18nField(
+              { label: '顯示文字' },
+              link,
+              'label',
+              onChange,
+              false
+            );
+
+            const removeBtn = el('button', {
+              class: 'gk-btn gk-btn-danger gk-btn-small',
+              text: '刪除',
+              attrs: { type: 'button' },
+              on: {
+                click: () => {
+                  if (!window.confirm('刪除這個連結？')) {
+                    return;
+                  }
+                  links.splice(index, 1);
+                  onChange();
+                },
+              },
+            });
+
+            const row = el('div', { class: 'gk-link-row' }, [
+              platformSelect,
+              el('div', { class: 'gk-link-inner' }, [urlInput, labelField]),
+              removeBtn,
+            ]);
+            listEl.appendChild(row);
+          });
+          if (links.length === 0) {
+            listEl.appendChild(el('p', { class: 'gk-field-hint', text: '尚未新增連結' }));
+          }
+        };
+
+        const addBtn = el('button', {
+          class: 'gk-btn gk-btn-ghost gk-btn-small',
+          text: '新增連結',
+          attrs: { type: 'button' },
+          on: {
+            click: () => {
+              links.push({ platform: 'website', url: '', label: {} });
+              onChange();
+            },
+          },
+        });
+
+        rebuild();
+        const control = el('div', {}, [listEl, addBtn]);
+        return fieldWrap(field.label || '連結', control, { hint: field.hint });
+      }
+
+      function renderTags(field, host, key, onChange) {
+        if (!Array.isArray(host[key])) {
+          host[key] = [];
+        }
+        const tags = host[key];
+        const listEl = el('div', { class: 'gk-tag-list' });
+        tags.forEach((tag, index) => {
+          if (!tag || typeof tag !== 'object') {
+            tags[index] = { 'zh-Hant': String(tag || '') };
+          }
+          const tagHost = { value: tags[index] };
+          const removeBtn = el('button', {
+            class: 'gk-btn gk-btn-danger gk-btn-small',
+            text: '刪除',
+            attrs: { type: 'button' },
+            on: {
+              click: () => {
+                if (!window.confirm('刪除這個標籤？')) {
+                  return;
+                }
+                tags.splice(index, 1);
+                onChange();
+              },
+            },
+          });
+          const inputField = renderI18nField(
+            { label: `標籤 ${index + 1}` },
+            tagHost,
+            'value',
+            onChange,
+            false
+          );
+          tags[index] = tagHost.value;
+          const row = el('div', { class: 'gk-tag-row' }, [inputField, removeBtn]);
+          listEl.appendChild(row);
+        });
+        if (tags.length === 0) {
+          listEl.appendChild(el('p', { class: 'gk-field-hint', text: '尚未新增標籤' }));
+        }
+        const addBtn = el('button', {
+          class: 'gk-btn gk-btn-ghost gk-btn-small',
+          text: '新增標籤',
+          attrs: { type: 'button' },
+          on: {
+            click: () => {
+              tags.push({ 'zh-Hant': '' });
+              onChange();
+            },
+          },
+        });
+        const control = el('div', {}, [listEl, addBtn]);
+        return fieldWrap(field.label || '標籤', control, { hint: field.hint });
+      }
+
+      function getRefOptions(target) {
+        const map = {
+          sessions: () =>
+            (state.content.sessions || []).map((s) => ({
+              value: s.id,
+              label: pickText(s.title) || s.id,
+            })),
+          speakers: () =>
+            (state.content.speakers || []).map((s) => ({
+              value: s.id,
+              label: pickText(s.name) || s.id,
+            })),
+          sessionGroups: () =>
+            (state.content.sessionGroups || []).map((g) => ({
+              value: g.id,
+              label: pickText(g.name) || g.id,
+            })),
+          tracks: () =>
+            (state.content.tracks || []).map((t) => ({
+              value: t.id,
+              label: pickText(t.name) || t.id,
+            })),
+          thanksGroups: () =>
+            (state.content.thanksGroups || []).map((g) => ({
+              value: g.id,
+              label: pickText(g.name) || g.id,
+            })),
+          boothGroups: () =>
+            (state.content.boothGroups || []).map((g) => ({
+              value: g.id,
+              label: pickText(g.name) || g.id,
+            })),
+        };
+        return map[target] ? map[target]() : [];
+      }
+
+      function syncBidirectional(entity, entityItem, key, target, oldIds, newIds) {
+        const inverseKey = { sessionIds: 'speakerIds', speakerIds: 'sessionIds' }[key];
+        if (!inverseKey) {
+          return;
+        }
+        const others = state.content[target] || [];
+        const added = newIds.filter((id) => !oldIds.includes(id));
+        const removed = oldIds.filter((id) => !newIds.includes(id));
+        added.forEach((otherId) => {
+          const other = others.find((item) => item && item.id === otherId);
+          if (!other) {
+            return;
+          }
+          if (!Array.isArray(other[inverseKey])) {
+            other[inverseKey] = [];
+          }
+          if (!other[inverseKey].includes(entityItem.id)) {
+            other[inverseKey].push(entityItem.id);
+          }
+        });
+        removed.forEach((otherId) => {
+          const other = others.find((item) => item && item.id === otherId);
+          if (!other || !Array.isArray(other[inverseKey])) {
+            return;
+          }
+          other[inverseKey] = other[inverseKey].filter((id) => id !== entityItem.id);
+        });
+      }
+
+      function renderRefs(field, host, key, onChange) {
+        if (!Array.isArray(host[key])) {
+          host[key] = [];
+        }
+        const options = getRefOptions(field.target);
+        const container = el('div', { class: 'gk-multi' });
+        if (options.length === 0) {
+          container.appendChild(
+            el('p', { class: 'gk-multi-empty', text: `目前沒有可選的 ${field.target}` })
+          );
+        } else {
+          options.forEach((option) => {
+            const checked = host[key].includes(option.value);
+            const checkbox = el('input', {
+              attrs: { type: 'checkbox', value: option.value },
+              on: {
+                change: (event) => {
+                  const oldIds = host[key].slice();
+                  if (event.target.checked) {
+                    if (!host[key].includes(option.value)) {
+                      host[key].push(option.value);
+                    }
+                  } else {
+                    host[key] = host[key].filter((id) => id !== option.value);
+                  }
+                  syncBidirectional(null, host, key, field.target, oldIds, host[key]);
+                  onChange();
+                },
+              },
+            });
+            checkbox.checked = checked;
+            container.appendChild(
+              el('label', { class: 'gk-multi-item' }, [
+                checkbox,
+                document.createTextNode(`${option.label}（${option.value}）`),
+              ])
+            );
+          });
+        }
+        return fieldWrap(field.label, container, { hint: field.hint });
+      }
+
+      function renderField(field, host, key, onChange, context) {
+        switch (field.type) {
+          case 'text':
+            return renderText(field, host, key, onChange);
+          case 'textarea':
+            return renderTextarea(field, host, key, onChange);
+          case 'number':
+            return renderNumber(field, host, key, onChange);
+          case 'boolean':
+            return renderBoolean(field, host, key, onChange);
+          case 'i18n-text':
+            return renderI18nField(field, host, key, onChange, false);
+          case 'i18n-textarea':
+            return renderI18nField(field, host, key, onChange, true);
+          case 'select':
+            return renderSelect(field, host, key, onChange, field.options || []);
+          case 'select-ref':
+            return renderSelect(field, host, key, onChange, getRefOptions(field.target));
+          case 'refs':
+            return renderRefs(field, host, key, onChange);
+          case 'slug':
+            return renderSlug(
+              field,
+              host,
+              key,
+              onChange,
+              context && context.siblings,
+              context && context.index
+            );
+          case 'links':
+            return renderLinks(field, host, key, onChange);
+          case 'tags':
+            return renderTags(field, host, key, onChange);
+          default:
+            return el('div', { class: 'gk-field-hint', text: `未支援的欄位型別：${field.type}` });
+        }
+      }
+
+      function renderObjectForm(fields, host, onChange, context) {
+        const form = el('div', { class: 'gk-object-form' });
+        const inlineGroups = [];
+        const flat = [];
+        fields.forEach((field) => {
+          if (
+            field.type === 'text' ||
+            field.type === 'number' ||
+            field.type === 'boolean' ||
+            field.type === 'select'
+          ) {
+            inlineGroups.push(field);
+          } else {
+            if (inlineGroups.length > 0) {
+              flat.push({ inline: inlineGroups.slice() });
+              inlineGroups.length = 0;
+            }
+            flat.push({ single: field });
+          }
+        });
+        if (inlineGroups.length > 0) {
+          flat.push({ inline: inlineGroups.slice() });
+        }
+        flat.forEach((entry) => {
+          if (entry.inline) {
+            const wrap = el('div', { class: 'gk-inline-fields' });
+            entry.inline.forEach((field) => {
+              wrap.appendChild(renderField(field, host, field.key, onChange, context));
+            });
+            form.appendChild(wrap);
+          } else {
+            form.appendChild(renderField(entry.single, host, entry.single.key, onChange, context));
+          }
+        });
+        return form;
+      }
+
+      function summarize(item, entity) {
+        if (!item) {
+          return '（未命名）';
+        }
+        if (entity && entity.summary) {
+          const value = pickText(item[entity.summary]);
+          if (value) {
+            return value;
+          }
+        }
+        return (
+          pickText(item.name) ||
+          pickText(item.title) ||
+          pickText(item.label) ||
+          item.id ||
+          '（未命名）'
+        );
+      }
+
+      function renderArraySection(section, onChange) {
+        const source = getSource(section.source);
+        const list = ensureArrayAt(source, section.path);
+        const entity = section.entity || {};
+
+        const toolbar = el('div', { class: 'gk-array-toolbar' }, [
+          el('span', { class: 'gk-array-count', text: `目前 ${list.length} 筆` }),
+          el('button', {
+            class: 'gk-btn gk-btn-primary gk-btn-small',
+            text: `新增${entity.itemLabel || '一筆'}`,
+            attrs: { type: 'button' },
+            on: {
+              click: () => {
+                const template =
+                  typeof entity.createItem === 'function' ? entity.createItem(list) : { id: '' };
+                pushArrayItem(list, template);
+                onChange();
+              },
+            },
+          }),
+        ]);
+
+        const listEl = el('div', { class: 'gk-array-list' });
+        list.forEach((item, index) => {
+          if (!item || typeof item !== 'object') {
+            return;
+          }
+          const orderLabel = String(item.order || index + 1);
+          const summaryText = summarize(item, entity);
+          const controls = el('div', { class: 'gk-array-controls' }, [
+            el('button', {
+              class: 'gk-btn gk-btn-ghost gk-btn-small',
+              text: '↑',
+              attrs: { type: 'button', 'aria-label': '上移' },
+              on: {
+                click: () => {
+                  moveArrayItem(list, index, -1);
+                  onChange();
+                },
+              },
+            }),
+            el('button', {
+              class: 'gk-btn gk-btn-ghost gk-btn-small',
+              text: '↓',
+              attrs: { type: 'button', 'aria-label': '下移' },
+              on: {
+                click: () => {
+                  moveArrayItem(list, index, 1);
+                  onChange();
+                },
+              },
+            }),
+            el('button', {
+              class: 'gk-btn gk-btn-danger gk-btn-small',
+              text: '刪除',
+              attrs: { type: 'button' },
+              on: {
+                click: () => {
+                  if (!window.confirm(`確定要刪除「${summaryText}」嗎？此動作無法復原。`)) {
+                    return;
+                  }
+                  removeArrayItem(list, index);
+                  onChange();
+                },
+              },
+            }),
+          ]);
+
+          const context = { siblings: list, index };
+          const body = el('div', { class: 'gk-array-body' }, [
+            renderObjectForm(entity.fields || [], item, onChange, context),
+          ]);
+          const head = el('div', { class: 'gk-array-item-head' }, [
+            el('span', { class: 'gk-array-order', text: `#${orderLabel}` }),
+            el('span', { class: 'gk-array-summary', text: summaryText }),
+            controls,
+          ]);
+          listEl.appendChild(el('div', { class: 'gk-array-item' }, [head, body]));
+        });
+
+        if (list.length === 0) {
+          listEl.appendChild(el('p', { class: 'gk-field-hint', text: '尚無資料，按「新增」開始' }));
+        }
+
+        return el('section', { class: 'gk-panel' }, [
+          el('div', { class: 'gk-panel-header' }, [
+            el('h3', { class: 'gk-panel-title', text: section.title }),
+            el('span', { class: 'gk-nav-badge', text: `${section.source}.${section.path}` }),
+          ]),
+          section.hint ? el('p', { class: 'gk-panel-hint', text: section.hint }) : null,
+          toolbar,
+          listEl,
+        ]);
+      }
+
+      function renderObjectSection(section, onChange) {
+        const source = getSource(section.source);
+        const host = ensureObjectAt(source, section.path);
+        const body = renderObjectForm(section.fields || [], host, onChange);
+        return el('section', { class: 'gk-panel' }, [
+          el('div', { class: 'gk-panel-header' }, [
+            el('h3', { class: 'gk-panel-title', text: section.title }),
+            el('span', { class: 'gk-nav-badge', text: `${section.source}.${section.path}` }),
+          ]),
+          section.hint ? el('p', { class: 'gk-panel-hint', text: section.hint }) : null,
+          body,
+        ]);
+      }
+
+      function renderCurrentCategory() {
+        const container = document.getElementById('content');
+        if (!container) {
+          return;
+        }
+        clear(container);
+        if (isEmptyState()) {
+          container.appendChild(buildEmpty());
+          return;
+        }
+        const category = CATEGORIES.find((cat) => cat.id === state.activeCategory);
+        if (!category) {
+          return;
+        }
+        const totalCount = countCategoryItems(category);
+        container.appendChild(
+          el('div', { class: 'gk-panel-header', attrs: { style: 'margin: 0 0 8px' } }, [
+            el('h2', { class: 'gk-panel-title', text: category.label }),
+            el('span', { class: 'gk-array-count', text: `共 ${totalCount} 筆資料` }),
+          ])
+        );
+        const onChange = (options) => {
+          saveDraft();
+          buildNav();
+          buildStatusLine();
+          if (!options || !options.skipRender) {
+            renderCurrentCategory();
+          }
+        };
+        category.sections.forEach((section) => {
+          if (section.kind === 'array') {
+            container.appendChild(renderArraySection(section, onChange));
+          } else {
+            container.appendChild(renderObjectSection(section, onChange));
+          }
+        });
+      }
+
+      function isEmptyState() {
+        return Object.keys(state.config).length === 0 && Object.keys(state.content).length === 0;
+      }
+
+      function buildEmpty() {
+        return el('div', { class: 'gk-panel' }, [
+          el('div', { class: 'gk-empty' }, [
+            el('h2', { class: 'gk-empty-title', text: '目前沒有資料' }),
+            el('p', { text: '請匯入現有的 JSON 檔，或載入一份最小可用的空白範本。' }),
+            el('div', { class: 'gk-empty-actions' }, [
+              el('button', {
+                class: 'gk-btn gk-btn-primary',
+                text: '匯入 JSON',
+                attrs: { type: 'button' },
+                on: { click: () => document.getElementById('fileInput').click() },
+              }),
+              el('button', {
+                class: 'gk-btn gk-btn-secondary',
+                text: '貼上 JSON',
+                attrs: { type: 'button' },
+                on: { click: openPasteModal },
+              }),
+              el('button', {
+                class: 'gk-btn gk-btn-secondary',
+                text: '載入空白範本',
+                attrs: { type: 'button' },
+                on: {
+                  click: () => {
+                    createEmptyTemplate();
+                    renderAll();
+                    showToast('已載入空白範本', 'success');
+                  },
+                },
+              }),
+            ]),
+          ]),
+        ]);
+      }
+
+      function countCategoryItems(category) {
+        let total = 0;
+        category.sections.forEach((section) => {
+          const source = getSource(section.source);
+          const value = getByPath(source, section.path);
+          if (Array.isArray(value)) {
+            total += value.length;
+          } else if (value && typeof value === 'object') {
+            total += Object.keys(value).length;
+          }
+        });
+        return total;
+      }
+
+      function buildNav() {
+        const nav = document.getElementById('nav');
+        clear(nav);
+        CATEGORIES.forEach((category) => {
+          const count = countCategoryItems(category);
+          const button = el(
+            'button',
+            {
+              class: `gk-nav-btn${state.activeCategory === category.id ? ' is-active' : ''}`,
+              attrs: {
+                type: 'button',
+                'aria-current': state.activeCategory === category.id ? 'page' : false,
+              },
+              on: {
+                click: () => {
+                  state.activeCategory = category.id;
+                  buildNav();
+                  renderCurrentCategory();
+                },
+              },
+            },
+            [
+              el('span', { text: category.label }),
+              el('span', { class: 'gk-nav-badge', text: String(count) }),
+            ]
+          );
+          nav.appendChild(el('li', { class: 'gk-nav-item' }, [button]));
+        });
+      }
+
       function buildToolbar() {
         const toolbar = document.getElementById('toolbar');
         clear(toolbar);
@@ -898,148 +2139,6 @@
         });
       }
 
-      function countItems(category) {
-        const source = category.source === 'config' ? state.config : state.content;
-        if (!source || typeof source !== 'object') {
-          return 0;
-        }
-        let total = 0;
-        category.path.forEach((key) => {
-          const value = source[key];
-          if (Array.isArray(value)) {
-            total += value.length;
-          } else if (value && typeof value === 'object') {
-            if (Array.isArray(value.sections)) {
-              total += value.sections.length;
-            } else {
-              total += Object.keys(value).length;
-            }
-          }
-        });
-        return total;
-      }
-
-      function buildNav() {
-        const nav = document.getElementById('nav');
-        clear(nav);
-        CATEGORIES.forEach((category) => {
-          const count = countItems(category);
-          const button = el(
-            'button',
-            {
-              class: `gk-nav-btn${state.activeCategory === category.id ? ' is-active' : ''}`,
-              attrs: {
-                type: 'button',
-                'aria-current': state.activeCategory === category.id ? 'page' : false,
-              },
-              on: {
-                click: () => {
-                  state.activeCategory = category.id;
-                  buildNav();
-                  buildContent();
-                },
-              },
-            },
-            [
-              el('span', { text: category.label }),
-              el('span', { class: 'gk-nav-badge', text: String(count) }),
-            ]
-          );
-          nav.appendChild(el('li', { class: 'gk-nav-item' }, [button]));
-        });
-      }
-
-      function isEmptyState() {
-        return Object.keys(state.config).length === 0 && Object.keys(state.content).length === 0;
-      }
-
-      function buildEmpty() {
-        return el('div', { class: 'gk-panel' }, [
-          el('div', { class: 'gk-empty' }, [
-            el('h2', { class: 'gk-empty-title', text: '目前沒有資料' }),
-            el('p', { text: '請匯入現有的 JSON 檔，或載入一份最小可用的空白範本。' }),
-            el('div', { class: 'gk-empty-actions' }, [
-              el('button', {
-                class: 'gk-btn gk-btn-primary',
-                text: '匯入 JSON',
-                attrs: { type: 'button' },
-                on: { click: () => document.getElementById('fileInput').click() },
-              }),
-              el('button', {
-                class: 'gk-btn gk-btn-secondary',
-                text: '貼上 JSON',
-                attrs: { type: 'button' },
-                on: { click: openPasteModal },
-              }),
-              el('button', {
-                class: 'gk-btn gk-btn-secondary',
-                text: '載入空白範本',
-                attrs: { type: 'button' },
-                on: {
-                  click: () => {
-                    createEmptyTemplate();
-                    renderAll();
-                    showToast('已載入空白範本', 'success');
-                  },
-                },
-              }),
-            ]),
-          ]),
-        ]);
-      }
-
-      function extractCategoryData(category) {
-        const source = category.source === 'config' ? state.config : state.content;
-        const snapshot = {};
-        if (source && typeof source === 'object') {
-          category.path.forEach((key) => {
-            if (key in source) {
-              snapshot[key] = source[key];
-            }
-          });
-        }
-        return snapshot;
-      }
-
-      function buildCategoryPanel() {
-        const category = CATEGORIES.find((item) => item.id === state.activeCategory);
-        if (!category) {
-          return buildEmpty();
-        }
-        const snapshot = extractCategoryData(category);
-        const isEmpty = Object.keys(snapshot).length === 0;
-        const panel = el('div', { class: 'gk-panel' }, [
-          el('div', { class: 'gk-panel-header' }, [
-            el('h2', { class: 'gk-panel-title', text: category.label }),
-            el('span', { class: 'gk-nav-badge', text: `${category.source}.json` }),
-          ]),
-          el('p', {
-            class: 'gk-panel-hint',
-            text: `此分類的欄位對應到 ${category.source}.json 的：${category.path.join('、')}`,
-          }),
-          isEmpty
-            ? el('div', { class: 'gk-empty' }, [
-                el('p', { text: '這個分類目前沒有資料，請匯入或載入空白範本後編輯。' }),
-              ])
-            : el('pre', { class: 'gk-preview', text: JSON.stringify(snapshot, null, 2) }),
-          el('p', {
-            class: 'gk-panel-hint',
-            text: '目前顯示唯讀預覽；表單化編輯將於下一階段（T19）加入。',
-          }),
-        ]);
-        return panel;
-      }
-
-      function buildContent() {
-        const content = document.getElementById('content');
-        clear(content);
-        if (isEmptyState()) {
-          content.appendChild(buildEmpty());
-        } else {
-          content.appendChild(buildCategoryPanel());
-        }
-      }
-
       function buildStatusLine() {
         const line = document.getElementById('statusLine');
         clear(line);
@@ -1068,7 +2167,7 @@
 
       function renderAll() {
         buildNav();
-        buildContent();
+        renderCurrentCategory();
         buildStatusLine();
       }
 
@@ -1078,6 +2177,461 @@
           handleFileList(input.files);
           input.value = '';
         });
+      }
+
+      const LANG_SELECT_OPTIONS = LANG_CODES.map((code) => ({
+        value: code,
+        label: LANG_LABELS[code],
+      }));
+
+      const MENU_TYPE_OPTIONS = [
+        { value: '', label: '一般（頁面切換）' },
+        { value: 'external', label: 'external（外部連結）' },
+        { value: 'cta', label: 'cta（購票鈕）' },
+      ];
+
+      const MENU_PLACEMENT_OPTIONS = [
+        { value: '', label: '（預設：導覽列 + 首頁）' },
+        { value: 'home', label: 'home（只在首頁）' },
+      ];
+
+      const SESSION_TYPE_OPTIONS = [
+        { value: 'talk', label: 'talk（議程）' },
+        { value: 'workshop', label: 'workshop（工作坊）' },
+        { value: 'panel', label: 'panel（座談）' },
+        { value: 'break', label: 'break（休息）' },
+        { value: 'lunch', label: 'lunch（午餐）' },
+        { value: 'opening', label: 'opening（開場）' },
+        { value: 'closing', label: 'closing（結尾）' },
+      ];
+
+      const LINK_FIELD = { key: 'links', type: 'links', label: '連結' };
+
+      const CATEGORIES = [
+        {
+          id: 'site',
+          label: '網站設定',
+          sections: [
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'site',
+              title: '基本資訊',
+              fields: [
+                { key: 'eventName', type: 'i18n-text', label: '活動名稱', required: true },
+                { key: 'year', type: 'number', label: '年份' },
+                { key: 'eventDate', type: 'text', label: '活動日期（YYYY-MM-DD）' },
+                { key: 'eventStart', type: 'text', label: '活動開始時間（含時區）' },
+                { key: 'baseUrl', type: 'text', label: '網站 base URL' },
+                { key: 'venue', type: 'i18n-text', label: '場地名稱' },
+                { key: 'venueAddress', type: 'i18n-text', label: '場地地址' },
+                { key: 'venueMapUrl', type: 'text', label: '地圖連結' },
+              ],
+            },
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'i18n',
+              title: '語言設定',
+              fields: [
+                {
+                  key: 'defaultLang',
+                  type: 'select',
+                  label: '預設語言',
+                  options: LANG_SELECT_OPTIONS,
+                  required: true,
+                },
+                {
+                  key: 'fallbackLang',
+                  type: 'select',
+                  label: '後備語言',
+                  options: LANG_SELECT_OPTIONS,
+                  required: true,
+                },
+              ],
+            },
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'analytics',
+              title: '分析工具',
+              fields: [{ key: 'ga4Id', type: 'text', label: 'GA4 ID' }],
+            },
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'footer',
+              title: '頁尾',
+              fields: [{ key: 'copyright', type: 'i18n-text', label: '版權宣告' }, LINK_FIELD],
+            },
+          ],
+        },
+        {
+          id: 'menu',
+          label: '選單',
+          sections: [
+            {
+              kind: 'array',
+              source: 'config',
+              path: 'menu',
+              title: '選單項目',
+              hint: '「id」對應網站區塊；type 為 external 或 cta 時需要 url。',
+              entity: {
+                itemLabel: '選單項目',
+                summary: 'label',
+                createItem: () => ({ id: '', enabled: true, label: {} }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'enabled', type: 'boolean', label: '啟用', checkboxLabel: '在選單中顯示' },
+                  { key: 'label', type: 'i18n-text', label: '顯示文字' },
+                  { key: 'type', type: 'select', label: '類型', options: MENU_TYPE_OPTIONS },
+                  {
+                    key: 'placement',
+                    type: 'select',
+                    label: '出現位置',
+                    options: MENU_PLACEMENT_OPTIONS,
+                  },
+                  { key: 'url', type: 'text', label: '網址（external / cta 才填）' },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'ui',
+          label: '介面文字',
+          sections: [
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'ui',
+              title: '介面文字',
+              hint: '每個欄位對應網站上的一段短文字，僅需依語言填入即可。',
+              fields: buildUiFields(),
+            },
+          ],
+        },
+        {
+          id: 'about',
+          label: '活動介紹',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'about.sections',
+              title: '活動介紹段落',
+              entity: {
+                itemLabel: '段落',
+                summary: 'title',
+                createItem: () => ({ id: '', title: {}, body: {} }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'title', type: 'i18n-text', label: '標題' },
+                  { key: 'body', type: 'i18n-textarea', label: '內文（用 \\n 換行）' },
+                  { key: 'image', type: 'text', label: '圖片路徑（可留空）' },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'sessionGroups',
+          label: '議程群組',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'sessionGroups',
+              title: '議程群組',
+              entity: {
+                itemLabel: '群組',
+                createItem: () => ({ id: '', name: {}, color: '' }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'name', type: 'i18n-text', label: '名稱' },
+                  { key: 'color', type: 'text', label: '色票（品牌 hex）' },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'tracks',
+          label: '會場',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'tracks',
+              title: '會場軌道',
+              entity: {
+                itemLabel: '會場',
+                createItem: () => ({ id: '', name: {}, color: '' }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'name', type: 'i18n-text', label: '名稱' },
+                  { key: 'color', type: 'text', label: '色票（品牌 hex）' },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'speakers',
+          label: '講者',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'speakers',
+              title: '講者',
+              entity: {
+                itemLabel: '講者',
+                createItem: () => ({ id: '', name: {}, bio: {}, sessionIds: [], links: [] }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'name', type: 'i18n-text', label: '姓名', required: true },
+                  { key: 'bio', type: 'i18n-textarea', label: '自我介紹' },
+                  { key: 'sessionIds', type: 'refs', target: 'sessions', label: '關聯議程' },
+                  LINK_FIELD,
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'sessions',
+          label: '議程',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'sessions',
+              title: '議程',
+              entity: {
+                itemLabel: '議程',
+                summary: 'title',
+                createItem: () => ({
+                  id: '',
+                  groupId: '',
+                  trackId: '',
+                  title: {},
+                  abstract: {},
+                  tags: [],
+                  speakerIds: [],
+                  start: '',
+                  end: '',
+                  type: 'talk',
+                  links: [],
+                }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  {
+                    key: 'groupId',
+                    type: 'select-ref',
+                    target: 'sessionGroups',
+                    label: '議程群組',
+                  },
+                  { key: 'trackId', type: 'select-ref', target: 'tracks', label: '會場' },
+                  { key: 'title', type: 'i18n-text', label: '標題', required: true },
+                  { key: 'abstract', type: 'i18n-textarea', label: '議程介紹' },
+                  { key: 'tags', type: 'tags', label: '標籤' },
+                  { key: 'speakerIds', type: 'refs', target: 'speakers', label: '講者' },
+                  { key: 'start', type: 'text', label: '開始時間（YYYY-MM-DDTHH:mm）' },
+                  { key: 'end', type: 'text', label: '結束時間（YYYY-MM-DDTHH:mm）' },
+                  { key: 'type', type: 'select', label: '類型', options: SESSION_TYPE_OPTIONS },
+                  LINK_FIELD,
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'staff',
+          label: '工作人員',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'staff',
+              title: '工作人員',
+              entity: {
+                itemLabel: '志工',
+                createItem: () => ({ id: '', name: {}, role: {}, bio: {}, links: [] }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'name', type: 'i18n-text', label: '姓名', required: true },
+                  { key: 'role', type: 'i18n-text', label: '志工職務' },
+                  { key: 'bio', type: 'i18n-textarea', label: '自我介紹' },
+                  LINK_FIELD,
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'thanks',
+          label: '特別感謝',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'thanksGroups',
+              title: '感謝群組',
+              entity: {
+                itemLabel: '群組',
+                createItem: () => ({ id: '', name: {} }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'name', type: 'i18n-text', label: '名稱' },
+                ],
+              },
+            },
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'thanks',
+              title: '感謝名單',
+              entity: {
+                itemLabel: '單位',
+                createItem: () => ({
+                  id: '',
+                  groupId: '',
+                  name: {},
+                  description: {},
+                  marquee: true,
+                  links: [],
+                }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'groupId', type: 'select-ref', target: 'thanksGroups', label: '所屬群組' },
+                  { key: 'name', type: 'i18n-text', label: '名稱', required: true },
+                  { key: 'description', type: 'i18n-textarea', label: '簡介' },
+                  {
+                    key: 'marquee',
+                    type: 'boolean',
+                    label: '在跑馬燈顯示',
+                    checkboxLabel: '加入跑馬燈輪播',
+                    default: true,
+                  },
+                  LINK_FIELD,
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'booths',
+          label: '擺攤',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'boothGroups',
+              title: '擺攤群組',
+              entity: {
+                itemLabel: '群組',
+                createItem: () => ({ id: '', name: {} }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'name', type: 'i18n-text', label: '名稱' },
+                ],
+              },
+            },
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'booths',
+              title: '擺攤名單',
+              entity: {
+                itemLabel: '攤位',
+                createItem: () => ({ id: '', groupId: '', name: {}, description: {}, links: [] }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'groupId', type: 'select-ref', target: 'boothGroups', label: '所屬群組' },
+                  { key: 'name', type: 'i18n-text', label: '名稱', required: true },
+                  { key: 'description', type: 'i18n-textarea', label: '簡介' },
+                  LINK_FIELD,
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'organizers',
+          label: '主辦單位',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'organizers',
+              title: '主辦單位',
+              entity: {
+                itemLabel: '主辦',
+                createItem: () => ({ id: '', name: {}, description: {}, links: [] }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'name', type: 'i18n-text', label: '名稱', required: true },
+                  { key: 'description', type: 'i18n-textarea', label: '簡介' },
+                  LINK_FIELD,
+                ],
+              },
+            },
+          ],
+        },
+      ];
+
+      function buildUiFields() {
+        const keys = [
+          ['detailButton', '詳情按鈕'],
+          ['closeButton', '關閉按鈕'],
+          ['sessionLabel', '議程標籤'],
+          ['sessionAbstractLabel', '議程介紹標籤'],
+          ['groupLabel', '分類標籤'],
+          ['tagsLabel', '標籤'],
+          ['linksLabel', '連結'],
+          ['roleLabel', '志工職務'],
+          ['backToTop', '回到頂端'],
+          ['langLabel', '語言標籤'],
+          ['ticketCta', '購票按鈕'],
+          ['speakerNumberPrefix', '講者編號前綴'],
+          ['allTracksLabel', '全部軌道'],
+          ['emptyStateText', '無資料時文案'],
+          ['eventStartedText', '活動已開始'],
+          ['countdownDays', '倒數 天'],
+          ['countdownHours', '倒數 時'],
+          ['countdownMinutes', '倒數 分'],
+          ['countdownSeconds', '倒數 秒'],
+          ['mapZoomHint', '地圖點擊提示'],
+          ['viewerResetLabel', '檢視器 重設'],
+          ['viewerCloseLabel', '檢視器 關閉'],
+          ['viewerZoomHint', '檢視器 縮放提示'],
+          ['virtualEnterButton', '虛擬會場 進入按鈕'],
+          ['virtualQrHint', '虛擬會場 QR 提示'],
+          ['virtualMapCrossLink', '虛擬會場 看實體地圖'],
+          ['navMoreLabel', '導覽 更多'],
+          ['lastYearCardText', '去年頁面 說明'],
+          ['organizerCardTitle', '主辦單位卡片標題'],
+          ['freeTicketLink', '免費票 連結'],
+          ['freeTicketFormButton', '免費票 表單按鈕'],
+          ['freeTicketEligibilityLabel', '免費票 資格標籤'],
+          ['freeTicketProcessLabel', '免費票 流程標籤'],
+          ['freeTicketCardButton', '免費票 卡片按鈕'],
+          ['directTicketCardButton', '直接報名 卡片按鈕'],
+          ['freeTicketReviewNote', '免費票 審核註記'],
+          ['sponsorMarqueeTitle', '贊助跑馬燈標題'],
+          ['ballotHeaderText', '感謝票標題'],
+          ['cocLinkText', '行為準則連結文字'],
+          ['addToCalendarLabel', '加入行事曆'],
+          ['downloadIcsLabel', '下載 ICS'],
+          ['googleCalendarLabel', '加入 Google 日曆'],
+          ['addAllSessionsLabel', '整天議程 加入'],
+          ['loadErrorText', '載入失敗提示'],
+          ['retryButtonLabel', '重試'],
+          ['notFoundText', '404 說明'],
+          ['backHomeLabel', '回到首頁'],
+        ];
+        return keys.map((entry) => ({ key: entry[0], type: 'i18n-text', label: entry[1] }));
       }
 
       function init() {
