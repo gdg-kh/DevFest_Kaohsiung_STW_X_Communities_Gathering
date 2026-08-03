@@ -434,15 +434,32 @@ button {
 
 /* --- Section: about --- */
 .gk-about-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gk-sp-6);
+}
+
+.gk-about-section {
   display: grid;
-  gap: var(--gk-sp-5);
   grid-template-columns: 1fr;
-  align-items: start;
+  gap: var(--gk-sp-5);
+  align-items: center;
+  padding: var(--gk-sp-5);
+  border: 2px solid var(--gk-ink);
+  border-radius: var(--gk-radius-md);
+  background-color: var(--gk-paper);
+  box-shadow: var(--gk-shadow-card);
 }
 
 @media (min-width: 768px) {
-  .gk-about-section-wrapper {
-    grid-template-columns: minmax(200px, 1fr) 2fr;
+  .gk-about-section {
+    grid-template-columns: 1fr 1fr;
+  }
+  .gk-about-image-left .gk-about-media {
+    order: -1;
+  }
+  .gk-about-image-right .gk-about-media {
+    order: 1;
   }
 }
 
@@ -450,8 +467,7 @@ button {
   border: 2px solid var(--gk-ink);
   border-radius: var(--gk-radius-md);
   background-color: var(--gk-paper);
-  padding: var(--gk-sp-3);
-  box-shadow: var(--gk-shadow-card);
+  overflow: hidden;
 }
 
 .gk-about-image {
@@ -858,4 +874,245 @@ button {
 .gk-load-error-retry:hover {
   transform: translate(-1px, -1px);
   box-shadow: 3px 3px 0 var(--gk-ink);
+}
+
+/* --- Hero countdown internals --- */
+.gk-hero-countdown {
+  display: flex;
+  gap: var(--gk-sp-3);
+  flex-wrap: wrap;
+}
+
+.gk-countdown-unit {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 56px;
+  padding: var(--gk-sp-2) var(--gk-sp-3);
+  border: 2px solid var(--gk-ink);
+  border-radius: var(--gk-radius-sm);
+  background-color: var(--gk-paper);
+  font-family: var(--gk-font-mono);
+}
+
+.gk-countdown-value {
+  font-size: var(--gk-fs-h3);
+  font-weight: var(--gk-fw-bold);
+  color: var(--gk-ink);
+  line-height: 1;
+}
+
+.gk-countdown-label {
+  font-size: var(--gk-fs-tiny);
+  color: var(--gk-ink);
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.gk-countdown-started {
+  padding: var(--gk-sp-2) var(--gk-sp-4);
+  background-color: var(--gk-red);
+  color: var(--gk-paper);
+  border: 2px solid var(--gk-ink);
+  border-radius: var(--gk-radius-sm);
+  font-family: var(--gk-font-display);
+  font-weight: var(--gk-fw-bold);
+}
+
+/* --- Skeleton placeholders --- */
+@keyframes gk-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.gk-skeleton-grid {
+  display: grid;
+  gap: var(--gk-sp-4);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .gk-skeleton-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .gk-skeleton-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.gk-skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gk-sp-3);
+}
+
+.gk-skeleton-card {
+  border: 2px solid var(--gk-line);
+  border-radius: var(--gk-radius-md);
+  background-color: var(--gk-line);
+  animation: gk-skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+.gk-skeleton-card-person {
+  aspect-ratio: 3 / 4;
+}
+
+.gk-skeleton-card-ballot {
+  aspect-ratio: 4 / 5;
+}
+
+.gk-skeleton-row {
+  height: 64px;
+  border-radius: var(--gk-radius-md);
+  background-color: var(--gk-line);
+  animation: gk-skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gk-skeleton-card,
+  .gk-skeleton-row {
+    animation: none;
+    opacity: 0.75;
+  }
+}
+
+/* --- Group headers (logo / ballot / thanks divider signage) --- */
+.gk-logo-group-header,
+.gk-ballot-group-header {
+  display: flex;
+  align-items: center;
+  gap: var(--gk-sp-3);
+  padding: var(--gk-sp-2) var(--gk-sp-4);
+  background-color: var(--gk-yellow);
+  border: 2px solid var(--gk-ink);
+  border-radius: var(--gk-radius-sm);
+  box-shadow: 2px 2px 0 var(--gk-ink);
+}
+
+.gk-logo-group-header-title,
+.gk-ballot-group-header-title {
+  font-family: var(--gk-font-display);
+  font-weight: var(--gk-fw-bold);
+  font-size: var(--gk-fs-h3);
+  color: var(--gk-ink);
+  line-height: 1.2;
+}
+
+/* --- Empty states --- */
+.gk-thanks-empty,
+.gk-booths-empty,
+.gk-organizers-empty {
+  padding: var(--gk-sp-5);
+  text-align: center;
+  color: var(--gk-ink);
+  opacity: 0.7;
+  border: 1px dashed var(--gk-ink);
+  border-radius: var(--gk-radius-md);
+}
+
+/* --- Home cards variants --- */
+.gk-home-external-card,
+.gk-home-free-ticket-card {
+  cursor: pointer;
+  padding: var(--gk-sp-4);
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Registration card variants --- */
+.gk-registration-card-free {
+  background-color: var(--gk-yellow-pastel);
+}
+
+.gk-registration-card-direct {
+  background-color: var(--gk-blue-pastel);
+}
+
+.gk-registration-card-collapsed {
+  opacity: 0.75;
+}
+
+.gk-registration-card-full .gk-registration-card-closed {
+  padding: var(--gk-sp-4);
+  text-align: center;
+  border: 1px dashed var(--gk-ink);
+  border-radius: var(--gk-radius-sm);
+}
+
+.gk-registration-button-primary {
+  background-color: var(--gk-red);
+  color: var(--gk-paper);
+}
+
+/* --- Free ticket link (in registration eligibility list etc.) --- */
+.gk-free-ticket-link {
+  color: var(--gk-blue);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+}
+
+.gk-free-ticket-link:hover {
+  color: var(--gk-red);
+}
+
+/* --- Calendar buttons: .ics variant --- */
+.gk-calendar-button-ics {
+  background-color: var(--gk-paper);
+  color: var(--gk-ink);
+}
+
+/* --- Modal text sections --- */
+.gk-modal-bio {
+  font-size: var(--gk-fs-body);
+  line-height: 1.7;
+  color: var(--gk-ink);
+}
+
+.gk-modal-session-abstract {
+  font-size: var(--gk-fs-body);
+  line-height: 1.7;
+  color: var(--gk-ink);
+}
+
+/* --- Image viewer zoom label --- */
+.gk-image-viewer-zoom {
+  padding: var(--gk-sp-1) var(--gk-sp-3);
+  border-radius: var(--gk-radius-sm);
+  background-color: var(--gk-paper);
+  color: var(--gk-ink);
+  font-family: var(--gk-font-mono);
+  font-size: var(--gk-fs-small);
+}
+
+/* --- Virtual notes list items --- */
+.gk-virtual-note {
+  color: var(--gk-ink);
+}
+
+/* --- Person / logo card modifiers (used with .gk-card) --- */
+.gk-person-card {
+  cursor: pointer;
+}
+
+.gk-logo-card {
+  cursor: pointer;
+  padding: var(--gk-sp-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
 }
