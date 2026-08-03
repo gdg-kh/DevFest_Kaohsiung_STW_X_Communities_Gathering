@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>查無此頁 — GDG Kaohsiung 2026</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <style>
+      .gk-404 {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem 1rem;
+        background: var(--gk-paper, #f0f0f0);
+      }
+      .gk-404-ballot {
+        max-width: 480px;
+        width: 100%;
+        background: #fdfaf3;
+        border: 3px solid var(--gk-ink, #1e1e1e);
+        padding: 2rem 1.5rem;
+        position: relative;
+        box-shadow: 4px 4px 0 var(--gk-ink, #1e1e1e);
+      }
+      .gk-404-stamp {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: var(--gk-red, #ea4335);
+        border: 3px double var(--gk-red, #ea4335);
+        padding: 0.25rem 0.75rem;
+        font-weight: 700;
+        transform: rotate(-12deg);
+        letter-spacing: 0.15em;
+      }
+      .gk-404-title {
+        margin: 0 0 1rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+        border-bottom: 2px solid var(--gk-ink, #1e1e1e);
+        padding-bottom: 0.5rem;
+      }
+      .gk-404-message {
+        margin: 0 0 1.5rem;
+        line-height: 1.6;
+      }
+      .gk-404-hint {
+        margin: 0 0 1.5rem;
+        padding: 0.75rem;
+        background: rgba(66, 133, 244, 0.08);
+        border-left: 4px solid var(--gk-blue, #4285f4);
+      }
+      .gk-404-hint a {
+        color: var(--gk-blue, #4285f4);
+        font-weight: 700;
+      }
+      .gk-404-primary {
+        display: inline-block;
+        padding: 0.75rem 1.25rem;
+        background: var(--gk-red, #ea4335);
+        color: var(--gk-paper, #f0f0f0);
+        text-decoration: none;
+        font-weight: 700;
+        border: 2px solid var(--gk-ink, #1e1e1e);
+      }
+      .gk-404-quicklinks {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .gk-404-quicklinks a {
+        color: var(--gk-ink, #1e1e1e);
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="gk-404">
+      <article class="gk-404-ballot">
+        <span class="gk-404-stamp">作廢</span>
+        <h1 class="gk-404-title">查無此人選票</h1>
+        <p class="gk-404-message">
+          很抱歉，這張選票上的欄位空白，無法辨識您要前往的頁面。
+          可能是連結打錯字，或是頁面已經下架。
+        </p>
+        <p class="gk-404-hint" id="gk-404-hint" hidden></p>
+        <a class="gk-404-primary" href="/2026/">回到活動首頁</a>
+        <nav class="gk-404-quicklinks" aria-label="快速連結">
+          <a href="/2026/#/speakers">講者</a>
+          <a href="/2026/#/agenda">議程</a>
+          <a href="/2026/#/virtual">虛擬會場</a>
+          <a href="/2026/#/about">報名</a>
+        </nav>
+      </article>
+    </main>
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        var match = path.match(/^\/2026\/share\/([^/]+)\//);
+        if (!match) {
+          return;
+        }
+        var type = match[1];
+        var known = {
+          speakers: { label: '講者', hash: '/#/speakers' },
+          staff: { label: '工作人員', hash: '/#/staff' },
+          thanks: { label: '特別感謝', hash: '/#/thanks' },
+          booths: { label: '活動擺攤', hash: '/#/booths' },
+        };
+        var entry = known[type];
+        if (!entry) {
+          return;
+        }
+        var hint = document.getElementById('gk-404-hint');
+        if (!hint) {
+          return;
+        }
+        hint.hidden = false;
+        var prefix = document.createTextNode('你要找的是不是這個分類？ ');
+        var link = document.createElement('a');
+        link.href = '/2026' + entry.hash;
+        link.textContent = entry.label;
+        hint.appendChild(prefix);
+        hint.appendChild(link);
+      })();
+    </script>
+  </body>
+</html>
