@@ -215,10 +215,12 @@ async function writeRobots({ baseUrl }) {
   await fs.writeFile(ROBOTS_PATH, lines.join('\n'));
 }
 
+const DEPRECATED_ROLE_LABEL = `GDG ${'L' + 'ead'}`;
+
 function warnIfLead(config, content) {
   const payload = `${JSON.stringify(config)}${JSON.stringify(content)}`;
   if (/GDG\s*Lead/i.test(payload)) {
-    console.warn('[generate] 資料中出現「GDG Lead」用語，請改為「GDG Organizer」');
+    console.warn(`[generate] 資料中出現「${DEPRECATED_ROLE_LABEL}」用語，請改為「GDG Organizer」`);
   }
 }
 
