@@ -259,11 +259,15 @@ function ensureRoot() {
     attrs: { hidden: '' },
   });
   const inner = el('div', { class: 'gk-image-viewer' });
-  closeBtnEl = el('button', {
-    class: 'gk-image-viewer-close',
-    attrs: { type: 'button' },
-    on: { click: () => closeImageViewer() },
-  }, '\u00d7');
+  closeBtnEl = el(
+    'button',
+    {
+      class: 'gk-image-viewer-close',
+      attrs: { type: 'button' },
+      on: { click: () => closeImageViewer() },
+    },
+    '\u00d7'
+  );
 
   stageEl = el('div', { class: 'gk-image-viewer-stage' });
   imgEl = el('img', {

@@ -18,12 +18,10 @@
   --gk-yellow-pastel: #ffe7a5;
   --gk-red-pastel: #f8d8d8;
 
-  --gk-font-body: system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-  --gk-font-display: 'Google Sans', 'Google Sans Flex',
-    'Noto Sans TC', system-ui, sans-serif;
-  --gk-font-mono: 'Google Sans Mono', ui-monospace, SFMono-Regular,
-    'SF Mono', Consolas, monospace;
+  --gk-font-body:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  --gk-font-display: 'Google Sans', 'Google Sans Flex', 'Noto Sans TC', system-ui, sans-serif;
+  --gk-font-mono: 'Google Sans Mono', ui-monospace, SFMono-Regular, 'SF Mono', Consolas, monospace;
 
   --gk-fw-normal: 400;
   --gk-fw-medium: 500;

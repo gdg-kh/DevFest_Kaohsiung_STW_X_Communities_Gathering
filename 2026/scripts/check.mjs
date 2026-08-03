@@ -119,7 +119,10 @@ function checkIds(list, label) {
 
 if (content) {
   const speakerIds = checkIds(content.speakers, 'speakers');
-  const sessionIds = checkIds(content.sessions ? content.sessions.map((s) => ({ ...s, name: s.title })) : [], 'sessions');
+  const sessionIds = checkIds(
+    content.sessions ? content.sessions.map((s) => ({ ...s, name: s.title })) : [],
+    'sessions'
+  );
   checkIds(content.staff, 'staff');
   checkIds(content.thanks, 'thanks');
   checkIds(content.booths, 'booths');

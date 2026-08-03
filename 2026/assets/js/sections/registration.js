@@ -1,11 +1,7 @@
 import { el, clear, mount } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { getConfig, getContent } from '../core/store.js';
-import {
-  isFreeTicketAvailable,
-  isFreeTicketClosed,
-  openFreeTicketModal,
-} from '../ui/free-ticket.js';
+import { isFreeTicketAvailable, isFreeTicketClosed, openFreeTicketModal } from '../ui/free-ticket.js';
 import { track } from '../core/analytics.js';
 
 function uiLabel(key) {
@@ -38,13 +34,9 @@ function makeNotice(noticeText) {
 
 function makeCollapsedFreeCard(closedText) {
   const card = el('article', {
-    class:
-      'gk-registration-card gk-registration-card-free gk-registration-card-collapsed gk-registration-card-full',
+    class: 'gk-registration-card gk-registration-card-free gk-registration-card-collapsed gk-registration-card-full',
   });
-  mount(
-    card,
-    el('p', { class: 'gk-registration-card-closed', text: closedText }),
-  );
+  mount(card, el('p', { class: 'gk-registration-card-closed', text: closedText }));
   return card;
 }
 
@@ -103,10 +95,7 @@ function makeFreeCard() {
   });
   const titleText = t(ft.title);
   if (titleText) {
-    mount(
-      card,
-      el('h3', { class: 'gk-registration-card-title', text: titleText }),
-    );
+    mount(card, el('h3', { class: 'gk-registration-card-title', text: titleText }));
   }
   const summaryText = t(ft.summary);
   if (summaryText) {
@@ -115,7 +104,7 @@ function makeFreeCard() {
       el('p', {
         class: 'gk-registration-card-summary gk-multiline',
         text: summaryText,
-      }),
+      })
     );
   }
   const eligibility = makeEligibilityList(ft.eligibility);
@@ -161,18 +150,13 @@ function makeDirectButton() {
 
 function makeDirectCard(fullWidth) {
   const card = el('article', {
-    class: `gk-registration-card gk-registration-card-direct${
-      fullWidth ? ' gk-registration-card-full' : ''
-    }`,
+    class: `gk-registration-card gk-registration-card-direct${fullWidth ? ' gk-registration-card-full' : ''}`,
   });
   const content = getContent();
   const registration = (content && content.registration) || {};
   const titleText = t(registration.directTitle);
   if (titleText) {
-    mount(
-      card,
-      el('h3', { class: 'gk-registration-card-title', text: titleText }),
-    );
+    mount(card, el('h3', { class: 'gk-registration-card-title', text: titleText }));
   }
   const summaryText = t(registration.directSummary);
   if (summaryText) {
@@ -181,7 +165,7 @@ function makeDirectCard(fullWidth) {
       el('p', {
         class: 'gk-registration-card-summary gk-multiline',
         text: summaryText,
-      }),
+      })
     );
   }
   mount(card, makeDirectButton());

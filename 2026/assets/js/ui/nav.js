@@ -104,10 +104,7 @@ function makeLangSwitcher() {
   for (const lang of langs) {
     const short = shortLangLabel(lang.code);
     const btn = el('button', {
-      class:
-        lang.code === current
-          ? 'gk-nav-lang gk-nav-lang-active'
-          : 'gk-nav-lang',
+      class: lang.code === current ? 'gk-nav-lang gk-nav-lang-active' : 'gk-nav-lang',
       text: short,
       attrs: {
         type: 'button',
@@ -177,10 +174,7 @@ function handleGlobalClickForMore(event) {
   if (!moreListEl || moreListEl.hasAttribute('hidden')) {
     return;
   }
-  if (
-    moreListEl.contains(event.target) ||
-    (moreButtonEl && moreButtonEl.contains(event.target))
-  ) {
+  if (moreListEl.contains(event.target) || (moreButtonEl && moreButtonEl.contains(event.target))) {
     return;
   }
   toggleMoreOpen(false);
@@ -273,7 +267,7 @@ function makeFooterLinks(config) {
           target: '_blank',
           rel: 'noopener noreferrer',
         },
-      }),
+      })
     );
   }
   if (wrapper.childNodes.length === 0) {
@@ -305,7 +299,7 @@ function makeFooterSecondary() {
             target: '_blank',
             rel: 'noopener noreferrer',
           },
-        }),
+        })
       );
     } else {
       const btn = el('button', {
@@ -534,7 +528,9 @@ function getInitialSectionId() {
   if (match && match[1]) {
     return match[1];
   }
-  const items = sortedMenuItems().filter(isNavItem).filter((i) => i.type !== 'cta');
+  const items = sortedMenuItems()
+    .filter(isNavItem)
+    .filter((i) => i.type !== 'cta');
   return items.length > 0 ? items[0].id : '';
 }
 
@@ -557,7 +553,7 @@ function setupIntersectionHighlight() {
         }
       }
     },
-    { rootMargin: '-40% 0px -50% 0px', threshold: 0 },
+    { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
   );
   for (const section of sections) {
     observer.observe(section);

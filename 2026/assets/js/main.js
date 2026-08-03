@@ -1,11 +1,5 @@
 import { el, clear, mount } from './core/dom.js';
-import {
-  loadData,
-  getConfig,
-  getContent,
-  getSpeakerById,
-  assetPath,
-} from './core/store.js';
+import { loadData, getConfig, getContent, getSpeakerById, assetPath } from './core/store.js';
 import { initI18n, t } from './core/i18n.js';
 import { initAnalytics, track } from './core/analytics.js';
 import { renderNav, renderFooter, initNav, initNavOverflow } from './ui/nav.js';
@@ -158,10 +152,7 @@ function renderCountdownTick(node, target) {
   ];
   for (const part of parts) {
     const wrapper = el('span', { class: 'gk-countdown-unit' });
-    mount(
-      wrapper,
-      el('span', { class: 'gk-countdown-value', text: String(part.value) }),
-    );
+    mount(wrapper, el('span', { class: 'gk-countdown-value', text: String(part.value) }));
     const label = uiLabel(part.key);
     if (label) {
       mount(wrapper, el('span', { class: 'gk-countdown-label', text: label }));
@@ -312,9 +303,7 @@ function handleAutoOpen() {
 
 function clearSkeletons() {
   document.body.classList.remove('gk-loading');
-  const skeletons = document.querySelectorAll(
-    '.gk-skeleton-grid, .gk-skeleton-list',
-  );
+  const skeletons = document.querySelectorAll('.gk-skeleton-grid, .gk-skeleton-list');
   for (const node of skeletons) {
     node.remove();
   }

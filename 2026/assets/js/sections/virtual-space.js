@@ -124,7 +124,7 @@ export function renderVirtualSpace(container) {
       el('p', {
         class: 'gk-virtual-description gk-multiline',
         text: descriptionText,
-      }),
+      })
     );
   }
 

@@ -1,12 +1,6 @@
 import { el, clear, mount } from '../core/dom.js';
 import { t } from '../core/i18n.js';
-import {
-  getContent,
-  getConfig,
-  getSortedList,
-  getGroupedList,
-  assetPath,
-} from '../core/store.js';
+import { getContent, getConfig, getSortedList, getGroupedList, assetPath } from '../core/store.js';
 import { logoCard } from '../ui/card.js';
 import { ballotCard } from '../ui/ballot-card.js';
 import { openModal } from '../ui/detail-modal.js';
@@ -34,14 +28,8 @@ function makeGroupHeader(group, headerClass) {
 }
 
 function openLogoModal(type, item, group) {
-  const eventName =
-    type === 'thanks'
-      ? 'select_thanks'
-      : type === 'booths'
-        ? 'select_booth'
-        : 'select_organizer';
-  const idKey =
-    type === 'thanks' ? 'thanks_id' : type === 'booths' ? 'booth_id' : 'organizer_id';
+  const eventName = type === 'thanks' ? 'select_thanks' : type === 'booths' ? 'select_booth' : 'select_organizer';
+  const idKey = type === 'thanks' ? 'thanks_id' : type === 'booths' ? 'booth_id' : 'organizer_id';
   track(eventName, { [idKey]: item.id });
   openModal({
     image: assetPath(type, item.id),
@@ -149,9 +137,7 @@ export function renderOrganizers(container) {
   clear(container);
   container.classList.add('gk-organizers-section');
   const content = getContent();
-  const list = Array.isArray(content && content.organizers)
-    ? getSortedList('organizers')
-    : [];
+  const list = Array.isArray(content && content.organizers) ? getSortedList('organizers') : [];
   if (list.length === 0) {
     renderEmptyState(container, 'gk-organizers-empty');
     return;

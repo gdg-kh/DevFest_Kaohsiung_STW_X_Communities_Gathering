@@ -27,10 +27,7 @@ function makeTextBlock(titleText, bodyText) {
     mount(wrapper, el('h3', { class: 'gk-about-title', text: titleText }));
   }
   if (bodyText) {
-    mount(
-      wrapper,
-      el('p', { class: 'gk-about-body gk-multiline', text: bodyText }),
-    );
+    mount(wrapper, el('p', { class: 'gk-about-body gk-multiline', text: bodyText }));
   }
   return wrapper;
 }

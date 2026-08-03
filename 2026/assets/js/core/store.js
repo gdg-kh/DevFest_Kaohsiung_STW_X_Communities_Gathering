@@ -61,10 +61,7 @@ async function fetchJson(path) {
 }
 
 export async function loadData() {
-  const [config, content] = await Promise.all([
-    fetchJson('data/config.json'),
-    fetchJson('data/content.json'),
-  ]);
+  const [config, content] = await Promise.all([fetchJson('data/config.json'), fetchJson('data/content.json')]);
   configData = config;
   contentData = content;
   buildIndexes(content);

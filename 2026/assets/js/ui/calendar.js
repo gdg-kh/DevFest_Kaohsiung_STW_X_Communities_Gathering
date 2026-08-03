@@ -95,11 +95,7 @@ function nowUtcStamp() {
 
 function escapeIcsText(input) {
   const str = typeof input === 'string' ? input : '';
-  return str
-    .replace(/\\/g, '\\\\')
-    .replace(/;/g, '\\;')
-    .replace(/,/g, '\\,')
-    .replace(/\r?\n/g, '\\n');
+  return str.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
 }
 
 function foldLine(line) {
@@ -210,12 +206,7 @@ function buildEvent(session) {
 
 export function buildIcs(sessions) {
   const list = Array.isArray(sessions) ? sessions : [];
-  const lines = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    `PRODID:${PRODID}`,
-    'CALSCALE:GREGORIAN',
-  ];
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:${PRODID}`, 'CALSCALE:GREGORIAN'];
   for (const session of list) {
     for (const line of buildEvent(session)) {
       lines.push(line);

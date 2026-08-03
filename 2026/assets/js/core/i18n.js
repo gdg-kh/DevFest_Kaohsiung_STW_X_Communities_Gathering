@@ -70,12 +70,8 @@ function applyDocumentLang(code) {
 export function initI18n(configI18n) {
   const cfg = configI18n && typeof configI18n === 'object' ? configI18n : {};
   languages = Array.isArray(cfg.languages) ? cfg.languages.slice() : [];
-  fallbackLang = typeof cfg.fallbackLang === 'string' && cfg.fallbackLang
-    ? cfg.fallbackLang
-    : DEFAULT_FALLBACK;
-  const defaultLang = typeof cfg.defaultLang === 'string' && cfg.defaultLang
-    ? cfg.defaultLang
-    : fallbackLang;
+  fallbackLang = typeof cfg.fallbackLang === 'string' && cfg.fallbackLang ? cfg.fallbackLang : DEFAULT_FALLBACK;
+  const defaultLang = typeof cfg.defaultLang === 'string' && cfg.defaultLang ? cfg.defaultLang : fallbackLang;
 
   const queryLang = readQueryLang();
   if (queryLang && isEnabled(queryLang)) {

@@ -46,9 +46,7 @@ export function renderStaff(container) {
   container.classList.add('gk-staff-section');
 
   const content = getContent();
-  const staff = Array.isArray(content && content.staff)
-    ? getSortedList('staff')
-    : [];
+  const staff = Array.isArray(content && content.staff) ? getSortedList('staff') : [];
 
   if (staff.length === 0) {
     renderEmptyState(container);

@@ -30,9 +30,7 @@
     { "id": "ai", "order": 3, "name": { "zh-Hant": "AI" }, "color": "#ea4335" },
     { "id": "cloud", "order": 4, "name": { "zh-Hant": "Cloud" }, "color": "#f9ab00" }
   ],
-  "tracks": [
-    { "id": "track_1", "order": 1, "name": { "zh-Hant": "第一會場" }, "color": "#ea4335" }
-  ],
+  "tracks": [{ "id": "track_1", "order": 1, "name": { "zh-Hant": "第一會場" }, "color": "#ea4335" }],
   "speakers": [
     {
       "id": "andy_wang",
@@ -53,9 +51,7 @@
       "name": { "zh-Hant": "陳雅芳" },
       "bio": { "zh-Hant": "前端架構師，熱衷於 Web 標準推廣。" },
       "sessionIds": ["web_platform"],
-      "links": [
-        { "platform": "website", "label": { "zh-Hant": "個人網站" }, "url": "https://sarahchen.dev" }
-      ]
+      "links": [{ "platform": "website", "label": { "zh-Hant": "個人網站" }, "url": "https://sarahchen.dev" }]
     },
     {
       "id": "ming_hao_lin",
@@ -79,9 +75,7 @@
         "zh-Hant": "來自日本的 AI 工程師。\n擅長生成式模型的實務應用與教育推廣。"
       },
       "sessionIds": ["ai_workshop"],
-      "links": [
-        { "platform": "medium", "label": { "zh-Hant": "Medium" }, "url": "https://medium.com/@yukitanaka" }
-      ]
+      "links": [{ "platform": "medium", "label": { "zh-Hant": "Medium" }, "url": "https://medium.com/@yukitanaka" }]
     },
     {
       "id": "david_wu",
@@ -89,9 +83,7 @@
       "name": { "zh-Hant": "吳志豪" },
       "bio": { "zh-Hant": "Google Cloud 認證架構師。" },
       "sessionIds": ["cloud_deployment"],
-      "links": [
-        { "platform": "youtube", "label": { "zh-Hant": "YouTube" }, "url": "https://youtube.com/@davidwu" }
-      ]
+      "links": [{ "platform": "youtube", "label": { "zh-Hant": "YouTube" }, "url": "https://youtube.com/@davidwu" }]
     },
     {
       "id": "jessica_huang",
@@ -113,9 +105,7 @@
       "name": { "zh-Hant": "劉俊傑" },
       "bio": { "zh-Hant": "Web 效能優化專家。" },
       "sessionIds": ["web_performance"],
-      "links": [
-        { "platform": "threads", "label": { "zh-Hant": "Threads" }, "url": "https://threads.net/@kevinliu" }
-      ]
+      "links": [{ "platform": "threads", "label": { "zh-Hant": "Threads" }, "url": "https://threads.net/@kevinliu" }]
     },
     {
       "id": "patricia_chang",
@@ -123,9 +113,7 @@
       "name": { "zh-Hant": "張珮綺" },
       "bio": { "zh-Hant": "雲端解決方案架構師。" },
       "sessionIds": ["cloud_architecture"],
-      "links": [
-        { "platform": "email", "label": { "zh-Hant": "Email" }, "url": "mailto:patricia@example.com" }
-      ]
+      "links": [{ "platform": "email", "label": { "zh-Hant": "Email" }, "url": "mailto:patricia@example.com" }]
     }
   ],
   "sessions": [
@@ -334,9 +322,7 @@
       "name": { "zh-Hant": "範例科技股份有限公司" },
       "description": { "zh-Hant": "領先的雲端服務供應商。" },
       "marquee": true,
-      "links": [
-        { "platform": "website", "label": { "zh-Hant": "官方網站" }, "url": "https://example.com" }
-      ]
+      "links": [{ "platform": "website", "label": { "zh-Hant": "官方網站" }, "url": "https://example.com" }]
     },
     {
       "id": "future_tech",
@@ -429,9 +415,7 @@
       "order": 1,
       "name": { "zh-Hant": "示範企業" },
       "description": { "zh-Hant": "現場招募與產品展示。" },
-      "links": [
-        { "platform": "website", "label": { "zh-Hant": "官方網站" }, "url": "https://sample-corp.com" }
-      ]
+      "links": [{ "platform": "website", "label": { "zh-Hant": "官方網站" }, "url": "https://sample-corp.com" }]
     },
     {
       "id": "demo_startup",
@@ -491,10 +475,7 @@
   "virtualSpace": {
     "title": { "zh-Hant": "虛擬會場" },
     "description": { "zh-Hant": "無法親臨現場的朋友，可以透過虛擬會場參與活動。" },
-    "notes": [
-      { "zh-Hant": "建議使用桌上型電腦或筆電獲得最佳體驗。" },
-      { "zh-Hant": "請確保網路頻寬穩定。" }
-    ]
+    "notes": [{ "zh-Hant": "建議使用桌上型電腦或筆電獲得最佳體驗。" }, { "zh-Hant": "請確保網路頻寬穩定。" }]
   },
   "venueMaps": [
     {

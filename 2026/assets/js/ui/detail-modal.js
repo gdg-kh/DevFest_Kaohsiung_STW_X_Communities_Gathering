@@ -44,11 +44,15 @@ function ensureRoot() {
   });
 
   const header = el('div', { class: 'gk-modal-header' });
-  closeBtn = el('button', {
-    class: 'gk-modal-close',
-    attrs: { type: 'button', 'aria-label': 'Close' },
-    on: { click: () => closeModal() },
-  }, '\u00d7');
+  closeBtn = el(
+    'button',
+    {
+      class: 'gk-modal-close',
+      attrs: { type: 'button', 'aria-label': 'Close' },
+      on: { click: () => closeModal() },
+    },
+    '\u00d7'
+  );
   mount(header, closeBtn);
 
   bodyEl = el('div', { class: 'gk-modal-body' });
@@ -136,10 +140,12 @@ function renderSession(payload) {
     children.push(el('p', { class: 'gk-modal-session-title', text: t(payload.sessionTitle) }));
   }
   if (hasI18nText(payload.sessionAbstract)) {
-    children.push(el('p', {
-      class: 'gk-multiline gk-modal-session-abstract',
-      text: t(payload.sessionAbstract),
-    }));
+    children.push(
+      el('p', {
+        class: 'gk-multiline gk-modal-session-abstract',
+        text: t(payload.sessionAbstract),
+      })
+    );
   }
   return el('div', { class: 'gk-modal-section' }, children);
 }
@@ -153,10 +159,12 @@ function renderMeta(payload) {
     if (!item || (!hasI18nText(item.label) && !hasI18nText(item.value))) {
       continue;
     }
-    rows.push(el('div', { class: 'gk-modal-meta-row' }, [
-      el('span', { class: 'gk-modal-meta-label', text: t(item.label) }),
-      el('span', { class: 'gk-modal-meta-value', text: t(item.value) }),
-    ]));
+    rows.push(
+      el('div', { class: 'gk-modal-meta-row' }, [
+        el('span', { class: 'gk-modal-meta-label', text: t(item.label) }),
+        el('span', { class: 'gk-modal-meta-value', text: t(item.value) }),
+      ])
+    );
   }
   if (rows.length === 0) {
     return null;
@@ -198,15 +206,17 @@ function renderLinks(payload) {
       continue;
     }
     const text = t(link.label) || link.url;
-    anchors.push(el('a', {
-      class: 'gk-modal-link',
-      attrs: {
-        href: link.url,
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      },
-      text,
-    }));
+    anchors.push(
+      el('a', {
+        class: 'gk-modal-link',
+        attrs: {
+          href: link.url,
+          target: '_blank',
+          rel: 'noopener noreferrer',
+        },
+        text,
+      })
+    );
   }
   if (anchors.length === 0) {
     return null;

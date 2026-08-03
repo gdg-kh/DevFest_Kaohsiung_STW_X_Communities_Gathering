@@ -49,7 +49,7 @@ function makeOrganizerCards() {
         name: org.name,
         description: org.description,
         onClick: () => openOrganizerModal(org),
-      }),
+      })
     );
   }
   return cards;
@@ -117,7 +117,7 @@ function makeFreeTicketCard() {
       el('p', {
         class: 'gk-card-description gk-multiline',
         text: summaryText,
-      }),
+      })
     );
   }
   mount(card, body);

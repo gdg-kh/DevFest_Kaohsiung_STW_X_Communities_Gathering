@@ -540,19 +540,15 @@
     transform var(--gk-transition),
     box-shadow var(--gk-transition);
   background-image:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0 6px,
-      var(--gk-ink) 6px 10px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0 6px,
-      var(--gk-ink) 6px 10px
-    );
-  background-position: left top, right top;
+    repeating-linear-gradient(to bottom, transparent 0 6px, var(--gk-ink) 6px 10px),
+    repeating-linear-gradient(to bottom, transparent 0 6px, var(--gk-ink) 6px 10px);
+  background-position:
+    left top,
+    right top;
   background-repeat: repeat-y, repeat-y;
-  background-size: 2px 100%, 2px 100%;
+  background-size:
+    2px 100%,
+    2px 100%;
 }
 
 .gk-ballot-card[role='button'] {
@@ -646,7 +642,9 @@
   background-color: transparent;
   transform: rotate(4deg);
   opacity: 0.85;
-  transition: opacity var(--gk-transition), border-color var(--gk-transition);
+  transition:
+    opacity var(--gk-transition),
+    border-color var(--gk-transition);
 }
 
 .gk-ballot-card[role='button']:hover .gk-ballot-checkmark,

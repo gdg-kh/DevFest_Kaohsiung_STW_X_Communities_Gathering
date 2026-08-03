@@ -159,16 +159,19 @@ export function sessionCard(opts) {
       const speakerName = t(speaker.name);
       const item = el('div', { class: 'gk-session-speaker' });
       if (typeof speaker.image === 'string' && speaker.image.length > 0) {
-        mount(item, el('img', {
-          class: 'gk-session-speaker-avatar',
-          attrs: {
-            src: speaker.image,
-            alt: speakerName || '',
-            loading: 'lazy',
-            width: '32',
-            height: '32',
-          },
-        }));
+        mount(
+          item,
+          el('img', {
+            class: 'gk-session-speaker-avatar',
+            attrs: {
+              src: speaker.image,
+              alt: speakerName || '',
+              loading: 'lazy',
+              width: '32',
+              height: '32',
+            },
+          })
+        );
       }
       if (speakerName) {
         mount(item, el('span', { class: 'gk-session-speaker-name', text: speakerName }));

@@ -1,13 +1,6 @@
 import { el, clear, mount } from '../core/dom.js';
 import { t } from '../core/i18n.js';
-import {
-  getContent,
-  getConfig,
-  getSortedList,
-  getSessionById,
-  getGroupById,
-  assetPath,
-} from '../core/store.js';
+import { getContent, getConfig, getSortedList, getSessionById, getGroupById, assetPath } from '../core/store.js';
 import { personCard } from '../ui/card.js';
 import { openModal } from '../ui/detail-modal.js';
 import { track } from '../core/analytics.js';
@@ -127,9 +120,7 @@ export function renderSpeakers(container) {
   container.classList.add('gk-speakers-section');
 
   const content = getContent();
-  const speakers = Array.isArray(content && content.speakers)
-    ? getSortedList('speakers')
-    : [];
+  const speakers = Array.isArray(content && content.speakers) ? getSortedList('speakers') : [];
 
   if (speakers.length === 0) {
     renderEmptyState(container);

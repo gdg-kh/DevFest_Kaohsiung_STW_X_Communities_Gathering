@@ -76,9 +76,7 @@ function buildBallotFragment(items, decorative) {
 
 function calcSpeed(config) {
   const base =
-    typeof config.speedPxPerSecond === 'number' && config.speedPxPerSecond > 0
-      ? config.speedPxPerSecond
-      : 60;
+    typeof config.speedPxPerSecond === 'number' && config.speedPxPerSecond > 0 ? config.speedPxPerSecond : 60;
   if (window.innerWidth < MOBILE_BREAKPOINT) {
     return base * MOBILE_SPEED_RATIO;
   }
@@ -132,10 +130,7 @@ function layoutTrack(container, track, items, config) {
   const speed = calcSpeed(config);
   const duration = totalWidth / 2 / speed;
   track.style.setProperty('--gk-marquee-duration', `${duration.toFixed(3)}s`);
-  track.style.setProperty(
-    '--gk-marquee-direction',
-    config.direction === 'right' ? 'reverse' : 'normal',
-  );
+  track.style.setProperty('--gk-marquee-direction', config.direction === 'right' ? 'reverse' : 'normal');
 }
 
 function attachResizeObserver(container, doLayout) {
@@ -173,10 +168,7 @@ export function renderSponsorMarquee(container) {
 
   const titleText = uiLabel('sponsorMarqueeTitle');
   if (titleText) {
-    mount(
-      container,
-      el('h2', { class: 'gk-marquee-title', text: titleText }),
-    );
+    mount(container, el('h2', { class: 'gk-marquee-title', text: titleText }));
   }
 
   const marquee = el('div', {

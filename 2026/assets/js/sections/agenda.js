@@ -184,9 +184,7 @@ function openSessionModal(session) {
     const value = [trackName, venue].filter((v) => v && v.length > 0).join(' - ');
     meta.push({ label: uiLabel('venueLabel') || '會場', value });
   }
-  const subtitleParts = speakers
-    .map((sp) => t(sp && sp.name))
-    .filter((n) => n && n.length > 0);
+  const subtitleParts = speakers.map((sp) => t(sp && sp.name)).filter((n) => n && n.length > 0);
   const subtitle = subtitleParts.length > 0 ? subtitleParts.join('、') : null;
 
   track('select_session', { session_id: session.id });
@@ -320,14 +318,20 @@ function renderTimelineMobile(container, tracks, sessions) {
         const row = el('div', {
           class: 'gk-agenda-mobile-span',
         });
-        mount(row, el('span', {
-          class: 'gk-agenda-mobile-span-time',
-          text: formatTime(session.start),
-        }));
-        mount(row, el('span', {
-          class: 'gk-agenda-mobile-span-title',
-          text: t(session.title),
-        }));
+        mount(
+          row,
+          el('span', {
+            class: 'gk-agenda-mobile-span-time',
+            text: formatTime(session.start),
+          })
+        );
+        mount(
+          row,
+          el('span', {
+            class: 'gk-agenda-mobile-span-title',
+            text: t(session.title),
+          })
+        );
         mount(panel, row);
         continue;
       }
@@ -335,10 +339,13 @@ function renderTimelineMobile(container, tracks, sessions) {
         continue;
       }
       const row = el('div', { class: 'gk-agenda-mobile-row' });
-      mount(row, el('span', {
-        class: 'gk-agenda-mobile-time',
-        text: formatTime(session.start),
-      }));
+      mount(
+        row,
+        el('span', {
+          class: 'gk-agenda-mobile-time',
+          text: formatTime(session.start),
+        })
+      );
       mount(row, sessionCardFor(session));
       mount(panel, row);
     }
