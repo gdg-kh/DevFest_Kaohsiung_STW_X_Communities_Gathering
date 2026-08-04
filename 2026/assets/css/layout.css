@@ -308,6 +308,7 @@ body.gk-loading {
 
   .gk-hero-countdown {
     grid-area: countdown;
+    justify-self: start;
   }
 
   .gk-hero-thanks {
