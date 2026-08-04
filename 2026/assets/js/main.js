@@ -13,7 +13,7 @@ import { renderSpeakers } from './sections/speakers.js';
 import { renderAgenda } from './sections/agenda.js';
 import { renderVirtualSpace } from './sections/virtual-space.js';
 import { renderStaff } from './sections/staff.js';
-import { renderThanks, renderBooths } from './sections/logo-grid.js';
+import { renderBooths } from './sections/logo-grid.js';
 
 const DEFAULT_ERROR_TEXT = '網站載入失敗，請稍後再試。';
 let countdownTimer = 0;
@@ -41,7 +41,6 @@ function renderSectionTitles() {
     'section-agenda-title': 'agenda',
     'section-virtual-title': 'virtual',
     'section-staff-title': 'staff',
-    'section-thanks-title': 'thanks',
     'section-booths-title': 'booths',
   };
   for (const [elemId, menuId] of Object.entries(map)) {
@@ -161,23 +160,6 @@ function renderCountdownTick(node, target) {
   }
 }
 
-function applyMarqueePosition() {
-  const config = getConfig();
-  const marquee = config && config.sponsorMarquee;
-  const container = byId('gk-sponsor-marquee');
-  const registration = byId('gk-registration');
-  if (!container || !registration || !marquee) {
-    return;
-  }
-  const parent = registration.parentElement;
-  if (!parent) {
-    return;
-  }
-  if (marquee.position === 'afterHero') {
-    parent.insertBefore(container, registration);
-  }
-}
-
 function renderAll() {
   renderSectionTitles();
   renderHero();
@@ -192,11 +174,6 @@ function renderAll() {
   const about = byId('gk-about');
   if (about) {
     renderAbout(about);
-  }
-  applyMarqueePosition();
-  const marquee = byId('gk-sponsor-marquee');
-  if (marquee) {
-    renderSponsorMarquee(marquee);
   }
   const homeCards = byId('gk-home-cards');
   if (homeCards) {
@@ -218,9 +195,9 @@ function renderAll() {
   if (staff) {
     renderStaff(staff);
   }
-  const thanks = byId('gk-thanks');
+  const thanks = byId('gk-hero-thanks');
   if (thanks) {
-    renderThanks(thanks);
+    renderSponsorMarquee(thanks);
   }
   const booths = byId('gk-booths');
   if (booths) {

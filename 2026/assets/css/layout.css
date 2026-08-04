@@ -271,6 +271,52 @@ body.gk-loading {
   display: none;
 }
 
+.gk-hero-thanks {
+  width: 100%;
+  margin-top: var(--gk-sp-5);
+}
+
+@media (min-width: 1280px) {
+  .gk-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    grid-template-areas:
+      'title    .'
+      'date     .'
+      'venue    thanks'
+      'actions  thanks'
+      'countdown thanks';
+    column-gap: var(--gk-sp-6);
+    align-items: start;
+  }
+
+  .gk-hero-title {
+    grid-area: title;
+  }
+
+  .gk-hero-date {
+    grid-area: date;
+  }
+
+  .gk-hero-venue {
+    grid-area: venue;
+  }
+
+  .gk-hero-actions {
+    grid-area: actions;
+  }
+
+  .gk-hero-countdown {
+    grid-area: countdown;
+  }
+
+  .gk-hero-thanks {
+    grid-area: thanks;
+    align-self: stretch;
+    margin-top: 0;
+  }
+}
+
 /* Section */
 .gk-section {
   max-width: var(--gk-maxw);
