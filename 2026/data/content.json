@@ -90,9 +90,7 @@
       "bio": {
         "zh-Hant": "資深 Android 工程師。\n專精於 Kotlin 與 Jetpack Compose 開發。"
       },
-      "sessionIds": [
-        "gemini_android"
-      ],
+      "sessionIds": ["gemini_android"],
       "links": [
         {
           "platform": "github",
@@ -125,9 +123,7 @@
       "bio": {
         "zh-Hant": "前端架構師，熱衷於 Web 標準推廣。"
       },
-      "sessionIds": [
-        "web_platform"
-      ],
+      "sessionIds": ["web_platform"],
       "links": [
         {
           "platform": "website",
@@ -153,9 +149,7 @@
       "bio": {
         "zh-Hant": "AI 研究員與講師。"
       },
-      "sessionIds": [
-        "ai_workshop"
-      ],
+      "sessionIds": ["ai_workshop"],
       "links": [
         {
           "platform": "linkedin",
@@ -181,9 +175,7 @@
       "bio": {
         "zh-Hant": "來自日本的 AI 工程師。\n擅長生成式模型的實務應用與教育推廣。"
       },
-      "sessionIds": [
-        "ai_workshop"
-      ],
+      "sessionIds": ["ai_workshop"],
       "links": [
         {
           "platform": "medium",
@@ -209,9 +201,7 @@
       "bio": {
         "zh-Hant": "Google Cloud 認證架構師。"
       },
-      "sessionIds": [
-        "cloud_deployment"
-      ],
+      "sessionIds": ["cloud_deployment"],
       "links": [
         {
           "platform": "youtube",
@@ -237,9 +227,7 @@
       "bio": {
         "zh-Hant": "Android GDE，專注在應用架構與跨螢幕體驗。"
       },
-      "sessionIds": [
-        "android_jetpack"
-      ],
+      "sessionIds": ["android_jetpack"],
       "links": [
         {
           "platform": "facebook",
@@ -265,9 +253,7 @@
       "bio": {
         "zh-Hant": "Web 效能優化專家。"
       },
-      "sessionIds": [
-        "web_performance"
-      ],
+      "sessionIds": ["web_performance"],
       "links": [
         {
           "platform": "threads",
@@ -293,9 +279,7 @@
       "bio": {
         "zh-Hant": "雲端解決方案架構師。"
       },
-      "sessionIds": [
-        "cloud_architecture"
-      ],
+      "sessionIds": ["cloud_architecture"],
       "links": [
         {
           "platform": "email",
@@ -342,9 +326,7 @@
           "zh-Hant": "Android"
         }
       ],
-      "speakerIds": [
-        "andy_wang"
-      ],
+      "speakerIds": ["andy_wang"],
       "start": "2026-11-14T09:30",
       "end": "2026-11-14T10:10",
       "type": "talk",
@@ -365,9 +347,7 @@
           "zh-Hant": "Web"
         }
       ],
-      "speakerIds": [
-        "sarah_chen"
-      ],
+      "speakerIds": ["sarah_chen"],
       "start": "2026-11-14T10:20",
       "end": "2026-11-14T11:00",
       "type": "talk",
@@ -391,10 +371,7 @@
           "zh-Hant": "AI"
         }
       ],
-      "speakerIds": [
-        "ming_hao_lin",
-        "yuki_tanaka"
-      ],
+      "speakerIds": ["ming_hao_lin", "yuki_tanaka"],
       "start": "2026-11-14T11:10",
       "end": "2026-11-14T11:50",
       "type": "talk",
@@ -431,9 +408,7 @@
           "zh-Hant": "Cloud"
         }
       ],
-      "speakerIds": [
-        "david_wu"
-      ],
+      "speakerIds": ["david_wu"],
       "start": "2026-11-14T13:00",
       "end": "2026-11-14T13:40",
       "type": "talk",
@@ -457,9 +432,7 @@
           "zh-Hant": "進階"
         }
       ],
-      "speakerIds": [
-        "jessica_huang"
-      ],
+      "speakerIds": ["jessica_huang"],
       "start": "2026-11-14T13:50",
       "end": "2026-11-14T14:30",
       "type": "talk",
@@ -499,9 +472,7 @@
           "zh-Hant": "效能"
         }
       ],
-      "speakerIds": [
-        "kevin_liu"
-      ],
+      "speakerIds": ["kevin_liu"],
       "start": "2026-11-14T14:50",
       "end": "2026-11-14T15:30",
       "type": "talk",
@@ -525,9 +496,7 @@
           "zh-Hant": "架構"
         }
       ],
-      "speakerIds": [
-        "patricia_chang"
-      ],
+      "speakerIds": ["patricia_chang"],
       "start": "2026-11-14T15:40",
       "end": "2026-11-14T16:20",
       "type": "talk",
