@@ -50,7 +50,12 @@
       "Bash(curl -sI http://localhost:8765/2026/assets/css/layout.css)",
       "Bash(echo \"exit=$?\")",
       "Bash(awk '/^\\\\/Users\\\\/andyawd/{file=$0} /error|warning/{if\\(file ~ /2026/\\) print file\"\\\\n  \"$0}')",
-      "Bash(awk '/^\\\\// {file=$0; print \"FILE:\" file} /error|warning/ && file ~ /2026/ {print \"  \" $0}')"
+      "Bash(awk '/^\\\\// {file=$0; print \"FILE:\" file} /error|warning/ && file ~ /2026/ {print \"  \" $0}')",
+      "Bash(xargs ls *)",
+      "Bash(find *)",
+      "Bash(python -m http.server 8000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8000/)"
     ],
     "deny": [],
     "ask": []
