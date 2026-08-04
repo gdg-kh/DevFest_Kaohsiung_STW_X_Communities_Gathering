@@ -2,6 +2,7 @@ import { el } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { getConfig, getContent } from '../core/store.js';
 import { openModal } from './detail-modal.js';
+import { getNoticeText } from './notice.js';
 import { track } from '../core/analytics.js';
 
 function uiLabel(key) {
@@ -113,13 +114,13 @@ function buildFooterAction(entry) {
 }
 
 function mergeNoticeIntoBio(notice, summary) {
-  const noticeText = t(notice);
+  const noticeText = getNoticeText(notice);
   const summaryText = t(summary);
   if (!noticeText) {
     return summary;
   }
   if (!summaryText) {
-    return notice;
+    return { 'zh-Hant': noticeText };
   }
   return { 'zh-Hant': `${noticeText}\n\n${summaryText}` };
 }

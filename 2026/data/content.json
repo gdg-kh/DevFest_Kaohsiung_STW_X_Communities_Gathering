@@ -838,7 +838,10 @@
   ],
   "registration": {
     "orderNotice": {
-      "zh-Hant": "報到時請出示票券 QR Code 與證件。"
+      "text": {
+        "zh-Hant": "報到時請出示票券 QR Code 與證件。"
+      },
+      "variant": "highlight"
     },
     "directTitle": {
       "zh-Hant": "現場報到流程"

@@ -2,6 +2,7 @@ import { el, clear, mount } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { getConfig, getContent } from '../core/store.js';
 import { isFreeTicketAvailable, isFreeTicketClosed, openFreeTicketModal } from '../ui/free-ticket.js';
+import { renderNotice } from '../ui/notice.js';
 import { track } from '../core/analytics.js';
 
 function uiLabel(key) {
@@ -19,17 +20,6 @@ function getMenuUrl(id) {
     }
   }
   return '';
-}
-
-function makeNotice(noticeText) {
-  if (!noticeText) {
-    return null;
-  }
-  return el('div', {
-    class: 'gk-registration-notice gk-multiline',
-    text: noticeText,
-    attrs: { role: 'note' },
-  });
 }
 
 function makeCollapsedFreeCard(closedText) {
@@ -208,8 +198,7 @@ export function renderRegistration(container) {
 
   const content = getContent();
   const registration = (content && content.registration) || {};
-  const noticeText = t(registration.orderNotice);
-  const notice = makeNotice(noticeText);
+  const notice = renderNotice(registration.orderNotice);
   if (notice) {
     mount(container, notice);
   }
