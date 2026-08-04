@@ -235,13 +235,13 @@ export function renderNav(container) {
     const cta = makeCtaLink(item);
     if (cta) {
       ctaAnchorEl = cta;
-      mount(container, cta);
+      mount(wrapper, cta);
     }
   }
 
   langSwitcherEl = makeLangSwitcher();
   if (langSwitcherEl) {
-    mount(container, langSwitcherEl);
+    mount(wrapper, langSwitcherEl);
   }
 }
 

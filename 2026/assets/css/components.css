@@ -540,6 +540,7 @@
 
 .gk-ballot-card {
   position: relative;
+  justify-self: center;
   width: 150px;
   min-height: 180px;
   background-color: var(--gk-paper);
