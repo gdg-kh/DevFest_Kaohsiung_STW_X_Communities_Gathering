@@ -183,6 +183,35 @@ T04 基礎樣式先接 Google Fonts 上公開可用的 Google Sans Flex。
 理由：GDG 品牌資源包的 Google Sans 字型檔取得狀態未定，先不阻塞開發。
 要改：拿到官方字型檔後放到 `2026/assets/fonts/`，把 T04 的 `@font-face` 改成本地載入。
 
+### D33 · Hero 改雙欄，右側收納特別感謝（2026-08-04 拍板）
+桌機（≥1280px）Hero 改成兩欄 CSS grid：左欄是原本的活動資訊
+（標題、日期、地點、購票 CTA、倒數計時），右欄是「特別感謝」的
+票卡格線（同一份 `ui/ballot-card.js`，維持桌機 4 欄的排法）。
+手機／平板（<1280px）Hero 內縱向排列：活動資訊在上、特別感謝在下。
+兩種斷點都不再有獨立的 `#section-thanks`，`content.thanks` 只在 Hero
+內渲染一次。
+
+導覽列同步移除「特別感謝」，主選單從八項降為七項：
+活動介紹、講者、議程、虛擬會場、工作人員、擺攤、購票。
+理由：Hero 已把感謝票放在首屏，不需要另一條入口；同時降低選單溢出風險。
+
+理由：使用者實機看到 Hero 右側大片留白，而票卡本來就是扁平網格，
+形狀剛好對得上；把贊助方案往前推到首屏也能提高曝光。刪掉獨立
+section 也讓整站少一段重複資訊。
+
+要改：
+- `2026/index.html`：Hero 內新增 `#gk-hero-thanks` 容器、移除
+  `#section-thanks` 整段。
+- `2026/assets/js/main.js`：`renderThanks()` 改掛到 `#gk-hero-thanks`。
+- `2026/assets/css/layout.css`：`.gk-hero-inner` 桌機改 grid
+  `1fr 1.2fr`，`#gk-hero-thanks` 桌機時是右欄、手機時排在下方。
+- `2026/data/config.json`：`menu` 陣列的 `thanks` 項目設
+  `enabled: false`（不刪除以保留翻譯資源與 hash-route 相容）。
+- `2026/assets/js/ui/nav.js`：無需改，`enabled: false` 會自動被
+  `sortedMenuItems()` 過濾掉。
+- 分享頁 (`share/thanks/{id}/`) 的 `#thanks-{id}` hash 仍然要能開對應 modal，
+  相容策略：`hash-route` 收到 `#/thanks` 時 fallback 捲到 Hero。
+
 ---
 
 ## 15. 待確認問題
