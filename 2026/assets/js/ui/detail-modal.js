@@ -96,12 +96,23 @@ function renderMedia(payload) {
   return el('div', { class: 'gk-modal-media' }, img);
 }
 
+function joinAffiliation(titleText, orgText) {
+  if (titleText && orgText) {
+    return `${titleText} · ${orgText}`;
+  }
+  return titleText || orgText || '';
+}
+
 function renderHeading(payload) {
   const parts = [];
   if (typeof payload.number === 'number' && !Number.isNaN(payload.number)) {
     parts.push(el('span', { class: 'gk-modal-number', text: `#${payload.number}` }));
   }
   parts.push(el('h2', { class: 'gk-modal-title', text: t(payload.name) }));
+  const affiliation = joinAffiliation(t(payload.title), t(payload.org));
+  if (affiliation) {
+    parts.push(el('p', { class: 'gk-modal-affiliation', text: affiliation }));
+  }
   if (hasI18nText(payload.subtitle)) {
     parts.push(el('p', { class: 'gk-modal-subtitle', text: t(payload.subtitle) }));
   }

@@ -3123,10 +3123,20 @@
               title: '講者',
               entity: {
                 itemLabel: '講者',
-                createItem: () => ({ id: '', name: {}, bio: {}, sessionIds: [], links: [] }),
+                createItem: () => ({
+                  id: '',
+                  name: {},
+                  org: {},
+                  title: {},
+                  bio: {},
+                  sessionIds: [],
+                  links: [],
+                }),
                 fields: [
                   { key: 'id', type: 'slug', label: 'id' },
                   { key: 'name', type: 'i18n-text', label: '姓名', required: true },
+                  { key: 'org', type: 'i18n-text', label: '公司／組織' },
+                  { key: 'title', type: 'i18n-text', label: '職稱' },
                   { key: 'bio', type: 'i18n-textarea', label: '自我介紹' },
                   { key: 'sessionIds', type: 'refs', target: 'sessions', label: '關聯議程' },
                   LINK_FIELD,

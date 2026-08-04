@@ -121,6 +121,13 @@
   opacity: 0.75;
 }
 
+.gk-modal-affiliation {
+  font-size: var(--gk-fs-body);
+  font-weight: var(--gk-fw-medium);
+  color: var(--gk-ink);
+  opacity: 0.85;
+}
+
 .gk-modal-group-chip {
   display: inline-block;
   padding: 2px var(--gk-sp-3);
@@ -350,6 +357,13 @@
   font-size: var(--gk-fs-small);
   color: var(--gk-ink);
   opacity: 0.7;
+}
+
+.gk-card-affiliation {
+  font-size: var(--gk-fs-small);
+  font-weight: var(--gk-fw-medium);
+  color: var(--gk-ink);
+  opacity: 0.85;
 }
 
 .gk-card-description {

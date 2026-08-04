@@ -76,6 +76,8 @@ function openSpeakerModal(speaker) {
     imageShape: 'circle',
     number: typeof speaker.order === 'number' ? speaker.order : undefined,
     name: speaker.name,
+    title: speaker.title,
+    org: speaker.org,
     bio: speaker.bio,
     sessionTitle: session ? session.title : null,
     sessionAbstract: session ? session.abstract : null,
@@ -92,6 +94,8 @@ function makeCardFor(speaker) {
     image: assetPath('speakers', speaker.id),
     number: typeof speaker.order === 'number' ? speaker.order : undefined,
     name: speaker.name,
+    title: speaker.title,
+    org: speaker.org,
     description: speaker.bio,
     onClick: () => openSpeakerModal(speaker),
   };

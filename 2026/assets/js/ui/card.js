@@ -79,11 +79,21 @@ function appendNumberBadge(mediaWrapper, number) {
   mount(mediaWrapper, badge);
 }
 
-function appendTextBlock(card, name, subtitle, description) {
+function joinAffiliation(titleText, orgText) {
+  if (titleText && orgText) {
+    return `${titleText} · ${orgText}`;
+  }
+  return titleText || orgText || '';
+}
+
+function appendTextBlock(card, name, subtitle, description, affiliationText) {
   const body = el('div', { class: 'gk-card-body' });
   const nameText = t(name);
   if (nameText) {
     mount(body, el('h3', { class: 'gk-card-name', text: nameText }));
+  }
+  if (affiliationText) {
+    mount(body, el('p', { class: 'gk-card-affiliation', text: affiliationText }));
   }
   const subtitleText = t(subtitle);
   if (subtitleText) {
@@ -103,7 +113,8 @@ export function personCard(opts) {
   const media = makePersonImage(options.image, nameText);
   appendNumberBadge(media, options.number);
   mount(card, media);
-  appendTextBlock(card, options.name, options.subtitle, options.description);
+  const affiliationText = joinAffiliation(t(options.title), t(options.org));
+  appendTextBlock(card, options.name, options.subtitle, options.description, affiliationText);
   return card;
 }
 

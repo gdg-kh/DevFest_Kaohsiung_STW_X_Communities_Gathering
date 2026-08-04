@@ -117,11 +117,15 @@
   "id": "andy_wang",              // 唯一識別碼＝網址＝圖片檔名
   "order": 1,
   "name":   { "zh-Hant": "王小明", "en": "Ming Wang", "ja": "..." },
+  "org":    { "zh-Hant": "Google Taiwan", ... },   // 公司／組織（D27）
+  "title":  { "zh-Hant": "資深工程師", ... },      // 職稱（D27）
   "bio":    { "zh-Hant": "...\n...", ... },
   "sessionIds": ["gemini_android"],
   "links": [ LinkItem, ... ]
 }
 ```
+> `org` 與 `title` 皆為選填 I18nText；卡片、詳細彈窗與 person OG 圖若兩者都有值以「`title · org`」拼接顯示，
+> 只有一項時顯示該項，全缺時整行不渲染。
 
 ### Session
 ```jsonc

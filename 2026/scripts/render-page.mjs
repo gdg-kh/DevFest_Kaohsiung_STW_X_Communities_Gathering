@@ -128,6 +128,14 @@ function buildBody({ type, item, config, store, imageUrl, backHref, backLabel })
   const bioText = pickLang(item.bio || item.description);
   const parts = [];
   parts.push(`<h1>${escapeHtml(name)}</h1>`);
+  if (type === 'speakers') {
+    const titleText = pickLang(item.title);
+    const orgText = pickLang(item.org);
+    const affiliation = titleText && orgText ? `${titleText} · ${orgText}` : titleText || orgText;
+    if (affiliation) {
+      parts.push(`<p class="gk-share-affiliation">${escapeHtml(affiliation)}</p>`);
+    }
+  }
   if (type === 'staff' && item.role) {
     const role = pickLang(item.role);
     if (role) {

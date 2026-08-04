@@ -245,6 +245,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
   "speakers": [
     { "id": "andy_wang", "order": 1,
       "name": { "zh-Hant": "王小明" },
+      "org": { "zh-Hant": "Google Taiwan" },
+      "title": { "zh-Hant": "資深工程師" },
       "bio": { "zh-Hant": "介紹第一行\n介紹第二行" },
       "sessionIds": ["gemini_android"],
       "links": [ { "platform": "github", "label": { "zh-Hant": "GitHub" }, "url": "https://github.com/x" } ] }
@@ -303,7 +305,7 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
    - sessionGroups 4 筆（Android / Web / AI / Cloud），
      color 只能用 GDG 四色 #ea4335 #4285f4 #f9ab00 #34a853，各給一色
    - tracks 1 筆（track_1，名稱「第一會場」）
-   - speakers 8 筆
+   - speakers 8 筆（**每筆都要有 org 與 title 兩個 I18nText 欄位，選填但假資料一律給值**）
    - sessions 10 筆
    - staff 6 筆
    - thanksGroups 3 筆

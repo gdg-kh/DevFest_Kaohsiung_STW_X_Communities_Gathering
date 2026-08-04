@@ -213,10 +213,23 @@ async function renderPerson(ctx, { type, item, layout }) {
   ctx.font = `900 72px "${FONT_FAMILY}", sans-serif`;
   drawWrappedText(ctx, nameText, textX, 130, textMaxWidth, 88, 2);
 
+  let cursorY = 300;
+  if (type === 'speakers') {
+    const titleText = pickLang(item.title);
+    const orgText = pickLang(item.org);
+    const affiliation = titleText && orgText ? `${titleText} · ${orgText}` : titleText || orgText;
+    if (affiliation) {
+      ctx.font = `700 34px "${FONT_FAMILY}", sans-serif`;
+      ctx.fillStyle = BRAND.ink;
+      const lines = drawWrappedText(ctx, affiliation, textX, cursorY, textMaxWidth, 46, 1);
+      cursorY += lines * 46 + 16;
+    }
+  }
+
   ctx.font = `500 40px "${FONT_FAMILY}", sans-serif`;
   ctx.fillStyle = '#333333';
   const sub = type === 'speakers' ? pickLang((layout && layout.sessionTitle) || null) : pickLang(item.role);
-  drawWrappedText(ctx, sub || '', textX, 320, textMaxWidth, 56, 2);
+  drawWrappedText(ctx, sub || '', textX, cursorY, textMaxWidth, 56, 2);
 }
 
 async function renderLogo(ctx, { item, layout }) {

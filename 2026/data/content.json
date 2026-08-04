@@ -36,6 +36,8 @@
       "id": "andy_wang",
       "order": 1,
       "name": { "zh-Hant": "王小明" },
+      "org": { "zh-Hant": "Google Taiwan" },
+      "title": { "zh-Hant": "資深 Android 工程師" },
       "bio": {
         "zh-Hant": "資深 Android 工程師。\n專精於 Kotlin 與 Jetpack Compose 開發。"
       },
@@ -49,6 +51,8 @@
       "id": "sarah_chen",
       "order": 2,
       "name": { "zh-Hant": "陳雅芳" },
+      "org": { "zh-Hant": "Frontend Studio" },
+      "title": { "zh-Hant": "前端架構師" },
       "bio": { "zh-Hant": "前端架構師，熱衷於 Web 標準推廣。" },
       "sessionIds": ["web_platform"],
       "links": [{ "platform": "website", "label": { "zh-Hant": "個人網站" }, "url": "https://sarahchen.dev" }]
@@ -57,6 +61,8 @@
       "id": "ming_hao_lin",
       "order": 3,
       "name": { "zh-Hant": "林明浩" },
+      "org": { "zh-Hant": "AI Valley Lab" },
+      "title": { "zh-Hant": "AI 研究員" },
       "bio": { "zh-Hant": "AI 研究員與講師。" },
       "sessionIds": ["ai_workshop"],
       "links": [
@@ -71,6 +77,8 @@
       "id": "yuki_tanaka",
       "order": 4,
       "name": { "zh-Hant": "田中優希" },
+      "org": { "zh-Hant": "Kyoto AI Studio" },
+      "title": { "zh-Hant": "AI 工程師" },
       "bio": {
         "zh-Hant": "來自日本的 AI 工程師。\n擅長生成式模型的實務應用與教育推廣。"
       },
@@ -81,6 +89,8 @@
       "id": "david_wu",
       "order": 5,
       "name": { "zh-Hant": "吳志豪" },
+      "org": { "zh-Hant": "Cloud Labs" },
+      "title": { "zh-Hant": "解決方案架構師" },
       "bio": { "zh-Hant": "Google Cloud 認證架構師。" },
       "sessionIds": ["cloud_deployment"],
       "links": [{ "platform": "youtube", "label": { "zh-Hant": "YouTube" }, "url": "https://youtube.com/@davidwu" }]
@@ -89,6 +99,8 @@
       "id": "jessica_huang",
       "order": 6,
       "name": { "zh-Hant": "黃嘉宜" },
+      "org": { "zh-Hant": "Android Taiwan GDE" },
+      "title": { "zh-Hant": "GDE" },
       "bio": { "zh-Hant": "Android GDE，專注在應用架構與跨螢幕體驗。" },
       "sessionIds": ["android_jetpack"],
       "links": [
@@ -103,6 +115,8 @@
       "id": "kevin_liu",
       "order": 7,
       "name": { "zh-Hant": "劉俊傑" },
+      "org": { "zh-Hant": "Perf Studio" },
+      "title": { "zh-Hant": "Web 效能顧問" },
       "bio": { "zh-Hant": "Web 效能優化專家。" },
       "sessionIds": ["web_performance"],
       "links": [{ "platform": "threads", "label": { "zh-Hant": "Threads" }, "url": "https://threads.net/@kevinliu" }]
@@ -111,6 +125,8 @@
       "id": "patricia_chang",
       "order": 8,
       "name": { "zh-Hant": "張珮綺" },
+      "org": { "zh-Hant": "SkyCloud" },
+      "title": { "zh-Hant": "雲端解決方案架構師" },
       "bio": { "zh-Hant": "雲端解決方案架構師。" },
       "sessionIds": ["cloud_architecture"],
       "links": [{ "platform": "email", "label": { "zh-Hant": "Email" }, "url": "mailto:patricia@example.com" }]
