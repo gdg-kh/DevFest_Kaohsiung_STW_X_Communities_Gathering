@@ -668,7 +668,7 @@
   border-color: var(--gk-ink);
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 900px) {
   .gk-ballot-card {
     width: 200px;
     min-height: 220px;
