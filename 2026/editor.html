@@ -2106,6 +2106,92 @@
         return fieldWrap(field.label || '標籤', control, { hint: field.hint });
       }
 
+      function renderNotice(field, host, key, onChange) {
+        if (!host[key] || typeof host[key] !== 'object' || Array.isArray(host[key])) {
+          host[key] = { text: {}, variant: 'info' };
+        }
+        const notice = host[key];
+        if (!notice.text || typeof notice.text !== 'object' || Array.isArray(notice.text)) {
+          notice.text = {};
+        }
+        if (typeof notice.variant !== 'string' || notice.variant.length === 0) {
+          notice.variant = 'info';
+        }
+        const textField = renderI18nField(
+          { label: '文字內容' },
+          notice,
+          'text',
+          onChange,
+          Boolean(field.multiline)
+        );
+        const variantField = renderSelect(
+          { label: '外觀樣式', required: true, hint: '選擇要套用的 Notice 樣式' },
+          notice,
+          'variant',
+          onChange,
+          NOTICE_VARIANT_OPTIONS
+        );
+        const wrapper = el('div', { class: 'gk-object-form' }, [textField, variantField]);
+        return fieldWrap(field.label || '通知', wrapper, {
+          hint: field.hint,
+          required: field.required,
+        });
+      }
+
+      function renderI18nList(field, host, key, onChange) {
+        if (!Array.isArray(host[key])) {
+          host[key] = [];
+        }
+        const list = host[key];
+        const listEl = el('div', { class: 'gk-tag-list' });
+        list.forEach((item, index) => {
+          if (!item || typeof item !== 'object' || Array.isArray(item)) {
+            list[index] = { 'zh-Hant': String(item || '') };
+          }
+          const itemHost = { value: list[index] };
+          const removeBtn = el('button', {
+            class: 'gk-btn gk-btn-danger gk-btn-small',
+            text: '刪除',
+            attrs: { type: 'button' },
+            on: {
+              click: () => {
+                if (!window.confirm('刪除這個項目？')) {
+                  return;
+                }
+                list.splice(index, 1);
+                onChange();
+              },
+            },
+          });
+          const inputField = renderI18nField(
+            { label: `第 ${index + 1} 項` },
+            itemHost,
+            'value',
+            onChange,
+            Boolean(field.multiline)
+          );
+          list[index] = itemHost.value;
+          const row = el('div', { class: 'gk-tag-row' }, [inputField, removeBtn]);
+          listEl.appendChild(row);
+        });
+        if (list.length === 0) {
+          listEl.appendChild(el('p', { class: 'gk-field-hint', text: '尚未新增項目' }));
+        }
+        const addBtn = el('button', {
+          class: 'gk-btn gk-btn-ghost gk-btn-small',
+          text: field.addLabel || '新增一項',
+          attrs: { type: 'button' },
+          on: {
+            click: () => {
+              list.push({ 'zh-Hant': '' });
+              onChange();
+            },
+          },
+        });
+        const control = el('div', {}, [listEl, addBtn]);
+        return fieldWrap(field.label || '項目列表', control, { hint: field.hint });
+      }
+
       function getRefOptions(target) {
         const map = {
           sessions: () =>
@@ -2246,6 +2332,10 @@
             return renderLinks(field, host, key, onChange);
           case 'tags':
             return renderTags(field, host, key, onChange);
+          case 'notice':
+            return renderNotice(field, host, key, onChange);
+          case 'i18n-list':
+            return renderI18nList(field, host, key, onChange);
           default:
             return el('div', { class: 'gk-field-hint', text: `未支援的欄位型別：${field.type}` });
         }
@@ -2941,6 +3031,22 @@
         { value: 'closing', label: 'closing（結尾）' },
       ];
 
+      const NOTICE_VARIANT_OPTIONS = [
+        { value: 'highlight', label: 'highlight（黃底黑框，最顯眼）' },
+        { value: 'info', label: 'info（紙色細框，一般資訊）' },
+        { value: 'muted', label: 'muted（無框小字，補充備註）' },
+      ];
+
+      const SPONSOR_DIRECTION_OPTIONS = [
+        { value: 'left', label: 'left（向左捲）' },
+        { value: 'right', label: 'right（向右捲）' },
+      ];
+
+      const SPONSOR_POSITION_OPTIONS = [
+        { value: 'afterHero', label: 'afterHero（Hero 後）' },
+        { value: 'afterAbout', label: 'afterAbout（About 後）' },
+      ];
+
       const LINK_FIELD = { key: 'links', type: 'links', label: '連結' };
 
       const CATEGORIES = [
@@ -2999,6 +3105,14 @@
               path: 'footer',
               title: '頁尾',
               fields: [{ key: 'copyright', type: 'i18n-text', label: '版權宣告' }, LINK_FIELD],
+            },
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'footer.codeOfConduct',
+              title: '行為準則',
+              hint: '報名區塊底部與頁尾都會用到的行為準則連結。',
+              fields: [{ key: 'url', type: 'text', label: '行為準則網址' }],
             },
           ],
         },
@@ -3322,6 +3436,180 @@
                   LINK_FIELD,
                 ],
               },
+            },
+          ],
+        },
+        {
+          id: 'registration',
+          label: '報名',
+          sections: [
+            {
+              kind: 'object',
+              source: 'content',
+              path: 'registration',
+              title: '報名資訊',
+              hint: '「報到提醒」為 Notice 元件，可透過 variant 切換外觀。',
+              fields: [
+                { key: 'orderNotice', type: 'notice', label: '報到提醒' },
+                { key: 'directTitle', type: 'i18n-text', label: '現場報到 標題' },
+                { key: 'directSummary', type: 'i18n-textarea', label: '現場報到 說明' },
+              ],
+            },
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'freeTicket',
+              title: '免費票 設定',
+              hint: '控制免費票的可用性、申請表單網址與截止時間。',
+              fields: [
+                {
+                  key: 'enabled',
+                  type: 'boolean',
+                  label: '啟用免費票',
+                  checkboxLabel: '在網站上顯示免費票入口',
+                },
+                { key: 'formUrl', type: 'text', label: '申請表單網址' },
+                {
+                  key: 'closeAt',
+                  type: 'text',
+                  label: '截止時間（ISO 8601，例如 2026-10-15T23:59:59+08:00）',
+                },
+                { key: 'reviewDays', type: 'number', label: '審核天數（提示用）' },
+              ],
+            },
+            {
+              kind: 'object',
+              source: 'content',
+              path: 'freeTicket',
+              title: '免費票 文案',
+              hint: '免費票區塊與 Modal 內顯示的文字內容。',
+              fields: [
+                { key: 'title', type: 'i18n-text', label: '標題' },
+                { key: 'summary', type: 'i18n-textarea', label: '摘要' },
+                {
+                  key: 'eligibility',
+                  type: 'i18n-list',
+                  label: '申請資格條列',
+                  addLabel: '新增資格',
+                  hint: '每一項會條列顯示於報名區塊與 Modal。',
+                },
+                {
+                  key: 'process',
+                  type: 'i18n-list',
+                  label: '申請流程條列',
+                  addLabel: '新增流程',
+                  hint: '會自動加上編號（1./2./3.）顯示於 Modal。',
+                },
+                { key: 'notes', type: 'i18n-textarea', label: '補充說明' },
+                { key: 'closedText', type: 'i18n-textarea', label: '截止後顯示文字' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'virtualSpace',
+          label: '虛擬會場',
+          sections: [
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'virtualSpace',
+              title: '虛擬會場 設定',
+              fields: [
+                {
+                  key: 'enabled',
+                  type: 'boolean',
+                  label: '啟用虛擬會場',
+                  checkboxLabel: '在網站上顯示虛擬會場區塊',
+                },
+                { key: 'url', type: 'text', label: '虛擬會場網址' },
+                {
+                  key: 'embed',
+                  type: 'boolean',
+                  label: '內嵌顯示',
+                  checkboxLabel: '以 iframe 方式內嵌（否則以連結／QR 呈現）',
+                },
+                { key: 'qrImage', type: 'text', label: 'QR 圖片路徑（相對於網站根目錄）' },
+              ],
+            },
+            {
+              kind: 'object',
+              source: 'content',
+              path: 'virtualSpace',
+              title: '虛擬會場 文案',
+              fields: [
+                { key: 'title', type: 'i18n-text', label: '標題' },
+                { key: 'description', type: 'i18n-textarea', label: '說明' },
+                {
+                  key: 'notes',
+                  type: 'i18n-list',
+                  label: '注意事項',
+                  addLabel: '新增注意事項',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'venueMaps',
+          label: '場地地圖',
+          sections: [
+            {
+              kind: 'array',
+              source: 'content',
+              path: 'venueMaps',
+              title: '場地地圖',
+              hint: '每一張地圖對應一張圖檔，file 為 images/ 目錄下的檔名。',
+              entity: {
+                itemLabel: '地圖',
+                summary: 'caption',
+                createItem: () => ({ id: '', file: '', caption: {} }),
+                fields: [
+                  { key: 'id', type: 'slug', label: 'id' },
+                  { key: 'file', type: 'text', label: '圖檔名稱（例如 venue-map-1f.png）' },
+                  { key: 'caption', type: 'i18n-text', label: '圖說' },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          id: 'sponsorMarquee',
+          label: '贊助跑馬燈',
+          sections: [
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'sponsorMarquee',
+              title: '贊助跑馬燈設定',
+              hint: '控制感謝名單跑馬燈的顯示位置、方向與速度。',
+              fields: [
+                {
+                  key: 'enabled',
+                  type: 'boolean',
+                  label: '啟用跑馬燈',
+                  checkboxLabel: '顯示贊助跑馬燈',
+                },
+                { key: 'speedPxPerSecond', type: 'number', label: '捲動速度（px / 秒）' },
+                {
+                  key: 'direction',
+                  type: 'select',
+                  label: '捲動方向',
+                  options: SPONSOR_DIRECTION_OPTIONS,
+                },
+                {
+                  key: 'pauseOnHover',
+                  type: 'boolean',
+                  label: '滑鼠移入暫停',
+                  checkboxLabel: '滑鼠移入時停止捲動',
+                },
+                {
+                  key: 'position',
+                  type: 'select',
+                  label: '顯示位置',
+                  options: SPONSOR_POSITION_OPTIONS,
+                },
+              ],
             },
           ],
         },
