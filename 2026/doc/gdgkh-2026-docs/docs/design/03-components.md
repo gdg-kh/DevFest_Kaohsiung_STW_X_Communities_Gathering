@@ -164,6 +164,22 @@ GA 事件：`enter_virtual_space`（帶入口位置：選單 / 地圖下方 / �
 這句話寫在 `content.registration.orderNotice`，
 同一句也會出現在免費票彈窗的最上方——那是最後一次來得及提醒的地方。
 
+### 通用 Notice 元件（資料驅動）
+提醒框的外觀由資料決定，不寫死在特定類別。
+`orderNotice` 是物件 `{ text, variant }`，`text` 是 i18n 文字，`variant` 決定樣式：
+
+| variant | 用途 | 視覺 |
+| --- | --- | --- |
+| `highlight` | 最後一次提醒、需搶眼（例：報到帶 QR Code） | 黃底 + 2px 黑框 + 圓角 |
+| `info` | 一般資訊補充（**未指定或未知值的預設**） | 紙色底 + 1px 黑框 + 圓角 |
+| `muted` | 補充小字備註 | 無框、小字、`opacity: 0.8` |
+
+實作在 `2026/assets/js/ui/notice.js`：
+- `renderNotice(payload)` 產生 `<div class="gk-notice gk-notice-{variant} gk-multiline" role="note">`
+- `getNoticeText(payload)` 抽出純文字（給 Modal 合併 bio 等非渲染情境）
+
+想改樣式或新增變體時，改資料的 `variant` 或在 `layout.css` 加 `.gk-notice-xxx` 規則即可，不用動使用點。
+
 ### 導覽列購票按鈕維持直接外連
 不做攔截式的確認彈窗。對已經知道自己要買票的人來說那是純粹的摩擦，
 而且提醒已經在 Hero 下方講過一次了。
@@ -185,7 +201,10 @@ GA 事件：`enter_virtual_space`（帶入口位置：選單 / 地圖下方 / �
 
 // content.json
 "registration": {
-  "orderNotice": { "zh-Hant": "符合免費票資格者請先申請...", ... },
+  "orderNotice": {
+    "text": { "zh-Hant": "符合免費票資格者請先申請...", ... },
+    "variant": "highlight"                              // highlight | info | muted
+  },
   "directTitle": { "zh-Hant": "直接報名", ... },
   "directSummary": { "zh-Hant": "一般票 NT$XXX，含午餐與紀念品", ... }
 },
