@@ -1,7 +1,7 @@
 {
   "site": {
     "eventName": {
-      "zh-Hant": "GDG Kaohsiung 2026"
+      "zh-Hant": "DevFest 2026 高雄場"
     },
     "year": 2026,
     "eventDate": "2026-11-14",
@@ -11,7 +11,7 @@
       "zh-Hant": "KO-IN 智高點"
     },
     "venueAddress": {
-      "zh-Hant": "800 高雄市新興區中正三路 25 號"
+      "zh-Hant": "高雄市新興區中正三路 25 號 14 樓"
     },
     "venueMapUrl": "https://maps.app.goo.gl/tsrtSkCcmjxoYs4cA"
   },
