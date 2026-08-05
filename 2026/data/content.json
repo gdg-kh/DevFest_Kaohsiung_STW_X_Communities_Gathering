@@ -106,308 +106,247 @@
         "zh-Hant": "第一會場"
       },
       "color": "#ea4335"
+    },
+    {
+      "id": "track_2",
+      "order": 2,
+      "name": {
+        "zh-Hant": "第二會場"
+      },
+      "color": "#4285f4"
     }
   ],
   "speakers": [
     {
-      "id": "andy_wang",
+      "id": "weiting_dai",
       "order": 1,
       "name": {
-        "zh-Hant": "王小明"
+        "zh-Hant": "戴維廷"
       },
-      "org": {
-        "zh-Hant": "Google Taiwan"
-      },
-      "title": {
-        "zh-Hant": "資深 Android 工程師"
-      },
-      "bio": {
-        "zh-Hant": "資深 Android 工程師。\n專精於 Kotlin 與 Jetpack Compose 開發。"
-      },
-      "sessionIds": ["gemini_android"],
-      "links": [
-        {
-          "platform": "github",
-          "label": {
-            "zh-Hant": "GitHub"
-          },
-          "url": "https://github.com/andywang"
-        },
-        {
-          "platform": "x",
-          "label": {
-            "zh-Hant": "X"
-          },
-          "url": "https://x.com/andywang"
-        }
-      ]
+      "sessionIds": ["opening_intro", "closing_ceremony"],
+      "links": []
     },
     {
-      "id": "sarah_chen",
+      "id": "eric_or_yuying",
       "order": 2,
       "name": {
-        "zh-Hant": "陳雅芳"
+        "zh-Hant": "Eric 或 Yuying"
       },
-      "org": {
-        "zh-Hant": "Frontend Studio"
-      },
-      "title": {
-        "zh-Hant": "前端架構師"
-      },
-      "bio": {
-        "zh-Hant": "前端架構師，熱衷於 Web 標準推廣。"
-      },
-      "sessionIds": ["web_platform"],
-      "links": [
-        {
-          "platform": "website",
-          "label": {
-            "zh-Hant": "個人網站"
-          },
-          "url": "https://sarahchen.dev"
-        }
-      ]
+      "sessionIds": ["keynote"],
+      "links": []
     },
     {
-      "id": "ming_hao_lin",
+      "id": "speaker_1",
       "order": 3,
       "name": {
-        "zh-Hant": "林明浩"
+        "zh-Hant": "講者1"
       },
-      "org": {
-        "zh-Hant": "AI Valley Lab"
-      },
-      "title": {
-        "zh-Hant": "AI 研究員"
-      },
-      "bio": {
-        "zh-Hant": "AI 研究員與講師。"
-      },
-      "sessionIds": ["ai_workshop"],
-      "links": [
-        {
-          "platform": "linkedin",
-          "label": {
-            "zh-Hant": "LinkedIn"
-          },
-          "url": "https://linkedin.com/in/minghaolin"
-        }
-      ]
+      "sessionIds": ["session_1_1"],
+      "links": []
     },
     {
-      "id": "yuki_tanaka",
+      "id": "speaker_2",
       "order": 4,
       "name": {
-        "zh-Hant": "田中優希"
+        "zh-Hant": "講者2"
       },
-      "org": {
-        "zh-Hant": "Kyoto AI Studio"
-      },
-      "title": {
-        "zh-Hant": "AI 工程師"
-      },
-      "bio": {
-        "zh-Hant": "來自日本的 AI 工程師。\n擅長生成式模型的實務應用與教育推廣。"
-      },
-      "sessionIds": ["ai_workshop"],
-      "links": [
-        {
-          "platform": "medium",
-          "label": {
-            "zh-Hant": "Medium"
-          },
-          "url": "https://medium.com/@yukitanaka"
-        }
-      ]
+      "sessionIds": ["session_1_2"],
+      "links": []
     },
     {
-      "id": "david_wu",
+      "id": "speaker_3",
       "order": 5,
       "name": {
-        "zh-Hant": "吳志豪"
+        "zh-Hant": "講者3"
       },
-      "org": {
-        "zh-Hant": "Cloud Labs"
-      },
-      "title": {
-        "zh-Hant": "解決方案架構師"
-      },
-      "bio": {
-        "zh-Hant": "Google Cloud 認證架構師。"
-      },
-      "sessionIds": ["cloud_deployment"],
-      "links": [
-        {
-          "platform": "youtube",
-          "label": {
-            "zh-Hant": "YouTube"
-          },
-          "url": "https://youtube.com/@davidwu"
-        }
-      ]
+      "sessionIds": ["session_2_1"],
+      "links": []
     },
     {
-      "id": "jessica_huang",
+      "id": "speaker_4",
       "order": 6,
       "name": {
-        "zh-Hant": "黃嘉宜"
+        "zh-Hant": "講者4"
       },
-      "org": {
-        "zh-Hant": "Android Taiwan GDE"
-      },
-      "title": {
-        "zh-Hant": "GDE"
-      },
-      "bio": {
-        "zh-Hant": "Android GDE，專注在應用架構與跨螢幕體驗。"
-      },
-      "sessionIds": ["android_jetpack"],
-      "links": [
-        {
-          "platform": "facebook",
-          "label": {
-            "zh-Hant": "Facebook"
-          },
-          "url": "https://facebook.com/jessicahuang"
-        }
-      ]
+      "sessionIds": ["session_2_2"],
+      "links": []
     },
     {
-      "id": "kevin_liu",
+      "id": "speaker_5",
       "order": 7,
       "name": {
-        "zh-Hant": "劉俊傑"
+        "zh-Hant": "講者5"
       },
-      "org": {
-        "zh-Hant": "Perf Studio"
-      },
-      "title": {
-        "zh-Hant": "Web 效能顧問"
-      },
-      "bio": {
-        "zh-Hant": "Web 效能優化專家。"
-      },
-      "sessionIds": ["web_performance"],
-      "links": [
-        {
-          "platform": "threads",
-          "label": {
-            "zh-Hant": "Threads"
-          },
-          "url": "https://threads.net/@kevinliu"
-        }
-      ]
+      "sessionIds": ["session_3_1"],
+      "links": []
     },
     {
-      "id": "patricia_chang",
+      "id": "speaker_6",
       "order": 8,
       "name": {
-        "zh-Hant": "張珮綺"
+        "zh-Hant": "講者6"
       },
-      "org": {
-        "zh-Hant": "SkyCloud"
+      "sessionIds": ["session_3_2"],
+      "links": []
+    },
+    {
+      "id": "speaker_7",
+      "order": 9,
+      "name": {
+        "zh-Hant": "講者7"
       },
-      "title": {
-        "zh-Hant": "雲端解決方案架構師"
+      "sessionIds": ["session_4_1"],
+      "links": []
+    },
+    {
+      "id": "yuwei",
+      "order": 10,
+      "name": {
+        "zh-Hant": "育維（暫）"
       },
-      "bio": {
-        "zh-Hant": "雲端解決方案架構師。"
+      "sessionIds": ["session_4_2"],
+      "links": []
+    },
+    {
+      "id": "jimmy",
+      "order": 11,
+      "name": {
+        "zh-Hant": "Jimmy（暫）"
       },
-      "sessionIds": ["cloud_architecture"],
-      "links": [
-        {
-          "platform": "email",
-          "label": {
-            "zh-Hant": "Email"
-          },
-          "url": "mailto:patricia@example.com"
-        }
-      ]
+      "sessionIds": ["session_5_1"],
+      "links": []
+    },
+    {
+      "id": "kevin",
+      "order": 12,
+      "name": {
+        "zh-Hant": "Kevin（暫）"
+      },
+      "sessionIds": ["session_5_2"],
+      "links": []
+    },
+    {
+      "id": "mantou",
+      "order": 13,
+      "name": {
+        "zh-Hant": "饅頭"
+      },
+      "sessionIds": ["session_6_1"],
+      "links": []
+    },
+    {
+      "id": "lao_ge",
+      "order": 14,
+      "name": {
+        "zh-Hant": "勞哥"
+      },
+      "sessionIds": ["session_6_1"],
+      "links": []
+    },
+    {
+      "id": "stephen",
+      "order": 15,
+      "name": {
+        "zh-Hant": "史蒂芬"
+      },
+      "sessionIds": ["session_6_1"],
+      "links": []
     }
   ],
   "sessions": [
     {
-      "id": "opening_ceremony",
+      "id": "opening_intro",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "開幕式"
+        "zh-Hant": "GDG 高雄介紹"
       },
       "abstract": {
-        "zh-Hant": "歡迎詞與活動介紹。"
+        "zh-Hant": "歡迎詞、社群介紹與活動流程說明。"
       },
       "tags": [],
-      "speakerIds": [],
+      "speakerIds": ["weiting_dai"],
       "start": "2026-11-14T09:00",
-      "end": "2026-11-14T09:30",
-      "type": "opening",
-      "links": []
-    },
-    {
-      "id": "gemini_android",
-      "groupId": "ai",
-      "trackId": "track_1",
-      "title": {
-        "zh-Hant": "Gemini 在 Android 的應用"
-      },
-      "abstract": {
-        "zh-Hant": "介紹如何在 Android 上整合 Gemini API 打造智慧體驗。"
-      },
-      "tags": [
-        {
-          "zh-Hant": "初學者"
-        },
-        {
-          "zh-Hant": "Android"
-        }
-      ],
-      "speakerIds": ["andy_wang"],
-      "start": "2026-11-14T09:30",
-      "end": "2026-11-14T10:10",
+      "end": "2026-11-14T09:20",
       "type": "talk",
       "links": []
     },
     {
-      "id": "web_platform",
-      "groupId": "web",
-      "trackId": "track_1",
+      "id": "keynote",
+      "trackId": "track_2",
       "title": {
-        "zh-Hant": "現代 Web 平台的新特性"
+        "zh-Hant": "Keynote (講者待定)"
       },
       "abstract": {
-        "zh-Hant": "分享最新的 Web API 與瀏覽器能力。"
+        "zh-Hant": "議程資訊即將公布。"
       },
-      "tags": [
-        {
-          "zh-Hant": "Web"
-        }
-      ],
-      "speakerIds": ["sarah_chen"],
-      "start": "2026-11-14T10:20",
-      "end": "2026-11-14T11:00",
+      "tags": [],
+      "speakerIds": ["eric_or_yuying"],
+      "start": "2026-11-14T09:20",
+      "end": "2026-11-14T09:50",
       "type": "talk",
       "links": []
     },
     {
-      "id": "ai_workshop",
-      "groupId": "ai",
+      "id": "session_1_1",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "生成式 AI 實戰工作坊"
+        "zh-Hant": "議程 1-1（待定）"
       },
       "abstract": {
-        "zh-Hant": "手把手帶你打造第一個 AI 應用。"
+        "zh-Hant": "議程資訊即將公布。"
       },
-      "tags": [
-        {
-          "zh-Hant": "進階"
-        },
-        {
-          "zh-Hant": "AI"
-        }
-      ],
-      "speakerIds": ["ming_hao_lin", "yuki_tanaka"],
-      "start": "2026-11-14T11:10",
-      "end": "2026-11-14T11:50",
+      "tags": [],
+      "speakerIds": ["speaker_1"],
+      "start": "2026-11-14T10:00",
+      "end": "2026-11-14T10:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_1_2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "議程 1-2（待定）"
+      },
+      "abstract": {
+        "zh-Hant": "議程資訊即將公布。"
+      },
+      "tags": [],
+      "speakerIds": ["speaker_2"],
+      "start": "2026-11-14T10:00",
+      "end": "2026-11-14T10:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_2_1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "議程 2-1（待定）"
+      },
+      "abstract": {
+        "zh-Hant": "議程資訊即將公布。"
+      },
+      "tags": [],
+      "speakerIds": ["speaker_3"],
+      "start": "2026-11-14T11:00",
+      "end": "2026-11-14T11:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_2_2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "議程 2-2（待定）"
+      },
+      "abstract": {
+        "zh-Hant": "議程資訊即將公布。"
+      },
+      "tags": [],
+      "speakerIds": ["speaker_4"],
+      "start": "2026-11-14T11:00",
+      "end": "2026-11-14T11:40",
       "type": "talk",
       "links": []
     },
@@ -418,122 +357,157 @@
         "zh-Hant": "午餐時間"
       },
       "abstract": {
-        "zh-Hant": "享用美味便當並自由交流。"
+        "zh-Hant": "享用便當並自由交流。"
       },
       "tags": [],
       "speakerIds": [],
-      "start": "2026-11-14T12:00",
+      "start": "2026-11-14T11:40",
       "end": "2026-11-14T13:00",
       "type": "lunch",
       "links": []
     },
     {
-      "id": "cloud_deployment",
-      "groupId": "cloud",
+      "id": "session_3_1",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "Cloud Run 部署實戰"
+        "zh-Hant": "議程 3-1（待定）"
       },
       "abstract": {
-        "zh-Hant": "用 Cloud Run 快速部署容器化應用。"
+        "zh-Hant": "議程資訊即將公布。"
       },
-      "tags": [
-        {
-          "zh-Hant": "Cloud"
-        }
-      ],
-      "speakerIds": ["david_wu"],
+      "tags": [],
+      "speakerIds": ["speaker_5"],
       "start": "2026-11-14T13:00",
       "end": "2026-11-14T13:40",
       "type": "talk",
       "links": []
     },
     {
-      "id": "android_jetpack",
-      "groupId": "android",
-      "trackId": "track_1",
+      "id": "session_3_2",
+      "trackId": "track_2",
       "title": {
-        "zh-Hant": "Jetpack Compose 進階技巧"
+        "zh-Hant": "議程 3-2（待定）"
       },
       "abstract": {
-        "zh-Hant": "深入 Compose 的效能與架構設計。"
+        "zh-Hant": "議程資訊即將公布。"
       },
-      "tags": [
-        {
-          "zh-Hant": "Android"
-        },
-        {
-          "zh-Hant": "進階"
-        }
-      ],
-      "speakerIds": ["jessica_huang"],
-      "start": "2026-11-14T13:50",
-      "end": "2026-11-14T14:30",
+      "tags": [],
+      "speakerIds": ["speaker_6"],
+      "start": "2026-11-14T13:00",
+      "end": "2026-11-14T13:40",
       "type": "talk",
       "links": []
     },
     {
-      "id": "coffee_break",
+      "id": "session_4_1",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "下午茶時間"
+        "zh-Hant": "議程 4-1（待定）"
       },
       "abstract": {
-        "zh-Hant": "咖啡與甜點時光。"
+        "zh-Hant": "議程資訊即將公布。"
+      },
+      "tags": [],
+      "speakerIds": ["speaker_7"],
+      "start": "2026-11-14T14:00",
+      "end": "2026-11-14T14:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_4_2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "議程 4-2（待定）"
+      },
+      "abstract": {
+        "zh-Hant": "議程資訊即將公布。"
+      },
+      "tags": [],
+      "speakerIds": ["yuwei"],
+      "start": "2026-11-14T14:00",
+      "end": "2026-11-14T14:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "afternoon_break",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "中場休息"
+      },
+      "abstract": {
+        "zh-Hant": "短暫休息時間。"
       },
       "tags": [],
       "speakerIds": [],
-      "start": "2026-11-14T14:30",
-      "end": "2026-11-14T14:50",
+      "start": "2026-11-14T14:40",
+      "end": "2026-11-14T15:00",
       "type": "break",
       "links": []
     },
     {
-      "id": "web_performance",
-      "groupId": "web",
+      "id": "session_5_1",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "Web 效能極致優化"
+        "zh-Hant": "議程 5-1（待定）"
       },
       "abstract": {
-        "zh-Hant": "Core Web Vitals 全面提升的實戰技巧。"
+        "zh-Hant": "議程資訊即將公布。"
       },
-      "tags": [
-        {
-          "zh-Hant": "Web"
-        },
-        {
-          "zh-Hant": "效能"
-        }
-      ],
-      "speakerIds": ["kevin_liu"],
-      "start": "2026-11-14T14:50",
-      "end": "2026-11-14T15:30",
+      "tags": [],
+      "speakerIds": ["jimmy"],
+      "start": "2026-11-14T15:00",
+      "end": "2026-11-14T15:40",
       "type": "talk",
       "links": []
     },
     {
-      "id": "cloud_architecture",
-      "groupId": "cloud",
-      "trackId": "track_1",
+      "id": "session_5_2",
+      "trackId": "track_2",
       "title": {
-        "zh-Hant": "多雲架構設計思維"
+        "zh-Hant": "議程 5-2（待定）"
       },
       "abstract": {
-        "zh-Hant": "跨雲平台的架構策略與最佳實踐。"
+        "zh-Hant": "議程資訊即將公布。"
       },
-      "tags": [
-        {
-          "zh-Hant": "Cloud"
-        },
-        {
-          "zh-Hant": "架構"
-        }
-      ],
-      "speakerIds": ["patricia_chang"],
-      "start": "2026-11-14T15:40",
-      "end": "2026-11-14T16:20",
+      "tags": [],
+      "speakerIds": ["kevin"],
+      "start": "2026-11-14T15:00",
+      "end": "2026-11-14T15:40",
       "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_6_1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "UI/UX"
+      },
+      "abstract": {
+        "zh-Hant": "議程資訊即將公布。"
+      },
+      "tags": [],
+      "speakerIds": ["mantou", "lao_ge", "stephen"],
+      "start": "2026-11-14T16:00",
+      "end": "2026-11-14T17:30",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "closing_ceremony",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "閉幕"
+      },
+      "abstract": {
+        "zh-Hant": "感謝與活動回顧。"
+      },
+      "tags": [],
+      "speakerIds": ["weiting_dai"],
+      "start": "2026-11-14T17:30",
+      "end": "2026-11-14T17:50",
+      "type": "closing",
       "links": []
     }
   ],
