@@ -10,7 +10,7 @@
 |---|---|---|---|
 | 講者頭像 | 512×512 正方形 | jpg / webp | `images/speakers/{id}.jpg` |
 | 工作人員 | 512×512 正方形 | jpg / webp | `images/staff/{id}.jpg` |
-| 感謝 / 擺攤 / 主辦 logo | 長邊 ≤ 800，透明背景 | png / svg | `images/{type}/{id}.png` |
+| 感謝 / 擺攤 logo | 長邊 ≤ 800，透明背景 | png / svg | `images/{type}/{id}.png` |
 | 站台 OG 分享圖 | 1200×630 | png | `images/og.png` |
 | 分享縮圖（四種類型） | 1200×630 | png | `images/og/{type}/{id}.png`（腳本產生） |
 
@@ -24,7 +24,7 @@
 
 ### 檔案大小上限
 - 講者／工作人員頭像：單張 ≤ 120 KB（512×512，jpg 品質 80 或 webp）
-- 感謝／擺攤／主辦 logo：單張 ≤ 60 KB（png，透明背景）
+- 感謝／擺攤 logo：單張 ≤ 60 KB（png，透明背景）
 - OG 縮圖：單張 ≤ 200 KB（1200×630 png）
 - 場地地圖：單張 ≤ 400 KB（這是唯一允許大檔的，因為要放大看）
 - 單一頁面首次載入（不含圖片）：≤ 300 KB

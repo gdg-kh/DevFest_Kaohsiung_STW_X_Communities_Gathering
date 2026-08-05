@@ -57,7 +57,6 @@ JSON 裡不存圖片路徑，一律由 id 推導：
   工作人員    images/staff/{id}.jpg
   感謝 logo   images/thanks/{id}.png
   擺攤 logo   images/booths/{id}.png
-  主辦 logo   images/organizers/{id}.png（只用於首頁卡片，不產分享頁與 OG 圖）
   分享縮圖    images/og/{type}/{id}.png（只有 speakers / staff / thanks / booths 四種）
 寫一個共用函式處理這件事，不要各檔案自己組字串。
 
@@ -185,11 +184,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     "pauseOnHover": true,
     "position": "afterAbout"
   },
-  "freeTicket": {
-    "enabled": true,
-    "formUrl": "https://forms.gle/example",
-    "closeAt": "2026-10-15T23:59:59+08:00",
-    "reviewDays": 3
+  "thanks": {
+    "showCardShadow": false
   },
   "virtualSpace": {
     "enabled": true,
@@ -208,9 +204,7 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "lastyear", "enabled": true, "order": 8, "type": "external",
       "placement": "home",
       "url": "https://gdgkh.cc/2025/", "label": { "zh-Hant": "去年頁面" } },
-    { "id": "organizer", "enabled": true, "order": 9, "placement": "home",
-      "label": { "zh-Hant": "主辦單位" } },
-    { "id": "ticket", "enabled": true, "order": 10, "type": "cta",
+    { "id": "ticket", "enabled": true, "order": 9, "type": "cta",
       "url": "https://example.com/ticket", "label": { "zh-Hant": "點我購票" } }
   ],
   "ui": {
@@ -229,11 +223,18 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 // data/content.json（節錄）
 {
   "about": {
+    "columns": 2,
     "sections": [
-      { "id": "intro",
+      { "id": "intro", "span": 2,
         "title": { "zh-Hant": "關於 DevFest" },
         "body": { "zh-Hant": "第一段文字\n第二段文字" },
-        "image": "images/about/intro.jpg" }
+        "image": "images/about/intro.jpg" },
+      { "id": "checkin", "span": 1,
+        "title": { "zh-Hant": "報到說明" },
+        "body": { "zh-Hant": "報到流程" } },
+      { "id": "organizer", "span": 1,
+        "title": { "zh-Hant": "主辦單位" },
+        "body": { "zh-Hant": "GDG Kaohsiung" } }
     ]
   },
   "sessionGroups": [
@@ -245,6 +246,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
   "speakers": [
     { "id": "andy_wang", "order": 1,
       "name": { "zh-Hant": "王小明" },
+      "org": { "zh-Hant": "Google Taiwan" },
+      "title": { "zh-Hant": "資深工程師" },
       "bio": { "zh-Hant": "介紹第一行\n介紹第二行" },
       "sessionIds": ["gemini_android"],
       "links": [ { "platform": "github", "label": { "zh-Hant": "GitHub" }, "url": "https://github.com/x" } ] }
@@ -275,11 +278,6 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
   "booths": [
     { "id": "kotlin_tw", "groupId": "community", "order": 1,
       "name": { "zh-Hant": "Kotlin 台灣" },
-      "description": { "zh-Hant": "簡介" }, "links": [] }
-  ],
-  "organizers": [
-    { "id": "gdg_kaohsiung", "order": 1,
-      "name": { "zh-Hant": "GDG Kaohsiung" },
       "description": { "zh-Hant": "簡介" }, "links": [] }
   ]
 }
@@ -313,14 +311,16 @@ export function renderSpeakers(container)
   5. 卡片格線用 CSS Grid，桌機 4 欄、平板 3 欄、手機 2 欄（斷點 1280 / 768），用 auto-fill minmax 實作
   6. 每張卡片用 personCard，傳入：
        image = 由 speaker.id 推導的頭像路徑
-       number = 該講者在全部講者中的 order
        name = speaker.name
+       title = speaker.title（職稱，選填）
+       org = speaker.org（公司/組織，選填）
        subtitle = 第一場議程的 title（沒有議程就不傳）
        description = speaker.bio
   7. 點擊卡片時：
        呼叫 track('select_speaker', { speaker_id: speaker.id })
        組出 payload 呼叫 openModal，payload 內容：
-         image, imageShape 'circle', number, name,
+         image, imageShape 'circle', name,
+         title = speaker.title、org = speaker.org（彈窗頂端組成 affiliation 顯示）
          bio = speaker.bio
          sessionTitle = 第一場議程 title
          sessionAbstract = 第一場議程 abstract
@@ -340,7 +340,8 @@ export function renderSpeakers(container)
 - [ ] 群組標題左側有該群組 color 的色條
 - [ ] 桌機 4 欄、平板 3 欄、手機 2 欄
 - [ ] 卡片的 subtitle 是第一場議程標題；沒有議程時不傳 subtitle 且版面不歪
-- [ ] 點擊卡片開啟的彈窗含：頭像、姓名、bio、議程標題、議程介紹、群組名、標籤、連結
+- [ ] 卡片上顯示 affiliation：`title` 與 `org` 兩者皆有時以「 · 」串接；只有其一時只顯示那一項；皆無時該行不渲染
+- [ ] 點擊卡片開啟的彈窗含：頭像、姓名、affiliation、bio、議程標題、議程介紹、群組名、標籤、連結
 - [ ] 多場議程的講者，彈窗顯示第一場
 - [ ] 把 content.speakers 清空後，顯示 `ui.emptyStateText` 而不是空白
 - [ ] GA 事件 `select_speaker` 有送出且帶正確的 speaker_id

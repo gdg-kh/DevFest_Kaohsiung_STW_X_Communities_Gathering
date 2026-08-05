@@ -44,8 +44,6 @@ const SLUG = {
   T13B: 'virtual-space',
   T14: 'about',
   T14B: 'home-cards',
-  T14C: 'free-ticket',
-  T14D: 'registration',
   T14E: 'sponsor-marquee',
   T15: 'nav',
   T16: 'analytics',

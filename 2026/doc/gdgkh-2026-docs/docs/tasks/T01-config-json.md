@@ -57,7 +57,6 @@ JSON 裡不存圖片路徑，一律由 id 推導：
   工作人員    images/staff/{id}.jpg
   感謝 logo   images/thanks/{id}.png
   擺攤 logo   images/booths/{id}.png
-  主辦 logo   images/organizers/{id}.png（只用於首頁卡片，不產分享頁與 OG 圖）
   分享縮圖    images/og/{type}/{id}.png（只有 speakers / staff / thanks / booths 四種）
 寫一個共用函式處理這件事，不要各檔案自己組字串。
 
@@ -185,11 +184,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     "pauseOnHover": true,
     "position": "afterAbout"
   },
-  "freeTicket": {
-    "enabled": true,
-    "formUrl": "https://forms.gle/example",
-    "closeAt": "2026-10-15T23:59:59+08:00",
-    "reviewDays": 3
+  "thanks": {
+    "showCardShadow": false
   },
   "virtualSpace": {
     "enabled": true,
@@ -208,9 +204,7 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "lastyear", "enabled": true, "order": 8, "type": "external",
       "placement": "home",
       "url": "https://gdgkh.cc/2025/", "label": { "zh-Hant": "去年頁面" } },
-    { "id": "organizer", "enabled": true, "order": 9, "placement": "home",
-      "label": { "zh-Hant": "主辦單位" } },
-    { "id": "ticket", "enabled": true, "order": 10, "type": "cta",
+    { "id": "ticket", "enabled": true, "order": 9, "type": "cta",
       "url": "https://example.com/ticket", "label": { "zh-Hant": "點我購票" } }
   ],
   "ui": {
@@ -229,11 +223,18 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 // data/content.json（節錄）
 {
   "about": {
+    "columns": 2,
     "sections": [
-      { "id": "intro",
+      { "id": "intro", "span": 2,
         "title": { "zh-Hant": "關於 DevFest" },
         "body": { "zh-Hant": "第一段文字\n第二段文字" },
-        "image": "images/about/intro.jpg" }
+        "image": "images/about/intro.jpg" },
+      { "id": "checkin", "span": 1,
+        "title": { "zh-Hant": "報到說明" },
+        "body": { "zh-Hant": "報到流程" } },
+      { "id": "organizer", "span": 1,
+        "title": { "zh-Hant": "主辦單位" },
+        "body": { "zh-Hant": "GDG Kaohsiung" } }
     ]
   },
   "sessionGroups": [
@@ -245,6 +246,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
   "speakers": [
     { "id": "andy_wang", "order": 1,
       "name": { "zh-Hant": "王小明" },
+      "org": { "zh-Hant": "Google Taiwan" },
+      "title": { "zh-Hant": "資深工程師" },
       "bio": { "zh-Hant": "介紹第一行\n介紹第二行" },
       "sessionIds": ["gemini_android"],
       "links": [ { "platform": "github", "label": { "zh-Hant": "GitHub" }, "url": "https://github.com/x" } ] }
@@ -276,11 +279,6 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "kotlin_tw", "groupId": "community", "order": 1,
       "name": { "zh-Hant": "Kotlin 台灣" },
       "description": { "zh-Hant": "簡介" }, "links": [] }
-  ],
-  "organizers": [
-    { "id": "gdg_kaohsiung", "order": 1,
-      "name": { "zh-Hant": "GDG Kaohsiung" },
-      "description": { "zh-Hant": "簡介" }, "links": [] }
   ]
 }
 ```
@@ -298,8 +296,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 
 【要求】
 1. 完全照範例的欄位結構，不可新增或刪除欄位
-2. menu 十個項目全部保留，enabled 全設 true
-   lastyear 與 organizer 兩筆要有 "placement": "home"，其餘不寫這個欄位
+2. menu 九個項目全部保留，enabled 全設 true
+   lastyear 這筆要有 "placement": "home"，其餘不寫這個欄位
    （沒寫就等於 "nav"，另一個可能值是 "footer"）
 3. i18n.languages 三種語言都列出，zh-Hant 的 enabled 為 true，en 和 ja 為 false
 4. 所有 I18nText 只填 zh-Hant-Hant，不要填 en 和 ja
@@ -307,14 +305,12 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 6. ui 區塊補齊這些 key，每個都要有 zh-Hant：
    detailButton, closeButton, sessionLabel, sessionAbstractLabel, groupLabel,
    tagsLabel, linksLabel, roleLabel, backToTop, langLabel, ticketCta,
-   speakerNumberPrefix, allTracksLabel, emptyStateText, eventStartedText,
+   allTracksLabel, emptyStateText, eventStartedText,
    countdownDays, countdownHours, countdownMinutes, countdownSeconds,
    mapZoomHint, viewerResetLabel, viewerCloseLabel, viewerZoomHint,
-   virtualEnterButton, virtualQrHint, virtualMapCrossLink, navMoreLabel,
-   lastYearCardText, organizerCardTitle, freeTicketLink, freeTicketFormButton,
-   freeTicketEligibilityLabel, freeTicketProcessLabel, freeTicketCardButton,
-   directTicketCardButton, freeTicketReviewNote, sponsorMarqueeTitle, ballotHeaderText,
-   cocLinkText, addToCalendarLabel, downloadIcsLabel, googleCalendarLabel,
+   virtualEnterButton, virtualQrHint, navMoreLabel,
+   lastYearCardText, sponsorMarqueeTitle, ballotHeaderText,
+   addToCalendarLabel, downloadIcsLabel, googleCalendarLabel,
    addAllSessionsLabel, loadErrorText, retryButtonLabel, notFoundText, backHomeLabel
 7. 輸出必須是合法 JSON，不可有註解、不可有尾逗號
 
@@ -324,15 +320,15 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 ## T01 驗收條件
 
 - [ ] `JSON.parse` 讀得過，沒有註解也沒有尾逗號
-- [ ] `menu` 剛好十筆，每筆都有 `id` `enabled` `order` `label`
-- [ ] `menu` 的 `order` 是 1 到 10 不重複
-- [ ] `lastyear` 與 `organizer` 的 `placement` 是 `"home"`，其餘九筆沒有 `placement` 欄位
+- [ ] `menu` 剛好九筆，每筆都有 `id` `enabled` `order` `label`
+- [ ] `menu` 的 `order` 是 1 到 9 不重複
+- [ ] `lastyear` 的 `placement` 是 `"home"`，其餘八筆沒有 `placement` 欄位
 - [ ] `i18n.languages` 三筆，只有 `zh-Hant` 的 `enabled` 是 `true`
 - [ ] `site.eventStart` 是 `2026-11-14T08:30:00+08:00`
 - [ ] `analytics.ga4Id` 是空字串
 - [ ] `ui` 區塊包含規格列出的每一個 key，一個都不缺
 - [ ] 全檔搜尋 `"en"` 與 `"ja"` 找不到任何一個（只填 zh-Hant）
-- [ ] `freeTicket`、`virtualSpace`、`sponsorMarquee`、`footer` 四個物件都存在
+- [ ] `virtualSpace`、`sponsorMarquee`、`footer` 三個物件都存在
 
 ---
 

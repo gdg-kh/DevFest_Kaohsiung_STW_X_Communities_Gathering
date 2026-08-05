@@ -8,7 +8,7 @@ docs/
   README.md                      文件索引、規格對照表、Git Flow 流程
   build-tasks.mjs                施工單產生器（改規格後重跑）
   design/                        設計文件九份，給人看的規格與決策
-  tasks/                         施工單 31 份，給模型吃的自足指令
+  tasks/                         施工單 29 份，給模型吃的自足指令
 2026/
   scripts/check.mjs              自動檢查腳本
 package-scripts-snippet.json     要加進 package.json 的四個 script

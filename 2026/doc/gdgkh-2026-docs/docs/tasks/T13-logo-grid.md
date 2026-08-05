@@ -1,4 +1,4 @@
-# T13 感謝／擺攤／主辦區塊 assets/js/sections/logo-grid.js
+# T13 感謝／擺攤區塊 assets/js/sections/logo-grid.js
 
 > 這是一個自足的施工單。**整份貼給模型即可**，不需要再貼別的文件。
 > 分支：`feature/T13-logo-grid`（從 `develop` 切出，完成後合回 `develop`）
@@ -57,7 +57,6 @@ JSON 裡不存圖片路徑，一律由 id 推導：
   工作人員    images/staff/{id}.jpg
   感謝 logo   images/thanks/{id}.png
   擺攤 logo   images/booths/{id}.png
-  主辦 logo   images/organizers/{id}.png（只用於首頁卡片，不產分享頁與 OG 圖）
   分享縮圖    images/og/{type}/{id}.png（只有 speakers / staff / thanks / booths 四種）
 寫一個共用函式處理這件事，不要各檔案自己組字串。
 
@@ -185,11 +184,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     "pauseOnHover": true,
     "position": "afterAbout"
   },
-  "freeTicket": {
-    "enabled": true,
-    "formUrl": "https://forms.gle/example",
-    "closeAt": "2026-10-15T23:59:59+08:00",
-    "reviewDays": 3
+  "thanks": {
+    "showCardShadow": false
   },
   "virtualSpace": {
     "enabled": true,
@@ -208,9 +204,7 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "lastyear", "enabled": true, "order": 8, "type": "external",
       "placement": "home",
       "url": "https://gdgkh.cc/2025/", "label": { "zh-Hant": "去年頁面" } },
-    { "id": "organizer", "enabled": true, "order": 9, "placement": "home",
-      "label": { "zh-Hant": "主辦單位" } },
-    { "id": "ticket", "enabled": true, "order": 10, "type": "cta",
+    { "id": "ticket", "enabled": true, "order": 9, "type": "cta",
       "url": "https://example.com/ticket", "label": { "zh-Hant": "點我購票" } }
   ],
   "ui": {
@@ -229,11 +223,18 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 // data/content.json（節錄）
 {
   "about": {
+    "columns": 2,
     "sections": [
-      { "id": "intro",
+      { "id": "intro", "span": 2,
         "title": { "zh-Hant": "關於 DevFest" },
         "body": { "zh-Hant": "第一段文字\n第二段文字" },
-        "image": "images/about/intro.jpg" }
+        "image": "images/about/intro.jpg" },
+      { "id": "checkin", "span": 1,
+        "title": { "zh-Hant": "報到說明" },
+        "body": { "zh-Hant": "報到流程" } },
+      { "id": "organizer", "span": 1,
+        "title": { "zh-Hant": "主辦單位" },
+        "body": { "zh-Hant": "GDG Kaohsiung" } }
     ]
   },
   "sessionGroups": [
@@ -245,6 +246,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
   "speakers": [
     { "id": "andy_wang", "order": 1,
       "name": { "zh-Hant": "王小明" },
+      "org": { "zh-Hant": "Google Taiwan" },
+      "title": { "zh-Hant": "資深工程師" },
       "bio": { "zh-Hant": "介紹第一行\n介紹第二行" },
       "sessionIds": ["gemini_android"],
       "links": [ { "platform": "github", "label": { "zh-Hant": "GitHub" }, "url": "https://github.com/x" } ] }
@@ -276,11 +279,6 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "kotlin_tw", "groupId": "community", "order": 1,
       "name": { "zh-Hant": "Kotlin 台灣" },
       "description": { "zh-Hant": "簡介" }, "links": [] }
-  ],
-  "organizers": [
-    { "id": "gdg_kaohsiung", "order": 1,
-      "name": { "zh-Hant": "GDG Kaohsiung" },
-      "description": { "zh-Hant": "簡介" }, "links": [] }
   ]
 }
 ```
@@ -292,9 +290,9 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 # 本次任務
 
 ```
-【任務】產生 /2026/assets/js/sections/logo-grid.js，一個檔案處理三個區塊。
+【任務】產生 /2026/assets/js/sections/logo-grid.js，一個檔案處理兩個區塊。
 
-【要求】export 三個函式，內部共用同一個私有函式：
+【要求】export 兩個函式，內部共用同一個私有函式：
 
 export function renderThanks(container)
   用 getGroupedList('thanks', 'thanksGroups')
@@ -306,10 +304,6 @@ export function renderThanks(container)
 export function renderBooths(container)
   用 getGroupedList('booths', 'boothGroups')
   這一區維持用 logoCard（攤位是參與者不是投票者，視覺要跟感謝票區分）
-
-export function renderOrganizers(container)
-  用 getSortedList('organizers')，不分組。
-  這個函式由首頁卡片區塊（T14B）呼叫，不是獨立的選單區塊。
 
 私有函式 renderLogoSection(container, groups)
   groups 是 [{ group, items }]。
@@ -334,11 +328,9 @@ export function renderOrganizers(container)
 - [ ] `renderBooths` 用的是 `logoCard`，兩區視覺明顯不同
 - [ ] 感謝區依群組分區，群組標題是分區牌樣式，群組間有細虛線
 - [ ] 感謝區桌機 4 欄、平板 3 欄、手機 2 欄
-- [ ] `renderOrganizers` 不分組
 - [ ] 群組為 null 時不輸出標題
-- [ ] 三者的彈窗 payload 都是 `imageShape: 'square'`
-- [ ] 三個函式共用同一個私有函式，沒有三段重複程式碼
-- [ ] organizers 的圖片路徑是 `images/organizers/{id}.png`
+- [ ] 兩者的彈窗 payload 都是 `imageShape: 'square'`
+- [ ] 兩個函式共用同一個私有函式，沒有兩段重複程式碼
 
 ---
 

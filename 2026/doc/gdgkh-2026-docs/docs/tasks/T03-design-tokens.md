@@ -57,7 +57,6 @@ JSON 裡不存圖片路徑，一律由 id 推導：
   工作人員    images/staff/{id}.jpg
   感謝 logo   images/thanks/{id}.png
   擺攤 logo   images/booths/{id}.png
-  主辦 logo   images/organizers/{id}.png（只用於首頁卡片，不產分享頁與 OG 圖）
   分享縮圖    images/og/{type}/{id}.png（只有 speakers / staff / thanks / booths 四種）
 寫一個共用函式處理這件事，不要各檔案自己組字串。
 
@@ -165,7 +164,7 @@ hex 值要精確、不可用近似色、不可自創顏色、不可用替代字�
 顏色（**這些是 GDG 官方色票的精確 hex，一個字元都不可以改，也不可以自己加新顏色**）
   --gk-red: #ea4335        GDG Red 500，主色、CTA、票頭、印章
   --gk-blue: #4285f4       GDG Blue 500，次要色、群組標籤
-  --gk-yellow: #f9ab00     GDG Yellow 600，強調、號次底色
+  --gk-yellow: #f9ab00     GDG Yellow 600，強調、標籤底色
   --gk-green: #34a853      GDG Green 500，時間軸、成功狀態
   --gk-ink: #1e1e1e        GDG Black 02，文字與票匭底（注意不是純黑）
   --gk-paper: #f0f0f0      GDG OFF White，背景與票身（注意不是純白）
@@ -189,7 +188,7 @@ hex 值要精確、不可用近似色、不可自創顏色、不可用替代字�
   --gk-font-mono: 'Google Sans Mono', ui-monospace, SFMono-Regular,
                   'SF Mono', Consolas, monospace
 
-  顯示字體只用在標題、票頭、號次徽章、購票按鈕，其餘一律用 --gk-font-body
+  顯示字體只用在標題、票頭、購票按鈕，其餘一律用 --gk-font-body
   不可以用 Arial、Helvetica、Open Sans、Archivo、Anton 當品牌字
 
 字重（中文很重要）

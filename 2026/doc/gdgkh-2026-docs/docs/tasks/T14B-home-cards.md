@@ -57,7 +57,6 @@ JSON 裡不存圖片路徑，一律由 id 推導：
   工作人員    images/staff/{id}.jpg
   感謝 logo   images/thanks/{id}.png
   擺攤 logo   images/booths/{id}.png
-  主辦 logo   images/organizers/{id}.png（只用於首頁卡片，不產分享頁與 OG 圖）
   分享縮圖    images/og/{type}/{id}.png（只有 speakers / staff / thanks / booths 四種）
 寫一個共用函式處理這件事，不要各檔案自己組字串。
 
@@ -185,11 +184,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     "pauseOnHover": true,
     "position": "afterAbout"
   },
-  "freeTicket": {
-    "enabled": true,
-    "formUrl": "https://forms.gle/example",
-    "closeAt": "2026-10-15T23:59:59+08:00",
-    "reviewDays": 3
+  "thanks": {
+    "showCardShadow": false
   },
   "virtualSpace": {
     "enabled": true,
@@ -208,9 +204,7 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "lastyear", "enabled": true, "order": 8, "type": "external",
       "placement": "home",
       "url": "https://gdgkh.cc/2025/", "label": { "zh-Hant": "去年頁面" } },
-    { "id": "organizer", "enabled": true, "order": 9, "placement": "home",
-      "label": { "zh-Hant": "主辦單位" } },
-    { "id": "ticket", "enabled": true, "order": 10, "type": "cta",
+    { "id": "ticket", "enabled": true, "order": 9, "type": "cta",
       "url": "https://example.com/ticket", "label": { "zh-Hant": "點我購票" } }
   ],
   "ui": {
@@ -229,11 +223,18 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 // data/content.json（節錄）
 {
   "about": {
+    "columns": 2,
     "sections": [
-      { "id": "intro",
+      { "id": "intro", "span": 2,
         "title": { "zh-Hant": "關於 DevFest" },
         "body": { "zh-Hant": "第一段文字\n第二段文字" },
-        "image": "images/about/intro.jpg" }
+        "image": "images/about/intro.jpg" },
+      { "id": "checkin", "span": 1,
+        "title": { "zh-Hant": "報到說明" },
+        "body": { "zh-Hant": "報到流程" } },
+      { "id": "organizer", "span": 1,
+        "title": { "zh-Hant": "主辦單位" },
+        "body": { "zh-Hant": "GDG Kaohsiung" } }
     ]
   },
   "sessionGroups": [
@@ -245,6 +246,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
   "speakers": [
     { "id": "andy_wang", "order": 1,
       "name": { "zh-Hant": "王小明" },
+      "org": { "zh-Hant": "Google Taiwan" },
+      "title": { "zh-Hant": "資深工程師" },
       "bio": { "zh-Hant": "介紹第一行\n介紹第二行" },
       "sessionIds": ["gemini_android"],
       "links": [ { "platform": "github", "label": { "zh-Hant": "GitHub" }, "url": "https://github.com/x" } ] }
@@ -276,11 +279,6 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "kotlin_tw", "groupId": "community", "order": 1,
       "name": { "zh-Hant": "Kotlin 台灣" },
       "description": { "zh-Hant": "簡介" }, "links": [] }
-  ],
-  "organizers": [
-    { "id": "gdg_kaohsiung", "order": 1,
-      "name": { "zh-Hant": "GDG Kaohsiung" },
-      "description": { "zh-Hant": "簡介" }, "links": [] }
   ]
 }
 ```
@@ -294,41 +292,27 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 ```
 【任務】產生 /2026/assets/js/sections/home-cards.js。
 
-【背景】「去年頁面」與「主辦單位」不放在導覽列，
-改成活動介紹區塊最下方的一排卡片。
+【背景】「去年頁面」不放在導覽列，改成活動介紹區塊最下方的一排卡片。
 
 【可用模組】
   import { el, clear, mount } from '../core/dom.js'
   import { t } from '../core/i18n.js'
-  import { getConfig, getSortedList } from '../core/store.js'
-  import { logoCard } from '../ui/card.js'
-  import { openModal } from '../ui/detail-modal.js'
+  import { getConfig } from '../core/store.js'
   import { track } from '../core/analytics.js'
 
 【要求】
 export function renderHomeCards(container)
 
 1. 先 clear(container)
-2. 區塊標題用 config.ui.organizerCardTitle
-3. 卡片格線：桌機四欄、平板三欄、手機兩欄
-4. 依 config.menu 中 placement 為 'home' 的項目決定要渲染哪些卡片，
+2. 卡片格線：桌機四欄、平板三欄、手機兩欄
+3. 依 config.menu 中 placement 為 'home' 的項目決定要渲染哪些卡片，
    依 order 排序。項目 enabled 為 false 就跳過
-5. id 為 'organizer' 的項目：
-   對 getSortedList('organizers') 每一筆產一張 logoCard
-   image 由 id 推導（images/organizers/{id}.png）
-   點擊時 track('select_organizer', { organizer_id: item.id }) 並 openModal，
-   payload：image、imageShape 'square'、name、bio 用 description、links
-6. id 為 'lastyear' 的項目：
-   產一張外連卡片（不是 logoCard，另外做一個樣式）
-   顯示 config.ui.lastYearCardText 的文字與該項目的 label
+4. id 為 'lastyear' 的項目：
+   產一張外連卡片，顯示 config.ui.lastYearCardText 的文字與該項目的 label
    點擊直接開新分頁（<a target="_blank" rel="noopener noreferrer">），
    並 track('click_last_year')
-7. 卡片區最後加一張免費票申請卡：
-   import { isFreeTicketAvailable, openFreeTicketModal } from '../ui/free-ticket.js'
-   isFreeTicketAvailable() 為 true 時才渲染，
-   卡片文字用 content.freeTicket 的 title 與 summary，
-   點擊呼叫 openFreeTicketModal('home_card')
-8. 完全沒有卡片可渲染時，container 不渲染任何東西
+   該項目的 url 為空字串時不渲染
+5. 完全沒有卡片可渲染時，container 不渲染任何東西
 
 【產出】只輸出 home-cards.js 的完整內容，附上需要的 CSS 區塊。
 ```
@@ -336,12 +320,9 @@ export function renderHomeCards(container)
 ## T14B 驗收條件
 
 - [ ] 只渲染 `placement` 為 `home` 的選單項目
-- [ ] 把 organizer 的 `enabled` 設 false 後，主辦卡片消失
-- [ ] 主辦卡片點擊開彈窗，不是外連
 - [ ] 去年頁面卡片是 `<a target="_blank">`，點擊開新分頁
 - [ ] 去年頁面的 url 為空字串時，該卡片不渲染
-- [ ] 免費票卡片在 `freeTicket.enabled` 為 false 時不渲染
-- [ ] 全部都不渲染時，container 是空的且沒有標題殘留
+- [ ] 全部都不渲染時，container 是空的
 - [ ] 桌機 4 欄、平板 3 欄、手機 2 欄
 
 ---

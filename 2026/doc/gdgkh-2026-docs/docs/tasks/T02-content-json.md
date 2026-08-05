@@ -57,7 +57,6 @@ JSON 裡不存圖片路徑，一律由 id 推導：
   工作人員    images/staff/{id}.jpg
   感謝 logo   images/thanks/{id}.png
   擺攤 logo   images/booths/{id}.png
-  主辦 logo   images/organizers/{id}.png（只用於首頁卡片，不產分享頁與 OG 圖）
   分享縮圖    images/og/{type}/{id}.png（只有 speakers / staff / thanks / booths 四種）
 寫一個共用函式處理這件事，不要各檔案自己組字串。
 
@@ -185,11 +184,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     "pauseOnHover": true,
     "position": "afterAbout"
   },
-  "freeTicket": {
-    "enabled": true,
-    "formUrl": "https://forms.gle/example",
-    "closeAt": "2026-10-15T23:59:59+08:00",
-    "reviewDays": 3
+  "thanks": {
+    "showCardShadow": false
   },
   "virtualSpace": {
     "enabled": true,
@@ -208,9 +204,7 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "lastyear", "enabled": true, "order": 8, "type": "external",
       "placement": "home",
       "url": "https://gdgkh.cc/2025/", "label": { "zh-Hant": "去年頁面" } },
-    { "id": "organizer", "enabled": true, "order": 9, "placement": "home",
-      "label": { "zh-Hant": "主辦單位" } },
-    { "id": "ticket", "enabled": true, "order": 10, "type": "cta",
+    { "id": "ticket", "enabled": true, "order": 9, "type": "cta",
       "url": "https://example.com/ticket", "label": { "zh-Hant": "點我購票" } }
   ],
   "ui": {
@@ -229,11 +223,18 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 // data/content.json（節錄）
 {
   "about": {
+    "columns": 2,
     "sections": [
-      { "id": "intro",
+      { "id": "intro", "span": 2,
         "title": { "zh-Hant": "關於 DevFest" },
         "body": { "zh-Hant": "第一段文字\n第二段文字" },
-        "image": "images/about/intro.jpg" }
+        "image": "images/about/intro.jpg" },
+      { "id": "checkin", "span": 1,
+        "title": { "zh-Hant": "報到說明" },
+        "body": { "zh-Hant": "報到流程" } },
+      { "id": "organizer", "span": 1,
+        "title": { "zh-Hant": "主辦單位" },
+        "body": { "zh-Hant": "GDG Kaohsiung" } }
     ]
   },
   "sessionGroups": [
@@ -278,11 +279,6 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "kotlin_tw", "groupId": "community", "order": 1,
       "name": { "zh-Hant": "Kotlin 台灣" },
       "description": { "zh-Hant": "簡介" }, "links": [] }
-  ],
-  "organizers": [
-    { "id": "gdg_kaohsiung", "order": 1,
-      "name": { "zh-Hant": "GDG Kaohsiung" },
-      "description": { "zh-Hant": "簡介" }, "links": [] }
   ]
 }
 ```
@@ -301,7 +297,9 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 【要求】
 1. 完全照範例結構
 2. 資料量：
-   - about.sections 3 筆
+   - about 物件：`columns` 為 2（1–4 之整數），底下 `sections` 6 筆
+     （intro / history / vision / checkin / free_ticket / organizer；
+      前三筆 `span: 2`（有圖或滿版），後三筆 `span: 1`（純文字兩張並排））
    - sessionGroups 4 筆（Android / Web / AI / Cloud），
      color 只能用 GDG 四色 #ea4335 #4285f4 #f9ab00 #34a853，各給一色
    - tracks 1 筆（track_1，名稱「第一會場」）
@@ -311,9 +309,6 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
    - thanksGroups 3 筆
    - thanks 7 筆，其中 2 筆的 marquee 設為 false、1 筆省略該欄位、其餘為 true
    - boothGroups 2 筆、booths 5 筆
-   - organizers 2 筆（不需要分享頁，但一樣要有 id）
-   - registration 一筆（orderNotice、directTitle、directSummary）
-   - freeTicket 一筆（title、summary、eligibility 三則、process 四則、notes、closedText）
    - virtualSpace 一筆（title、description、notes 兩則）
    - venueMaps 2 筆（一樓平面圖、二樓平面圖），欄位是 file 與 caption
 3. 關聯必須雙向一致：speaker.sessionIds 裡的 id 一定要在 sessions 存在，
@@ -337,7 +332,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 ## T02 驗收條件
 
 - [ ] `JSON.parse` 讀得過
-- [ ] 各陣列筆數：about.sections 3、sessionGroups 4、tracks 1、speakers 8、sessions 10、staff 6、thanksGroups 3、thanks 7、boothGroups 2、booths 5、organizers 2、venueMaps 2
+- [ ] `about.columns` 為 2；各陣列筆數：about.sections 6、sessionGroups 4、tracks 1、speakers 8、sessions 10、staff 6、thanksGroups 3、thanks 7、boothGroups 2、booths 5、venueMaps 2
+- [ ] `about.sections` 前 3 筆 `span` 為 2，後 3 筆 `span` 為 1
 - [ ] 每個 `id` 都是小寫英文加底線，同類型內不重複
 - [ ] 全檔搜尋 `avatar` `image` `logo` `ogImage` 都找不到（圖片路徑由 id 推導）
 - [ ] 全檔搜尋 `slug` 找不到（只有 id）

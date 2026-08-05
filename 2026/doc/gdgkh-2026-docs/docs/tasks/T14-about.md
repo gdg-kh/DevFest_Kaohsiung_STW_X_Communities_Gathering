@@ -57,7 +57,6 @@ JSON 裡不存圖片路徑，一律由 id 推導：
   工作人員    images/staff/{id}.jpg
   感謝 logo   images/thanks/{id}.png
   擺攤 logo   images/booths/{id}.png
-  主辦 logo   images/organizers/{id}.png（只用於首頁卡片，不產分享頁與 OG 圖）
   分享縮圖    images/og/{type}/{id}.png（只有 speakers / staff / thanks / booths 四種）
 寫一個共用函式處理這件事，不要各檔案自己組字串。
 
@@ -185,11 +184,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     "pauseOnHover": true,
     "position": "afterAbout"
   },
-  "freeTicket": {
-    "enabled": true,
-    "formUrl": "https://forms.gle/example",
-    "closeAt": "2026-10-15T23:59:59+08:00",
-    "reviewDays": 3
+  "thanks": {
+    "showCardShadow": false
   },
   "virtualSpace": {
     "enabled": true,
@@ -208,9 +204,7 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "lastyear", "enabled": true, "order": 8, "type": "external",
       "placement": "home",
       "url": "https://gdgkh.cc/2025/", "label": { "zh-Hant": "去年頁面" } },
-    { "id": "organizer", "enabled": true, "order": 9, "placement": "home",
-      "label": { "zh-Hant": "主辦單位" } },
-    { "id": "ticket", "enabled": true, "order": 10, "type": "cta",
+    { "id": "ticket", "enabled": true, "order": 9, "type": "cta",
       "url": "https://example.com/ticket", "label": { "zh-Hant": "點我購票" } }
   ],
   "ui": {
@@ -229,11 +223,18 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 // data/content.json（節錄）
 {
   "about": {
+    "columns": 2,
     "sections": [
-      { "id": "intro",
+      { "id": "intro", "span": 2,
         "title": { "zh-Hant": "關於 DevFest" },
         "body": { "zh-Hant": "第一段文字\n第二段文字" },
-        "image": "images/about/intro.jpg" }
+        "image": "images/about/intro.jpg" },
+      { "id": "checkin", "span": 1,
+        "title": { "zh-Hant": "報到說明" },
+        "body": { "zh-Hant": "報到流程" } },
+      { "id": "organizer", "span": 1,
+        "title": { "zh-Hant": "主辦單位" },
+        "body": { "zh-Hant": "GDG Kaohsiung" } }
     ]
   },
   "sessionGroups": [
@@ -245,6 +246,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
   "speakers": [
     { "id": "andy_wang", "order": 1,
       "name": { "zh-Hant": "王小明" },
+      "org": { "zh-Hant": "Google Taiwan" },
+      "title": { "zh-Hant": "資深工程師" },
       "bio": { "zh-Hant": "介紹第一行\n介紹第二行" },
       "sessionIds": ["gemini_android"],
       "links": [ { "platform": "github", "label": { "zh-Hant": "GitHub" }, "url": "https://github.com/x" } ] }
@@ -276,11 +279,6 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "kotlin_tw", "groupId": "community", "order": 1,
       "name": { "zh-Hant": "Kotlin 台灣" },
       "description": { "zh-Hant": "簡介" }, "links": [] }
-  ],
-  "organizers": [
-    { "id": "gdg_kaohsiung", "order": 1,
-      "name": { "zh-Hant": "GDG Kaohsiung" },
-      "description": { "zh-Hant": "簡介" }, "links": [] }
   ]
 }
 ```
@@ -294,21 +292,41 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 ```
 【任務】產生 /2026/assets/js/sections/about.js。
 
+【資料模型】content.about 結構：
+  {
+    columns: 2,                  // 桌機欄數，1..4，預設 2；不合法值 fallback 2
+    sections: [
+      { title, body, image?, span? }, // span 1..columns，預設 = columns（整列）
+      ...
+    ]
+  }
+
 【要求】
 export function renderAbout(container)
-1. 取 getContent().about.sections
-2. 每個 section 輸出：標題（h3）、圖片（有 image 才輸出，alt 用標題文字，
-   加 loading="lazy"）、內文（容器加 class 'gk-multiline'）
-3. 圖文交錯排版：桌機第一筆圖在右、第二筆圖在左，依序交替；手機一律圖在上文在下
-4. about.sections 為空或不存在時，container 不渲染任何東西也不報錯
+1. 取 getContent().about；讀 about.columns（clamp 到 1..4，預設 2），
+   在 container 上設 `--gk-about-columns` CSS 變數
+2. 遍歷 about.sections：每個 section 輸出：
+   標題（h3）、圖片（有 image 才輸出，alt 用標題文字，加 loading="lazy"）、
+   內文（容器加 class 'gk-multiline'）
+3. 每個 section 讀 section.span（clamp 到 1..columns，預設 = columns），
+   在 section 元素上設 `--gk-about-span` CSS 變數，
+   CSS 用 `grid-column: span var(--gk-about-span)` 決定它跨幾欄
+4. 圖文交錯排版：桌機第一筆圖在右、第二筆圖在左，依序交替；
+   手機（<768px）強制單欄、圖在上文在下
+5. about.sections 為空或不存在時，container 不渲染任何東西也不報錯
 
-【產出】只輸出 about.js 的完整內容，附上需要的 CSS 區塊。
+【產出】只輸出 about.js 的完整內容，附上需要的 CSS 區塊
+（含 `--gk-about-columns` 與 `--gk-about-span` 的 CSS 變數宣告）。
 ```
 
 ## T14 驗收條件
 
+- [ ] `about.columns` 設 2、`section.span` 都不設時，桌機呈現兩欄整列（每格 span 2）
+- [ ] `about.columns` 設 2、某筆 `section.span` 設 1 時，該格只佔半欄
+- [ ] `about.columns` 設不合法值（例如 0 或 5）時 fallback 為 2
+- [ ] `section.span` 大於 columns 時被 clamp 為 columns（不會爆版）
+- [ ] 手機（<768px）強制單欄，忽略 columns/span 設定
 - [ ] 桌機圖文交錯：第一筆圖在右、第二筆圖在左、第三筆圖在右
-- [ ] 手機一律圖在上文在下
 - [ ] 內文容器有 `gk-multiline`，含 `\n` 的文字正確換行
 - [ ] 沒有 `image` 的 section 不渲染圖片，版面不留空洞
 - [ ] 圖片有 `alt`（用標題文字）與 `loading="lazy"`

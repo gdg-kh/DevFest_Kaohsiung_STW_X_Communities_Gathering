@@ -62,7 +62,6 @@ JSON 裡不存圖片路徑，一律由 id 推導：
   工作人員    images/staff/{id}.jpg
   感謝 logo   images/thanks/{id}.png
   擺攤 logo   images/booths/{id}.png
-  主辦 logo   images/organizers/{id}.png（只用於首頁卡片，不產分享頁與 OG 圖）
   分享縮圖    images/og/{type}/{id}.png（只有 speakers / staff / thanks / booths 四種）
 寫一個共用函式處理這件事，不要各檔案自己組字串。
 
@@ -186,11 +185,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     "pauseOnHover": true,
     "position": "afterAbout"
   },
-  "freeTicket": {
-    "enabled": true,
-    "formUrl": "https://forms.gle/example",
-    "closeAt": "2026-10-15T23:59:59+08:00",
-    "reviewDays": 3
+  "thanks": {
+    "showCardShadow": false
   },
   "virtualSpace": {
     "enabled": true,
@@ -209,9 +205,7 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "lastyear", "enabled": true, "order": 8, "type": "external",
       "placement": "home",
       "url": "https://gdgkh.cc/2025/", "label": { "zh-Hant": "去年頁面" } },
-    { "id": "organizer", "enabled": true, "order": 9, "placement": "home",
-      "label": { "zh-Hant": "主辦單位" } },
-    { "id": "ticket", "enabled": true, "order": 10, "type": "cta",
+    { "id": "ticket", "enabled": true, "order": 9, "type": "cta",
       "url": "https://example.com/ticket", "label": { "zh-Hant": "點我購票" } }
   ],
   "ui": {
@@ -230,11 +224,18 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 // data/content.json（節錄）
 {
   "about": {
+    "columns": 2,
     "sections": [
-      { "id": "intro",
+      { "id": "intro", "span": 2,
         "title": { "zh-Hant": "關於 DevFest" },
         "body": { "zh-Hant": "第一段文字\n第二段文字" },
-        "image": "images/about/intro.jpg" }
+        "image": "images/about/intro.jpg" },
+      { "id": "checkin", "span": 1,
+        "title": { "zh-Hant": "報到說明" },
+        "body": { "zh-Hant": "報到流程" } },
+      { "id": "organizer", "span": 1,
+        "title": { "zh-Hant": "主辦單位" },
+        "body": { "zh-Hant": "GDG Kaohsiung" } }
     ]
   },
   "sessionGroups": [
@@ -279,11 +280,6 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
     { "id": "kotlin_tw", "groupId": "community", "order": 1,
       "name": { "zh-Hant": "Kotlin 台灣" },
       "description": { "zh-Hant": "簡介" }, "links": [] }
-  ],
-  "organizers": [
-    { "id": "gdg_kaohsiung", "order": 1,
-      "name": { "zh-Hant": "GDG Kaohsiung" },
-      "description": { "zh-Hant": "簡介" }, "links": [] }
   ]
 }
 ```
@@ -295,7 +291,7 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 ```
 基礎層   T01 → T02 → T03 → T04 → T05 → T06
 元件層   T07 → T08 → T09 → T09B → T09C → T09D
-區塊層   T10 → T11 → T12 → T13 → T13B → T14 → T14B → T14C → T14D → T14E
+區塊層   T10 → T11 → T12 → T13 → T13B → T14 → T14B → T14E
 外殼層   T15 → T16 → T17 → T17B
 後台     T18 → T19 → T20
 腳本     T21 → T22
@@ -312,8 +308,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 
 【要求】
 1. 完全照範例的欄位結構，不可新增或刪除欄位
-2. menu 十個項目全部保留，enabled 全設 true
-   lastyear 與 organizer 兩筆要有 "placement": "home"，其餘不寫這個欄位
+2. menu 九個項目全部保留，enabled 全設 true
+   lastyear 這筆要有 "placement": "home"，其餘不寫這個欄位
    （沒寫就等於 "nav"，另一個可能值是 "footer"）
 3. i18n.languages 三種語言都列出，zh-Hant 的 enabled 為 true，en 和 ja 為 false
 4. 所有 I18nText 只填 zh-Hant-Hant，不要填 en 和 ja
@@ -321,14 +317,12 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 6. ui 區塊補齊這些 key，每個都要有 zh-Hant：
    detailButton, closeButton, sessionLabel, sessionAbstractLabel, groupLabel,
    tagsLabel, linksLabel, roleLabel, backToTop, langLabel, ticketCta,
-   speakerNumberPrefix, allTracksLabel, emptyStateText, eventStartedText,
+   allTracksLabel, emptyStateText, eventStartedText,
    countdownDays, countdownHours, countdownMinutes, countdownSeconds,
    mapZoomHint, viewerResetLabel, viewerCloseLabel, viewerZoomHint,
-   virtualEnterButton, virtualQrHint, virtualMapCrossLink, navMoreLabel,
-   lastYearCardText, organizerCardTitle, freeTicketLink, freeTicketFormButton,
-   freeTicketEligibilityLabel, freeTicketProcessLabel, freeTicketCardButton,
-   directTicketCardButton, freeTicketReviewNote, sponsorMarqueeTitle, ballotHeaderText,
-   cocLinkText, addToCalendarLabel, downloadIcsLabel, googleCalendarLabel,
+   virtualEnterButton, virtualQrHint, navMoreLabel,
+   lastYearCardText, sponsorMarqueeTitle, ballotHeaderText,
+   addToCalendarLabel, downloadIcsLabel, googleCalendarLabel,
    addAllSessionsLabel, loadErrorText, retryButtonLabel, notFoundText, backHomeLabel
 7. 輸出必須是合法 JSON，不可有註解、不可有尾逗號
 
@@ -338,15 +332,15 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 ## T01 驗收條件
 
 - [ ] `JSON.parse` 讀得過，沒有註解也沒有尾逗號
-- [ ] `menu` 剛好十筆，每筆都有 `id` `enabled` `order` `label`
-- [ ] `menu` 的 `order` 是 1 到 10 不重複
-- [ ] `lastyear` 與 `organizer` 的 `placement` 是 `"home"`，其餘九筆沒有 `placement` 欄位
+- [ ] `menu` 剛好九筆，每筆都有 `id` `enabled` `order` `label`
+- [ ] `menu` 的 `order` 是 1 到 9 不重複
+- [ ] `lastyear` 的 `placement` 是 `"home"`，其餘八筆沒有 `placement` 欄位
 - [ ] `i18n.languages` 三筆，只有 `zh-Hant` 的 `enabled` 是 `true`
 - [ ] `site.eventStart` 是 `2026-11-14T08:30:00+08:00`
 - [ ] `analytics.ga4Id` 是空字串
 - [ ] `ui` 區塊包含規格列出的每一個 key，一個都不缺
 - [ ] 全檔搜尋 `"en"` 與 `"ja"` 找不到任何一個（只填 zh-Hant）
-- [ ] `freeTicket`、`virtualSpace`、`sponsorMarquee`、`footer` 四個物件都存在
+- [ ] `virtualSpace`、`sponsorMarquee`、`footer` 三個物件都存在
 
 ---
 
@@ -360,7 +354,9 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 【要求】
 1. 完全照範例結構
 2. 資料量：
-   - about.sections 3 筆
+   - about 物件：`columns` 為 2（1–4 之整數），底下 `sections` 6 筆
+     （intro / history / vision / checkin / free_ticket / organizer；
+      前三筆 `span: 2`（有圖或滿版），後三筆 `span: 1`（純文字兩張並排））
    - sessionGroups 4 筆（Android / Web / AI / Cloud），
      color 只能用 GDG 四色 #ea4335 #4285f4 #f9ab00 #34a853，各給一色
    - tracks 1 筆（track_1，名稱「第一會場」）
@@ -370,9 +366,6 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
    - thanksGroups 3 筆
    - thanks 7 筆，其中 2 筆的 marquee 設為 false、1 筆省略該欄位、其餘為 true
    - boothGroups 2 筆、booths 5 筆
-   - organizers 2 筆（不需要分享頁，但一樣要有 id）
-   - registration 一筆（orderNotice、directTitle、directSummary）
-   - freeTicket 一筆（title、summary、eligibility 三則、process 四則、notes、closedText）
    - virtualSpace 一筆（title、description、notes 兩則）
    - venueMaps 2 筆（一樓平面圖、二樓平面圖），欄位是 file 與 caption
 3. 關聯必須雙向一致：speaker.sessionIds 裡的 id 一定要在 sessions 存在，
@@ -396,7 +389,8 @@ export function track(eventName, params) // 送 GA4 事件，GA 未設定時靜�
 ## T02 驗收條件
 
 - [ ] `JSON.parse` 讀得過
-- [ ] 各陣列筆數：about.sections 3、sessionGroups 4、tracks 1、speakers 8、sessions 10、staff 6、thanksGroups 3、thanks 7、boothGroups 2、booths 5、organizers 2、venueMaps 2
+- [ ] `about.columns` 為 2；各陣列筆數：about.sections 6、sessionGroups 4、tracks 1、speakers 8、sessions 10、staff 6、thanksGroups 3、thanks 7、boothGroups 2、booths 5、venueMaps 2
+- [ ] `about.sections` 前 3 筆 `span` 為 2，後 3 筆 `span` 為 1
 - [ ] 每個 `id` 都是小寫英文加底線，同類型內不重複
 - [ ] 全檔搜尋 `avatar` `image` `logo` `ogImage` 都找不到（圖片路徑由 id 推導）
 - [ ] 全檔搜尋 `slug` 找不到（只有 id）
@@ -433,7 +427,7 @@ hex 值要精確、不可用近似色、不可自創顏色、不可用替代字�
 顏色（**這些是 GDG 官方色票的精確 hex，一個字元都不可以改，也不可以自己加新顏色**）
   --gk-red: #ea4335        GDG Red 500，主色、CTA、票頭、印章
   --gk-blue: #4285f4       GDG Blue 500，次要色、群組標籤
-  --gk-yellow: #f9ab00     GDG Yellow 600，強調、號次底色
+  --gk-yellow: #f9ab00     GDG Yellow 600，強調、標籤底色
   --gk-green: #34a853      GDG Green 500，時間軸、成功狀態
   --gk-ink: #1e1e1e        GDG Black 02，文字與票匭底（注意不是純黑）
   --gk-paper: #f0f0f0      GDG OFF White，背景與票身（注意不是純白）
@@ -457,7 +451,7 @@ hex 值要精確、不可用近似色、不可自創顏色、不可用替代字�
   --gk-font-mono: 'Google Sans Mono', ui-monospace, SFMono-Regular,
                   'SF Mono', Consolas, monospace
 
-  顯示字體只用在標題、票頭、號次徽章、購票按鈕，其餘一律用 --gk-font-body
+  顯示字體只用在標題、票頭、購票按鈕，其餘一律用 --gk-font-body
   不可以用 Arial、Helvetica、Open Sans、Archivo、Anton 當品牌字
 
 字重（中文很重要）
@@ -647,7 +641,7 @@ export function getSortedList(arrayName)
 
 export function assetPath(type, id)
   依類型回傳圖片路徑。type 為 'speakers' 或 'staff' 時回傳 .jpg，
-  'thanks' / 'booths' / 'organizers' 回傳 .png。
+  'thanks' / 'booths' 回傳 .png。
   格式：'images/' + type + '/' + id + 副檔名
 
 export function ogPath(type, id)
@@ -742,7 +736,6 @@ export function mount(parent, ...children)
 {
   image: 'images/speakers/andy_wang.jpg', // 由 id 推導，可能沒有
   imageShape: 'circle' | 'square',        // 預設 circle
-  number: 3,                              // 號次，可能沒有
   name: I18nText,                         // 一定有
   subtitle: I18nText,                     // 志工職務或群組名，可能沒有
   bio: I18nText,                          // 可能沒有
@@ -823,10 +816,11 @@ export function mount(parent, ...children)
 
 【要求】export 三個函式：
 
-export function personCard({ image, number, name, subtitle, description, onClick })
+export function personCard({ image, name, title, org, subtitle, description, onClick })
   用於講者與工作人員。
   結構：正方形圖片容器（CSS 讓圖片變圓形、object-fit: cover、object-position: center）、
-        左上角號次徽章（number 沒有就不渲染）、姓名、subtitle、description 摘要。
+        姓名、affiliation（title 與 org 用「 · 」串接，只有其一時只顯示那一項）、
+        subtitle、description 摘要。
   description 摘要要截斷：CSS 用 -webkit-line-clamp: 3。
   整張卡片可點擊，也要能用鍵盤操作：tabindex="0"、role="button"、
   Enter 與 Space 都要觸發 onClick。
@@ -856,7 +850,7 @@ export function sessionCard({ title, time, groupName, groupColor, speakers, onCl
 - [ ] `personCard` 的圖片容器 `aspect-ratio` 是 `1 / 1`
 - [ ] 傳入非正方形圖片時，圖片置中裁切而不是變形（`object-fit: cover`）
 - [ ] `logoCard` 的圖片是 `object-fit: contain`，logo 不被裁切
-- [ ] `number` 不傳時，號次徽章整個不渲染
+- [ ] `title` 或 `org` 只給其一時只顯示那一項；兩者皆有時以「 · 」串接
 - [ ] `description` 超過三行時被截斷（`-webkit-line-clamp: 3`）
 - [ ] 三種卡片都有 `tabindex="0"` 與 `role="button"`
 - [ ] 用鍵盤 Tab 到卡片後按 Enter 會觸發 onClick
@@ -1111,14 +1105,16 @@ export function renderSpeakers(container)
   5. 卡片格線用 CSS Grid，桌機 4 欄、平板 3 欄、手機 2 欄（斷點 1280 / 768），用 auto-fill minmax 實作
   6. 每張卡片用 personCard，傳入：
        image = 由 speaker.id 推導的頭像路徑
-       number = 該講者在全部講者中的 order
        name = speaker.name
+       title = speaker.title（職稱，選填）
+       org = speaker.org（公司/組織，選填）
        subtitle = 第一場議程的 title（沒有議程就不傳）
        description = speaker.bio
   7. 點擊卡片時：
        呼叫 track('select_speaker', { speaker_id: speaker.id })
        組出 payload 呼叫 openModal，payload 內容：
-         image, imageShape 'circle', number, name,
+         image, imageShape 'circle', name,
+         title = speaker.title、org = speaker.org（彈窗頂端組成 affiliation 顯示）
          bio = speaker.bio
          sessionTitle = 第一場議程 title
          sessionAbstract = 第一場議程 abstract
@@ -1138,7 +1134,8 @@ export function renderSpeakers(container)
 - [ ] 群組標題左側有該群組 color 的色條
 - [ ] 桌機 4 欄、平板 3 欄、手機 2 欄
 - [ ] 卡片的 subtitle 是第一場議程標題；沒有議程時不傳 subtitle 且版面不歪
-- [ ] 點擊卡片開啟的彈窗含：頭像、姓名、bio、議程標題、議程介紹、群組名、標籤、連結
+- [ ] 卡片上顯示 affiliation：`title` 與 `org` 兩者皆有時以「 · 」串接；只有其一時只顯示那一項；皆無時該行不渲染
+- [ ] 點擊卡片開啟的彈窗含：頭像、姓名、affiliation、bio、議程標題、議程介紹、群組名、標籤、連結
 - [ ] 多場議程的講者，彈窗顯示第一場
 - [ ] 把 content.speakers 清空後，顯示 `ui.emptyStateText` 而不是空白
 - [ ] GA 事件 `select_speaker` 有送出且帶正確的 speaker_id
@@ -1172,9 +1169,6 @@ export function renderAgenda(container)
 6. 點擊圖片時呼叫 openImageViewer({ src, alt })，
    並呼叫 track('view_venue_map', { map_file: file })
 7. 圖片本身要可鍵盤操作：tabindex="0"、role="button"、Enter 與 Space 觸發
-8. 地圖區塊最後面加一個到虛擬會場的次要連結：
-   import { createVirtualSpaceLink } from './virtual-space.js'
-   呼叫 createVirtualSpaceLink('venue_map')，回傳 null 時就不渲染
 
 ## 第二部分：議程時間軸
 
@@ -1221,7 +1215,6 @@ export function renderAgenda(container)
 - [ ] 兩張以上時出現分頁按鈕，當前那顆有 active 樣式
 - [ ] 點擊圖片開啟 image-viewer
 - [ ] Tab 可聚焦圖片，Enter 與 Space 都能開啟
-- [ ] 地圖區塊最後有到虛擬會場的連結；把 `virtualSpace.enabled` 設 false 後該連結消失
 
 時間軸：
 - [ ] `tracks` 只有一筆時是單欄，不顯示會場名稱
@@ -1250,10 +1243,10 @@ export function renderStaff(container)
 2. 不分組，直接一個卡片格線
 3. personCard 的參數：
      image = 由 staff.id 推導的頭像路徑
-     number 不傳
      name = staff.name
      subtitle = staff.role
      description = staff.bio
+     （staff 不需要 title/org 欄位，這兩個是講者專屬）
 4. openModal 的 payload 只包含：
      image, imageShape 'circle', name,
      subtitle = staff.role
@@ -1271,18 +1264,17 @@ export function renderStaff(container)
 - [ ] 卡片的 subtitle 是 `staff.role`（志工職務）
 - [ ] 點擊開啟的彈窗只有：頭像、姓名、志工職務、自我介紹、連結
 - [ ] 彈窗**沒有**議程標題、議程介紹、群組名、標籤這些欄位
-- [ ] 卡片沒有號次徽章
 - [ ] GA 事件 `select_staff` 有送出
 - [ ] 圖片路徑由 id 推導為 `images/staff/{id}.jpg`
 
 ---
 
-# T13 感謝／擺攤／主辦區塊 assets/js/sections/logo-grid.js
+# T13 感謝／擺攤區塊 assets/js/sections/logo-grid.js
 
 ```
-【任務】產生 /2026/assets/js/sections/logo-grid.js，一個檔案處理三個區塊。
+【任務】產生 /2026/assets/js/sections/logo-grid.js，一個檔案處理兩個區塊。
 
-【要求】export 三個函式，內部共用同一個私有函式：
+【要求】export 兩個函式，內部共用同一個私有函式：
 
 export function renderThanks(container)
   用 getGroupedList('thanks', 'thanksGroups')
@@ -1294,10 +1286,6 @@ export function renderThanks(container)
 export function renderBooths(container)
   用 getGroupedList('booths', 'boothGroups')
   這一區維持用 logoCard（攤位是參與者不是投票者，視覺要跟感謝票區分）
-
-export function renderOrganizers(container)
-  用 getSortedList('organizers')，不分組。
-  這個函式由首頁卡片區塊（T14B）呼叫，不是獨立的選單區塊。
 
 私有函式 renderLogoSection(container, groups)
   groups 是 [{ group, items }]。
@@ -1322,11 +1310,9 @@ export function renderOrganizers(container)
 - [ ] `renderBooths` 用的是 `logoCard`，兩區視覺明顯不同
 - [ ] 感謝區依群組分區，群組標題是分區牌樣式，群組間有細虛線
 - [ ] 感謝區桌機 4 欄、平板 3 欄、手機 2 欄
-- [ ] `renderOrganizers` 不分組
 - [ ] 群組為 null 時不輸出標題
-- [ ] 三者的彈窗 payload 都是 `imageShape: 'square'`
-- [ ] 三個函式共用同一個私有函式，沒有三段重複程式碼
-- [ ] organizers 的圖片路徑是 `images/organizers/{id}.png`
+- [ ] 兩者的彈窗 payload 都是 `imageShape: 'square'`
+- [ ] 兩個函式共用同一個私有函式，沒有兩段重複程式碼
 
 ---
 
@@ -1367,12 +1353,6 @@ export function renderVirtualSpace(container)
    title 屬性用 title 文字
    embed 為 false 時完全不建立 iframe（不是隱藏，是不建立）
 
-另外 export 一個函式給議程區塊用：
-export function createVirtualSpaceLink(entryName)
-  回傳一個 <a> 元素，文字用 config.ui.virtualMapCrossLink，
-  href、target、rel 同上，點擊時 track('enter_virtual_space', { entry: entryName })。
-  virtualSpace.enabled 為 false 時回傳 null。
-
 【產出】只輸出 virtual-space.js 的完整內容，附上需要的 CSS 區塊。
 ```
 
@@ -1385,7 +1365,6 @@ export function createVirtualSpaceLink(entryName)
 - [ ] `qrImage` 為空時，QR 區塊不渲染
 - [ ] `embed` 為 false 時，DOM 裡**沒有** iframe 元素（不是隱藏）
 - [ ] `embed` 改成 true 後出現 iframe，且有 `allow="camera; microphone; fullscreen; display-capture"`
-- [ ] `createVirtualSpaceLink('venue_map')` 在 enabled 為 false 時回傳 null
 - [ ] GA 事件 `enter_virtual_space` 帶有正確的 entry 值
 
 ---
@@ -1395,21 +1374,41 @@ export function createVirtualSpaceLink(entryName)
 ```
 【任務】產生 /2026/assets/js/sections/about.js。
 
+【資料模型】content.about 結構：
+  {
+    columns: 2,                  // 桌機欄數，1..4，預設 2；不合法值 fallback 2
+    sections: [
+      { title, body, image?, span? }, // span 1..columns，預設 = columns（整列）
+      ...
+    ]
+  }
+
 【要求】
 export function renderAbout(container)
-1. 取 getContent().about.sections
-2. 每個 section 輸出：標題（h3）、圖片（有 image 才輸出，alt 用標題文字，
-   加 loading="lazy"）、內文（容器加 class 'gk-multiline'）
-3. 圖文交錯排版：桌機第一筆圖在右、第二筆圖在左，依序交替；手機一律圖在上文在下
-4. about.sections 為空或不存在時，container 不渲染任何東西也不報錯
+1. 取 getContent().about；讀 about.columns（clamp 到 1..4，預設 2），
+   在 container 上設 `--gk-about-columns` CSS 變數
+2. 遍歷 about.sections：每個 section 輸出：
+   標題（h3）、圖片（有 image 才輸出，alt 用標題文字，加 loading="lazy"）、
+   內文（容器加 class 'gk-multiline'）
+3. 每個 section 讀 section.span（clamp 到 1..columns，預設 = columns），
+   在 section 元素上設 `--gk-about-span` CSS 變數，
+   CSS 用 `grid-column: span var(--gk-about-span)` 決定它跨幾欄
+4. 圖文交錯排版：桌機第一筆圖在右、第二筆圖在左，依序交替；
+   手機（<768px）強制單欄、圖在上文在下
+5. about.sections 為空或不存在時，container 不渲染任何東西也不報錯
 
-【產出】只輸出 about.js 的完整內容，附上需要的 CSS 區塊。
+【產出】只輸出 about.js 的完整內容，附上需要的 CSS 區塊
+（含 `--gk-about-columns` 與 `--gk-about-span` 的 CSS 變數宣告）。
 ```
 
 ## T14 驗收條件
 
+- [ ] `about.columns` 設 2、`section.span` 都不設時，桌機呈現兩欄整列（每格 span 2）
+- [ ] `about.columns` 設 2、某筆 `section.span` 設 1 時，該格只佔半欄
+- [ ] `about.columns` 設不合法值（例如 0 或 5）時 fallback 為 2
+- [ ] `section.span` 大於 columns 時被 clamp 為 columns（不會爆版）
+- [ ] 手機（<768px）強制單欄，忽略 columns/span 設定
 - [ ] 桌機圖文交錯：第一筆圖在右、第二筆圖在左、第三筆圖在右
-- [ ] 手機一律圖在上文在下
 - [ ] 內文容器有 `gk-multiline`，含 `\n` 的文字正確換行
 - [ ] 沒有 `image` 的 section 不渲染圖片，版面不留空洞
 - [ ] 圖片有 `alt`（用標題文字）與 `loading="lazy"`
@@ -1422,41 +1421,27 @@ export function renderAbout(container)
 ```
 【任務】產生 /2026/assets/js/sections/home-cards.js。
 
-【背景】「去年頁面」與「主辦單位」不放在導覽列，
-改成活動介紹區塊最下方的一排卡片。
+【背景】「去年頁面」不放在導覽列，改成活動介紹區塊最下方的一排卡片。
 
 【可用模組】
   import { el, clear, mount } from '../core/dom.js'
   import { t } from '../core/i18n.js'
-  import { getConfig, getSortedList } from '../core/store.js'
-  import { logoCard } from '../ui/card.js'
-  import { openModal } from '../ui/detail-modal.js'
+  import { getConfig } from '../core/store.js'
   import { track } from '../core/analytics.js'
 
 【要求】
 export function renderHomeCards(container)
 
 1. 先 clear(container)
-2. 區塊標題用 config.ui.organizerCardTitle
-3. 卡片格線：桌機四欄、平板三欄、手機兩欄
-4. 依 config.menu 中 placement 為 'home' 的項目決定要渲染哪些卡片，
+2. 卡片格線：桌機四欄、平板三欄、手機兩欄
+3. 依 config.menu 中 placement 為 'home' 的項目決定要渲染哪些卡片，
    依 order 排序。項目 enabled 為 false 就跳過
-5. id 為 'organizer' 的項目：
-   對 getSortedList('organizers') 每一筆產一張 logoCard
-   image 由 id 推導（images/organizers/{id}.png）
-   點擊時 track('select_organizer', { organizer_id: item.id }) 並 openModal，
-   payload：image、imageShape 'square'、name、bio 用 description、links
-6. id 為 'lastyear' 的項目：
-   產一張外連卡片（不是 logoCard，另外做一個樣式）
-   顯示 config.ui.lastYearCardText 的文字與該項目的 label
+4. id 為 'lastyear' 的項目：
+   產一張外連卡片，顯示 config.ui.lastYearCardText 的文字與該項目的 label
    點擊直接開新分頁（<a target="_blank" rel="noopener noreferrer">），
    並 track('click_last_year')
-7. 卡片區最後加一張免費票申請卡：
-   import { isFreeTicketAvailable, openFreeTicketModal } from '../ui/free-ticket.js'
-   isFreeTicketAvailable() 為 true 時才渲染，
-   卡片文字用 content.freeTicket 的 title 與 summary，
-   點擊呼叫 openFreeTicketModal('home_card')
-8. 完全沒有卡片可渲染時，container 不渲染任何東西
+   該項目的 url 為空字串時不渲染
+5. 完全沒有卡片可渲染時，container 不渲染任何東西
 
 【產出】只輸出 home-cards.js 的完整內容，附上需要的 CSS 區塊。
 ```
@@ -1464,168 +1449,10 @@ export function renderHomeCards(container)
 ## T14B 驗收條件
 
 - [ ] 只渲染 `placement` 為 `home` 的選單項目
-- [ ] 把 organizer 的 `enabled` 設 false 後，主辦卡片消失
-- [ ] 主辦卡片點擊開彈窗，不是外連
 - [ ] 去年頁面卡片是 `<a target="_blank">`，點擊開新分頁
 - [ ] 去年頁面的 url 為空字串時，該卡片不渲染
-- [ ] 免費票卡片在 `freeTicket.enabled` 為 false 時不渲染
-- [ ] 全部都不渲染時，container 是空的且沒有標題殘留
+- [ ] 全部都不渲染時，container 是空的
 - [ ] 桌機 4 欄、平板 3 欄、手機 2 欄
-
----
-
-# T14C 免費票申請入口 assets/js/ui/free-ticket.js
-
-```
-【任務】產生 /2026/assets/js/ui/free-ticket.js。
-
-【背景】主辦方用 Google 表單受理免費票申請，人工審核後寄送優惠碼。
-網站只負責說明資格與導向表單，**不處理也不顯示任何優惠碼**。
-點擊入口時不直接跳轉到表單，而是先開一個說明彈窗，
-使用者讀完資格條件再決定是否前往。
-
-【可用模組】
-  import { el, mount } from '../core/dom.js'
-  import { t } from '../core/i18n.js'
-  import { getConfig, getContent } from '../core/store.js'
-  import { openModal } from './detail-modal.js'
-  import { track } from '../core/analytics.js'
-
-【要求】
-
-export function isFreeTicketAvailable()
-  回傳布林值。getConfig().freeTicket 不存在、enabled 為 false、
-  或 formUrl 為空字串時回傳 false。
-
-export function isFreeTicketClosed()
-  回傳布林值。config.freeTicket.closeAt 有值且已經過了那個時間點時回 true。
-  closeAt 為空字串或不存在時回 false。
-  比較時間用 new Date(closeAt).getTime() < Date.now()
-  （這裡可以用 Date，因為 closeAt 是含時區的完整 ISO 字串）
-
-export function openFreeTicketModal(entry)
-  1. isFreeTicketAvailable() 為 false 時直接 return
-  2. 呼叫 track('open_free_ticket', { entry })
-  3. 取 getContent().freeTicket，組出 payload 呼叫 openModal：
-     name = title
-     bio = summary
-     meta 依序放兩組：
-       { label: ui.freeTicketEligibilityLabel, value: eligibility 陣列每則換行串接 }
-       { label: ui.freeTicketProcessLabel, value: process 陣列每則加上序號後換行串接 }
-     process 有四個步驟，要完整顯示，讓使用者知道不是填完表單就有票
-     再把 notes 放進 sessionAbstract 欄位（會用 gk-multiline 顯示）
-     彈窗最上方要先顯示 content.registration.orderNotice 的提醒文字
-     （這是使用者前往表單前最後一次來得及的提醒）
-  4. 彈窗底部要有一顆按鈕：
-     未截止時：<a> 連到 formUrl，target="_blank" rel="noopener noreferrer"，
-       文字用 ui.freeTicketFormButton，
-       點擊時 track('click_free_ticket_form', { entry })
-     已截止時：改成停用狀態的按鈕，文字用 content.freeTicket.closedText，
-       不可點擊、不可連出
-  5. 這顆按鈕要透過 openModal 的 payload 傳入，
-     不要直接操作 detail-modal 的 DOM
-
-export function createFreeTicketLink(entry)
-  回傳一個可點擊元素，文字用 config.ui.freeTicketLink，
-  點擊時呼叫 openFreeTicketModal(entry)。
-  isFreeTicketAvailable() 為 false 時回傳 null。
-  要能用鍵盤操作（tabindex、role、Enter 與 Space）。
-
-【給 T08 的補充】
-detail-modal 的 payload 要多支援一個選填欄位：
-  footerAction: { text: I18nText, url?: string, disabled?: boolean, onClick?: Function }
-url 有值時渲染成 <a target="_blank" rel="noopener noreferrer">，
-disabled 為 true 時渲染成停用按鈕，
-兩者都沒有但有 onClick 時渲染成一般按鈕。
-沒有這個欄位時彈窗底部不渲染任何東西。
-
-【產出】只輸出 free-ticket.js 的完整內容，附上需要的 CSS 區塊。
-```
-
-## T14C 驗收條件
-
-- [ ] `formUrl` 為空字串時，`isFreeTicketAvailable()` 回傳 false
-- [ ] `enabled` 為 false 時同樣回傳 false
-- [ ] `closeAt` 設成過去的時間，`isFreeTicketClosed()` 回傳 true
-- [ ] `closeAt` 為空字串時回傳 false
-- [ ] 彈窗最上方顯示 `registration.orderNotice`
-- [ ] 彈窗列出全部四個 process 步驟，不是只有前兩個
-- [ ] 未截止時，底部按鈕是 `<a target="_blank">` 連到 formUrl
-- [ ] 已截止時，底部是停用按鈕，顯示 `closedText`，且**沒有** href
-- [ ] `createFreeTicketLink()` 在不可用時回傳 null
-- [ ] 該連結可用鍵盤操作
-- [ ] GA 兩個事件都有送：`open_free_ticket` 與 `click_free_ticket_form`，且 entry 值正確
-- [ ] 全檔沒有出現任何優惠碼字串
-
----
-
-# T14D 報名區塊 assets/js/sections/registration.js
-
-```
-【任務】產生 /2026/assets/js/sections/registration.js。
-
-【背景】活動有兩種報名路徑：
-  A. 符合資格者先填 Google 表單，主辦人工審核後寄優惠碼或免費報名連結，
-     對方再自己去報名頁面完成報名
-  B. 沒有任何資格的人直接去報名頁面買票
-網站要同時服務這兩種人，而且要讓 A 類使用者在按下購票之前就看到免費票資訊，
-避免買完才發現可以免費。
-
-【可用模組】
-  import { el, mount } from '../core/dom.js'
-  import { t } from '../core/i18n.js'
-  import { getConfig, getContent } from '../core/store.js'
-  import { isFreeTicketAvailable, isFreeTicketClosed, openFreeTicketModal } from '../ui/free-ticket.js'
-  import { track } from '../core/analytics.js'
-
-【要求】
-export function renderRegistration(container)
-
-1. 最上方一行提醒文字，取 content.registration.orderNotice，
-   樣式要明顯（有底色或左側色條），不是不起眼的小字
-2. 下方兩張卡並排。桌機用 CSS Grid 兩欄等寬，手機改成上下排（上：免費票，下：直接報名）
-3. 左卡（免費票申請）：
-   isFreeTicketAvailable() 為 false 時整張卡不渲染
-   標題用 content.freeTicket.title
-   摘要用 content.freeTicket.summary
-   下方列出 content.freeTicket.eligibility 的前三則（超過三則就顯示前三則）
-   審核提醒文字用 config.ui.freeTicketReviewNote，
-     裡面的天數用 config.freeTicket.reviewDays 取代字串中的 {days}
-   按鈕文字用 config.ui.freeTicketCardButton，
-     點擊呼叫 openFreeTicketModal('registration_card')
-   isFreeTicketClosed() 為 true 時：整張卡收合成一行，
-     只顯示 content.freeTicket.closedText，沒有按鈕
-4. 右卡（直接報名）：
-   標題用 content.registration.directTitle
-   摘要用 content.registration.directSummary
-   按鈕文字用 config.ui.directTicketCardButton，
-     是 <a>，href 取 config.menu 中 id 為 ticket 那筆的 url，
-     target="_blank" rel="noopener noreferrer"，
-     點擊時 track('click_ticket', { entry: 'registration_card' })
-   該 url 為空字串時，按鈕改成停用狀態
-5. 左卡不渲染或已截止時，右卡要自動撐滿整個寬度（用 grid-column: 1 / -1）
-6. 兩張卡下方放一行行為準則連結：
-   文字用 config.ui.cocLinkText，href 用 config.footer.codeOfConduct.url，
-   target="_blank" rel="noopener noreferrer"，
-   點擊時 track('click_coc', { entry: 'registration' })
-7. 兩張卡的視覺權重要相當，不要把其中一張做得比較大或比較搶眼
-
-【產出】只輸出 registration.js 的完整內容，附上需要的 CSS 區塊。
-```
-
-## T14D 驗收條件
-
-- [ ] 順序提醒文字有底色或色條，不是不起眼的小字
-- [ ] 桌機兩張卡等寬並排，手機上下排且免費票在上
-- [ ] 兩張卡視覺權重相當，沒有一張明顯較大或較搶眼
-- [ ] 左卡列出 eligibility 的前三則
-- [ ] 審核提醒文字中的 `{days}` 被 `reviewDays` 的值取代
-- [ ] `isFreeTicketClosed()` 為 true 時，左卡收合成一行且右卡撐滿寬度
-- [ ] `freeTicket.enabled` 為 false 時，左卡不渲染且右卡撐滿寬度
-- [ ] 右卡按鈕是 `<a target="_blank">`，連到 menu 中 ticket 的 url
-- [ ] ticket 的 url 為空字串時，右卡按鈕是停用狀態
-- [ ] 兩張卡下方有行為準則連結，連到 `https://gdg.tw/code_of_conduct/`
-- [ ] GA `click_ticket` 帶 `entry: 'registration_card'`
 
 ---
 
@@ -1887,10 +1714,10 @@ export function trackPageView(path, title)
    <header id="gk-nav">（導覽列，內容由 JS 填）
    <main>
      <section id="section-about" class="gk-section">
-       （由上而下：報名區塊 #gk-registration、活動介紹容器、
-         贊助商跑馬燈 #gk-sponsor-marquee、快速入口卡片 #gk-home-cards）
+       （由上而下：活動介紹容器、贊助商跑馬燈 #gk-sponsor-marquee、
+         快速入口卡片 #gk-home-cards）
    跑馬燈容器的位置依 config.sponsorMarquee.position 決定：
-     'afterHero' 時移到報名區塊之前，'afterAbout' 時維持上面的順序
+     'afterHero' 時移到 Hero 之後、活動介紹之前，'afterAbout' 時維持上面的順序
      <section id="section-speakers" class="gk-section">
      <section id="section-agenda" class="gk-section">
      <section id="section-virtual" class="gk-section">
@@ -1901,10 +1728,7 @@ export function trackPageView(path, title)
    <footer id="gk-footer">（頁尾，內含 placement 為 footer 的選單項目）
    每個 section 內先放一個 h2 標題容器與一個內容容器 div
 6. 在 main 之前放一個 Hero 區塊，含活動名稱、日期、地點、購票按鈕與倒數計時，內容由 JS 填
-   購票按鈕下方要放免費票申請的次要連結：
-   import { createFreeTicketLink } from './ui/free-ticket.js'
-   呼叫 createFreeTicketLink('hero')，回傳 null 時就不渲染
-   購票按鈕同樣是 <a target="_blank" rel="noopener noreferrer">，
+   購票按鈕是 <a target="_blank" rel="noopener noreferrer">，
    href 取 config.menu 中 id 為 ticket 那筆的 url，
    點擊時 track('click_ticket', { entry: 'hero' })，url 為空就不渲染
    倒數計時讀 config.site.eventStart（ISO 8601 含時區，例如 2026-11-14T08:30:00+08:00），
@@ -1970,8 +1794,8 @@ export function trackPageView(path, title)
 - [ ] Hero 圖有 `fetchpriority="high"`，其餘圖片有 `loading="lazy"`
 - [ ] 有 skip link，Tab 第一下就能到
 - [ ] 切換語言後所有區塊重新渲染，頁面沒有重整
-- [ ] section 順序：報名 → 活動介紹 → 跑馬燈 → 首頁卡片
-- [ ] `sponsorMarquee.position` 改成 `afterHero` 後，跑馬燈移到報名區塊之前
+- [ ] section 順序：活動介紹 → 跑馬燈 → 首頁卡片
+- [ ] `sponsorMarquee.position` 改成 `afterHero` 後，跑馬燈移到 Hero 之後、活動介紹之前
 
 ---
 
@@ -1990,7 +1814,7 @@ export function trackPageView(path, title)
 3. 內容：
    標題與說明文字（中文寫死即可，這頁不做多語）
    一顆回活動首頁的按鈕，連到 /2026/
-   四個常用區塊的快速連結：講者、議程、虛擬會場、報名
+   四個常用區塊的快速連結：講者、議程、虛擬會場、擺攤
 4. 加一小段 script：
    讀 location.pathname，如果符合 /2026/share/{type}/... 的格式，
    額外顯示一行「你要找的是不是這個分類？」並連到對應區塊
@@ -2202,7 +2026,6 @@ export async function renderOgImage({ type, item, layout, config, outPath })
 
   layout 為 'person'：
     左側 380x380 圓形頭像，照片置中裁切（等比放大到蓋滿圓形再裁）
-    speakers 才畫左上角紅色圓形號次徽章，staff 不畫
     右側由上而下：姓名（字級 72，Black 字重）、
     speakers 畫議程標題、staff 畫志工職務（字級 40，最多兩行）
 
@@ -2230,7 +2053,6 @@ export async function renderOgImage({ type, item, layout, config, outPath })
 - [ ] 用瀏覽器開啟產生的圖，中文顯示正常沒有豆腐字
 - [ ] 把 `assets/fonts/` 改名後執行，印出 warning 但不中斷
 - [ ] 刪掉某個講者的頭像檔後執行，該張圖是灰底加姓名首字，程式不中斷
-- [ ] 講者版有號次徽章，工作人員版沒有
 - [ ] 超長的議程標題會換行並在第二行截斷加省略號
 - [ ] logo 版的 logo 沒有被裁切（等比縮放置中）
 - [ ] 底色是 `#f0f0f0`，外框是 `#ea4335`

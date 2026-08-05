@@ -35,7 +35,7 @@ Facebook、LINE、X、Threads 的爬蟲**不執行 JavaScript**。純 SPA 的 ha
 
 | 類型 | 路徑 | 縮圖版型 |
 |---|---|---|
-| 講者 | `/2026/share/speakers/{id}/` | 號次 + 圓形頭像 + 姓名 + 議程名稱 |
+| 講者 | `/2026/share/speakers/{id}/` | 圓形頭像 + 姓名 + 議程名稱 |
 | 工作人員 | `/2026/share/staff/{id}/` | 圓形頭像 + 姓名 + 志工職業 |
 | 特別感謝 / 贊助 | `/2026/share/thanks/{id}/` | Logo 置中 + 名稱 + 群組名 |
 | 活動擺攤 | `/2026/share/booths/{id}/` | Logo 置中 + 攤位名稱 + 群組名 |
@@ -45,7 +45,7 @@ Facebook、LINE、X、Threads 的爬蟲**不執行 JavaScript**。純 SPA 的 ha
 **主辦單位不做分享頁。** 它只有一到兩筆、內容穩定，
 而且沒有人會單獨分享主辦單位連結——要分享會分享活動首頁。
 省下這一組頁面與縮圖，也少一個要維護的 id 命名空間。
-它的資料仍在 `content.organizers`，仍然有首頁卡片與詳細彈窗。
+主辦單位資訊改放在 `about.sections.organizer` 一段純文字（見 6.7、6.8）。
 
 ### 10.3 id 規則（同時是 slug）
 - **統一小寫、底線分隔**：`andy_wang`、`gdg_kaohsiung`、`kotlin_tw`

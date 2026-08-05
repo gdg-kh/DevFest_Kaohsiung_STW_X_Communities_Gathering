@@ -40,8 +40,7 @@
     { "id": "booths",   "enabled": true, "order": 6, "label": { ... } },
     { "id": "lastyear", "enabled": true, "order": 7, "type": "external",
       "url": "https://.../2025/", "label": { ... } },
-    { "id": "organizer","enabled": true, "order": 8, "label": { ... } },
-    { "id": "ticket",   "enabled": true, "order": 9, "type": "cta",
+    { "id": "ticket",   "enabled": true, "order": 8, "type": "cta",
       "url": "https://kktix.com/...", "label": { ... } }
   ],
   "ui": {
@@ -62,11 +61,14 @@
 {
   "version": 1,
   "about": {
+    "columns": 2,                     // 桌機欄數，1..4，預設 2
     "sections": [
-      { "id": "intro",
+      { "id": "intro", "span": 2,     // span 1..columns，預設 = columns（整列）
         "title": { "zh-Hant": "...", "en": "...", "ja": "..." },
         "body":  { "zh-Hant": "第一行\n第二行", "en": "...", "ja": "..." },
-        "image": "images/about/intro.jpg" }
+        "image": "images/about/intro.jpg" },
+      { "id": "checkin", "span": 1,
+        "title": { ... }, "body": { ... } }
     ]
   },
   "sessionGroups": [
@@ -78,8 +80,7 @@
   "sessions": [ ... ],
   "staff": [ ... ],
   "thanksGroups": [ ... ], "thanks": [ ... ],
-  "boothGroups":  [ ... ], "booths": [ ... ],
-  "organizers":   [ ... ]
+  "boothGroups":  [ ... ], "booths": [ ... ]
 }
 ```
 
@@ -200,10 +201,7 @@
   "description": I18nText, "links": [ LinkItem ] }
 ```
 
-### Organizer
-```jsonc
-{ "id": "gdg_kaohsiung", "order": 1, "name": I18nText,
-  "description": I18nText, "links": [ LinkItem ] }
-```
+> 主辦單位資訊不另立資料集合，改放進 `about.sections` 底下（`id: 'organizer'`、`span: 1`），為一段純文字，
+> 詳見 03-components.md 的活動介紹多欄版型與 6.7 首頁快速入口卡片說明。
 
 ---

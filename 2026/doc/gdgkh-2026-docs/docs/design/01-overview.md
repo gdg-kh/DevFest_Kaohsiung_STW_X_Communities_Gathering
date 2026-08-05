@@ -157,19 +157,16 @@ trailingComma es5、arrowParens always、bracketSpacing true、LF 換行。
    │  │  │  └─ payload.js               各類型 → 彈窗資料的轉換
    │  │  └─ sections/
    │  │     ├─ about.js / speakers.js / agenda.js
-   │  │     ├─ staff.js / logo-grid.js  （感謝/擺攤/主辦共用）
+   │  │     ├─ staff.js / logo-grid.js  （感謝/擺攤共用）
    │  │     ├─ virtual-space.js         虛擬會場
    │  │     ├─ home-cards.js            首頁快速入口卡片
-   │  │     ├─ registration.js          報名區塊（兩張路徑卡）
    │  │     └─ sponsor-marquee.js       首頁贊助商跑馬燈
-   │  ├─ ui/free-ticket.js              免費票申請入口（彈窗 + 連結）
    │  └─ fonts/                         NotoSansTC 字重檔（給產生器用）
    ├─ images/
    │  ├─ speakers/{id}.jpg
    │  ├─ staff/{id}.jpg
    │  ├─ thanks/{id}.png
    │  ├─ booths/{id}.png
-   │  ├─ organizers/{id}.png          （只用於卡片，不產 OG 圖）
    │  ├─ about/{id}.jpg
    │  └─ og/{type}/{id}.png             產生
    ├─ share/                            產生，不可手改（四種類型）
