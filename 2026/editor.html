@@ -28,6 +28,7 @@
         --gk-sp-6: 32px;
         --gk-radius-sm: 4px;
         --gk-radius-md: 8px;
+        --gk-radius-full: 999px;
       }
 
       * {
@@ -88,7 +89,7 @@
       .gk-title-dot {
         width: 10px;
         height: 10px;
-        border-radius: 50%;
+        border-radius: var(--gk-radius-full);
         background: var(--gk-red);
         display: inline-block;
       }
@@ -231,7 +232,7 @@
         color: #666;
         background: #eee;
         padding: 2px 8px;
-        border-radius: 999px;
+        border-radius: var(--gk-radius-full);
       }
 
       .gk-nav-btn.is-active .gk-nav-badge {
@@ -490,7 +491,7 @@
       .gk-tab-dot {
         width: 8px;
         height: 8px;
-        border-radius: 50%;
+        border-radius: var(--gk-radius-full);
         background: var(--gk-red);
         display: inline-block;
       }
@@ -657,7 +658,7 @@
         background: #eef2ff;
         color: #1a237e;
         padding: 4px 10px;
-        border-radius: 999px;
+        border-radius: var(--gk-radius-full);
         font-size: 13px;
       }
 
@@ -3333,6 +3334,22 @@
           id: 'thanks',
           label: '特別感謝',
           sections: [
+            {
+              kind: 'object',
+              source: 'config',
+              path: 'thanks',
+              title: '顯示設定',
+              hint: '控制「特別感謝」區與贊助商跑馬燈的卡片是否顯示陰影。',
+              fields: [
+                {
+                  key: 'showCardShadow',
+                  type: 'boolean',
+                  label: '顯示卡片陰影',
+                  checkboxLabel: '顯示卡片陰影',
+                  default: false,
+                },
+              ],
+            },
             {
               kind: 'array',
               source: 'content',

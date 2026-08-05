@@ -165,6 +165,9 @@ export function renderSponsorMarquee(container) {
     return;
   }
   container.classList.add('gk-sponsor-marquee-section');
+  const rootConfig = getConfig();
+  const showShadow = Boolean(rootConfig && rootConfig.thanks && rootConfig.thanks.showCardShadow);
+  container.classList.toggle('is-shadow-off', !showShadow);
 
   const titleText = uiLabel('sponsorMarqueeTitle');
   if (titleText) {

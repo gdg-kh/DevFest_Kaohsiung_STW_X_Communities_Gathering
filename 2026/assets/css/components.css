@@ -278,7 +278,7 @@
 .gk-card:hover,
 .gk-card:focus-visible {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-card-hover);
 }
 
 .gk-card-media {
@@ -546,7 +546,8 @@
   background-color: var(--gk-paper);
   color: var(--gk-ink);
   border: 2px solid var(--gk-ink);
-  box-shadow: 4px 4px 0 var(--gk-ink);
+  border-radius: var(--gk-radius-md);
+  box-shadow: var(--gk-shadow-card);
   display: flex;
   flex-direction: column;
   cursor: default;
@@ -573,7 +574,7 @@
 .gk-ballot-card[role='button']:hover,
 .gk-ballot-card[role='button']:focus-visible {
   transform: translateY(-3px);
-  box-shadow: 6px 6px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-card-hover);
 }
 
 .gk-ballot-header {

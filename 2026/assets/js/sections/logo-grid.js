@@ -96,6 +96,9 @@ export function renderThanks(container) {
   }
   clear(container);
   container.classList.add('gk-thanks-section');
+  const config = getConfig();
+  const showShadow = Boolean(config && config.thanks && config.thanks.showCardShadow);
+  container.classList.toggle('is-shadow-off', !showShadow);
   const content = getContent();
   const list = Array.isArray(content && content.thanks) ? content.thanks : [];
   if (list.length === 0) {

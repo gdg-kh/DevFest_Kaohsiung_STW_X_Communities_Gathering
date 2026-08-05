@@ -49,6 +49,9 @@
     "pauseOnHover": true,
     "position": "afterAbout"
   },
+  "thanks": {
+    "showCardShadow": false
+  },
   "freeTicket": {
     "enabled": true,
     "formUrl": "https://forms.gle/B56e4iRz9BBe3R7W7",

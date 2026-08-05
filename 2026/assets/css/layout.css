@@ -101,7 +101,7 @@ body.gk-loading {
   font-size: clamp(0.875rem, 0.8vw + 0.5rem, 1rem);
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 2px 2px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-button);
   transition:
     transform var(--gk-transition),
     box-shadow var(--gk-transition);
@@ -110,7 +110,7 @@ body.gk-loading {
 
 .gk-nav-cta:hover {
   transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-button-hover);
   text-decoration: none;
 }
 
@@ -253,7 +253,7 @@ body.gk-loading {
 
 .gk-hero-cta:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-card-hover);
   text-decoration: none;
 }
 
@@ -263,7 +263,7 @@ body.gk-loading {
   color: var(--gk-ink);
   padding: var(--gk-sp-2) var(--gk-sp-4);
   border: 1px dashed var(--gk-ink);
-  border-radius: var(--gk-radius-sm);
+  border-radius: var(--gk-radius-md);
   background-color: var(--gk-yellow-pastel);
 }
 
@@ -554,6 +554,7 @@ button {
   padding: var(--gk-sp-3) var(--gk-sp-4);
   border-radius: var(--gk-radius-md);
   font-size: var(--gk-fs-body);
+  box-shadow: var(--gk-shadow-card);
 }
 
 .gk-notice-highlight {
@@ -572,6 +573,7 @@ button {
   opacity: 0.8;
   border: none;
   background: none;
+  box-shadow: none;
 }
 
 .gk-registration-grid {
@@ -635,7 +637,7 @@ button {
   font-weight: var(--gk-fw-bold);
   font-size: var(--gk-fs-body);
   cursor: pointer;
-  box-shadow: 2px 2px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-button);
   transition:
     transform var(--gk-transition),
     box-shadow var(--gk-transition);
@@ -644,7 +646,7 @@ button {
 
 .gk-registration-button:hover {
   transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-button-hover);
   text-decoration: none;
 }
 
@@ -850,14 +852,14 @@ button {
   color: var(--gk-paper);
   font-family: var(--gk-font-display);
   font-weight: var(--gk-fw-bold);
-  box-shadow: 2px 2px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-button);
   align-self: flex-start;
 }
 
 .gk-virtual-enter:hover {
   text-decoration: none;
   transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-button-hover);
 }
 
 .gk-virtual-iframe {
@@ -933,12 +935,12 @@ button {
   font-family: var(--gk-font-display);
   font-weight: var(--gk-fw-bold);
   cursor: pointer;
-  box-shadow: 2px 2px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-button);
 }
 
 .gk-load-error-retry:hover {
   transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-button-hover);
 }
 
 /* --- Hero countdown internals --- */
@@ -1059,7 +1061,7 @@ button {
   background-color: var(--gk-yellow);
   border: 2px solid var(--gk-ink);
   border-radius: var(--gk-radius-sm);
-  box-shadow: 2px 2px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-button);
 }
 
 .gk-logo-group-header-title,
@@ -1069,6 +1071,19 @@ button {
   font-size: var(--gk-fs-h3);
   color: var(--gk-ink);
   line-height: 1.2;
+}
+
+/* --- Thanks / sponsor marquee shadow toggle --- */
+.gk-thanks-section.is-shadow-off .gk-ballot-card,
+.gk-sponsor-marquee-section.is-shadow-off .gk-ballot-card {
+  box-shadow: none;
+}
+
+.gk-thanks-section.is-shadow-off .gk-ballot-card[role='button']:hover,
+.gk-thanks-section.is-shadow-off .gk-ballot-card[role='button']:focus-visible,
+.gk-sponsor-marquee-section.is-shadow-off .gk-ballot-card[role='button']:hover,
+.gk-sponsor-marquee-section.is-shadow-off .gk-ballot-card[role='button']:focus-visible {
+  box-shadow: none;
 }
 
 /* --- Empty states --- */
@@ -1141,7 +1156,7 @@ button {
 
 .gk-free-ticket-link:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--gk-ink);
+  box-shadow: var(--gk-shadow-card-hover);
   text-decoration: none;
   color: var(--gk-ink);
 }
