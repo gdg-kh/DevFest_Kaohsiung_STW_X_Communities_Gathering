@@ -69,7 +69,8 @@
       "Bash(bash /tmp/card_summary.sh)",
       "Bash(bash /tmp/card_summary2.sh)",
       "Bash(bash /tmp/card_summary3.sh)",
-      "Bash(bash /tmp/card_summary4.sh)"
+      "Bash(bash /tmp/card_summary4.sh)",
+      "Bash(xargs -I {} sh -c 'echo \"=== {} ===\" && head -50 \"{}\"')"
     ],
     "deny": [],
     "ask": []
