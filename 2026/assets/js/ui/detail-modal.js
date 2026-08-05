@@ -105,9 +105,6 @@ function joinAffiliation(titleText, orgText) {
 
 function renderHeading(payload) {
   const parts = [];
-  if (typeof payload.number === 'number' && !Number.isNaN(payload.number)) {
-    parts.push(el('span', { class: 'gk-modal-number', text: `#${payload.number}` }));
-  }
   parts.push(el('h2', { class: 'gk-modal-title', text: t(payload.name) }));
   const affiliation = joinAffiliation(t(payload.title), t(payload.org));
   if (affiliation) {

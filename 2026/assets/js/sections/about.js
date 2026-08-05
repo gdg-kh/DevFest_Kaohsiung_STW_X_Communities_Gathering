@@ -2,6 +2,40 @@ import { el, clear, mount } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { getContent } from '../core/store.js';
 
+const DEFAULT_COLUMNS = 2;
+const MIN_COLUMNS = 1;
+const MAX_COLUMNS = 4;
+
+function clampColumns(value) {
+  const num = Number(value);
+  if (!Number.isFinite(num)) {
+    return DEFAULT_COLUMNS;
+  }
+  const int = Math.floor(num);
+  if (int < MIN_COLUMNS) {
+    return MIN_COLUMNS;
+  }
+  if (int > MAX_COLUMNS) {
+    return MAX_COLUMNS;
+  }
+  return int;
+}
+
+function clampSpan(value, columns) {
+  const num = Number(value);
+  if (!Number.isFinite(num) || num <= 0) {
+    return columns;
+  }
+  const int = Math.floor(num);
+  if (int < 1) {
+    return 1;
+  }
+  if (int > columns) {
+    return columns;
+  }
+  return int;
+}
+
 function makeImageBlock(image, altText) {
   if (typeof image !== 'string' || image.length === 0) {
     return null;
@@ -32,15 +66,27 @@ function makeTextBlock(titleText, bodyText) {
   return wrapper;
 }
 
-function makeSection(section, index) {
+function makeSection(section, index, columns) {
   const titleText = t(section && section.title);
   const bodyText = t(section && section.body);
   const image = section && typeof section.image === 'string' ? section.image : '';
-  const article = el('article', {
-    class: `gk-about-section ${index % 2 === 0 ? 'gk-about-image-right' : 'gk-about-image-left'}`,
-  });
+  const hasImage = image.length > 0;
+  const span = clampSpan(section && section.span, columns);
+  const isFull = span === columns;
+  const alignmentClass = index % 2 === 0 ? 'gk-about-image-right' : 'gk-about-image-left';
+
+  const classes = ['gk-about-section', alignmentClass];
+  if (isFull) {
+    classes.push('gk-about-full');
+  }
+  if (hasImage) {
+    classes.push('gk-about-has-image');
+  }
+  const article = el('article', { class: classes.join(' ') });
+  article.style.setProperty('--gk-about-span', String(span));
+
   const textBlock = makeTextBlock(titleText, bodyText);
-  const imageBlock = makeImageBlock(image, titleText);
+  const imageBlock = hasImage ? makeImageBlock(image, titleText) : null;
   if (index % 2 === 0) {
     mount(article, textBlock);
     if (imageBlock) {
@@ -66,8 +112,10 @@ export function renderAbout(container) {
   if (sections.length === 0) {
     return;
   }
+  const columns = clampColumns(about && about.columns);
   container.classList.add('gk-about-section-wrapper');
+  container.style.setProperty('--gk-about-columns', String(columns));
   sections.forEach((section, index) => {
-    mount(container, makeSection(section, index));
+    mount(container, makeSection(section, index, columns));
   });
 }

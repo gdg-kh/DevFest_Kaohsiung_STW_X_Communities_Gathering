@@ -317,27 +317,6 @@ function makeFooterSecondary() {
   return wrapper;
 }
 
-function makeFooterCoc(config) {
-  const coc = config && config.footer && config.footer.codeOfConduct;
-  const url = coc && typeof coc.url === 'string' ? coc.url : '';
-  if (url.length === 0) {
-    return null;
-  }
-  const label = uiLabel('cocLinkText');
-  if (!label) {
-    return null;
-  }
-  return el('a', {
-    class: 'gk-footer-coc',
-    text: label,
-    attrs: {
-      href: url,
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    },
-  });
-}
-
 function makeFooterCopyright(config) {
   const text = t(config && config.footer && config.footer.copyright);
   if (!text) {
@@ -360,10 +339,6 @@ export function renderFooter(container) {
   const secondary = makeFooterSecondary();
   if (secondary) {
     mount(container, secondary);
-  }
-  const coc = makeFooterCoc(config);
-  if (coc) {
-    mount(container, coc);
   }
   const copyright = makeFooterCopyright(config);
   if (copyright) {

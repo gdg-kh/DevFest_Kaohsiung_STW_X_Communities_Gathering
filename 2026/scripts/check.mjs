@@ -83,7 +83,6 @@ const RESERVED = new Set([
   'staff',
   'thanks',
   'booths',
-  'organizers',
 ]);
 
 const GDG_COLORS = new Set(['#ea4335', '#4285f4', '#f9ab00', '#34a853', '#1e1e1e', '#f0f0f0']);
@@ -126,7 +125,6 @@ if (content) {
   checkIds(content.staff, 'staff');
   checkIds(content.thanks, 'thanks');
   checkIds(content.booths, 'booths');
-  checkIds(content.organizers, 'organizers');
 
   const groupIds = new Set((content.sessionGroups || []).map((g) => g.id));
   const trackIds = new Set((content.tracks || []).map((t) => t.id));
@@ -221,7 +219,6 @@ if (content) {
   scanBanned(content.staff, 'staff');
   scanBanned(content.thanks, 'thanks');
   scanBanned(content.booths, 'booths');
-  scanBanned(content.organizers, 'organizers');
 
   // 圖片檔案是否存在
   const checkImages = (list, dir, ext) => {
@@ -236,7 +233,28 @@ if (content) {
   checkImages(content.staff, 'staff', '.jpg');
   checkImages(content.thanks, 'thanks', '.png');
   checkImages(content.booths, 'booths', '.png');
-  checkImages(content.organizers, 'organizers', '.png');
+
+  // about 版型設定：columns 與每筆 sections.span
+  if (content.about && typeof content.about === 'object') {
+    const cols = content.about.columns;
+    const validCols = Number.isInteger(cols) && cols >= 1 && cols <= 4;
+    if (cols !== undefined && !validCols) {
+      err(`about.columns: 必須是 1–4 的整數，目前是「${cols}」`);
+    }
+    const effectiveCols = validCols ? cols : 2;
+    for (const sec of content.about.sections || []) {
+      if (sec.span === undefined) {
+        continue;
+      }
+      if (!Number.isInteger(sec.span) || sec.span < 1) {
+        err(`about.sections/${sec.id || '?'}: span 必須是正整數，目前是「${sec.span}」`);
+      } else if (sec.span > effectiveCols) {
+        warn(
+          `about.sections/${sec.id || '?'}: span=${sec.span} 超過 columns=${effectiveCols}，前台會被限制為 ${effectiveCols}`
+        );
+      }
+    }
+  }
 }
 
 if (config) {
@@ -267,19 +285,13 @@ if (config) {
 
   // 所有外部連結格式
   const urls = [
-    ['freeTicket.formUrl', config.freeTicket && config.freeTicket.formUrl],
     ['virtualSpace.url', config.virtualSpace && config.virtualSpace.url],
-    ['footer.codeOfConduct.url', config.footer && config.footer.codeOfConduct && config.footer.codeOfConduct.url],
     ...menu.filter((m) => m.url).map((m) => [`menu.${m.id}.url`, m.url]),
   ];
   for (const [label, url] of urls) {
     if (url && !/^https?:\/\//.test(url)) {
       err(`${label}: 網址必須以 http:// 或 https:// 開頭`);
     }
-  }
-
-  if (!config.footer || !config.footer.codeOfConduct || !config.footer.codeOfConduct.url) {
-    warn('config.footer.codeOfConduct.url 未設定，行為準則連結不會顯示');
   }
 }
 
@@ -389,9 +401,6 @@ if (fs.existsSync(shareRoot) && content) {
         warn(`殘留資料夾：share/${type}/${folder}（JSON 中已不存在，請手動刪除）`);
       }
     }
-  }
-  if (fs.existsSync(path.join(shareRoot, 'organizers'))) {
-    warn('share/organizers/ 不應存在（主辦單位不做分享頁）');
   }
 }
 

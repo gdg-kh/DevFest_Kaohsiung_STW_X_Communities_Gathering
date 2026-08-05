@@ -97,16 +97,6 @@
   align-items: flex-start;
 }
 
-.gk-modal-number {
-  font-family: var(--gk-font-mono);
-  font-size: var(--gk-fs-small);
-  color: var(--gk-ink);
-  background-color: var(--gk-yellow);
-  padding: 2px var(--gk-sp-2);
-  border: 1px solid var(--gk-ink);
-  border-radius: var(--gk-radius-sm);
-}
-
 .gk-modal-title {
   font-family: var(--gk-font-display);
   font-size: var(--gk-fs-h3);
@@ -318,20 +308,6 @@
   max-height: 100%;
   object-fit: contain;
   object-position: center;
-}
-
-.gk-card-number {
-  position: absolute;
-  top: var(--gk-sp-2);
-  left: var(--gk-sp-2);
-  font-family: var(--gk-font-mono);
-  font-size: var(--gk-fs-tiny);
-  font-weight: var(--gk-fw-bold);
-  background-color: var(--gk-yellow);
-  color: var(--gk-ink);
-  padding: 2px var(--gk-sp-2);
-  border: 1px solid var(--gk-ink);
-  border-radius: var(--gk-radius-sm);
 }
 
 .gk-card-body {

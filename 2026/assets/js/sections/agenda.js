@@ -14,7 +14,6 @@ import { openModal } from '../ui/detail-modal.js';
 import { openImageViewer } from '../ui/image-viewer.js';
 import { allSessionsButton, calendarButtons } from '../ui/calendar.js';
 import { track } from '../core/analytics.js';
-import { createVirtualSpaceLink } from './virtual-space.js';
 
 const SPAN_TYPES = new Set(['break', 'lunch', 'opening', 'closing']);
 
@@ -129,11 +128,6 @@ function renderMapSection(container) {
 
   mount(stage, image);
   mount(section, stage, caption);
-
-  const virtualLink = createVirtualSpaceLink('venue_map');
-  if (virtualLink) {
-    mount(section, virtualLink);
-  }
 
   show(0);
   mount(container, section);

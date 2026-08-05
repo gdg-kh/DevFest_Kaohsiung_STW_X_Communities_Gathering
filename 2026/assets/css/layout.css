@@ -354,13 +354,6 @@ body.gk-loading {
   margin-top: var(--gk-sp-6);
 }
 
-.gk-home-cards-title {
-  font-size: var(--gk-fs-h3);
-  font-family: var(--gk-font-display);
-  font-weight: var(--gk-fw-bold);
-  margin-bottom: var(--gk-sp-4);
-}
-
 .gk-home-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -396,12 +389,6 @@ body.gk-loading {
   color: var(--gk-ink);
   font-size: var(--gk-fs-small);
   padding: var(--gk-sp-1) var(--gk-sp-2);
-}
-
-.gk-footer-coc {
-  text-align: center;
-  font-size: var(--gk-fs-small);
-  margin-bottom: var(--gk-sp-3);
 }
 
 .gk-footer-copyright {
@@ -482,12 +469,14 @@ button {
 
 /* --- Section: about --- */
 .gk-about-section-wrapper {
-  display: flex;
-  flex-direction: column;
+  --gk-about-columns: 2;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: var(--gk-sp-6);
 }
 
 .gk-about-section {
+  --gk-about-span: 1;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--gk-sp-5);
@@ -500,13 +489,19 @@ button {
 }
 
 @media (min-width: 768px) {
+  .gk-about-section-wrapper {
+    grid-template-columns: repeat(var(--gk-about-columns), minmax(0, 1fr));
+  }
   .gk-about-section {
+    grid-column: span min(var(--gk-about-span), var(--gk-about-columns));
+  }
+  .gk-about-section.gk-about-full.gk-about-has-image {
     grid-template-columns: 1fr 1fr;
   }
-  .gk-about-image-left .gk-about-media {
+  .gk-about-full.gk-about-image-left .gk-about-media {
     order: -1;
   }
-  .gk-about-image-right .gk-about-media {
+  .gk-about-full.gk-about-image-right .gk-about-media {
     order: 1;
   }
 }
@@ -540,139 +535,6 @@ button {
 .gk-about-body {
   font-size: var(--gk-fs-body);
   color: var(--gk-ink);
-}
-
-/* --- Section: registration --- */
-.gk-registration-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gk-sp-4);
-}
-
-/* --- Notice 通用元件（資料驅動 variant） --- */
-.gk-notice {
-  padding: var(--gk-sp-3) var(--gk-sp-4);
-  border-radius: var(--gk-radius-md);
-  font-size: var(--gk-fs-body);
-  box-shadow: var(--gk-shadow-card);
-}
-
-.gk-notice-highlight {
-  background-color: var(--gk-yellow-pastel);
-  border: 2px solid var(--gk-ink);
-}
-
-.gk-notice-info {
-  background-color: var(--gk-paper);
-  border: 1px solid var(--gk-ink);
-}
-
-.gk-notice-muted {
-  padding: 0;
-  font-size: var(--gk-fs-small);
-  opacity: 0.8;
-  border: none;
-  background: none;
-  box-shadow: none;
-}
-
-.gk-registration-grid {
-  display: grid;
-  gap: var(--gk-sp-4);
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  .gk-registration-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.gk-registration-card {
-  border: 2px solid var(--gk-ink);
-  border-radius: var(--gk-radius-md);
-  background-color: var(--gk-paper);
-  padding: var(--gk-sp-5) var(--gk-sp-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--gk-sp-3);
-  box-shadow: var(--gk-shadow-card);
-}
-
-.gk-registration-card-title {
-  font-family: var(--gk-font-display);
-  font-size: var(--gk-fs-h3);
-  font-weight: var(--gk-fw-bold);
-  color: var(--gk-ink);
-}
-
-.gk-registration-card-summary {
-  color: var(--gk-ink);
-  font-size: var(--gk-fs-body);
-}
-
-.gk-registration-eligibility {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gk-sp-2);
-  padding-left: var(--gk-sp-5);
-  font-size: var(--gk-fs-small);
-}
-
-.gk-registration-review-note {
-  font-size: var(--gk-fs-small);
-  opacity: 0.8;
-}
-
-.gk-registration-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--gk-sp-3) var(--gk-sp-5);
-  border: 2px solid var(--gk-ink);
-  border-radius: var(--gk-radius-sm);
-  background-color: var(--gk-red);
-  color: var(--gk-paper);
-  font-family: var(--gk-font-display);
-  font-weight: var(--gk-fw-bold);
-  font-size: var(--gk-fs-body);
-  cursor: pointer;
-  box-shadow: var(--gk-shadow-button);
-  transition:
-    transform var(--gk-transition),
-    box-shadow var(--gk-transition);
-  align-self: flex-start;
-}
-
-.gk-registration-button:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: var(--gk-shadow-button-hover);
-  text-decoration: none;
-}
-
-.gk-registration-button-disabled {
-  background-color: var(--gk-line);
-  color: var(--gk-ink);
-  cursor: not-allowed;
-  opacity: 0.7;
-  box-shadow: none;
-}
-
-.gk-registration-button-disabled:hover {
-  transform: none;
-  box-shadow: none;
-}
-
-.gk-registration-coc,
-.gk-registration-coc-wrap {
-  font-size: var(--gk-fs-small);
-  color: var(--gk-ink);
-}
-
-.gk-registration-card-closed {
-  font-size: var(--gk-fs-body);
-  color: var(--gk-ink);
-  opacity: 0.75;
 }
 
 /* --- Section: sponsor marquee --- */
@@ -746,10 +608,9 @@ button {
   }
 }
 
-/* --- Section: thanks / booths / organizers grids --- */
+/* --- Section: thanks / booths grids --- */
 .gk-thanks-section,
-.gk-booths-section,
-.gk-organizers-section {
+.gk-booths-section {
   display: flex;
   flex-direction: column;
   gap: var(--gk-sp-6);
@@ -1088,8 +949,7 @@ button {
 
 /* --- Empty states --- */
 .gk-thanks-empty,
-.gk-booths-empty,
-.gk-organizers-empty {
+.gk-booths-empty {
   padding: var(--gk-sp-5);
   text-align: center;
   color: var(--gk-ink);
@@ -1099,66 +959,13 @@ button {
 }
 
 /* --- Home cards variants --- */
-.gk-home-external-card,
-.gk-home-free-ticket-card {
+.gk-home-external-card {
   cursor: pointer;
   padding: var(--gk-sp-4);
   min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* --- Registration card variants --- */
-.gk-registration-card-free {
-  background-color: var(--gk-yellow-pastel);
-}
-
-.gk-registration-card-direct {
-  background-color: var(--gk-blue-pastel);
-}
-
-.gk-registration-card-collapsed {
-  opacity: 0.75;
-}
-
-.gk-registration-card-full .gk-registration-card-closed {
-  padding: var(--gk-sp-4);
-  text-align: center;
-  border: 1px dashed var(--gk-ink);
-  border-radius: var(--gk-radius-sm);
-}
-
-.gk-registration-button-primary {
-  background-color: var(--gk-red);
-  color: var(--gk-paper);
-}
-
-/* --- Free ticket link (Hero 次要 CTA) --- */
-.gk-free-ticket-link {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--gk-sp-3) var(--gk-sp-6);
-  border: 3px solid var(--gk-ink);
-  border-radius: var(--gk-radius-md);
-  background-color: var(--gk-paper);
-  color: var(--gk-ink);
-  font-family: var(--gk-font-display);
-  font-weight: var(--gk-fw-bold);
-  font-size: var(--gk-fs-h3);
-  box-shadow: var(--gk-shadow-card);
-  cursor: pointer;
-  text-decoration: none;
-  transition:
-    transform var(--gk-transition),
-    box-shadow var(--gk-transition);
-}
-
-.gk-free-ticket-link:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--gk-shadow-card-hover);
-  text-decoration: none;
-  color: var(--gk-ink);
 }
 
 /* --- Calendar buttons: .ics variant --- */

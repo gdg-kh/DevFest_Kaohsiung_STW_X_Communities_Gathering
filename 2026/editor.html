@@ -818,7 +818,6 @@
         'staff',
         'thanks',
         'booth',
-        'organizer',
         'share',
       ];
       const LINK_PLATFORMS = [
@@ -1075,7 +1074,6 @@
           },
           analytics: { ga4Id: '' },
           footer: {
-            codeOfConduct: { url: '' },
             links: [],
             copyright: { 'zh-Hant': '© 2026 GDG Kaohsiung' },
           },
@@ -1096,7 +1094,6 @@
           thanks: [],
           boothGroups: [],
           booths: [],
-          organizers: [],
         };
         originalSnapshot.config = JSON.stringify(state.config, null, 2);
         originalSnapshot.content = JSON.stringify(state.content, null, 2);
@@ -1116,15 +1113,7 @@
           return null;
         }
         const configKeys = ['site', 'i18n', 'menu', 'ui', 'footer', 'analytics'];
-        const contentKeys = [
-          'speakers',
-          'sessions',
-          'staff',
-          'thanks',
-          'booths',
-          'organizers',
-          'about',
-        ];
+        const contentKeys = ['speakers', 'sessions', 'staff', 'thanks', 'booths', 'about'];
         const configHits = configKeys.filter((key) => key in parsed).length;
         const contentHits = contentKeys.filter((key) => key in parsed).length;
         if (configHits > contentHits) {
@@ -1371,7 +1360,6 @@
           thanksGroups: 'thanks',
           booths: 'booths',
           boothGroups: 'booths',
-          organizers: 'organizers',
           sessionGroups: 'sessionGroups',
           tracks: 'tracks',
           menu: 'menu',
@@ -1512,7 +1500,6 @@
         checkList(state.content.thanksGroups, 'thanksGroups', {});
         checkList(state.content.booths, 'booths', { requireName: true });
         checkList(state.content.boothGroups, 'boothGroups', {});
-        checkList(state.content.organizers, 'organizers', { requireName: true });
         checkList(state.content.sessionGroups, 'sessionGroups', {});
         checkList(state.content.tracks, 'tracks', {});
 
@@ -2107,38 +2094,6 @@
         return fieldWrap(field.label || '標籤', control, { hint: field.hint });
       }
 
-      function renderNotice(field, host, key, onChange) {
-        if (!host[key] || typeof host[key] !== 'object' || Array.isArray(host[key])) {
-          host[key] = { text: {}, variant: 'info' };
-        }
-        const notice = host[key];
-        if (!notice.text || typeof notice.text !== 'object' || Array.isArray(notice.text)) {
-          notice.text = {};
-        }
-        if (typeof notice.variant !== 'string' || notice.variant.length === 0) {
-          notice.variant = 'info';
-        }
-        const textField = renderI18nField(
-          { label: '文字內容' },
-          notice,
-          'text',
-          onChange,
-          Boolean(field.multiline)
-        );
-        const variantField = renderSelect(
-          { label: '外觀樣式', required: true, hint: '選擇要套用的 Notice 樣式' },
-          notice,
-          'variant',
-          onChange,
-          NOTICE_VARIANT_OPTIONS
-        );
-        const wrapper = el('div', { class: 'gk-object-form' }, [textField, variantField]);
-        return fieldWrap(field.label || '通知', wrapper, {
-          hint: field.hint,
-          required: field.required,
-        });
-      }
-
       function renderI18nList(field, host, key, onChange) {
         if (!Array.isArray(host[key])) {
           host[key] = [];
@@ -2333,8 +2288,6 @@
             return renderLinks(field, host, key, onChange);
           case 'tags':
             return renderTags(field, host, key, onChange);
-          case 'notice':
-            return renderNotice(field, host, key, onChange);
           case 'i18n-list':
             return renderI18nList(field, host, key, onChange);
           default:
@@ -3032,12 +2985,6 @@
         { value: 'closing', label: 'closing（結尾）' },
       ];
 
-      const NOTICE_VARIANT_OPTIONS = [
-        { value: 'highlight', label: 'highlight（黃底黑框，最顯眼）' },
-        { value: 'info', label: 'info（紙色細框，一般資訊）' },
-        { value: 'muted', label: 'muted（無框小字，補充備註）' },
-      ];
-
       const SPONSOR_DIRECTION_OPTIONS = [
         { value: 'left', label: 'left（向左捲）' },
         { value: 'right', label: 'right（向右捲）' },
@@ -3107,14 +3054,6 @@
               title: '頁尾',
               fields: [{ key: 'copyright', type: 'i18n-text', label: '版權宣告' }, LINK_FIELD],
             },
-            {
-              kind: 'object',
-              source: 'config',
-              path: 'footer.codeOfConduct',
-              title: '行為準則',
-              hint: '報名區塊底部與頁尾都會用到的行為準則連結。',
-              fields: [{ key: 'url', type: 'text', label: '行為準則網址' }],
-            },
           ],
         },
         {
@@ -3167,6 +3106,21 @@
           label: '活動介紹',
           sections: [
             {
+              kind: 'object',
+              source: 'content',
+              path: 'about',
+              title: '版型設定',
+              hint: '桌面版一列切成幾欄；每張段落卡片再各自指定橫跨幾欄。手機檢視固定單欄。',
+              fields: [
+                {
+                  key: 'columns',
+                  type: 'number',
+                  label: '基礎欄數（1–4）',
+                  hint: '整列切成幾欄，通常 2 就夠用。',
+                },
+              ],
+            },
+            {
               kind: 'array',
               source: 'content',
               path: 'about.sections',
@@ -3174,9 +3128,15 @@
               entity: {
                 itemLabel: '段落',
                 summary: 'title',
-                createItem: () => ({ id: '', title: {}, body: {} }),
+                createItem: () => ({ id: '', span: 2, title: {}, body: {} }),
                 fields: [
                   { key: 'id', type: 'slug', label: 'id' },
+                  {
+                    key: 'span',
+                    type: 'number',
+                    label: '橫跨欄數',
+                    hint: '這張卡佔幾欄（1 = 一格；等於基礎欄數 = 佔滿一整列）。留空視為整列。',
+                  },
                   { key: 'title', type: 'i18n-text', label: '標題' },
                   { key: 'body', type: 'i18n-textarea', label: '內文（用 \\n 換行）' },
                   { key: 'image', type: 'text', label: '圖片路徑（可留空）' },
@@ -3435,95 +3395,6 @@
           ],
         },
         {
-          id: 'organizers',
-          label: '主辦單位',
-          sections: [
-            {
-              kind: 'array',
-              source: 'content',
-              path: 'organizers',
-              title: '主辦單位',
-              entity: {
-                itemLabel: '主辦',
-                createItem: () => ({ id: '', name: {}, description: {}, links: [] }),
-                fields: [
-                  { key: 'id', type: 'slug', label: 'id' },
-                  { key: 'name', type: 'i18n-text', label: '名稱', required: true },
-                  { key: 'description', type: 'i18n-textarea', label: '簡介' },
-                  LINK_FIELD,
-                ],
-              },
-            },
-          ],
-        },
-        {
-          id: 'registration',
-          label: '報名',
-          sections: [
-            {
-              kind: 'object',
-              source: 'content',
-              path: 'registration',
-              title: '報名資訊',
-              hint: '「報到提醒」為 Notice 元件，可透過 variant 切換外觀。',
-              fields: [
-                { key: 'orderNotice', type: 'notice', label: '報到提醒' },
-                { key: 'directTitle', type: 'i18n-text', label: '現場報到 標題' },
-                { key: 'directSummary', type: 'i18n-textarea', label: '現場報到 說明' },
-              ],
-            },
-            {
-              kind: 'object',
-              source: 'config',
-              path: 'freeTicket',
-              title: '免費票 設定',
-              hint: '控制免費票的可用性、申請表單網址與截止時間。',
-              fields: [
-                {
-                  key: 'enabled',
-                  type: 'boolean',
-                  label: '啟用免費票',
-                  checkboxLabel: '在網站上顯示免費票入口',
-                },
-                { key: 'formUrl', type: 'text', label: '申請表單網址' },
-                {
-                  key: 'closeAt',
-                  type: 'text',
-                  label: '截止時間（ISO 8601，例如 2026-10-15T23:59:59+08:00）',
-                },
-                { key: 'reviewDays', type: 'number', label: '審核天數（提示用）' },
-              ],
-            },
-            {
-              kind: 'object',
-              source: 'content',
-              path: 'freeTicket',
-              title: '免費票 文案',
-              hint: '免費票區塊與 Modal 內顯示的文字內容。',
-              fields: [
-                { key: 'title', type: 'i18n-text', label: '標題' },
-                { key: 'summary', type: 'i18n-textarea', label: '摘要' },
-                {
-                  key: 'eligibility',
-                  type: 'i18n-list',
-                  label: '申請資格條列',
-                  addLabel: '新增資格',
-                  hint: '每一項會條列顯示於報名區塊與 Modal。',
-                },
-                {
-                  key: 'process',
-                  type: 'i18n-list',
-                  label: '申請流程條列',
-                  addLabel: '新增流程',
-                  hint: '會自動加上編號（1./2./3.）顯示於 Modal。',
-                },
-                { key: 'notes', type: 'i18n-textarea', label: '補充說明' },
-                { key: 'closedText', type: 'i18n-textarea', label: '截止後顯示文字' },
-              ],
-            },
-          ],
-        },
-        {
           id: 'virtualSpace',
           label: '虛擬會場',
           sections: [
@@ -3645,7 +3516,6 @@
           ['backToTop', '回到頂端'],
           ['langLabel', '語言標籤'],
           ['ticketCta', '購票按鈕'],
-          ['speakerNumberPrefix', '講者編號前綴'],
           ['allTracksLabel', '全部軌道'],
           ['emptyStateText', '無資料時文案'],
           ['eventStartedText', '活動已開始'],
@@ -3659,20 +3529,10 @@
           ['viewerZoomHint', '檢視器 縮放提示'],
           ['virtualEnterButton', '虛擬會場 進入按鈕'],
           ['virtualQrHint', '虛擬會場 QR 提示'],
-          ['virtualMapCrossLink', '虛擬會場 看實體地圖'],
           ['navMoreLabel', '導覽 更多'],
           ['lastYearCardText', '去年頁面 說明'],
-          ['organizerCardTitle', '主辦單位卡片標題'],
-          ['freeTicketLink', '免費票 連結'],
-          ['freeTicketFormButton', '免費票 表單按鈕'],
-          ['freeTicketEligibilityLabel', '免費票 資格標籤'],
-          ['freeTicketProcessLabel', '免費票 流程標籤'],
-          ['freeTicketCardButton', '免費票 卡片按鈕'],
-          ['directTicketCardButton', '直接報名 卡片按鈕'],
-          ['freeTicketReviewNote', '免費票 審核註記'],
           ['sponsorMarqueeTitle', '贊助跑馬燈標題'],
           ['ballotHeaderText', '感謝票標題'],
-          ['cocLinkText', '行為準則連結文字'],
           ['addToCalendarLabel', '加入行事曆'],
           ['downloadIcsLabel', '下載 ICS'],
           ['googleCalendarLabel', '加入 Google 日曆'],

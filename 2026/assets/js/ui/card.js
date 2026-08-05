@@ -68,17 +68,6 @@ function makeLogoImage(image, name) {
   return wrapper;
 }
 
-function appendNumberBadge(mediaWrapper, number) {
-  if (typeof number !== 'number' || Number.isNaN(number)) {
-    return;
-  }
-  const badge = el('span', {
-    class: 'gk-card-number',
-    text: `#${number}`,
-  });
-  mount(mediaWrapper, badge);
-}
-
 function joinAffiliation(titleText, orgText) {
   if (titleText && orgText) {
     return `${titleText} · ${orgText}`;
@@ -111,7 +100,6 @@ export function personCard(opts) {
   const nameText = t(options.name);
   const card = makeCard('gk-card gk-person-card', options.onClick, nameText);
   const media = makePersonImage(options.image, nameText);
-  appendNumberBadge(media, options.number);
   mount(card, media);
   const affiliationText = joinAffiliation(t(options.title), t(options.org));
   appendTextBlock(card, options.name, options.subtitle, options.description, affiliationText);

@@ -1,5 +1,5 @@
 const JPG_TYPES = ['speakers', 'staff'];
-const PNG_TYPES = ['thanks', 'booths', 'organizers'];
+const PNG_TYPES = ['thanks', 'booths'];
 const GROUP_KEYS = ['sessionGroups', 'thanksGroups', 'boothGroups'];
 
 let configData = null;

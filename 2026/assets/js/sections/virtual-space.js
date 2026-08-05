@@ -144,12 +144,3 @@ export function renderVirtualSpace(container) {
     mount(container, qr);
   }
 }
-
-export function createVirtualSpaceLink(entryName) {
-  const vs = getVirtualConfig();
-  if (!vs) {
-    return null;
-  }
-  const label = uiLabel('virtualMapCrossLink');
-  return makeEnterButton(vs.url, entryName, label);
-}

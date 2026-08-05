@@ -1,10 +1,7 @@
 import { el, clear, mount } from '../core/dom.js';
 import { t } from '../core/i18n.js';
-import { getConfig, getContent, getSortedList, assetPath } from '../core/store.js';
-import { logoCard } from '../ui/card.js';
-import { openModal } from '../ui/detail-modal.js';
+import { getConfig } from '../core/store.js';
 import { track } from '../core/analytics.js';
-import { isFreeTicketAvailable, openFreeTicketModal } from '../ui/free-ticket.js';
 
 function uiLabel(key) {
   const config = getConfig();
@@ -23,36 +20,6 @@ function getHomeMenuItems() {
       const bOrder = typeof b.order === 'number' ? b.order : Number.MAX_SAFE_INTEGER;
       return aOrder - bOrder;
     });
-}
-
-function openOrganizerModal(org) {
-  track('select_organizer', { organizer_id: org.id });
-  openModal({
-    image: assetPath('organizers', org.id),
-    imageShape: 'square',
-    name: org.name,
-    bio: org.description,
-    links: Array.isArray(org.links) ? org.links : [],
-  });
-}
-
-function makeOrganizerCards() {
-  const organizers = getSortedList('organizers');
-  const cards = [];
-  for (const org of organizers) {
-    if (!org || typeof org.id !== 'string') {
-      continue;
-    }
-    cards.push(
-      logoCard({
-        image: assetPath('organizers', org.id),
-        name: org.name,
-        description: org.description,
-        onClick: () => openOrganizerModal(org),
-      })
-    );
-  }
-  return cards;
 }
 
 function makeLastYearCard(menuItem) {
@@ -84,46 +51,6 @@ function makeLastYearCard(menuItem) {
   return card;
 }
 
-function makeFreeTicketCard() {
-  if (!isFreeTicketAvailable()) {
-    return null;
-  }
-  const content = getContent();
-  const ft = (content && content.freeTicket) || {};
-  const titleText = t(ft.title);
-  const summaryText = t(ft.summary);
-  const card = el('article', {
-    class: 'gk-card gk-home-free-ticket-card',
-    attrs: {
-      role: 'button',
-      tabindex: '0',
-    },
-  });
-  const activate = () => openFreeTicketModal('home_card');
-  card.addEventListener('click', activate);
-  card.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
-      event.preventDefault();
-      activate();
-    }
-  });
-  const body = el('div', { class: 'gk-card-body gk-card-body-center' });
-  if (titleText) {
-    mount(body, el('h3', { class: 'gk-card-name', text: titleText }));
-  }
-  if (summaryText) {
-    mount(
-      body,
-      el('p', {
-        class: 'gk-card-description gk-multiline',
-        text: summaryText,
-      })
-    );
-  }
-  mount(card, body);
-  return card;
-}
-
 export function renderHomeCards(container) {
   if (!container) {
     return;
@@ -133,21 +60,13 @@ export function renderHomeCards(container) {
   const items = getHomeMenuItems();
   const cards = [];
   for (const item of items) {
-    if (item.id === 'organizer') {
-      const organizerCards = makeOrganizerCards();
-      for (const card of organizerCards) {
-        cards.push(card);
-      }
-    } else if (item.id === 'lastyear') {
-      const card = makeLastYearCard(item);
-      if (card) {
-        cards.push(card);
-      }
+    if (item.id !== 'lastyear') {
+      continue;
     }
-  }
-  const freeTicketCard = makeFreeTicketCard();
-  if (freeTicketCard) {
-    cards.push(freeTicketCard);
+    const card = makeLastYearCard(item);
+    if (card) {
+      cards.push(card);
+    }
   }
 
   if (cards.length === 0) {
@@ -155,10 +74,6 @@ export function renderHomeCards(container) {
   }
 
   container.classList.add('gk-home-cards-section');
-  const titleText = uiLabel('organizerCardTitle');
-  if (titleText) {
-    mount(container, el('h2', { class: 'gk-home-cards-title', text: titleText }));
-  }
   const grid = el('div', { class: 'gk-home-cards-grid' });
   for (const card of cards) {
     mount(grid, card);

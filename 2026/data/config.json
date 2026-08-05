@@ -28,9 +28,6 @@
     "ga4Id": "G-BMV35Q9F1G"
   },
   "footer": {
-    "codeOfConduct": {
-      "url": "https://gdg.tw/code_of_conduct/"
-    },
     "links": [
       {
         "platform": "facebook",
@@ -51,12 +48,6 @@
   },
   "thanks": {
     "showCardShadow": false
-  },
-  "freeTicket": {
-    "enabled": true,
-    "formUrl": "https://forms.gle/B56e4iRz9BBe3R7W7",
-    "closeAt": "2026-10-15T23:59:59+08:00",
-    "reviewDays": 3
   },
   "virtualSpace": {
     "enabled": true,
@@ -117,16 +108,9 @@
       "label": { "zh-Hant": "去年頁面" }
     },
     {
-      "id": "organizer",
-      "enabled": true,
-      "order": 9,
-      "placement": "home",
-      "label": { "zh-Hant": "主辦單位" }
-    },
-    {
       "id": "ticket",
       "enabled": true,
-      "order": 10,
+      "order": 9,
       "type": "cta",
       "url": "https://example.com/ticket",
       "label": { "zh-Hant": "點我購票" }
@@ -144,7 +128,6 @@
     "backToTop": { "zh-Hant": "回到頂端" },
     "langLabel": { "zh-Hant": "語言" },
     "ticketCta": { "zh-Hant": "點我購票" },
-    "speakerNumberPrefix": { "zh-Hant": "號" },
     "allTracksLabel": { "zh-Hant": "全部軌道" },
     "emptyStateText": { "zh-Hant": "資料準備中，請稍後再來看看" },
     "eventStartedText": { "zh-Hant": "活動已開始" },
@@ -158,20 +141,10 @@
     "viewerZoomHint": { "zh-Hant": "滾輪縮放，拖曳平移，雙擊還原" },
     "virtualEnterButton": { "zh-Hant": "進入虛擬會場" },
     "virtualQrHint": { "zh-Hant": "手機掃描 QR code 快速進入" },
-    "virtualMapCrossLink": { "zh-Hant": "看實體場地地圖" },
     "navMoreLabel": { "zh-Hant": "更多" },
     "lastYearCardText": { "zh-Hant": "看看去年的活動紀錄" },
-    "organizerCardTitle": { "zh-Hant": "主辦單位" },
-    "freeTicketLink": { "zh-Hant": "查看資格並申請" },
-    "freeTicketFormButton": { "zh-Hant": "前往申請表單" },
-    "freeTicketEligibilityLabel": { "zh-Hant": "申請資格" },
-    "freeTicketProcessLabel": { "zh-Hant": "審核流程" },
-    "freeTicketCardButton": { "zh-Hant": "我可能符合資格" },
-    "directTicketCardButton": { "zh-Hant": "直接報名" },
-    "freeTicketReviewNote": { "zh-Hant": "送出申請後，主辦單位會於三個工作天內回覆審核結果" },
     "sponsorMarqueeTitle": { "zh-Hant": "特別感謝" },
     "ballotHeaderText": { "zh-Hant": "GDG Kaohsiung 感謝票" },
-    "cocLinkText": { "zh-Hant": "行為準則" },
     "addToCalendarLabel": { "zh-Hant": "加入行事曆" },
     "downloadIcsLabel": { "zh-Hant": "下載 ICS 檔案" },
     "googleCalendarLabel": { "zh-Hant": "加入 Google 日曆" },

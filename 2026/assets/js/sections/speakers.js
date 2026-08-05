@@ -74,7 +74,6 @@ function openSpeakerModal(speaker) {
   openModal({
     image: assetPath('speakers', speaker.id),
     imageShape: 'circle',
-    number: typeof speaker.order === 'number' ? speaker.order : undefined,
     name: speaker.name,
     title: speaker.title,
     org: speaker.org,
@@ -92,7 +91,6 @@ function makeCardFor(speaker) {
   const session = firstSessionOf(speaker);
   const opts = {
     image: assetPath('speakers', speaker.id),
-    number: typeof speaker.order === 'number' ? speaker.order : undefined,
     name: speaker.name,
     title: speaker.title,
     org: speaker.org,

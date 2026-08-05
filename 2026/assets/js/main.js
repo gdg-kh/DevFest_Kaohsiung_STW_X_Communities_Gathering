@@ -4,9 +4,7 @@ import { initI18n, t } from './core/i18n.js';
 import { initAnalytics, track } from './core/analytics.js';
 import { renderNav, renderFooter, initNav, initNavOverflow } from './ui/nav.js';
 import { openModal } from './ui/detail-modal.js';
-import { createFreeTicketLink } from './ui/free-ticket.js';
 import { renderAbout } from './sections/about.js';
-import { renderRegistration } from './sections/registration.js';
 import { renderSponsorMarquee } from './sections/sponsor-marquee.js';
 import { renderHomeCards } from './sections/home-cards.js';
 import { renderSpeakers } from './sections/speakers.js';
@@ -89,10 +87,6 @@ function renderHero() {
       });
       mount(actions, link);
     }
-    const freeLink = createFreeTicketLink('hero');
-    if (freeLink) {
-      mount(actions, freeLink);
-    }
   }
 
   startCountdown();
@@ -166,10 +160,6 @@ function renderAll() {
   const nav = byId('gk-nav');
   if (nav) {
     renderNav(nav);
-  }
-  const registration = byId('gk-registration');
-  if (registration) {
-    renderRegistration(registration);
   }
   const about = byId('gk-about');
   if (about) {
