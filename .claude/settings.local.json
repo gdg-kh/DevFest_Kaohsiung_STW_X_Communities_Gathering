@@ -64,7 +64,12 @@
       "Bash(python3 -m http.server 8765)",
       "Bash(echo \"server started, pid: $!\")",
       "Bash(curl *)",
-      "Bash(kill 23902)"
+      "Bash(kill 23902)",
+      "Read(//tmp/**)",
+      "Bash(bash /tmp/card_summary.sh)",
+      "Bash(bash /tmp/card_summary2.sh)",
+      "Bash(bash /tmp/card_summary3.sh)",
+      "Bash(bash /tmp/card_summary4.sh)"
     ],
     "deny": [],
     "ask": []
