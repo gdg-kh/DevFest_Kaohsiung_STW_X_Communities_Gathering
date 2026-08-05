@@ -28,13 +28,7 @@
     "ga4Id": "G-BMV35Q9F1G"
   },
   "footer": {
-    "links": [
-      {
-        "platform": "facebook",
-        "label": { "zh-Hant": "臉書社團" },
-        "url": "https://www.facebook.com/groups/GDGKaohsiung"
-      }
-    ],
+    "links": [],
     "copyright": {
       "zh-Hant": "© 2026 GDG Kaohsiung"
     }
@@ -52,8 +46,7 @@
   "virtualSpace": {
     "enabled": true,
     "url": "https://leapie.leapdesign.ai/",
-    "embed": false,
-    "qrImage": "images/virtual-space-qr.png"
+    "embed": false
   },
   "menu": [
     {
@@ -105,7 +98,7 @@
       "type": "external",
       "placement": "home",
       "url": "https://gdgkh.cc/2025/",
-      "label": { "zh-Hant": "去年頁面" }
+      "label": { "zh-Hant": "回顧 DevFest 高雄場 X 南臺灣技術社群大聚 2025" }
     },
     {
       "id": "ticket",
@@ -140,7 +133,6 @@
     "viewerCloseLabel": { "zh-Hant": "關閉檢視器" },
     "viewerZoomHint": { "zh-Hant": "滾輪縮放，拖曳平移，雙擊還原" },
     "virtualEnterButton": { "zh-Hant": "進入虛擬會場" },
-    "virtualQrHint": { "zh-Hant": "手機掃描 QR code 快速進入" },
     "navMoreLabel": { "zh-Hant": "更多" },
     "lastYearCardText": { "zh-Hant": "看看去年的活動紀錄" },
     "sponsorMarqueeTitle": { "zh-Hant": "特別感謝" },

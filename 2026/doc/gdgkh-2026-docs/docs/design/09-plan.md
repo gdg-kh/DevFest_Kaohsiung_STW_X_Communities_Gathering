@@ -250,4 +250,4 @@ section 也讓整站少一段重複資訊。
 - 擺攤意願：`https://forms.gle/VX3vgjDoGt638cE56`
 - 贊助意願：`https://forms.gle/NJ8DpfKGf5fGG6Mw9`
 
-頁尾連結：GDG Kaohsiung 臉書社團 `https://www.facebook.com/groups/GDGKaohsiung`
+頁尾：僅顯示 secondary menu 與 copyright，不放固定社群連結（`config.json` 的 `footer.links` 預設為空陣列，未來要放再加）。

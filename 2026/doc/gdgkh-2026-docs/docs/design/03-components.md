@@ -70,7 +70,8 @@ Modal 行為：ESC 關閉、點遮罩關閉、focus trap、開啟時鎖背景捲
 - 進入按鈕只保留虛擬會場區塊本身的「進入虛擬會場」（新分頁開啟，
   `target="_blank" rel="noopener noreferrer"`）；場地地圖區塊不再另放
   「進入虛擬會場」或「查看實體場地地圖」的交叉連結
-- 附 QR code 圖片，方便現場的人用手機掃
+- 不放 QR code：桌機使用者直接點按鈕即可進入，手機使用者也能直接點；
+  QR code 僅在「A 裝置看網頁、B 裝置進入」的少見情境有意義，價值不大
 
 ### 不做 iframe 嵌入
 這類服務多半設有 `X-Frame-Options` 或 CSP `frame-ancestors`，嵌了會是空白；
@@ -84,8 +85,7 @@ config 保留一個 `embed` 開關（預設 `false`），實測確認可嵌再�
 "virtualSpace": {
   "enabled": true,
   "url": "https://leapie.leapdesign.ai/",
-  "embed": false,
-  "qrImage": "images/virtual-space-qr.png"
+  "embed": false
 }
 
 // content.json
@@ -98,8 +98,6 @@ config 保留一個 `embed` 開關（預設 `false`），實測確認可嵌再�
   ]
 }
 ```
-
-QR code 圖片自行產生一次放進 `images/`，不為了這個引入 QR 套件。
 
 GA 事件：`enter_virtual_space`（帶入口位置：選單 / 地圖下方 / 區塊主按鈕）。
 

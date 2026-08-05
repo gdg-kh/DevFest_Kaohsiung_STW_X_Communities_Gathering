@@ -739,28 +739,6 @@ button {
   font-size: var(--gk-fs-small);
 }
 
-.gk-virtual-qr {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--gk-sp-2);
-  padding: var(--gk-sp-4);
-  border: 2px solid var(--gk-ink);
-  border-radius: var(--gk-radius-md);
-  background-color: var(--gk-paper);
-  align-self: flex-start;
-}
-
-.gk-virtual-qr-image {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-}
-
-.gk-virtual-qr-hint {
-  font-size: var(--gk-fs-small);
-}
-
 /* --- Home cards extras --- */
 .gk-home-card-hint {
   font-size: var(--gk-fs-small);

@@ -76,29 +76,6 @@ function makeNotesList(notes) {
   return list;
 }
 
-function makeQrBlock(qrImage) {
-  if (typeof qrImage !== 'string' || qrImage.length === 0) {
-    return null;
-  }
-  const wrapper = el('div', { class: 'gk-virtual-qr' });
-  const hint = uiLabel('virtualQrHint');
-  const img = el('img', {
-    class: 'gk-virtual-qr-image',
-    attrs: {
-      src: qrImage,
-      alt: hint || '',
-      loading: 'lazy',
-      width: '180',
-      height: '180',
-    },
-  });
-  mount(wrapper, img);
-  if (hint) {
-    mount(wrapper, el('p', { class: 'gk-virtual-qr-hint', text: hint }));
-  }
-  return wrapper;
-}
-
 export function renderVirtualSpace(container) {
   if (!container) {
     return;
@@ -137,10 +114,5 @@ export function renderVirtualSpace(container) {
   const notes = makeNotesList(vc.notes);
   if (notes) {
     mount(container, notes);
-  }
-
-  const qr = makeQrBlock(vs.qrImage);
-  if (qr) {
-    mount(container, qr);
   }
 }
