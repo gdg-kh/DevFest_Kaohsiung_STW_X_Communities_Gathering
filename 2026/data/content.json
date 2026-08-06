@@ -6,60 +6,84 @@
         "id": "intro",
         "span": 2,
         "title": {
-          "zh-Hant": "關於 DevFest 2026 高雄場"
+          "zh-Hant": "關於 DevFest 2026 高雄場",
+          "en": "About DevFest 2026 Kaohsiung",
+          "ja": "DevFest 2026 高雄について"
         },
         "body": {
-          "zh-Hant": "DevFest 是由 GDG (Google Developer Groups) 社群主辦的年度技術盛會，也是全球最大的開發者社群科技大會，因為是全球年會，在字尾增加城市名稱區別不同場次。"
+          "zh-Hant": "DevFest 是由 GDG (Google Developer Groups) 社群主辦的年度技術盛會，也是全球最大的開發者社群科技大會，因為是全球年會，在字尾增加城市名稱區別不同場次。",
+          "en": "DevFest is an annual technology conference hosted by GDG (Google Developer Groups), and the world's largest developer community tech event. Because it's a global event, each city appends its name at the end to distinguish different editions.",
+          "ja": "DevFest は GDG（Google Developer Groups）コミュニティが主催する年次テクノロジーカンファレンスで、世界最大のデベロッパーコミュニティのテックイベントです。グローバルイベントであるため、開催都市名を末尾に付けて各会場を区別しています。"
         }
       },
       {
         "id": "history",
         "span": 2,
         "title": {
-          "zh-Hant": "我們的故事"
+          "zh-Hant": "我們的故事",
+          "en": "Our Story",
+          "ja": "私たちの物語"
         },
         "body": {
-          "zh-Hant": "DevFest 高雄場是 GDG Kaohsiung 社群舉辦的軟體年會。我們致力將外地的技術大神帶到高雄，讓高雄的開發者不用舟車勞頓就能與頂尖講者交流"
+          "zh-Hant": "DevFest 高雄場是 GDG Kaohsiung 社群舉辦的軟體年會。我們致力將外地的技術大神帶到高雄，讓高雄的開發者不用舟車勞頓就能與頂尖講者交流",
+          "en": "DevFest Kaohsiung is the annual software conference hosted by the GDG Kaohsiung community. We're committed to bringing top-tier tech speakers to Kaohsiung so local developers can connect with world-class experts without having to travel.",
+          "ja": "DevFest 高雄は GDG Kaohsiung コミュニティが主催するソフトウェア年次カンファレンスです。地方のトップエンジニアを高雄にお招きし、高雄のデベロッパーが遠出することなく一流のスピーカーと交流できる機会を提供することを目指しています。"
         }
       },
       {
         "id": "vision",
         "span": 2,
         "title": {
-          "zh-Hant": "活動願景"
+          "zh-Hant": "活動願景",
+          "en": "Our Vision",
+          "ja": "イベントのビジョン"
         },
         "body": {
-          "zh-Hant": "我們更希望能打造一個專屬「高雄」的技術年會，邀請高雄在地講者上台分享，有更多曝光的機會！\n\n參加本活動即代表您同意遵守《GDG 活動行為準則》：https://gdg.tw/code_of_conduct/"
+          "zh-Hant": "我們更希望能打造一個專屬「高雄」的技術年會，邀請高雄在地講者上台分享，有更多曝光的機會！\n\n參加本活動即代表您同意遵守《GDG 活動行為準則》：https://gdg.tw/code_of_conduct/",
+          "en": "We also hope to build a tech conference that truly belongs to Kaohsiung — inviting local Kaohsiung speakers to the stage and giving them more visibility!\n\nBy attending this event, you agree to abide by the GDG Event Code of Conduct: https://gdg.tw/code_of_conduct/",
+          "ja": "「高雄」ならではのテックカンファレンスを作り、高雄在住のスピーカーに登壇の場を提供し、より多くの露出機会を届けたいと願っています！\n\n本イベントへの参加をもって、《GDG イベント行動規範》に同意したものとみなされます：https://gdg.tw/code_of_conduct/"
         }
       },
       {
         "id": "checkin",
         "span": 1,
         "title": {
-          "zh-Hant": "報到與購票"
+          "zh-Hant": "報到與購票",
+          "en": "Check-in & Tickets",
+          "ja": "受付とチケット"
         },
         "body": {
-          "zh-Hant": "購票請透過頁面上方的「點我購票」按鈕前往購票頁面。\n\n活動當日請攜帶票券 QR Code 與身分證件，至報到桌掃描票券即可領取識別證與紀念品。"
+          "zh-Hant": "購票請透過頁面上方的「點我購票」按鈕前往購票頁面。\n\n活動當日請攜帶票券 QR Code 與身分證件，至報到桌掃描票券即可領取識別證與紀念品。",
+          "en": "To purchase tickets, tap the \"Get Tickets\" button at the top of the page.\n\nOn the event day, please bring your ticket QR code and photo ID. Scan your ticket at the check-in desk to collect your badge and swag.",
+          "ja": "チケットのご購入は、ページ上部の「チケット購入」ボタンからお進みください。\n\n当日はチケット QR コードと身分証をお持ちください。受付にて QR コードをスキャンいただくと、名札とノベルティをお渡しします。"
         }
       },
       {
         "id": "free_ticket",
         "span": 1,
         "title": {
-          "zh-Hant": "免費票申請"
+          "zh-Hant": "免費票申請",
+          "en": "Free Ticket Application",
+          "ja": "無料チケット申請"
         },
         "body": {
-          "zh-Hant": "本活動提供給學生與弱勢族群的免費票申請通道。\n\n申請資格：\n• 在學學生（需出示學生證）\n• 身心障礙人士（需出示證明）\n• 低收入戶（需出示相關文件）\n\n審核流程：\n1. 填寫線上申請表\n2. 上傳身分證明文件\n3. 等待審核通知（約三個工作天）\n4. 審核通過後取得電子票券\n\n申請截止：2026 年 10 月 15 日\n申請表單：https://forms.gle/B56e4iRz9BBe3R7W7\n\n截止後不再受理，請於期限內完成申請。"
+          "zh-Hant": "本活動提供給學生與弱勢族群的免費票申請通道。\n\n申請資格：\n• 在學學生（需出示學生證）\n• 身心障礙人士（需出示證明）\n• 低收入戶（需出示相關文件）\n\n審核流程：\n1. 填寫線上申請表\n2. 上傳身分證明文件\n3. 等待審核通知（約三個工作天）\n4. 審核通過後取得電子票券\n\n申請截止：2026 年 10 月 15 日\n申請表單：https://forms.gle/B56e4iRz9BBe3R7W7\n\n截止後不再受理，請於期限內完成申請。",
+          "en": "This event offers a free ticket application channel for students and underserved groups.\n\nEligibility:\n• Enrolled students (student ID required)\n• People with disabilities (proof required)\n• Low-income households (supporting documents required)\n\nApplication process:\n1. Fill out the online application form\n2. Upload identification documents\n3. Wait for the review result (approx. 3 business days)\n4. Receive your e-ticket upon approval\n\nApplication deadline: October 15, 2026\nApplication form: https://forms.gle/B56e4iRz9BBe3R7W7\n\nApplications will not be accepted after the deadline. Please complete your application in time.",
+          "ja": "本イベントでは、学生および支援が必要な方向けに無料チケットの申請枠を提供しています。\n\n申請資格：\n• 在学中の学生（学生証の提示が必要）\n• 障がいをお持ちの方（証明書の提示が必要）\n• 低所得世帯の方（関連書類の提示が必要）\n\n審査フロー：\n1. オンライン申請フォームに記入\n2. 身分証明書類のアップロード\n3. 審査結果のお知らせ（約 3 営業日）\n4. 承認後、電子チケットを発行\n\n申請締切：2026 年 10 月 15 日\n申請フォーム：https://forms.gle/B56e4iRz9BBe3R7W7\n\n締切後は受付を終了いたしますので、期限内にお申し込みください。"
         }
       },
       {
         "id": "organizer",
         "span": 1,
         "title": {
-          "zh-Hant": "主辦單位"
+          "zh-Hant": "主辦單位",
+          "en": "Organizer",
+          "ja": "主催"
         },
         "body": {
-          "zh-Hant": "GDG Kaohsiung 每年定期舉辦 Build with AI、Google I/O Extended、DevFest 和 TOOCON 天黑黑月會，希望讓高雄對軟體開發有興趣的朋友能夠有實體交流的機會。\n\n歡迎加入 Google Developer Groups Kaohsiung 粉絲專頁與 GDG Kaohsiung 臉書社團，掌握最新活動資訊：\nhttps://www.facebook.com/groups/GDGKaohsiung"
+          "zh-Hant": "GDG Kaohsiung 每年定期舉辦 Build with AI、Google I/O Extended、DevFest 和 TOOCON 天黑黑月會，希望讓高雄對軟體開發有興趣的朋友能夠有實體交流的機會。\n\n歡迎加入 Google Developer Groups Kaohsiung 粉絲專頁與 GDG Kaohsiung 臉書社團，掌握最新活動資訊：\nhttps://www.facebook.com/groups/GDGKaohsiung",
+          "en": "GDG Kaohsiung regularly hosts Build with AI, Google I/O Extended, DevFest, and the TOOCON \"Dark Sky\" monthly meetup, aiming to give Kaohsiung developers who love software a place to meet in person.\n\nJoin our Google Developer Groups Kaohsiung Facebook Page and the GDG Kaohsiung Facebook group for the latest event updates:\nhttps://www.facebook.com/groups/GDGKaohsiung",
+          "ja": "GDG Kaohsiung では毎年、Build with AI、Google I/O Extended、DevFest、TOOCON「天黑黑」月例会などを定期的に開催しており、高雄でソフトウェア開発に興味のある方々が対面で交流できる機会を提供しています。\n\n最新のイベント情報は Google Developer Groups Kaohsiung の Facebook ページおよび GDG Kaohsiung の Facebook グループでご確認いただけます：\nhttps://www.facebook.com/groups/GDGKaohsiung"
         }
       }
     ]
@@ -111,7 +135,9 @@
       "id": "track_1",
       "order": 1,
       "name": {
-        "zh-Hant": "第一會場"
+        "zh-Hant": "第一會場",
+        "en": "Track 1",
+        "ja": "第 1 会場"
       },
       "color": "#ea4335"
     },
@@ -119,7 +145,9 @@
       "id": "track_2",
       "order": 2,
       "name": {
-        "zh-Hant": "第二會場"
+        "zh-Hant": "第二會場",
+        "en": "Track 2",
+        "ja": "第 2 会場"
       },
       "color": "#4285f4"
     }
@@ -138,14 +166,18 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://louis383.medium.com/"
         },
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "IT 鐵人賽"
+            "zh-Hant": "IT 鐵人賽",
+            "en": "iT Home Ironman Contest",
+            "ja": "iT Home 鉄人コンテスト"
           },
           "url": "https://ithelp.ithome.com.tw/users/20141615/ironman/8135"
         }
@@ -179,7 +211,9 @@
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/leo-he-392338173/"
         }
@@ -239,14 +273,18 @@
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/%E7%89%B9-%E7%93%A6-7a345224b/"
         },
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/blurwater64/"
         }
@@ -270,7 +308,9 @@
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "www.linkedin.com/in/kevin-chiu-612a61189"
         }
@@ -304,28 +344,36 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://simonliuyuwei.my.canva.site/link-in-bio"
         },
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/simonliuyuwei/"
         },
         {
           "platform": "github",
           "label": {
-            "zh-Hant": "GitHub"
+            "zh-Hant": "GitHub",
+            "en": "GitHub",
+            "ja": "GitHub"
           },
           "url": "https://github.com/LiuYuWei"
         },
         {
           "platform": "medium",
           "label": {
-            "zh-Hant": "Medium"
+            "zh-Hant": "Medium",
+            "en": "Medium",
+            "ja": "Medium"
           },
           "url": "https://medium.com/@simon3458"
         }
@@ -359,14 +407,18 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://www.secondspace.dev/kubi-robot"
         },
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/avancans/"
         }
@@ -400,7 +452,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://denkeni.org"
         }
@@ -424,14 +478,18 @@
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/steven.yeh"
         },
         {
           "platform": "medium",
           "label": {
-            "zh-Hant": "Medium"
+            "zh-Hant": "Medium",
+            "en": "Medium",
+            "ja": "Medium"
           },
           "url": "https://medium.com/@stevenyeh"
         }
@@ -455,14 +513,18 @@
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/liren0907"
         },
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/liren0907"
         }
@@ -484,7 +546,9 @@
         "ja": "受付開始"
       },
       "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
+        "zh-Hant": "議程資訊即將公布。",
+        "en": "Session details coming soon.",
+        "ja": "セッション情報は近日公開予定です。"
       },
       "tags": [],
       "speakerIds": [],
@@ -502,7 +566,9 @@
         "ja": "開会式"
       },
       "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
+        "zh-Hant": "議程資訊即將公布。",
+        "en": "Session details coming soon.",
+        "ja": "セッション情報は近日公開予定です。"
       },
       "tags": [],
       "speakerIds": [],
@@ -520,7 +586,9 @@
         "ja": "Legend Innovation スケジュール"
       },
       "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
+        "zh-Hant": "議程資訊即將公布。",
+        "en": "Session details coming soon.",
+        "ja": "セッション情報は近日公開予定です。"
       },
       "tags": [],
       "speakerIds": [],
@@ -554,7 +622,9 @@
       "id": "d1_t5_s2",
       "trackId": "track_2",
       "title": {
-        "zh-Hant": "Gemini in Android development"
+        "zh-Hant": "Gemini in Android development",
+        "en": "Gemini in Android development",
+        "ja": "Android 開発における Gemini"
       },
       "abstract": {
         "zh-Hant": "今年 Gemini 整合更多功能到 Android Studio 裡頭了，這些新功能如何增加工作的效率、改變工作的方式呢？Gemini 還能怎麼協助軟體開發？這個議程將會介紹 Gemini in Android Studio 的各種功能，以及用 Google 提供的工具來改善我們工作的每一天。",
@@ -683,7 +753,9 @@
         "ja": "ピザタイム＆交流時間"
       },
       "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
+        "zh-Hant": "議程資訊即將公布。",
+        "en": "Session details coming soon.",
+        "ja": "セッション情報は近日公開予定です。"
       },
       "tags": [],
       "speakerIds": [],
@@ -764,7 +836,9 @@
         "ja": "閉会式"
       },
       "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
+        "zh-Hant": "議程資訊即將公布。",
+        "en": "Session details coming soon.",
+        "ja": "セッション情報は近日公開予定です。"
       },
       "tags": [],
       "speakerIds": [],
@@ -782,7 +856,9 @@
         "ja": "アフタービュッフェ"
       },
       "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
+        "zh-Hant": "議程資訊即將公布。",
+        "en": "Session details coming soon.",
+        "ja": "セッション情報は近日公開予定です。"
       },
       "tags": [],
       "speakerIds": [],
@@ -805,28 +881,36 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://www.andyawd.com.tw/"
         },
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/anandydy529//"
         },
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/weiting-dai/"
         },
         {
           "platform": "github",
           "label": {
-            "zh-Hant": "GitHub"
+            "zh-Hant": "GitHub",
+            "en": "GitHub",
+            "ja": "GitHub"
           },
           "url": "https://github.com/AndyAWD"
         }
@@ -934,7 +1018,9 @@
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/johnny.chen.568294"
         }
@@ -962,21 +1048,27 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://blog.haoder.dev/"
         },
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/aaron-chuang/"
         },
         {
           "platform": "github",
           "label": {
-            "zh-Hant": "GitHub"
+            "zh-Hant": "GitHub",
+            "en": "GitHub",
+            "ja": "GitHub"
           },
           "url": "https://github.com/ADSFAaron"
         }
@@ -1004,7 +1096,9 @@
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/jiayou.wu.9"
         }
@@ -1030,7 +1124,9 @@
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/laysdragon"
         }
@@ -1058,7 +1154,9 @@
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook NSYSU"
+            "zh-Hant": "Facebook NSYSU",
+            "en": "Facebook NSYSU",
+            "ja": "Facebook NSYSU"
           },
           "url": "https://www.facebook.com/NSYSUGDSC"
         }
@@ -1121,7 +1219,9 @@
         {
           "platform": "instagram",
           "label": {
-            "zh-Hant": "Instagram"
+            "zh-Hant": "Instagram",
+            "en": "Instagram",
+            "ja": "Instagram"
           },
           "url": "https://www.instagram.com/lsf_0619/?hl=zh-tw"
         }
@@ -1149,7 +1249,9 @@
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/VickyJu725"
         }
@@ -1172,7 +1274,9 @@
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/corey924"
         }
@@ -1200,7 +1304,9 @@
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/share/14NNXm8Uyqq/"
         }
@@ -1264,7 +1370,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://developers.google.com"
         }
@@ -1289,7 +1397,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://edbkcg.kcg.gov.tw/"
         }
@@ -1314,7 +1424,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://www.legendinno.com.tw/"
         }
@@ -1339,7 +1451,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://koin.koda.net.tw/en/index.html"
         }
@@ -1364,7 +1478,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://www.colosscious.com/home"
         }
@@ -1389,7 +1505,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://portaly.cc/titansoft"
         }
@@ -1423,28 +1541,36 @@
         {
           "platform": "twitter",
           "label": {
-            "zh-Hant": "x"
+            "zh-Hant": "x",
+            "en": "X",
+            "ja": "X"
           },
           "url": "https://x.com/jetbrains"
         },
         {
           "platform": "instagram",
           "label": {
-            "zh-Hant": "Instagram"
+            "zh-Hant": "Instagram",
+            "en": "Instagram",
+            "ja": "Instagram"
           },
           "url": "https://www.instagram.com/jetbrains"
         },
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/company/jetbrains"
         },
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/JetBrains/"
         }
@@ -1469,21 +1595,27 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://www.cathayholdings.com/holdings/"
         },
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "CDC KKTIX"
+            "zh-Hant": "CDC KKTIX",
+            "en": "CDC KKTIX",
+            "ja": "CDC KKTIX"
           },
           "url": "https://cdckh.kktix.cc/"
         },
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "CDC 活動資訊賴群（加入密碼：0413）"
+            "zh-Hant": "CDC 活動資訊賴群（加入密碼：0413）",
+            "en": "CDC Event LINE Group (Password: 0413)",
+            "ja": "CDC イベント LINE グループ（パスワード：0413）"
           },
           "url": "https://reurl.cc/3MvZMR"
         }
@@ -1520,7 +1652,9 @@
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/min-jiun-tsai-8396aa13b"
         }
@@ -1545,7 +1679,9 @@
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/gobby-chen-helloworld/"
         }
@@ -1565,7 +1701,9 @@
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "Linkedin"
+            "zh-Hant": "Linkedin",
+            "en": "Linkedin",
+            "ja": "Linkedin"
           },
           "url": "https://www.linkedin.com/in/laysdragon"
         }
@@ -1670,7 +1808,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://anoni.net/"
         }
@@ -1694,7 +1834,9 @@
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "Linktree"
+            "zh-Hant": "Linktree",
+            "en": "Linktree",
+            "ja": "Linktree"
           },
           "url": "https://linktr.ee/vLabOnline"
         }
@@ -1718,28 +1860,36 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://sitcon.org/"
         },
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://sitcon.org/fb"
         },
         {
           "platform": "instagram",
           "label": {
-            "zh-Hant": "Instagram"
+            "zh-Hant": "Instagram",
+            "en": "Instagram",
+            "ja": "Instagram"
           },
           "url": "https://sitcon.org/ig"
         },
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "Telegram"
+            "zh-Hant": "Telegram",
+            "en": "Telegram",
+            "ja": "Telegram"
           },
           "url": "https://sitcon.org/tg"
         }
@@ -1763,7 +1913,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://kalug.tw/"
         }
@@ -1787,7 +1939,9 @@
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/groups/109004249259586"
         }
@@ -1811,7 +1965,9 @@
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "Meetup"
+            "zh-Hant": "Meetup",
+            "en": "Meetup",
+            "ja": "Meetup"
           },
           "url": "https://www.meetup.com/kaohsiung-wordpress-meetup/"
         }
@@ -1835,7 +1991,9 @@
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/groups/dddesigntw"
         }
@@ -1859,28 +2017,36 @@
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "GDG on Campus NUK"
+            "zh-Hant": "GDG on Campus NUK",
+            "en": "GDG on Campus NUK",
+            "ja": "GDG on Campus NUK"
           },
           "url": "https://gdg.community.dev/gdg-on-campus-national-university-of-kaohsiung-kaohsiung-city-taiwan/"
         },
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "GDG on Campus NKUST"
+            "zh-Hant": "GDG on Campus NKUST",
+            "en": "GDG on Campus NKUST",
+            "ja": "GDG on Campus NKUST"
           },
           "url": "https://gdg.community.dev/gdg-on-campus-national-kaohsiung-university-of-science-and-technology-kaohsiung-taiwan/"
         },
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "GDG on Campus NSYSU"
+            "zh-Hant": "GDG on Campus NSYSU",
+            "en": "GDG on Campus NSYSU",
+            "ja": "GDG on Campus NSYSU"
           },
           "url": "https://gdg.community.dev/gdg-on-campus-national-sun-yat-sen-university-kaohsiung-city-taiwan/"
         },
         {
           "platform": "link",
           "label": {
-            "zh-Hant": "GDG on Campus NCKU"
+            "zh-Hant": "GDG on Campus NCKU",
+            "en": "GDG on Campus NCKU",
+            "ja": "GDG on Campus NCKU"
           },
           "url": "https://gdg.community.dev/gdg-on-campus-national-cheng-kung-university-tainan-city-taiwan/"
         }
@@ -1904,14 +2070,18 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage"
+            "zh-Hant": "Homepage",
+            "en": "Homepage",
+            "ja": "Homepage"
           },
           "url": "https://kaohsiung.pyladies.com/"
         },
         {
           "platform": "facebook",
           "label": {
-            "zh-Hant": "Facebook"
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
           },
           "url": "https://www.facebook.com/pyladies.kaohsiung/"
         }
@@ -1925,17 +2095,25 @@
   ],
   "virtualSpace": {
     "title": {
-      "zh-Hant": "虛擬會場"
+      "zh-Hant": "虛擬會場",
+      "en": "Virtual Venue",
+      "ja": "バーチャル会場"
     },
     "description": {
-      "zh-Hant": "無法親臨現場的朋友，可以透過虛擬會場參與活動。"
+      "zh-Hant": "無法親臨現場的朋友，可以透過虛擬會場參與活動。",
+      "en": "Friends who cannot attend in person can join the event through our virtual venue.",
+      "ja": "現地にお越しいただけない方も、バーチャル会場からイベントにご参加いただけます。"
     },
     "notes": [
       {
-        "zh-Hant": "建議使用桌上型電腦或筆電獲得最佳體驗。"
+        "zh-Hant": "建議使用桌上型電腦或筆電獲得最佳體驗。",
+        "en": "For the best experience, we recommend using a desktop or laptop computer.",
+        "ja": "最適な体験のため、デスクトップまたはノートパソコンのご利用をおすすめします。"
       },
       {
-        "zh-Hant": "請確保網路頻寬穩定。"
+        "zh-Hant": "請確保網路頻寬穩定。",
+        "en": "Please ensure a stable network connection.",
+        "ja": "安定したネットワーク環境でご参加ください。"
       }
     ]
   },
@@ -1944,14 +2122,18 @@
       "id": "floor_1",
       "file": "venue-map-1f.png",
       "caption": {
-        "zh-Hant": "一樓平面圖"
+        "zh-Hant": "一樓平面圖",
+        "en": "1F Floor Plan",
+        "ja": "1 階フロアマップ"
       }
     },
     {
       "id": "floor_2",
       "file": "venue-map-2f.png",
       "caption": {
-        "zh-Hant": "二樓平面圖"
+        "zh-Hant": "二樓平面圖",
+        "en": "2F Floor Plan",
+        "ja": "2 階フロアマップ"
       }
     }
   ]
