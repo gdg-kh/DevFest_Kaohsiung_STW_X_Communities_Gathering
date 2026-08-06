@@ -283,15 +283,6 @@
   border-bottom: 2px solid var(--gk-ink);
 }
 
-.gk-card-media-logo {
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 2px solid var(--gk-ink);
-  padding: var(--gk-sp-4);
-}
-
 .gk-card-image {
   display: block;
 }
@@ -300,13 +291,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-}
-
-.gk-card-image-logo {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
   object-position: center;
 }
 
@@ -517,8 +501,8 @@
 .gk-ballot-card {
   position: relative;
   justify-self: center;
+  align-self: flex-start;
   width: 150px;
-  min-height: 180px;
   background-color: var(--gk-paper);
   color: var(--gk-ink);
   border: 2px solid var(--gk-ink);
@@ -528,6 +512,7 @@
   flex-direction: column;
   cursor: default;
   outline: none;
+  overflow: hidden;
   transition:
     transform var(--gk-transition),
     box-shadow var(--gk-transition);
@@ -561,98 +546,62 @@
   justify-content: space-between;
   align-items: center;
   gap: var(--gk-sp-2);
+  min-height: 82px;
   border-bottom: 2px solid var(--gk-ink);
   font-family: var(--gk-font-display);
   font-weight: var(--gk-fw-medium);
 }
 
 .gk-ballot-header-title {
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: var(--gk-fs-tiny);
   line-height: 1.2;
+  height: 2.4em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
 }
 
 .gk-ballot-header-group {
+  flex: 0 0 auto;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
   font-size: var(--gk-fs-tiny);
+  line-height: 1;
+  letter-spacing: 0.05em;
   opacity: 0.9;
 }
 
 .gk-ballot-body {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--gk-sp-3);
-  padding: var(--gk-sp-4) var(--gk-sp-3);
+  display: block;
+  padding: 0;
   background-color: var(--gk-paper);
 }
 
 .gk-ballot-logo-wrapper {
   width: 100%;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  aspect-ratio: 1 / 1;
+  display: block;
 }
 
 .gk-ballot-logo {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
-}
-
-.gk-ballot-name {
-  font-family: var(--gk-font-display);
-  font-size: var(--gk-fs-small);
-  font-weight: var(--gk-fw-medium);
-  text-align: center;
-  color: var(--gk-ink);
-  line-height: 1.3;
-}
-
-.gk-ballot-checkbox {
-  position: absolute;
-  right: var(--gk-sp-3);
-  bottom: var(--gk-sp-3);
-  width: 28px;
-  height: 28px;
-  border: 1px solid var(--gk-ink);
-  background-color: var(--gk-paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.gk-ballot-checkmark {
-  width: 18px;
-  height: 18px;
-  border-radius: var(--gk-radius-full);
-  border: 2.5px solid var(--gk-red);
-  background-color: transparent;
-  transform: rotate(4deg);
-  opacity: 0.85;
-  transition:
-    opacity var(--gk-transition),
-    border-color var(--gk-transition);
-}
-
-.gk-ballot-card[role='button']:hover .gk-ballot-checkmark,
-.gk-ballot-card[role='button']:focus-visible .gk-ballot-checkmark {
-  opacity: 1;
-  border-color: var(--gk-ink);
+  display: block;
 }
 
 @media (min-width: 900px) {
   .gk-ballot-card {
     width: 200px;
-    min-height: 220px;
   }
 
-  .gk-ballot-logo-wrapper {
-    height: 56px;
+  .gk-ballot-header {
+    min-height: 92px;
   }
 
   .gk-ballot-header-title {
@@ -724,27 +673,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--gk-sp-4);
-}
-
-.gk-speakers-group-header {
-  display: flex;
-  align-items: center;
-  gap: var(--gk-sp-3);
-}
-
-.gk-speakers-group-bar {
-  display: inline-block;
-  width: 8px;
-  height: 32px;
-  border: 1px solid var(--gk-ink);
-  background-color: var(--gk-yellow);
-}
-
-.gk-speakers-group-title {
-  font-family: var(--gk-font-display);
-  font-size: var(--gk-fs-h3);
-  font-weight: var(--gk-fw-bold);
-  line-height: 1.2;
 }
 
 .gk-speakers-grid {

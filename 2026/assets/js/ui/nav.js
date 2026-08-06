@@ -477,11 +477,6 @@ export function navigateTo(sectionId) {
   if (window.location.hash !== newHash) {
     window.history.pushState({ sectionId }, '', newHash);
   }
-  if (sectionId === 'thanks') {
-    navigateToHeroThanks();
-    highlightActive(sectionId);
-    return;
-  }
   if (isDesktop()) {
     showSectionDesktop(sectionId);
     track('page_view', { page_path: `/2026/#/${sectionId}` });
@@ -489,25 +484,6 @@ export function navigateTo(sectionId) {
     scrollToSectionMobile(sectionId);
   }
   highlightActive(sectionId);
-}
-
-function navigateToHeroThanks() {
-  const sections = document.querySelectorAll('[data-section-id]');
-  if (isDesktop()) {
-    for (const node of sections) {
-      node.classList.add('gk-section-hidden');
-    }
-    window.scrollTo({ top: 0, behavior: 'auto' });
-    track('page_view', { page_path: '/2026/#/thanks' });
-    return;
-  }
-  for (const node of sections) {
-    node.classList.remove('gk-section-hidden');
-  }
-  const heroThanks = document.getElementById('gk-hero-thanks');
-  if (heroThanks) {
-    heroThanks.scrollIntoView({ behavior: 'smooth' });
-  }
 }
 
 function highlightActive(sectionId) {
@@ -526,7 +502,7 @@ function getInitialSectionId() {
   const match = hash.match(/^#\/(.+)$/);
   if (match && match[1]) {
     const candidate = match[1];
-    if (candidate === 'thanks' || document.querySelector(`[data-section-id="${candidate}"]`)) {
+    if (document.querySelector(`[data-section-id="${candidate}"]`)) {
       return candidate;
     }
   }

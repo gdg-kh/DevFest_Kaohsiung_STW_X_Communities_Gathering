@@ -50,24 +50,6 @@ function makePersonImage(image, name) {
   return wrapper;
 }
 
-function makeLogoImage(image, name) {
-  const wrapper = el('div', { class: 'gk-card-media gk-card-media-logo' });
-  if (typeof image === 'string' && image.length > 0) {
-    const img = el('img', {
-      class: 'gk-card-image gk-card-image-logo',
-      attrs: {
-        src: image,
-        alt: name || '',
-        loading: 'lazy',
-        width: '240',
-        height: '160',
-      },
-    });
-    mount(wrapper, img);
-  }
-  return wrapper;
-}
-
 function joinAffiliation(titleText, orgText) {
   if (titleText && orgText) {
     return `${titleText} · ${orgText}`;
@@ -103,23 +85,6 @@ export function personCard(opts) {
   mount(card, media);
   const affiliationText = joinAffiliation(t(options.title), t(options.org));
   appendTextBlock(card, options.name, options.subtitle, options.description, affiliationText);
-  return card;
-}
-
-export function logoCard(opts) {
-  const options = opts && typeof opts === 'object' ? opts : {};
-  const nameText = t(options.name);
-  const card = makeCard('gk-card gk-logo-card', options.onClick, nameText);
-  mount(card, makeLogoImage(options.image, nameText));
-  const body = el('div', { class: 'gk-card-body gk-card-body-center' });
-  if (nameText) {
-    mount(body, el('h3', { class: 'gk-card-name', text: nameText }));
-  }
-  const descriptionText = t(options.description);
-  if (descriptionText) {
-    mount(body, el('p', { class: 'gk-card-description', text: descriptionText }));
-  }
-  mount(card, body);
   return card;
 }
 

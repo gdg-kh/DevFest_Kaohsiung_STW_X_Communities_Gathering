@@ -80,16 +80,16 @@
       "label": { "zh-Hant": "工作人員" }
     },
     {
-      "id": "thanks",
-      "enabled": true,
-      "order": 6,
-      "label": { "zh-Hant": "特別感謝" }
-    },
-    {
       "id": "booths",
       "enabled": true,
-      "order": 7,
+      "order": 6,
       "label": { "zh-Hant": "活動擺攤" }
+    },
+    {
+      "id": "thanks",
+      "enabled": true,
+      "order": 7,
+      "label": { "zh-Hant": "特別感謝" }
     },
     {
       "id": "lastyear",

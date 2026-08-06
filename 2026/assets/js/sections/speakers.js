@@ -1,4 +1,4 @@
-import { el, clear, mount } from '../core/dom.js';
+import { el, clear, mount, pickContrastColor } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { getContent, getConfig, getSortedList, getSessionById, getGroupById, assetPath } from '../core/store.js';
 import { personCard } from '../ui/card.js';
@@ -55,15 +55,15 @@ function buildGroups(speakers) {
 
 function makeGroupHeader(group) {
   const header = el('header', { class: 'gk-speakers-group-header' });
-  const bar = el('span', { class: 'gk-speakers-group-bar' });
   if (group && typeof group.color === 'string' && group.color.length > 0) {
-    bar.style.backgroundColor = group.color;
+    header.style.backgroundColor = group.color;
+    header.style.color = pickContrastColor(group.color);
   }
   const title = el('h3', {
     class: 'gk-speakers-group-title',
     text: t(group && group.name),
   });
-  mount(header, bar, title);
+  mount(header, title);
   return header;
 }
 

@@ -11,7 +11,7 @@ import { renderSpeakers } from './sections/speakers.js';
 import { renderAgenda } from './sections/agenda.js';
 import { renderVirtualSpace } from './sections/virtual-space.js';
 import { renderStaff } from './sections/staff.js';
-import { renderBooths } from './sections/logo-grid.js';
+import { renderBooths, renderThanks } from './sections/logo-grid.js';
 
 const DEFAULT_ERROR_TEXT = '網站載入失敗，請稍後再試。';
 let countdownTimer = 0;
@@ -40,6 +40,7 @@ function renderSectionTitles() {
     'section-virtual-title': 'virtual',
     'section-staff-title': 'staff',
     'section-booths-title': 'booths',
+    'section-thanks-title': 'thanks',
   };
   for (const [elemId, menuId] of Object.entries(map)) {
     const node = byId(elemId);
@@ -192,6 +193,10 @@ function renderAll() {
   const booths = byId('gk-booths');
   if (booths) {
     renderBooths(booths);
+  }
+  const thanksSection = byId('gk-thanks');
+  if (thanksSection) {
+    renderThanks(thanksSection);
   }
   const footer = byId('gk-footer');
   if (footer) {

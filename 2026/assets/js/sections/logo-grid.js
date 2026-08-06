@@ -1,8 +1,7 @@
-import { el, clear, mount } from '../core/dom.js';
+import { el, clear, mount, pickContrastColor } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { getContent, getConfig, getGroupedList, assetPath } from '../core/store.js';
-import { logoCard } from '../ui/card.js';
-import { ballotCard } from '../ui/ballot-card.js';
+import { personCard } from '../ui/card.js';
 import { openModal } from '../ui/detail-modal.js';
 import { track } from '../core/analytics.js';
 
@@ -19,6 +18,10 @@ function renderEmptyState(container, className) {
 
 function makeGroupHeader(group, headerClass) {
   const header = el('header', { class: headerClass });
+  if (group && typeof group.color === 'string' && group.color.length > 0) {
+    header.style.backgroundColor = group.color;
+    header.style.color = pickContrastColor(group.color);
+  }
   const title = el('h3', {
     class: `${headerClass}-title`,
     text: t(group && group.name),
@@ -52,36 +55,11 @@ function renderLogoSection(container, groups, type) {
     }
     const grid = el('div', { class: 'gk-logo-grid' });
     for (const item of entry.items) {
-      const card = logoCard({
+      const card = personCard({
         image: assetPath(type, item.id),
         name: item.name,
         description: item.description,
         onClick: () => openLogoModal(type, item, entry.group),
-      });
-      mount(grid, card);
-    }
-    mount(block, grid);
-    mount(container, block);
-  }
-}
-
-function renderBallotSection(container, groups) {
-  for (const entry of groups) {
-    if (!entry || !Array.isArray(entry.items) || entry.items.length === 0) {
-      continue;
-    }
-    const block = el('div', { class: 'gk-ballot-group' });
-    if (entry.group) {
-      mount(block, makeGroupHeader(entry.group, 'gk-ballot-group-header'));
-    }
-    const grid = el('div', { class: 'gk-ballot-grid' });
-    for (const item of entry.items) {
-      const card = ballotCard({
-        image: assetPath('thanks', item.id),
-        name: item.name,
-        groupName: entry.group ? entry.group.name : null,
-        description: item.description,
-        onClick: () => openLogoModal('thanks', item, entry.group),
       });
       mount(grid, card);
     }
@@ -96,9 +74,6 @@ export function renderThanks(container) {
   }
   clear(container);
   container.classList.add('gk-thanks-section');
-  const config = getConfig();
-  const showShadow = Boolean(config && config.thanks && config.thanks.showCardShadow);
-  container.classList.toggle('is-shadow-off', !showShadow);
   const content = getContent();
   const list = Array.isArray(content && content.thanks) ? content.thanks : [];
   if (list.length === 0) {
@@ -110,7 +85,7 @@ export function renderThanks(container) {
     renderEmptyState(container, 'gk-thanks-empty');
     return;
   }
-  renderBallotSection(container, groups);
+  renderLogoSection(container, groups, 'thanks');
 }
 
 export function renderBooths(container) {

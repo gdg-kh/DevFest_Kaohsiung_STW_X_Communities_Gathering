@@ -1,22 +1,5 @@
 import { el, mount } from '../core/dom.js';
 import { t } from '../core/i18n.js';
-import { getConfig } from '../core/store.js';
-
-function siteHeaderText() {
-  const config = getConfig();
-  const site = config && config.site;
-  const ui = config && config.ui;
-  const eventName = t(site && site.eventName);
-  const headerText = t(ui && ui.ballotHeaderText);
-  const parts = [];
-  if (eventName) {
-    parts.push(eventName);
-  }
-  if (headerText) {
-    parts.push(headerText);
-  }
-  return parts.join(' ');
-}
 
 export function ballotCard(opts) {
   const options = opts && typeof opts === 'object' ? opts : {};
@@ -41,11 +24,11 @@ export function ballotCard(opts) {
   });
 
   const header = el('div', { class: 'gk-ballot-header' });
-  const headerLeft = el('span', {
+  const headerTitle = el('span', {
     class: 'gk-ballot-header-title',
-    text: siteHeaderText(),
+    text: nameText,
   });
-  mount(header, headerLeft);
+  mount(header, headerTitle);
   if (groupText) {
     mount(header, el('span', { class: 'gk-ballot-header-group', text: groupText }));
   }
@@ -60,22 +43,14 @@ export function ballotCard(opts) {
         src: options.image,
         alt: nameText || '',
         loading: 'lazy',
-        width: '160',
-        height: '56',
+        width: '200',
+        height: '200',
       },
     });
     mount(logoWrapper, img);
   }
   mount(body, logoWrapper);
-  if (nameText) {
-    mount(body, el('div', { class: 'gk-ballot-name', text: nameText }));
-  }
   mount(card, body);
-
-  const box = el('div', { class: 'gk-ballot-checkbox' });
-  const mark = el('span', { class: 'gk-ballot-checkmark', attrs: { 'aria-hidden': 'true' } });
-  mount(box, mark);
-  mount(card, box);
 
   if (clickable) {
     card.addEventListener('click', (event) => {

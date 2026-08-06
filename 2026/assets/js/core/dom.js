@@ -72,3 +72,33 @@ export function mount(parent, ...children) {
   appendChildValue(parent, children);
   return parent;
 }
+
+function parseHex(value) {
+  if (typeof value !== 'string') {
+    return null;
+  }
+  const hex = value.trim().replace(/^#/, '');
+  if (hex.length === 3) {
+    const r = parseInt(hex[0] + hex[0], 16);
+    const g = parseInt(hex[1] + hex[1], 16);
+    const b = parseInt(hex[2] + hex[2], 16);
+    return Number.isFinite(r) && Number.isFinite(g) && Number.isFinite(b) ? [r, g, b] : null;
+  }
+  if (hex.length === 6) {
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    return Number.isFinite(r) && Number.isFinite(g) && Number.isFinite(b) ? [r, g, b] : null;
+  }
+  return null;
+}
+
+export function pickContrastColor(hex) {
+  const rgb = parseHex(hex);
+  if (!rgb) {
+    return 'var(--gk-ink)';
+  }
+  const [r, g, b] = rgb.map((c) => c / 255);
+  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return luminance > 0.5 ? 'var(--gk-ink)' : 'var(--gk-paper)';
+}

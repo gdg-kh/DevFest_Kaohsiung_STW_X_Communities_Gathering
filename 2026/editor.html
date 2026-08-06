@@ -3317,10 +3317,11 @@
               title: '感謝群組',
               entity: {
                 itemLabel: '群組',
-                createItem: () => ({ id: '', name: {} }),
+                createItem: () => ({ id: '', name: {}, color: '' }),
                 fields: [
                   { key: 'id', type: 'slug', label: 'id' },
                   { key: 'name', type: 'i18n-text', label: '名稱' },
+                  { key: 'color', type: 'text', label: '色票（品牌 hex）' },
                 ],
               },
             },
@@ -3368,10 +3369,11 @@
               title: '擺攤群組',
               entity: {
                 itemLabel: '群組',
-                createItem: () => ({ id: '', name: {} }),
+                createItem: () => ({ id: '', name: {}, color: '' }),
                 fields: [
                   { key: 'id', type: 'slug', label: 'id' },
                   { key: 'name', type: 'i18n-text', label: '名稱' },
+                  { key: 'color', type: 'text', label: '色票（品牌 hex）' },
                 ],
               },
             },

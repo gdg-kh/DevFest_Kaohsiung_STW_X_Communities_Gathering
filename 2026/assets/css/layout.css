@@ -621,13 +621,6 @@ button {
   display: flex;
   flex-direction: column;
   gap: var(--gk-sp-4);
-  padding-bottom: var(--gk-sp-4);
-  border-bottom: 1px dashed var(--gk-ink);
-}
-
-.gk-ballot-group:last-child,
-.gk-logo-group:last-child {
-  border-bottom: none;
 }
 
 .gk-ballot-grid {
@@ -651,8 +644,19 @@ button {
 .gk-logo-grid {
   display: grid;
   gap: var(--gk-sp-4);
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+@media (min-width: 768px) {
+  .gk-logo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .gk-logo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
 }
 
 /* --- Section: staff --- */
@@ -890,26 +894,29 @@ button {
   }
 }
 
-/* --- Group headers (logo / ballot / thanks divider signage) --- */
+/* --- Group headers (speakers / logo / ballot signage) --- */
+.gk-speakers-group-header,
 .gk-logo-group-header,
 .gk-ballot-group-header {
   display: flex;
   align-items: center;
   gap: var(--gk-sp-3);
   padding: var(--gk-sp-2) var(--gk-sp-4);
-  background-color: var(--gk-yellow);
+  background-color: var(--gk-yellow-halftone);
   border: 2px solid var(--gk-ink);
   border-radius: var(--gk-radius-sm);
   box-shadow: var(--gk-shadow-button);
+  color: var(--gk-ink);
 }
 
+.gk-speakers-group-title,
 .gk-logo-group-header-title,
 .gk-ballot-group-header-title {
   font-family: var(--gk-font-display);
   font-weight: var(--gk-fw-bold);
   font-size: var(--gk-fs-h3);
-  color: var(--gk-ink);
   line-height: 1.2;
+  color: inherit;
 }
 
 /* --- Thanks / sponsor marquee shadow toggle --- */
@@ -980,16 +987,7 @@ button {
   color: var(--gk-ink);
 }
 
-/* --- Person / logo card modifiers (used with .gk-card) --- */
+/* --- Person card modifier (used with .gk-card) --- */
 .gk-person-card {
   cursor: pointer;
-}
-
-.gk-logo-card {
-  cursor: pointer;
-  padding: var(--gk-sp-3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 120px;
 }

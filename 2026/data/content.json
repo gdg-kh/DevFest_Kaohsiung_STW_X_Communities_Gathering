@@ -73,7 +73,7 @@
         "en": "Gemini AI in Practice",
         "ja": "Gemini AI の生成AI実践"
       },
-      "color": "#4285f4"
+      "color": "#57caff"
     },
     {
       "id": "google_cloud",
@@ -83,7 +83,7 @@
         "en": "Google Cloud in Practice",
         "ja": "Google Cloud のクラウド実践"
       },
-      "color": "#34a853"
+      "color": "#5cdb6d"
     },
     {
       "id": "goodness",
@@ -93,7 +93,7 @@
         "en": "Goodness in Practice",
         "ja": "テクノロジーで社会貢献を実現する道"
       },
-      "color": "#f9ab00"
+      "color": "#ffd427"
     },
     {
       "id": "storyteller",
@@ -103,7 +103,7 @@
         "en": "Midday Storyteller",
         "ja": "昼の語り手"
       },
-      "color": "#ea4335"
+      "color": "#ff7daf"
     }
   ],
   "tracks": [
@@ -1585,7 +1585,8 @@
         "zh-Hant": "社群攤位",
         "en": "Community Booths",
         "ja": "コミュニティブース"
-      }
+      },
+      "color": ""
     },
     {
       "id": "sponsor",
@@ -1594,7 +1595,8 @@
         "zh-Hant": "贊助攤位",
         "en": "Sponsor Booths",
         "ja": "スポンサーブース"
-      }
+      },
+      "color": ""
     }
   ],
   "booths": [
