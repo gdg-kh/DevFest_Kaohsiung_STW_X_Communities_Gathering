@@ -73,7 +73,14 @@
       "Bash(xargs -I {} sh -c 'echo \"=== {} ===\" && head -50 \"{}\"')",
       "Bash(kill %1 %2)",
       "Bash(pkill -f \"http.server 8791\")",
-      "Bash(pkill -f \"http.server 8792\")"
+      "Bash(pkill -f \"http.server 8792\")",
+      "Bash(lsof -iTCP:8000 -sTCP:LISTEN)",
+      "Bash(lsof -iTCP:8765 -sTCP:LISTEN)",
+      "Bash(kill 22281)",
+      "Bash(echo \"pid=$!\")",
+      "Bash(kill 66688)",
+      "Bash(lsof -tiTCP:8765 -sTCP:LISTEN)",
+      "Bash(xargs -r kill)"
     ],
     "deny": [],
     "ask": []
