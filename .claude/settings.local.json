@@ -70,7 +70,10 @@
       "Bash(bash /tmp/card_summary2.sh)",
       "Bash(bash /tmp/card_summary3.sh)",
       "Bash(bash /tmp/card_summary4.sh)",
-      "Bash(xargs -I {} sh -c 'echo \"=== {} ===\" && head -50 \"{}\"')"
+      "Bash(xargs -I {} sh -c 'echo \"=== {} ===\" && head -50 \"{}\"')",
+      "Bash(kill %1 %2)",
+      "Bash(pkill -f \"http.server 8791\")",
+      "Bash(pkill -f \"http.server 8792\")"
     ],
     "deny": [],
     "ask": []
