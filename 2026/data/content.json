@@ -66,36 +66,44 @@
   },
   "sessionGroups": [
     {
-      "id": "android",
+      "id": "gemini_ai",
       "order": 1,
       "name": {
-        "zh-Hant": "Android"
-      },
-      "color": "#34a853"
-    },
-    {
-      "id": "web",
-      "order": 2,
-      "name": {
-        "zh-Hant": "Web"
+        "zh-Hant": "Gemini AI 的生成式實踐",
+        "en": "Gemini AI in Practice",
+        "ja": "Gemini AI の生成AI実践"
       },
       "color": "#4285f4"
     },
     {
-      "id": "ai",
-      "order": 3,
+      "id": "google_cloud",
+      "order": 2,
       "name": {
-        "zh-Hant": "AI"
+        "zh-Hant": "Google Cloud 的雲端實踐",
+        "en": "Google Cloud in Practice",
+        "ja": "Google Cloud のクラウド実践"
       },
-      "color": "#ea4335"
+      "color": "#34a853"
     },
     {
-      "id": "cloud",
-      "order": 4,
+      "id": "goodness",
+      "order": 3,
       "name": {
-        "zh-Hant": "Cloud"
+        "zh-Hant": "科技向善的實踐之路",
+        "en": "Goodness in Practice",
+        "ja": "テクノロジーで社会貢献を実現する道"
       },
       "color": "#f9ab00"
+    },
+    {
+      "id": "storyteller",
+      "order": 4,
+      "name": {
+        "zh-Hant": "中午說書人",
+        "en": "Midday Storyteller",
+        "ja": "昼の語り手"
+      },
+      "color": "#ea4335"
     }
   ],
   "tracks": [
@@ -118,475 +126,996 @@
   ],
   "speakers": [
     {
-      "id": "weiting_dai",
+      "id": "ray_yuan_liu",
       "order": 1,
       "name": {
-        "zh-Hant": "戴維廷"
+        "zh-Hant": "劉瑞元 / RayYuan Liu",
+        "en": "RayYuan Liu",
+        "ja": "RayYuan Liu"
       },
-      "sessionIds": ["opening_intro", "closing_ceremony"],
-      "links": []
+      "sessionIds": ["d1_t5_s2"],
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://louis383.medium.com/"
+        },
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "IT 鐵人賽"
+          },
+          "url": "https://ithelp.ithome.com.tw/users/20141615/ironman/8135"
+        }
+      ],
+      "org": {
+        "zh-Hant": "Yahoo!",
+        "en": "Yahoo!",
+        "ja": "Yahoo!"
+      },
+      "title": {
+        "zh-Hant": "Sr.Engineer",
+        "en": "Sr.Engineer",
+        "ja": "Sr.Engineer"
+      },
+      "bio": {
+        "zh-Hant": "從 Android 2.3 時代開發到現在，Android 開發者。喜歡分享所學及技術，也喜歡摸索酷東西。",
+        "en": "An Android Developer who has been developing since the Android 2.3 era. Loves to share knowledge and technology, and enjoys exploring cool new things.",
+        "ja": "Android 2.3 時代から開発に携わっている Android 開発者。学んだことや技術を共有するのが好きで、クールなものを探求することも楽しんでいます。"
+      }
     },
     {
-      "id": "eric_or_yuying",
+      "id": "leo_he",
       "order": 2,
       "name": {
-        "zh-Hant": "Eric 或 Yuying"
+        "zh-Hant": "何崧宇 / LeoHe",
+        "en": "LeoHe",
+        "ja": "LeoHe"
       },
-      "sessionIds": ["keynote"],
-      "links": []
+      "sessionIds": ["d1_t6_s1"],
+      "links": [
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/leo-he-392338173/"
+        }
+      ],
+      "org": {
+        "zh-Hant": "國泰世華銀行",
+        "en": "Cathay United Bank",
+        "ja": "Cathay United Bank"
+      },
+      "title": {
+        "zh-Hant": "Cloud Architect",
+        "en": "Cloud Architect",
+        "ja": "Cloud Architect"
+      },
+      "bio": {
+        "zh-Hant": "國泰世華銀行擔任雲端架構師<br>曾於補教業擔任講師，經歷橫跨科技業、軟體業、金融業跨國資訊專案<br>參與大型網頁軟體架構由單體式到現代化微服務演進架構規劃和設計<br>現主責系統上雲評估設計、策略制定和規劃，也從事內部技術講師，是一名方法論實踐者<br>具備多項專業證照 (TOGAF 、PMP、GCP-PCA 、AWS-SAA、CKA、CKS)",
+        "en": "Currently serving as a Cloud Architect at Cathay United Bank.<br>Previously worked as an instructor in the cram school industry, with experience spanning cross-border IT projects in the technology, software, and financial sectors.<br>Involved in the architectural planning and design for the evolution of large-scale web software from monolithic to modern microservices architecture.<br>Currently responsible for system cloud migration assessment and design, strategy formulation, and planning. Also works as an internal technical instructor and is a methodology practitioner.<br>Holds multiple professional certifications (TOGAF, PMP, GCP-PCA, AWS-SAA, CKA, CKS).",
+        "ja": "現在、Cathay United Bank（國泰世華銀行）でクラウドアーキテクトとして勤務。<br>過去には予備校業界で講師を務め、テクノロジー、ソフトウェア、金融業界における国際的なITプロジェクトの経験があります。<br>大規模なウェブソフトウェアのアーキテクチャを、モノリシックから現代的なマイクロサービスへの進化させる計画と設計に携わりました。<br>現在は、システムのクラウド移行評価、設計、戦略策定、および計画を主に担当し、社内技術講師としても活動する方法論の実践者です。<br>多数の専門資格（TOGAF、PMP、GCP-PCA、AWS-SAA、CKA、CKS）を保有しています。"
+      }
     },
     {
-      "id": "speaker_1",
+      "id": "matthias_geisler",
       "order": 3,
       "name": {
-        "zh-Hant": "講者1"
+        "zh-Hant": "Matthias Geisler",
+        "en": "Matthias Geisler",
+        "ja": "Matthias Geisler"
       },
-      "sessionIds": ["session_1_1"],
-      "links": []
+      "sessionIds": ["d1_t6_s2"],
+      "links": [],
+      "org": {
+        "zh-Hant": "Kotlin User Group 柏林 / Airalo",
+        "en": "Kotlin User Group Berlin / Airalo",
+        "ja": "Kotlin User Group ベルリン / Airalo"
+      },
+      "title": {
+        "zh-Hant": "Senior Software Engineer",
+        "en": "Senior Software Engineer",
+        "ja": "Senior Software Engineer"
+      },
+      "bio": {
+        "zh-Hant": "Kotlin Multiplatform 的信眾，自 2019 年起便致力於相關工作。專門為 Android 構建解決方案。<br>KUG Berlin、GDG Android Berlin、XTC Berlin 等社群的組織者。",
+        "en": "True believer in (Kotlin) Multiplatform and working with it since 2019. Builds solutions for Android. <br>Organizer of KUG Berlin, GDG Android Berlin, XTC Berlin and more.",
+        "ja": "Kotlin Multiplatform の真の信奉者であり、2019年からその開発に携わっています。Android 向けソリューションを構築しています。<br>KUG Berlin、GDG Android Berlin、XTC Berlin などのコミュニティのオーガナイザー。"
+      }
     },
     {
-      "id": "speaker_2",
+      "id": "yung_chun",
       "order": 4,
       "name": {
-        "zh-Hant": "講者2"
+        "zh-Hant": "瓦特老師 / CHENG, YUNG-CHUN",
+        "en": "CHENG, YUNG-CHUN",
+        "ja": "CHENG, YUNG-CHUN"
       },
-      "sessionIds": ["session_1_2"],
-      "links": []
+      "sessionIds": ["d1_t7_s1"],
+      "links": [
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/%E7%89%B9-%E7%93%A6-7a345224b/"
+        },
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/blurwater64/"
+        }
+      ],
+      "bio": {
+        "zh-Hant": "桃園市大勇國小教師<br>桃園市LDS科技藝術社群<br>親子天下創新100教師",
+        "en": "Teacher at Dayong Elementary School, Taoyuan City<br>LDS Tech Arts Community, Taoyuan City<br>CommonWealth Magazine Parenting & Education Innovation 100 Teacher",
+        "ja": "桃園市大勇小学校 教師<br>桃園市 LDS テクノロジー・アートコミュニティ<br>親子天下イノベーション100 教師"
+      }
     },
     {
-      "id": "speaker_3",
+      "id": "kevin_chiu_1",
       "order": 5,
       "name": {
-        "zh-Hant": "講者3"
+        "zh-Hant": "邱哲綸 / Kevin Chiu",
+        "en": "Kevin Chiu",
+        "ja": "Kevin Chiu"
       },
-      "sessionIds": ["session_2_1"],
-      "links": []
+      "sessionIds": ["d1_t9_s2"],
+      "links": [
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "www.linkedin.com/in/kevin-chiu-612a61189"
+        }
+      ],
+      "org": {
+        "zh-Hant": "GDG 台北 / Google 開發者專家 - AI",
+        "en": "GDG Taipei / Google Developer Expert - AI",
+        "ja": "GDG Taipei / Google Developer Expert - AI"
+      },
+      "title": {
+        "zh-Hant": "GDG 台北 組織者 / AI GDE",
+        "en": "GDG Taipei Organizer / AI GDE",
+        "ja": "GDG Taipei Organizer / AI GDE"
+      },
+      "bio": {
+        "zh-Hant": "AI GDE / GDG 台北 組織者 / Android 工程師<br>致力於將 AI 導到在 edge 端上使用",
+        "en": "AI GDE / GDG Taipei Organizer / Android Engineer<br>Committed to bringing AI for use on the edge.",
+        "ja": "AI GDE / GDG Taipei オーガナイザー / Android エンジニア<br>エッジでの AI 利用の実現に尽力。"
+      }
     },
     {
-      "id": "speaker_4",
+      "id": "simon_liu_1",
       "order": 6,
       "name": {
-        "zh-Hant": "講者4"
+        "zh-Hant": "劉育維 / Simon Liu",
+        "en": "Simon Liu",
+        "ja": "Simon Liu"
       },
-      "sessionIds": ["session_2_2"],
-      "links": []
+      "sessionIds": ["d1_t10_s1"],
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://simonliuyuwei.my.canva.site/link-in-bio"
+        },
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/simonliuyuwei/"
+        },
+        {
+          "platform": "github",
+          "label": {
+            "zh-Hant": "GitHub"
+          },
+          "url": "https://github.com/LiuYuWei"
+        },
+        {
+          "platform": "medium",
+          "label": {
+            "zh-Hant": "Medium"
+          },
+          "url": "https://medium.com/@simon3458"
+        }
+      ],
+      "org": {
+        "zh-Hant": "APMIC / Google 開發者專家 - AI",
+        "en": "APMIC / Google Developer Expert - AI",
+        "ja": "APMIC / Google Developer Expert - AI"
+      },
+      "title": {
+        "zh-Hant": "MLOps Engineer",
+        "en": "MLOps Engineer",
+        "ja": "MLOps Engineer"
+      },
+      "bio": {
+        "zh-Hant": "大家好，我是 Simon 劉育維，過去曾擔任過電信業的資深工程師和 在軟體業擔任客戶技術成功工程師，幫助各大知名企業進行機器學習、深度學習、大型語言模型等人工智慧議題進行人工智慧架構規劃的討論，目前在 Medium 上已經公開超過百篇技術文章，我希望能夠嘗試使用 AI 做應用，幫助客戶用 AI 解決痛點。",
+        "en": "Hello everyone, I am Simon Liu Yu-Wei. I previously worked as a Senior Engineer in the telecommunications industry and as a Customer Technical Success Engineer in the software industry, where I helped well-known major enterprises discuss and plan AI architecture for topics such as Machine Learning, Deep Learning, and Large Language Models. I have currently published over a hundred technical articles on Medium. My goal is to experiment with AI applications to help clients solve pain points using AI.",
+        "ja": "皆様、こんにちは。Simon 劉育維です。以前は通信業界でシニアエンジニアとして、またソフトウェア業界でカスタマーテクニカルサクセスエンジニアとして勤務し、大手有名企業に対し、機械学習、深層学習、大規模言語モデルなどの人工知能（AI）に関するAI アーキテクチャ計画の策定を支援してきました。現在、Medium には100本以上の技術記事を公開しています。私の目標は、AI を活用したアプリケーションを試行し、クライアントが AI を使って課題を解決できるように支援することです。"
+      }
     },
     {
-      "id": "speaker_5",
+      "id": "arturs_vancans",
       "order": 7,
       "name": {
-        "zh-Hant": "講者5"
+        "zh-Hant": "韋亞圖 / Arturs Vancans",
+        "en": "Arturs Vancans",
+        "ja": "Arturs Vancans"
       },
-      "sessionIds": ["session_3_1"],
-      "links": []
+      "sessionIds": ["d1_t5_s1"],
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://www.secondspace.dev/kubi-robot"
+        },
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/avancans/"
+        }
+      ],
+      "org": {
+        "zh-Hant": "Second Space",
+        "en": "Second Space",
+        "ja": "Second Space"
+      },
+      "title": {
+        "zh-Hant": "Founder",
+        "en": "Founder",
+        "ja": "Founder"
+      },
+      "bio": {
+        "zh-Hant": "Arturs Vancans 是 Second Space 的創辦人，這是一個專為企業家、數位遊牧者和學生設計，位於高雄的 24/7 會員制共享工作空間（coworking hub）。他擁有英國約克大學（University of York）電子與電腦工程碩士學位，其經驗橫跨物聯網（IoT）、人工智慧/機器學習（AI/ML）、金融科技（fintech）及大規模分散式系統。現在，他將這些專業知識投入於打造一個融合技術與創意協作的活力空間。",
+        "en": "Arturs Vancans is the founder of Second Space, a 24/7 members-only coworking hub in Kaohsiung designed for entrepreneurs, digital nomads, and students. With a Master’s in Electronics and Computer Engineering from the University of York, his experience spans IoT, AI/ML, fintech, and large-scale distributed systems—now channeled into creating a vibrant space that fuses technology with creative collaboration.",
+        "ja": "Arturs Vancans は Second Space の創業者です。Second Space は、起業家、デジタルノマド、学生のために高雄に設けられた 24時間年中無休の会員制コワーキングハブ です。ヨーク大学（University of York）で電子・コンピューター工学の修士号を取得し、IoT、AI/ML、フィンテック、大規模分散システムにわたる経験を持っています。現在は、その経験を活かし、テクノロジーと創造的なコラボレーションを融合させた活気ある空間の創造に注力しています。"
+      }
     },
     {
-      "id": "speaker_6",
+      "id": "denken_chen",
       "order": 8,
       "name": {
-        "zh-Hant": "講者6"
+        "zh-Hant": "Denken Chen",
+        "en": "Denken Chen",
+        "ja": "Denken Chen"
       },
-      "sessionIds": ["session_3_2"],
-      "links": []
+      "sessionIds": ["d1_t7_s2"],
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://denkeni.org"
+        }
+      ],
+      "bio": {
+        "zh-Hant": "數位身分研究者，《數位憑證皮夾》智庫案成員。g0v 社群長期貢獻者，參與《立法院大小聲》、《Ptt 不能亡》等。",
+        "en": "Digital Identity Researcher, member of the \"TW Digital Identity Wallet\" think tank project. Long-term contributor to the g0v community, participating in projects such as \"Legislative Yuan Voice\" (立法院大小聲) and \"Ptt Cannot Perish\" (Ptt不能亡).",
+        "ja": "デジタルアイデンティティ研究者、シンクタンクプロジェクト**『デジタル証明書ウォレット（數位憑證皮夾）』**のメンバー。g0v コミュニティへの長年の貢献者であり、『立法院の声（立法院大小聲）』、『Pttは滅びない（ Ptt不能亡）』などのプロジェクトに参加。"
+      }
     },
     {
-      "id": "speaker_7",
+      "id": "steve_yeh",
       "order": 9,
       "name": {
-        "zh-Hant": "講者7"
+        "zh-Hant": "史蒂夫•葉 / Steve Yeh",
+        "en": "Steve Yeh",
+        "ja": "Steve Yeh"
       },
-      "sessionIds": ["session_4_1"],
-      "links": []
+      "sessionIds": ["d1_t9_s1"],
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/steven.yeh"
+        },
+        {
+          "platform": "medium",
+          "label": {
+            "zh-Hant": "Medium"
+          },
+          "url": "https://medium.com/@stevenyeh"
+        }
+      ],
+      "bio": {
+        "zh-Hant": "現任精誠集團技術處長，致力於 UI/UX 設計與技術開發的整合與創新。2017 年創立 Able Studio，帶領團隊以人本設計為核心，成功為國內上市櫃企業、勞保局 e 化服務系統、零售通路、影音串流平台及矽谷新創企業等多領域客戶打造數位轉型解決方案，並於 2020 年榮獲德國國家設計獎優勝。曾任職於義美聯電與金色三麥餐飲集團，擔任數位內容與創意策劃部門經理，擁有豐富的跨領域產品開發及創新策劃經驗。相信透過深刻的使用者洞察與創新技術，能夠持續為企業創造成長與長遠價值。",
+        "en": "Currently serving as the Technology Director at SYSTEX, with a focus on integrating and innovating UI/UX design and technical development. Founded Able Studio in 2017, leading the team in delivering user-centered digital transformation solutions for diverse clients, including publicly listed companies, the Bureau of Labor Insurance’s digital service system, retail channels, video streaming platforms, and Silicon Valley startups. Also earned the German Design Award in 2020. Previous roles include managing digital content and creative planning at I-Mei and Lebledor, with extensive experience in cross-industry product development and innovation. Committed to leveraging deep user insights and cutting-edge technology to drive sustainable business growth.",
+        "ja": "現任は SYSTEX Group (精誠集團) の技術部門ディレクターであり、UI/UX デザインと技術開発の統合と革新に尽力しています。2017年に Able Studio を設立し、人間中心の設計を核として、国内の上場企業、労働保険局のe-サービスシステム、小売チャネル、動画ストリーミングプラットフォーム、シリコンバレーのスタートアップなど、多岐にわたるクライアント向けにデジタルトランスフォーメーションソリューションを成功裏に構築しました。2020年にはドイツ国家デザイン賞を受賞しています。以前は IMC および Le Blé d'Or (金色三麥餐飲集團) でデジタルコンテンツおよびクリエイティブ企画部門のマネージャーを務め、クロスドメインな製品開発と革新的な企画において豊富な経験を持っています。深いユーザーインサイトと革新技術を通じて、企業に持続的な成長と長期的価値を創造できると信じています。"
+      }
     },
     {
-      "id": "yuwei",
+      "id": "aaron_ng",
       "order": 10,
       "name": {
-        "zh-Hant": "育維（暫）"
+        "zh-Hant": "黃立仁 / Aaron Ng",
+        "en": "Aaron Ng",
+        "ja": "Aaron Ng"
       },
-      "sessionIds": ["session_4_2"],
-      "links": []
-    },
-    {
-      "id": "jimmy",
-      "order": 11,
-      "name": {
-        "zh-Hant": "Jimmy（暫）"
-      },
-      "sessionIds": ["session_5_1"],
-      "links": []
-    },
-    {
-      "id": "kevin",
-      "order": 12,
-      "name": {
-        "zh-Hant": "Kevin（暫）"
-      },
-      "sessionIds": ["session_5_2"],
-      "links": []
-    },
-    {
-      "id": "mantou",
-      "order": 13,
-      "name": {
-        "zh-Hant": "饅頭"
-      },
-      "sessionIds": ["session_6_1"],
-      "links": []
-    },
-    {
-      "id": "lao_ge",
-      "order": 14,
-      "name": {
-        "zh-Hant": "勞哥"
-      },
-      "sessionIds": ["session_6_1"],
-      "links": []
-    },
-    {
-      "id": "stephen",
-      "order": 15,
-      "name": {
-        "zh-Hant": "史蒂芬"
-      },
-      "sessionIds": ["session_6_1"],
-      "links": []
+      "sessionIds": ["d1_t11_s1"],
+      "links": [
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/liren0907"
+        },
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/liren0907"
+        }
+      ],
+      "bio": {
+        "zh-Hant": "AI 研發工程師",
+        "en": "AI R&D Engineer",
+        "ja": "AI 研究開発エンジニア"
+      }
     }
   ],
   "sessions": [
     {
-      "id": "opening_intro",
+      "id": "d1_t1",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "GDG 高雄介紹"
-      },
-      "abstract": {
-        "zh-Hant": "歡迎詞、社群介紹與活動流程說明。"
-      },
-      "tags": [],
-      "speakerIds": ["weiting_dai"],
-      "start": "2026-11-14T09:00",
-      "end": "2026-11-14T09:20",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "keynote",
-      "trackId": "track_2",
-      "title": {
-        "zh-Hant": "Keynote (講者待定)"
+        "zh-Hant": "開放報到",
+        "en": "Registration",
+        "ja": "受付開始"
       },
       "abstract": {
         "zh-Hant": "議程資訊即將公布。"
-      },
-      "tags": [],
-      "speakerIds": ["eric_or_yuying"],
-      "start": "2026-11-14T09:20",
-      "end": "2026-11-14T09:50",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "session_1_1",
-      "trackId": "track_1",
-      "title": {
-        "zh-Hant": "議程 1-1（待定）"
-      },
-      "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
-      },
-      "tags": [],
-      "speakerIds": ["speaker_1"],
-      "start": "2026-11-14T10:00",
-      "end": "2026-11-14T10:40",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "session_1_2",
-      "trackId": "track_2",
-      "title": {
-        "zh-Hant": "議程 1-2（待定）"
-      },
-      "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
-      },
-      "tags": [],
-      "speakerIds": ["speaker_2"],
-      "start": "2026-11-14T10:00",
-      "end": "2026-11-14T10:40",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "session_2_1",
-      "trackId": "track_1",
-      "title": {
-        "zh-Hant": "議程 2-1（待定）"
-      },
-      "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
-      },
-      "tags": [],
-      "speakerIds": ["speaker_3"],
-      "start": "2026-11-14T11:00",
-      "end": "2026-11-14T11:40",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "session_2_2",
-      "trackId": "track_2",
-      "title": {
-        "zh-Hant": "議程 2-2（待定）"
-      },
-      "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
-      },
-      "tags": [],
-      "speakerIds": ["speaker_4"],
-      "start": "2026-11-14T11:00",
-      "end": "2026-11-14T11:40",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "lunch_break",
-      "trackId": "track_1",
-      "title": {
-        "zh-Hant": "午餐時間"
-      },
-      "abstract": {
-        "zh-Hant": "享用便當並自由交流。"
       },
       "tags": [],
       "speakerIds": [],
-      "start": "2026-11-14T11:40",
-      "end": "2026-11-14T13:00",
-      "type": "lunch",
-      "links": []
-    },
-    {
-      "id": "session_3_1",
-      "trackId": "track_1",
-      "title": {
-        "zh-Hant": "議程 3-1（待定）"
-      },
-      "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
-      },
-      "tags": [],
-      "speakerIds": ["speaker_5"],
-      "start": "2026-11-14T13:00",
-      "end": "2026-11-14T13:40",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "session_3_2",
-      "trackId": "track_2",
-      "title": {
-        "zh-Hant": "議程 3-2（待定）"
-      },
-      "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
-      },
-      "tags": [],
-      "speakerIds": ["speaker_6"],
-      "start": "2026-11-14T13:00",
-      "end": "2026-11-14T13:40",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "session_4_1",
-      "trackId": "track_1",
-      "title": {
-        "zh-Hant": "議程 4-1（待定）"
-      },
-      "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
-      },
-      "tags": [],
-      "speakerIds": ["speaker_7"],
-      "start": "2026-11-14T14:00",
-      "end": "2026-11-14T14:40",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "session_4_2",
-      "trackId": "track_2",
-      "title": {
-        "zh-Hant": "議程 4-2（待定）"
-      },
-      "abstract": {
-        "zh-Hant": "議程資訊即將公布。"
-      },
-      "tags": [],
-      "speakerIds": ["yuwei"],
-      "start": "2026-11-14T14:00",
-      "end": "2026-11-14T14:40",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "afternoon_break",
-      "trackId": "track_1",
-      "title": {
-        "zh-Hant": "中場休息"
-      },
-      "abstract": {
-        "zh-Hant": "短暫休息時間。"
-      },
-      "tags": [],
-      "speakerIds": [],
-      "start": "2026-11-14T14:40",
-      "end": "2026-11-14T15:00",
+      "start": "2026-11-14T08:30",
+      "end": "2026-11-14T09:00",
       "type": "break",
       "links": []
     },
     {
-      "id": "session_5_1",
+      "id": "d1_t2",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "議程 5-1（待定）"
+        "zh-Hant": "活動開幕",
+        "en": "Opening",
+        "ja": "開会式"
       },
       "abstract": {
         "zh-Hant": "議程資訊即將公布。"
       },
       "tags": [],
-      "speakerIds": ["jimmy"],
-      "start": "2026-11-14T15:00",
-      "end": "2026-11-14T15:40",
+      "speakerIds": [],
+      "start": "2026-11-14T09:00",
+      "end": "2026-11-14T09:40",
+      "type": "opening",
+      "links": []
+    },
+    {
+      "id": "d1_t4_s1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "誠研創新議程",
+        "en": "Legend Innovation Schedule",
+        "ja": "Legend Innovation スケジュール"
+      },
+      "abstract": {
+        "zh-Hant": "議程資訊即將公布。"
+      },
+      "tags": [],
+      "speakerIds": [],
+      "start": "2026-11-14T10:00",
+      "end": "2026-11-14T10:40",
       "type": "talk",
       "links": []
     },
     {
-      "id": "session_5_2",
+      "id": "d1_t5_s1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "我如何使用 Firebase 打造 AI 機器人咖啡師！",
+        "en": "I used Firebase to build an AI Robot Barista - here is how!",
+        "ja": "Firebase を使って AI ロボットバリスタを構築した方法をご紹介します！"
+      },
+      "abstract": {
+        "zh-Hant": "我使用了 Firebase 和 Google Cloud 服務，將我們的 AI 機器人咖啡師 與跨越多個 IoT 設備（臉部掃描儀、機器人本身和我們的行動應用程式）的即時數據流連接起來。<br><br>訂單、身份驗證和即時狀態更新全部透過 Firebase 的即時資料庫（Real-time Database）和 雲端函式（Cloud Functions）瞬間同步。",
+        "en": "I used Firebase and Google Cloud services to connect our AI Robot Barista with real-time data flow across IoT devices—face scanners, the robot itself, and our mobile app. Orders, authentication, and live status updates all sync instantly through Firebase’s real-time database and cloud functions.",
+        "ja": "私は Firebase と Google Cloud サービスを利用し、当社の AI ロボットバリスタ を、IoT デバイス（顔スキャナー、ロボット本体、モバイルアプリ）を跨るリアルタイムデータフローに接続しました。注文、認証、ライブステータスの更新はすべて、Firebase のリアルタイムデータベースとクラウドファンクション（Cloud Functions）を通じて瞬時に同期されます。"
+      },
+      "tags": ["English Session", "Robotics", "Firebase", "Google Cloud"],
+      "speakerIds": ["arturs_vancans"],
+      "start": "2026-11-14T11:00",
+      "end": "2026-11-14T11:40",
+      "type": "talk",
+      "links": [],
+      "groupId": "google_cloud"
+    },
+    {
+      "id": "d1_t5_s2",
       "trackId": "track_2",
       "title": {
-        "zh-Hant": "議程 5-2（待定）"
+        "zh-Hant": "Gemini in Android development"
+      },
+      "abstract": {
+        "zh-Hant": "今年 Gemini 整合更多功能到 Android Studio 裡頭了，這些新功能如何增加工作的效率、改變工作的方式呢？Gemini 還能怎麼協助軟體開發？這個議程將會介紹 Gemini in Android Studio 的各種功能，以及用 Google 提供的工具來改善我們工作的每一天。",
+        "en": "Gemini has integrated more features into Android Studio this year. How do these new features increase work efficiency and change the way we work? How else can Gemini assist software development? This session will introduce the various functionalities of Gemini in Android Studio and demonstrate how to use tools provided by Google to improve our daily work.",
+        "ja": "今年、Gemini は Android Studio にさらに多くの機能を統合しました。これらの新機能は、どのように業務効率を高め、働き方を変えるのでしょうか？ Gemini はソフトウェア開発を他にどのように支援できるのでしょうか？ このセッションでは、Android Studio における Gemini の様々な機能と、Google が提供するツールを使って私たちの毎日の業務を改善する方法を紹介します。"
+      },
+      "tags": ["中文議程", "Android", "Gemini", "AI"],
+      "speakerIds": ["ray_yuan_liu"],
+      "start": "2026-11-14T11:00",
+      "end": "2026-11-14T11:40",
+      "type": "talk",
+      "links": [],
+      "groupId": "gemini_ai"
+    },
+    {
+      "id": "d1_t11_s1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "Multi-agent 協作時代：Agent2Agent Protocol 初探與實作",
+        "en": "The Era of Multi-Agent Collaboration: An Initial Exploration and Implementation of the Agent2Agent Protocol",
+        "ja": "マルチエージェント協調時代：Agent2Agentプロトコルの初探と実装"
+      },
+      "abstract": {
+        "zh-Hant": "在我們看不到的 AI Agent 背後，每一次的任務都宛如多個 Agent 組成的智慧團隊在幫我們工作，Agent 與 Agent 之間協作的重要性將越來越重要，Agentic AI 應用也正式來到了 Multi-agent 協作的時代。<br><br>Google 今年推出的 Agent2Agent(A2A) Protocol 在當中扮演什麼樣的角色呢？讓我們呼應這一次 DevFest 主題 — 實作（Implements），初探其應用。MCP (Model Context Protocol) 讓 Agent 使用工具的方式標準化，A2A 讓 Agent 間用同樣的語言溝通，這次的分享將實作並初探目前主流架構之間如何協作，如：Pydantic AI, LangChain, LangGraph 等。",
+        "en": "Behind the scenes of the AI Agents we don't see, every task is like a smart team of multiple agents working for us. The importance of collaboration between agents is becoming increasingly critical, and Agentic AI applications have officially entered the era of multi-agent collaboration.<br><br>So, what role does Google's Agent2Agent (A2A) Protocol, introduced this year, play in this new era? Echoing this DevFest's theme—\"Implements\"—let's take a preliminary dive into its applications. The MCP (Model Context Protocol) standardizes how agents use tools, while A2A allows agents to communicate in the same language. This session will implement and explore how current mainstream frameworks, such as Pydantic AI, LangChain, and LangGraph, can collaborate using these protocols.",
+        "ja": "私たちが目にすることのないAIエージェントの背後では、一つ一つのタスクがまるで複数のエージェントから成る知的チームによって処理されています。エージェント間の協調の重要性はますます高まっており、Agentic AIアプリケーションは本格的にマルチエージェント協調の時代を迎えました。<br><br>今年Googleが発表したAgent2Agent (A2A) プロトコルは、その中でどのような役割を果たすのでしょうか？今回のDevFestのテーマである「実装（Implements）」に呼応し、その応用を初探的に見ていきましょう。MCP (Model Context Protocol) がエージェントのツール使用方法を標準化し、A2Aがエージェント間のコミュニケーション言語を統一します。このセッションでは、Pydantic AI、LangChain、LangGraphといった現在の主要なフレームワークが、これらのプロトコルを用いてどのように連携できるかを実装し、探求していきます。"
+      },
+      "tags": ["AI", "Agent", "A2A"],
+      "speakerIds": ["aaron_ng"],
+      "start": "2026-11-14T12:30",
+      "end": "2026-11-14T13:15",
+      "type": "talk",
+      "links": [],
+      "groupId": "storyteller"
+    },
+    {
+      "id": "d1_t6_s1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "生成式 AI 賦能日常辦公與決策：案例經驗談",
+        "en": "Generative AI Empowering Daily Office Work and Decision-Making: Case Studies and Experience Sharing",
+        "ja": "生成AI が実現する日常業務と意思決定の強化：事例と経験談"
+      },
+      "abstract": {
+        "zh-Hant": "「生成式 AI 賦能日常辦公與決策：案例經驗談」，將深入剖析生成式 AI 在企業日常辦公、協作與決策流程中的真實應用場景。<br><br>透過在金融產業實務案例，分享 AI 工具如何提升工作效率、優化團隊溝通，帶領聽眾了解從 AI 技術使用、流程整合到責任式 AI 的挑戰與解方，協助把握生成式 AI 驅動數位轉型的關鍵契機。",
+        "en": "\"Generative AI Empowering Daily Office Work and Decision-Making: Case Studies and Experience Sharing\" will deeply analyze real-world application scenarios of Generative AI in enterprise daily office work, collaboration, and decision-making processes.<br><br>Through practical case studies from the financial industry, the session will share how AI tools can boost work efficiency and optimize team communication. It will guide the audience through the challenges and solutions related to AI technology usage, process integration, and Responsible AI, helping participants grasp the key opportunity for digital transformation driven by Generative AI.",
+        "ja": "「生成AI が実現する日常業務と意思決定の強化：事例と経験談」では、企業の日々の業務、コラボレーション、および意思決定プロセスにおける生成 AI の実際の応用事例を深く分析します。金融業界での実務ケースを通じて、AI ツールがどのように業務効率を向上させ、チームコミュニケーションを最適化するかを共有します。<br><br>聴講者を AI 技術の活用、プロセスの統合、そして責任ある AI (Responsible AI) に関わる課題と解決策へと導き、生成 AI が推進するデジタルトランスフォーメーションの重要な機会を掴む支援をします。"
+      },
+      "tags": ["中文議程", "生成式AI", "AI知識庫", "數位轉型"],
+      "speakerIds": ["leo_he"],
+      "start": "2026-11-14T13:30",
+      "end": "2026-11-14T14:10",
+      "type": "talk",
+      "links": [],
+      "groupId": "gemini_ai"
+    },
+    {
+      "id": "d1_t6_s2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "XP (極限開發) 遇上 AI？",
+        "en": "XP with AI?",
+        "ja": "XP（エクストリーム・プログラミング）と AI？"
+      },
+      "abstract": {
+        "zh-Hant": "「AI 革命」的一大承諾是讓工程師的生活更輕鬆。但在實踐中，這究竟是什麼樣子？另一方面，我們擁有主要屬於極限編程 (eXtreme Programming, XP) 範疇的技術，這些技術強調協作工作並應對複雜性。XP 實踐已成熟確立，並被證明能夠提高軟體開發的生產力和穩定性。<br><br>那麼，當我們將這兩個世界結合時會發生什麼？我們真的能靠「說」來產生程式碼嗎？單單 AI 會讓你更快還是更慢？你真的可以和 AI 進行結對編程（Pair Programming）嗎？它會是一個好的夥伴嗎？它在程式碼審查方面的表現如何？文件撰寫呢？當 AI 進入開發流程時，對團隊的影響是什麼？XP 能否為 AI 編碼帶回樂趣？Google 的 DORA 報告對此有何看法？我們行業的未來將何去何從？<br><br>有這麼多問題，讓我們坐下來一起探討其中一些！我們將透過 Android 和 Kotlin 開發的角度，探索 Gemini 等 AI 助理是否能增強開發工作流程，以及 XP 實踐如何對此做出貢獻。",
+        "en": "One of the big promises of the \"AI Revolution\" is to make our lives easier as engineers. But what does that actually look like in practice? On the other hand, we have techniques mainly in the realm of eXtreme Programming that emphasize collaborative work and tackle complexity. XP practices are well established and actually proven to increase both productivity and stability in software development.<br><br>So what happens when we bring these two worlds together? Can we even talk code into existence? Does AI alone make you faster or slow you down? Can you actually pair program with AI—and is it a good pair? How good is it at reviewing your code? What about documentation? What is the impact on a team when AI enters the development process? Can XP bring the fun back into AI coding? What does Google's DORA report to that? Where is the future of our industry heading?<br><br>There are so many questions, so let's sit down and work through some of them together! Through the lens of Android and Kotlin development, let's explore whether AI assistants like Gemini and others can boost development workflows and how XP practices can contribute to that.",
+        "ja": "「AI 革命」が掲げる大きな約束の一つは、エンジニアとしての私たちの生活をより楽にすることです。しかし、それは実際にどのような形になるのでしょうか？一方で、私たちは主に**エクストリーム・プログラミング（eXtreme Programming, XP）**の領域に属する手法を持っています。これらの手法は、協調作業と複雑性への対処を重視し、ソフトウェア開発における生産性と安定性の両方を向上させることが証明されています。<br><br>では、この二つの世界を結びつけるとどうなるでしょうか？私たちは言葉だけでコードを生成できるのでしょうか？AI だけで作業は速くなるのか、それとも遅くなるのか？AI と実際にペアプログラミングは可能でしょうか—そして、それは良いパートナーとなり得るでしょうか？AI はコードレビューにおいてどれほど優れているのか？ドキュメンテーションについてはどうでしょうか？AI が開発プロセスに参入するとき、チームにどのような影響があるのか？XP は AI コーディングに楽しさを取り戻せるのか？Google の DORA レポートはこれについて何を述べているのか？私たちの業界の未来はどこに向かっているのか？<br><br>多くの疑問があります。席について、これらのいくつかについて一緒に考えていきましょう！Android と Kotlin 開発の視点を通して、Gemini などの AI アシスタントが開発ワークフローをどのように強化できるのか、そして XP のプラクティスがそれにどのように貢献できるのかを探ります。"
+      },
+      "tags": ["English Session", "Android", "AI", "XP"],
+      "speakerIds": ["matthias_geisler"],
+      "start": "2026-11-14T13:30",
+      "end": "2026-11-14T14:10",
+      "type": "talk",
+      "links": [],
+      "groupId": "gemini_ai"
+    },
+    {
+      "id": "d1_t7_s1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "老師，我覺得 AI 生圖不是我的作品。",
+        "en": "Teacher, I feel that the image generated by AI is not my own work.",
+        "ja": "先生、AI が生成した画像は私の作品ではないように感じます。"
+      },
+      "abstract": {
+        "zh-Hant": "1.一個在電腦教室教藝術的老師；了解當小智說：「皮卡丘，就是你了！」皮卡丘的心情<br>2.對一切好奇的小學生：求學歷程中，學生從動物變植物最後變成礦物的台灣教育<br>3.老師我覺得 AI 生出來的圖，不是我的作品<br>4.最好的有感方式就是 - 創作<br>5.創作來自於生活中的點滴<br>6.Gemini AI輔助生成式藝術（Generative Art）創作<br>7.PBL是AI時代教育的好方法",
+        "en": "1.　A teacher who teaches art in a computer lab; understands how Pikachu feels when Ash says, \"Pikachu, I choose you!\"<br>2.　Curious elementary school students: The Taiwanese education system where students transform from animals to plants and finally to minerals throughout their schooling (a humorous commentary on declining vitality).<br>3.　Teacher, I feel that the image generated by AI is not my own work.<br>4.　The best way to truly feel something is through creation.<br>5.　Creation comes from the small moments in daily life.<br>6.　Gemini AI-Assisted Generative Art Creation<br>7.　PBL (Project-Based Learning) is an excellent method for education in the AI era.",
+        "ja": "1.　コンピューター教室で美術を教える教師； サトシが「ピカチュウ、きみにきめた！」と言う時のピカチュウの気持ちがわかる<br>2.　すべてに好奇心旺盛な小学生：生徒が学歴を重ねる中で、動物から植物、最終的に鉱物へと変化していく台湾の教育（活力が失われることへのユーモラスな批評）。<br>3.　先生、AI が生成した画像は私の作品ではないように感じます。<br>4.　最も良い「実感」する方法は、創造です。<br>5.　創造は、日常生活のささいな瞬間から生まれます。<br>6.　Gemini AI 支援によるジェネレーティブ・アート（Generative Art）創作<br>7.　PBL（プロジェクト・ベースド・ラーニング） は AI 時代の教育における良い方法である。"
+      },
+      "tags": ["中文議程", "教育", "Gemini", "科技藝術"],
+      "speakerIds": ["yung_chun"],
+      "start": "2026-11-14T14:30",
+      "end": "2026-11-14T15:10",
+      "type": "talk",
+      "links": [],
+      "groupId": "gemini_ai"
+    },
+    {
+      "id": "d1_t7_s2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "Google 零知識證明：隱私向善之路",
+        "en": "Google's Zero-Knowledge Proof: The Path to Privacy for Good",
+        "ja": "Google のゼロ知識証明：プライバシー・フォー・グッドへの道"
+      },
+      "abstract": {
+        "zh-Hant": "Google 推出零知識證明技術 Longfellow，在數位身分領域引發關注，並計畫透過 Google Wallet 於歐盟展開試點。這項可用於出示官方證件、但僅揭露「是否成年」的密碼學隱私技術，背後有哪些關鍵設計與挑戰？",
+        "en": "Google's release of the Zero-Knowledge Proof (ZKP) technology, Longfellow, has garnered significant attention in the digital identity field, with plans for a pilot program via Google Wallet in the EU. This cryptographic privacy technology can be used to display official credentials while only disclosing specific information, such as \"whether the user is an adult.\" What are the key designs and challenges behind this technology?",
+        "ja": "Google が発表したゼロ知識証明技術 Longfellow は、デジタルアイデンティティ分野で注目を集めており、EUで Google Wallet を通じた試験運用が計画されています。この暗号学的プライバシー技術は、公的証明書を提示する際に「成人であるかどうか」など特定の情報のみを開示するために利用されますが、その背後にはどのような重要な設計と課題があるのでしょうか？"
+      },
+      "tags": ["中文議程", "零知識證明", "數位身分", "Google Wallet"],
+      "speakerIds": ["denken_chen"],
+      "start": "2026-11-14T14:30",
+      "end": "2026-11-14T15:10",
+      "type": "talk",
+      "links": [],
+      "groupId": "goodness"
+    },
+    {
+      "id": "d1_t8",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "Pizza Time & 交流時間",
+        "en": "Pizza Time & Networking",
+        "ja": "ピザタイム＆交流時間"
       },
       "abstract": {
         "zh-Hant": "議程資訊即將公布。"
       },
       "tags": [],
-      "speakerIds": ["kevin"],
-      "start": "2026-11-14T15:00",
-      "end": "2026-11-14T15:40",
-      "type": "talk",
+      "speakerIds": [],
+      "start": "2026-11-14T15:10",
+      "end": "2026-11-14T15:30",
+      "type": "break",
       "links": []
     },
     {
-      "id": "session_6_1",
+      "id": "d1_t9_s1",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "UI/UX"
+        "zh-Hant": "當設計遇到現實世界 — 荔枝到了，但她沒笑",
+        "en": "When Design Meets the Real World — The Lychee Arrived, But She Didn't Smile",
+        "ja": "デザインが現実世界に出会う時 — ライチは届いたが、彼女は笑わなかった"
+      },
+      "abstract": {
+        "zh-Hant": "設計的理想，美得如詩句般優雅：「千里送荔枝，只為博君一笑。」<br>但在真實的專案裡，荔枝送到了，卻沒人笑，甚至沒人發現它來過。<br>煞費苦心打造的無障礙設計、自助服務平台、國際等級的體驗，最終的成果往往是「平順無聲」，就像氧氣一樣重要卻不被察覺。<br><br>本場分享延續 WebConf 2024《人月鬼話》的觀察視角，談設計落地時的各種現實困境與心理落差，從 UI/UX 實作、無障礙體驗到科技向善的內功修煉，邀請大家一起思考：<br>• 設計被看不見，是做對了，還是做錯了？<br>• 當「沒抱怨」成為唯一的回饋，我們還剩下什麼驕傲？<br>• 如何讓科技真正落實「善」，而非淪為漂亮的標籤？<br><br>這不是一場談夢想的演講，而是一場關於「把理想送出去後，它能否真的被接受」的真實練習。",
+        "en": "From UI/UX implementation and accessibility experience to the internal cultivation of Tech for Good, we invite everyone to consider:<br><br>• Is design invisible because it was done right, or because it was done wrong?<br>• When \"no complaints\" becomes the only feedback, what pride do we have left?<br>• How can we make technology truly embody \"good,\" rather than just becoming a pretty label?<br><br>This is not a talk about dreams, but a real-world practice on \"whether an ideal can truly be accepted after it's been sent out.\"",
+        "ja": "UI/UX の実装、アクセシビリティ体験からテクノロジー・フォー・グッド（Tech for Good）の内功修練まで、皆さんと一緒に以下の点を考察したいと思います：<br><br>• デザインが見えないのは、正しく実行されたからでしょうか、それとも間違っているからでしょうか？<br>• 「苦情がない」ことが唯一のフィードバックになったとき、私たちに残る誇りとは何でしょうか？<br>• テクノロジーを単なるきれいなレッテルにせず、いかにして真に**「善」**として実現させるのでしょうか？<br><br>これは夢を語る講演ではなく、「理想を送り出した後、それが本当に受け入れられるかどうか」についての現実的な演習です。"
+      },
+      "tags": ["中文議程", "UI", "UX", "設計工程"],
+      "speakerIds": ["steve_yeh"],
+      "start": "2026-11-14T15:30",
+      "end": "2026-11-14T16:10",
+      "type": "talk",
+      "links": [],
+      "groupId": "goodness"
+    },
+    {
+      "id": "d1_t9_s2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "Gemini CLI 如何賦能 Android 開發者：從智能助手到應用創新",
+        "en": "How Gemini CLI Empowers Android Developers: From Intelligent Assistants to Application Innovation",
+        "ja": "Gemini CLI が Android 開発者をどのように強化するか：インテリジェントアシスタントからアプリケーションの革新まで"
+      },
+      "abstract": {
+        "zh-Hant": "Gemini CLI（命令列介面）是一個開源的 AI 代理，它將 Gemini 的強大功能直接帶到您的終端機 (Terminal)，尤其適合習慣在命令列環境中工作的開發人員。<br><br>雖然許多 Android 專屬的 AI 功能集成在 Android Studio 中的 Gemini，但 Gemini CLI 提供了底層的 AI 能力和自動化潛力，涵蓋從程式碼到 DevOps 的整個開發生命週期。",
+        "en": "Gemini CLI (Command Line Interface) is an open-source AI agent that brings the power of Gemini directly to your Terminal, making it particularly suitable for developers accustomed to working in a command-line environment. While many Android-specific AI features are integrated into Gemini within Android Studio, the Gemini CLI offers underlying AI capabilities and automation potential, covering the entire development lifecycle from code to DevOps.",
+        "ja": "Gemini CLI（コマンドラインインターフェース）は、Gemini の強力な機能を直接ターミナル（Terminal）にもたらすオープンソースの AI エージェントであり、特にコマンドライン環境での作業に慣れている開発者に適しています。多くの Android 専用 AI 機能は Android Studio 内の Gemini に統合されていますが、Gemini CLI は、コードから DevOps に至るまでの開発ライフサイクル全体をカバーする、基盤となる AI 能力と自動化の可能性を提供します。"
+      },
+      "tags": ["中文議程", "AI", "Gemini", "Android"],
+      "speakerIds": ["kevin_chiu_1"],
+      "start": "2026-11-14T15:30",
+      "end": "2026-11-14T16:10",
+      "type": "talk",
+      "links": [],
+      "groupId": "gemini_ai"
+    },
+    {
+      "id": "d1_t10_s1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "建構 AI Agent：結合 Google Gemini 與 ADK 工具來解放企業生產力",
+        "en": "Building an AI Agent: Combining Google Gemini with ADK Tools to Unleash Enterprise Productivity",
+        "ja": "本番環境でのKubernetes ベストプラクティス"
+      },
+      "abstract": {
+        "zh-Hant": "在生成式 AI 與多模態技術快速演進的浪潮下，企業正面臨如何有效導入 AI Agent 以提升生產力的關鍵課題。Google Gemini Model 提供強大的理解與推理能力，而 ADK（Agent Developer Kit）則提供開發者可延展、可整合的工具鏈。<br><br>兩者結合，讓企業能夠從單純的任務自動化，邁向智慧化決策與流程優化。這不僅能釋放人力資源，專注於更高價值的創新活動，同時也能在市場競爭中保持敏捷與領先。建構 AI Agent，不再只是技術實驗，而是推動數位轉型的核心引擎。",
+        "en": "Amidst the rapidly evolving wave of Generative AI and multimodal technology, enterprises are facing the critical challenge of how to effectively integrate AI Agents to boost productivity. The Google Gemini Model provides powerful understanding and reasoning capabilities, while the ADK (Agent Developer Kit) offers developers an extendable and integrable toolchain. The combination of the two enables businesses to move beyond simple task automation towards intelligent decision-making and process optimization. This not only frees up human resources to focus on higher-value innovation activities but also allows the enterprise to remain agile and maintain a market lead. Building an AI Agent is no longer just a technological experiment; it is the core engine driving digital transformation.",
+        "ja": "生成AIとマルチモーダル技術が急速に進展する波の中で、企業はAI エージェントをいかに効果的に導入して生産性を向上させるかという重要な課題に直面しています。Google Gemini Model は強力な理解力と推論能力を提供し、一方、**ADK（Agent Developer Kit）**は開発者に拡張可能で統合可能なツールチェーンを提供します。この二つを組み合わせることで、企業は単純なタスク自動化から、インテリジェントな意思決定とプロセス最適化へと移行できます。これは、人的資源を解放し、より価値の高いイノベーション活動に集中させるだけでなく、市場競争において機敏性と優位性を維持することにも繋がります。AI エージェントの構築は、もはや単なる技術実験ではなく、デジタルトランスフォーメーションを推進する中核エンジンなのです。"
+      },
+      "tags": ["中文議程", "ADK", "Gemini", "Agent"],
+      "speakerIds": ["simon_liu_1"],
+      "start": "2026-11-14T16:30",
+      "end": "2026-11-14T17:10",
+      "type": "talk",
+      "links": [],
+      "groupId": "gemini_ai"
+    },
+    {
+      "id": "d1_t11",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "活動閉幕",
+        "en": "Closing",
+        "ja": "閉会式"
       },
       "abstract": {
         "zh-Hant": "議程資訊即將公布。"
       },
       "tags": [],
-      "speakerIds": ["mantou", "lao_ge", "stephen"],
-      "start": "2026-11-14T16:00",
-      "end": "2026-11-14T17:30",
-      "type": "talk",
-      "links": []
-    },
-    {
-      "id": "closing_ceremony",
-      "trackId": "track_1",
-      "title": {
-        "zh-Hant": "閉幕"
-      },
-      "abstract": {
-        "zh-Hant": "感謝與活動回顧。"
-      },
-      "tags": [],
-      "speakerIds": ["weiting_dai"],
+      "speakerIds": [],
       "start": "2026-11-14T17:30",
-      "end": "2026-11-14T17:50",
+      "end": "2026-11-14T18:00",
       "type": "closing",
+      "links": []
+    },
+    {
+      "id": "d1_t12",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "After Buffet",
+        "en": "After Buffet",
+        "ja": "アフタービュッフェ"
+      },
+      "abstract": {
+        "zh-Hant": "議程資訊即將公布。"
+      },
+      "tags": [],
+      "speakerIds": [],
+      "start": "2026-11-14T19:00",
+      "end": "2026-11-14T21:00",
+      "type": "break",
       "links": []
     }
   ],
   "staff": [
     {
-      "id": "mei_ling",
+      "id": "andy",
       "order": 1,
       "name": {
-        "zh-Hant": "李美玲"
+        "zh-Hant": "戴維廷 / Andy",
+        "en": "Andy",
+        "ja": "Andy"
       },
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://www.andyawd.com.tw/"
+        },
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/anandydy529//"
+        },
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/weiting-dai/"
+        },
+        {
+          "platform": "github",
+          "label": {
+            "zh-Hant": "GitHub"
+          },
+          "url": "https://github.com/AndyAWD"
+        }
+      ],
       "role": {
-        "zh-Hant": "報到組"
+        "zh-Hant": "第一天總召 & 第二天志工",
+        "en": "Day 1 & Day 2 Staff",
+        "ja": "1日目・2日目 日目ボランティア"
       },
       "bio": {
-        "zh-Hant": "熱心公益的社群志工。\n連續三年參與 DevFest 籌辦工作。"
-      },
-      "links": []
+        "zh-Hant": "INFJ，在高雄辦社群活動的人",
+        "en": "INFJ, Community Event Organizer in Kaohsiung",
+        "ja": "INFJ，高雄でコミュニティイベントを運営する人"
+      }
     },
     {
-      "id": "chris_lee",
+      "id": "mac",
       "order": 2,
       "name": {
-        "zh-Hant": "李啟明"
+        "zh-Hant": "Mac",
+        "en": "Mac",
+        "ja": "Mac"
       },
+      "links": [],
       "role": {
-        "zh-Hant": "議程組"
+        "zh-Hant": "第一天志工 & 第二天主辦",
+        "en": "Day 1 & Day 2 Staff",
+        "ja": "1日目・2日目 日目ボランティア"
       },
       "bio": {
-        "zh-Hant": "負責議程規劃與講者聯繫。"
-      },
-      "links": []
+        "zh-Hant": "Just an Engineer",
+        "en": "Just an Engineer",
+        "ja": "Just an Engineer"
+      }
     },
     {
-      "id": "amanda_lin",
+      "id": "brook",
       "order": 3,
       "name": {
-        "zh-Hant": "林安婷"
+        "zh-Hant": "Brook",
+        "en": "Brook",
+        "ja": "Brook"
       },
+      "links": [],
       "role": {
-        "zh-Hant": "行政組"
+        "zh-Hant": "第一天志工 & 第二天主辦",
+        "en": "Day 1 & Day 2 Staff",
+        "ja": "1日目・2日目 日目ボランティア"
       },
       "bio": {
-        "zh-Hant": "掌管活動大小事的行政中樞。"
+        "zh-Hant": "前端工程師，開發者 Buffet 成員，喜歡交朋友但不擅長認臉，目前正在研究如何省力地舉辦活動",
+        "en": "Frontend Engineer and a member of Developer Buffet. I enjoy making friends but am bad at recognizing faces. I am currently researching how to organize events with minimal effort.",
+        "ja": "フロントエンドエンジニア であり、開発者ビュッフェ（Developer Buffet）のメンバー。人と交流するのは好きですが、顔を覚えるのが苦手です。現在は、いかに省力でイベントを運営するかを研究しています。"
+      }
+    },
+    {
+      "id": "renata",
+      "order": 4,
+      "name": {
+        "zh-Hant": "Renata",
+        "en": "Renata",
+        "ja": "Renata"
+      },
+      "links": [],
+      "role": {
+        "zh-Hant": "第一天主辦",
+        "en": "Day 1 Staff",
+        "ja": "1日目 日目ボランティア"
+      },
+      "bio": {
+        "zh-Hant": "一手包辦台中 / 高雄國泰 CDC 小聚",
+        "en": "Single-handedly organizing the Cathay CDC in Taichung and Kaohsiung",
+        "ja": "台中・高雄の CDC ミートアップを一人で主催"
+      }
+    },
+    {
+      "id": "leigh",
+      "order": 5,
+      "name": {
+        "zh-Hant": "Leigh",
+        "en": "Leigh",
+        "ja": "Leigh"
+      },
+      "links": [],
+      "role": {
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "bio": {
+        "zh-Hant": "喜歡上山也喜歡下海，旅行與寫作。",
+        "en": "Enjoys mountaineering and deep-sea activities, traveling and writing.",
+        "ja": "登山と海、旅行と執筆を好む。"
+      }
+    },
+    {
+      "id": "johnny_chen",
+      "order": 6,
+      "name": {
+        "zh-Hant": "Johnny Chen",
+        "en": "Johnny Chen",
+        "ja": "Johnny Chen"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/johnny.chen.568294"
+        }
+      ],
+      "role": {
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "bio": {
+        "zh-Hant": "什麼都要來個一條龍",
+        "en": "End-to-end service.",
+        "ja": "ワンストップサービス"
+      }
+    },
+    {
+      "id": "adsf_aaron",
+      "order": 7,
+      "name": {
+        "zh-Hant": "章魚燒",
+        "en": "Takoyaki",
+        "ja": "たこ焼き"
+      },
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://blog.haoder.dev/"
+        },
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/aaron-chuang/"
+        },
+        {
+          "platform": "github",
+          "label": {
+            "zh-Hant": "GitHub"
+          },
+          "url": "https://github.com/ADSFAaron"
+        }
+      ],
+      "role": {
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "bio": {
+        "zh-Hant": "全端工程師👨‍💻",
+        "en": "Full Stack Engineer👨‍💻",
+        "ja": "フルスタック開発者"
+      }
+    },
+    {
+      "id": "ka_iu",
+      "order": 8,
+      "name": {
+        "zh-Hant": "Ka-iu 小吳",
+        "en": "Ka-iu 小吳",
+        "ja": "Ka-iu 小吳"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/jiayou.wu.9"
+        }
+      ],
+      "role": {
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "bio": {
+        "en": "低調和善的 I 人後端工程師<br>正在練習把生活自動化<br>熟 Python、Java、C#、PHP、物件導向<br>正在學 Rust、Golang"
+      }
+    },
+    {
+      "id": "lays",
+      "order": 9,
+      "name": {
+        "zh-Hant": "Lays",
+        "en": "Lays",
+        "ja": "Lays"
       },
       "links": [
         {
           "platform": "linkedin",
           "label": {
-            "zh-Hant": "LinkedIn"
+            "zh-Hant": "Linkedin"
           },
-          "url": "https://linkedin.com/in/amandalin"
+          "url": "https://www.linkedin.com/in/laysdragon"
         }
-      ]
-    },
-    {
-      "id": "roger_pan",
-      "order": 4,
-      "name": {
-        "zh-Hant": "潘冠宇"
-      },
+      ],
       "role": {
-        "zh-Hant": "場務組"
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
       },
       "bio": {
-        "zh-Hant": "負責場地與器材協調。"
-      },
-      "links": []
+        "zh-Hant": "熱愛動手玩各種有趣的技術，曾有多年全端開發經驗，現在專注在後端架構設計與 DevOps，也在學習 AI，期待將技術應用在更多可能性中。",
+        "en": "Passionate about hands-on experimentation with various interesting technologies. Has multiple years of experience in Full-Stack development, now focusing on Backend Architecture Design and DevOps. Also learning AI, with the expectation of applying technology to a wider range of possibilities.",
+        "ja": "様々な面白い技術に触れることが好きな、熱心な実践家です。過去に長年のフルスタック開発経験があり、現在はバックエンドのアーキテクチャ設計と DevOps に注力し、AI も学んでいます。技術をさらに多くの可能性に応用することを目指しています。"
+      }
     },
     {
-      "id": "ivy_kuo",
-      "order": 5,
+      "id": "kai",
+      "order": 10,
       "name": {
-        "zh-Hant": "郭怡雯"
+        "zh-Hant": "Kai",
+        "en": "Kai",
+        "ja": "Kai"
       },
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook NSYSU"
+          },
+          "url": "https://www.facebook.com/NSYSUGDSC"
+        }
+      ],
       "role": {
-        "zh-Hant": "設計組"
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
       },
       "bio": {
-        "zh-Hant": "視覺設計與品牌統籌。"
+        "zh-Hant": "大家好～我是前中山 GDG on Campus organizer Kai, 因為喜歡社群活動所以又又出現拉～ 希望可以在這裡遇到大神，了解最新技術趨勢！！！",
+        "en": "Hello everyone! I'm Kai, the former GDG on Campus Organizer at National Sun Yat-sen University (NSYSU). I love community events, so here I am again! I hope to meet experts here and learn about the latest technology trends!!!",
+        "ja": "皆様、こんにちは！元中山（國立中山大學）の GDG on Campus オーガナイザーの Kai です。コミュニティ活動が好きで、またまた参加しました！ここで、偉大な専門家（大神）の方々にお会いし、最新の技術トレンドを理解できることを願っています！！！"
+      }
+    },
+    {
+      "id": "ace",
+      "order": 11,
+      "name": {
+        "zh-Hant": "Ace",
+        "en": "Ace",
+        "ja": "Ace"
+      },
+      "links": [],
+      "role": {
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "bio": {
+        "zh-Hant": "114 GDG on campus NSYSU lead",
+        "en": "114 GDG on campus NSYSU lead",
+        "ja": "114 GDG on campus NSYSU lead"
+      }
+    },
+    {
+      "id": "melody",
+      "order": 12,
+      "name": {
+        "zh-Hant": "Melody",
+        "en": "Melody",
+        "ja": "Melody"
+      },
+      "links": [],
+      "role": {
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      }
+    },
+    {
+      "id": "stefan",
+      "order": 13,
+      "name": {
+        "zh-Hant": "樹樹可可 Stefan",
+        "en": "樹樹可可 Stefan",
+        "ja": "樹樹可可 Stefan"
       },
       "links": [
         {
@@ -594,23 +1123,98 @@
           "label": {
             "zh-Hant": "Instagram"
           },
-          "url": "https://instagram.com/ivykuo"
+          "url": "https://www.instagram.com/lsf_0619/?hl=zh-tw"
         }
-      ]
-    },
-    {
-      "id": "sam_hsu",
-      "order": 6,
-      "name": {
-        "zh-Hant": "許承翰"
-      },
+      ],
       "role": {
-        "zh-Hant": "技術組"
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
       },
       "bio": {
-        "zh-Hant": "官網開發與現場技術支援。"
+        "zh-Hant": "在外打滾多年的大一新鮮人",
+        "en": "A university freshman with many years of real-world experience.",
+        "ja": "社会人経験の長い大学一年生"
+      }
+    },
+    {
+      "id": "a_ju",
+      "order": 14,
+      "name": {
+        "zh-Hant": "A-Ju",
+        "en": "A-Ju",
+        "ja": "A-Ju"
       },
-      "links": []
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/VickyJu725"
+        }
+      ],
+      "role": {
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      }
+    },
+    {
+      "id": "corey",
+      "order": 15,
+      "name": {
+        "zh-Hant": "種子",
+        "en": "Corey",
+        "ja": "種子"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/corey924"
+        }
+      ],
+      "role": {
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "bio": {
+        "zh-Hant": "哈囉大家好，我是 Corey，也可以叫我種子～<br>我之前主要在幾家新創公司打滾了 9 年多，從 MIS 到全端開發、系統分析、帶過技術團隊，常常不小心變成網站工程界打雜的一條龍。",
+        "en": "Hello everyone, I'm Corey, you can also call me Seed (種子). I previously worked at several startups for over 9 years, transitioning from MIS to Full-Stack Development, System Analysis, and leading technical teams. I often unintentionally became the \"one-stop-shop\" jack-of-all-trades in the world of web engineering.",
+        "ja": "皆様、こんにちは、Corey です。「種子（Seede）」と呼んでいただいても構いません。 以前はいくつかのスタートアップ企業で9年以上にわたり勤務し、MIS からフルスタック開発、システム分析、技術チームのリードまで経験しました。私はウェブエンジニアリング界隈で、いつの間にか**何でも屋の「ワンストップサービス」**になってしまうことが多いです。"
+      }
+    },
+    {
+      "id": "kao",
+      "order": 16,
+      "name": {
+        "zh-Hant": "高高",
+        "en": "Kao",
+        "ja": "高高"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/share/14NNXm8Uyqq/"
+        }
+      ],
+      "role": {
+        "zh-Hant": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "bio": {
+        "zh-Hant": "軟硬通吃的自動化 PM/工程師<br><br>Developer/Polygot/Foodie/Tainaner",
+        "en": "A versatile Automation PM/Engineer proficient in both hardware and software. Developer / Polyglot / Foodie / Tainaner",
+        "ja": "ハードとソフトの両方に精通したオートメーション PM／エンジニア デベロッパー / ポリグロット（多言語・多技術者） / 食通 / 台南出身者"
+      }
     }
   ],
   "thanksGroups": [
@@ -618,123 +1222,356 @@
       "id": "gold",
       "order": 1,
       "name": {
-        "zh-Hant": "黃金級贊助"
+        "zh-Hant": "黃金級贊助",
+        "en": "Gold Sponsors",
+        "ja": "ゴールドスポンサー"
       }
     },
     {
       "id": "silver",
       "order": 2,
       "name": {
-        "zh-Hant": "白銀級贊助"
+        "zh-Hant": "白銀級贊助",
+        "en": "Silver Sponsors",
+        "ja": "シルバースポンサー"
       }
     },
     {
       "id": "partner",
       "order": 3,
       "name": {
-        "zh-Hant": "合作夥伴"
+        "zh-Hant": "合作夥伴",
+        "en": "Partners",
+        "ja": "パートナー"
       }
     }
   ],
   "thanks": [
     {
-      "id": "example_co",
-      "groupId": "gold",
+      "id": "googel_for_developers",
+      "groupId": "partner",
       "order": 1,
       "name": {
-        "zh-Hant": "範例科技股份有限公司"
-      },
-      "description": {
-        "zh-Hant": "領先的雲端服務供應商。"
+        "zh-Hant": "Google for Developers",
+        "en": "Google for Developers",
+        "ja": "Google for Developers"
       },
       "marquee": true,
       "links": [
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "官方網站"
+            "zh-Hant": "Homepage"
           },
-          "url": "https://example.com"
+          "url": "https://developers.google.com"
+        }
+      ],
+      "description": {
+        "zh-Hant": "探索開發者資源、社群活動與啟發人心的故事，協助您更高效地開發、更迅速地發布產品。",
+        "en": "Explore developer resources, community events, and inspirational stories to help you build smarter and ship faster.",
+        "ja": "開発者向けリソース、コミュニティイベント、そしてインスピレーションを与えるストーリーを探索し、よりスマートな開発と迅速なリリースを実現しましょう。"
+      }
+    },
+    {
+      "id": "edbkcg",
+      "groupId": "partner",
+      "order": 2,
+      "name": {
+        "zh-Hant": "高雄市政府經濟發展局",
+        "en": "Economic Development Bureau,Kaohsiung City Government",
+        "ja": "高雄市政府經濟發展局"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://edbkcg.kcg.gov.tw/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "高雄近年來積極招商引資，更致力於扶植新創及軟體開發創新應用，鼓勵在高雄打拼的夥伴們，從 Google 等大廠中發展出屬於自己的品牌與生態，帶動更多創新企業一起搶佔全球市場商機。",
+        "en": "In recent years, Kaohsiung has actively courted investment and dedicated itself to fostering startups and innovative software development applications. The city encourages partners working hard in Kaohsiung to develop their own brands and ecosystems based on experience from major companies like Google, thereby driving more innovative enterprises to seize global market opportunities together.",
+        "ja": "高雄は近年、積極的に企業誘致と投資を行い、スタートアップ企業や革新的なソフトウェア開発アプリケーションの育成に尽力しています。 この地で奮闘するパートナーたちが、Google などの大手企業から得た経験を活かし、独自のブランドとエコシステムを発展させるよう奨励することで、より多くの革新的な企業を牽引し、共に世界市場のビジネスチャンスを掴むことを目指しています。"
+      }
+    },
+    {
+      "id": "legend_innovation",
+      "groupId": "partner",
+      "order": 3,
+      "name": {
+        "zh-Hant": "誠研創新",
+        "en": "Legend Innovation",
+        "ja": "Legend Innovation"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://www.legendinno.com.tw/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "誠研創新是一家註冊在台灣並深耕科技事業產業化與國際化的專業機構。 我們專注於前研技術探勘與早期新創投資育成、企業科技諮詢與數位轉型。 誠研創新期許成為台灣及華人圈科技新創公司與中堅企業邁向IPO以及策略(數位)轉型成功的最佳平台。<br><br>熱情、專業、誠信、穩健是誠研創新的品牌保證。",
+        "en": "Legend Innovation is a professional organization registered in Taiwan that is deeply involved in the industrialization and internationalization of the technology sector. We offer cutting-edge technology scouting, early-stage startup incubation, corporate technology consulting and digital transformation services. Legend Innovation aspires to be the best platform for technology startups and mid-sized enterprises in Taiwan and the Chinese community ,enabling them to successfully progress towards IPO and strategic (digital) transformation.<br><br>Passion, professionalism, integrity, and steady are the brand guarantees of Legend Innovation.",
+        "ja": "Legend Innovation (誠研創新) は、台湾に登録され、テクノロジー事業の産業化と国際化を深く推進する専門機関です。私たちは、先端技術の調査、初期段階のスタートアップ投資および育成、企業向けテクノロジーコンサルティング、デジタル変革に注力しています。Sincerity & Innovation は、台湾および中華圏のテック系スタートアップ企業と中堅企業が IPO や戦略的（デジタル）変革を成功させるための最高のプラットフォームとなることを目指しています。<br><br>情熱、専門性、誠実さ、堅実さが、Sincerity & Innovation のブランド保証です。"
+      }
+    },
+    {
+      "id": "ko_in",
+      "groupId": "partner",
+      "order": 4,
+      "name": {
+        "zh-Hant": "KO-IN 智高點",
+        "en": "KO-IN",
+        "ja": "KO-IN"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://koin.koda.net.tw/en/index.html"
+        }
+      ],
+      "description": {
+        "zh-Hant": "KO-IN 智高點成立之目標與願景為發展高雄智慧城市及其相關智慧科技為主題，透過新創事業加速以及既有產(企)業創新輔導之精神，最終以翻轉南臺灣產業架構，注入新的成長動能並促進新創產業形成群聚，進而帶動南部產業的蓬勃發展。",
+        "en": "The goal and vision of KO-IN establishment focus on developing Kaohsiung Smart City and related Smart Technology, by accelerating entrepreneurship with the existing spirit of industrial/enterprise innovation guidance, to eventually convert and breath new growing momentum into the industrial structure of Southern Taiwan, facilitating the start-ups to form an industrial cluster, and driving further prosperity of industry in the South.",
+        "ja": "KO-IN（智高點）設立の目標とビジョンは、高雄スマートシティおよびその関連するスマート技術をテーマに発展させることです。新規事業のアクセラレーションと既存産業（企業）のイノベーション支援という精神を通じて、最終的には南台湾の産業構造を転換し、新たな成長の原動力を注入し、スタートアップ産業のクラスター形成を促進し、ひいては南部産業の活発な発展を牽引することを目指しています。"
+      }
+    },
+    {
+      "id": "colosscious",
+      "groupId": "silver",
+      "order": 5,
+      "name": {
+        "zh-Hant": "嵙思科技股份有限公司",
+        "en": "嵙思科技股份有限公司",
+        "ja": "嵙思科技股份有限公司"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://www.colosscious.com/home"
+        }
+      ],
+      "description": {
+        "zh-Hant": "嵙思專為 #生技製藥 打造智慧化實驗室，讓生成式 AI 作為實驗室的智慧代理人。<br><br>打造 Lab → QA 無縫數位化，協助生技製藥實驗室提升效率與可靠度<br><br>實驗室智慧化，LIMS 不只是工具，而是下一代研發的核心競爭力。",
+        "en": "Colosscious specializes in creating smart laboratories for the #Biotech and Pharmaceutical industries, enabling Generative AI to act as the laboratory's intelligent agent.<br><br>We build seamless digital integration from Lab to QA, helping biotech and pharmaceutical laboratories enhance efficiency and reliability.<br><br>With lab intelligence, LIMS (Laboratory Information Management System) is not just a tool, but the core competitiveness for next-generation R&D.",
+        "ja": "Colosscious は、#バイオ・製薬業界 向けに特化したスマートなラボを実現し、生成AI をラボのインテリジェントエージェントとして機能させます。<br><br>ラボから QA までのシームレスなデジタル化を構築し、バイオ・製薬ラボの効率と信頼性の向上を支援します。<br><br>ラボのスマート化において、LIMS (Laboratory Information Management System) は単なるツールではなく、次世代の研究開発における核となる競争力です。"
+      }
+    },
+    {
+      "id": "titansoft",
+      "groupId": "silver",
+      "order": 6,
+      "name": {
+        "zh-Hant": "新加坡商鈦坦科技股份有限公司 台灣分公司",
+        "en": "新加坡商鈦坦科技股份有限公司 台灣分公司",
+        "ja": "新加坡商鈦坦科技股份有限公司 台灣分公司"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://portaly.cc/titansoft"
+        }
+      ],
+      "description": {
+        "zh-Hant": "鈦坦科技，是一間總部位於新加坡的軟體開發公司，提供線上軟體平台客製開發與維護，以及代理 Atlassian 旗下產品 Jira Software & Confluence，以自身實際使用經驗提供一站式導入服務。身處快速變動的軟體產業，我們採用敏捷開發，同時將敏捷思維注入公司文化，實⾏〔彈性⼯時〕、採⽤〔⾃主升遷〕、實踐〔薪資透明〕，在多年導入及迭代的經驗下，我們也開始提供企業客製化敏捷課程及顧問諮詢服務，並積極參與產業、社群與教育活動推廣敏捷精神。<br><br>全頻道認識鈦坦：portaly.cc/titansoft",
+        "en": "Titansoft is a software development company headquartered in Singapore, providing custom development and maintenance of online software platforms, as well as serving as a distributor for Atlassian products such as Jira Software & Confluence, offering one-stop implementation services based on our own practical experience. Operating in the rapidly changing software industry, we adopt agile development while infusing agile thinking into our company culture, implementing [flexible working hours], adopting [self-directed promotion], and practicing [salary transparency]. With years of implementation and iteration experience, we have also begun offering customized enterprise agile training and consulting services, and actively participate in industry, community, and educational activities to promote agile principles.<br><br>Get to know Titansoft through all our channels: portaly.cc/titansoft",
+        "ja": "Titansoft はシンガポールに本社を置くソフトウェア開発会社で、オンラインソフトウェアプラットフォームのカスタム開発と保守を提供しています。また、Atlassian 製品である Jira Software & Confluence の代理店でもあり、自社の実際の使用経験に基づいたワンストップの導入サービスを提供しています。変化の激しいソフトウェア業界において、私たちはアジャイル開発を採用し、アジャイル思考を企業文化に注入しています。具体的には、**〔フレキシブルな勤務時間〕の実施、〔自主的な昇進制度〕の採用、〔給与の透明性〕**の実践を行っています。長年の導入と改善の経験に基づき、現在では企業向けにカスタマイズされたアジャイル研修やコンサルティングサービスも提供しており、アジャイルの精神を広めるために業界、コミュニティ、教育活動に積極的に参加しています。<br><br>Titansoft の全チャンネルはこちら：portaly.cc/titansoft"
+      }
+    },
+    {
+      "id": "jetbrains",
+      "groupId": "silver",
+      "order": 7,
+      "name": {
+        "zh-Hant": "JetBrains",
+        "en": "JetBrains",
+        "ja": "JetBrains"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "官方網站",
+            "en": "Website",
+            "ja": "公式サイト"
+          },
+          "url": "https://www.jetbrains.com/"
+        },
+        {
+          "platform": "twitter",
+          "label": {
+            "zh-Hant": "x"
+          },
+          "url": "https://x.com/jetbrains"
+        },
+        {
+          "platform": "instagram",
+          "label": {
+            "zh-Hant": "Instagram"
+          },
+          "url": "https://www.instagram.com/jetbrains"
+        },
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/company/jetbrains"
+        },
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/JetBrains/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "JetBrains 是一間國際化的軟體開發公司，以基於 IntelliJ Platform 打造的多款專業 IDE 聞名，包括 IntelliJ IDEA、PyCharm 與 WebStorm，同時也是創造 Kotlin 程式語言背後的公司。<br><br>在最新推出的 IntelliJ IDEA 2025 系列版本中，AI Assistant 功能全面升級，Junie 效能表現顯著提升，並新增對多項最新技術及工具的支援，包括 Java 25、Maven 4，以及 Spring Debugger。",
+        "en": "JetBrains is an international software development company renowned for its family of IDEs based on the IntelliJ Platform – including IntelliJ IDEA, PyCharm, and WebStorm – as well as for creating the Kotlin programming language.<br><br>IntelliJ IDEA 2025 series introduces an enhanced AI Assistant and improved Junie performance, with support for cutting-edge technologies such as Java 25, Maven 4, and Spring Debugger.",
+        "ja": "JetBrains は、IntelliJ IDEA、PyCharm、WebStorm を含む、IntelliJ Platform に基づいた多数のプロフェッショナルな IDE で知られる国際的なソフトウェア開発会社であり、Kotlin プログラミング言語を生み出した企業でもあります。<br><br>最新の IntelliJ IDEA 2025 シリーズでは、AI Assistant 機能が全面的にアップグレードされ、Junie のパフォーマンスが著しく向上しました。さらに、Java 25、Maven 4、および Spring Debugger を含む、複数の最新技術とツールへのサポートが新たに追加されています。"
+      }
+    },
+    {
+      "id": "cathayholdings",
+      "groupId": "silver",
+      "order": 8,
+      "name": {
+        "zh-Hant": "國泰金控",
+        "en": "國泰金控",
+        "ja": "國泰金控"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://www.cathayholdings.com/holdings/"
+        },
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "CDC KKTIX"
+          },
+          "url": "https://cdckh.kktix.cc/"
+        },
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "CDC 活動資訊賴群（加入密碼：0413）"
+          },
+          "url": "https://reurl.cc/3MvZMR"
+        }
+      ],
+      "description": {
+        "zh-Hant": "國泰金控致力成為「以金融為核心的科技公司」，以金融核心職能，透過數位、數據、技術，積極研發並導入國際最新技術，從未來看現在，打造創新平台與產品服務，保持企業競爭力及創新動能。<br><br>秉持集團戰略性思維，國泰金控整合跨子公司資源，強化一站式數位金融體驗，發揮敏捷創新與技術領先優勢，樹立技術與開發環境典範。同時，積極佈局海外並與國際接軌，深耕大中華與東南亞市場，持續朝「亞太地區最佳金融機構」願景邁進。<br><br>作為金融業數位轉型的領航者，國泰金控全面注入數據驅動文化，廣納數位、數據與技術人才，打造敏捷協作的矩陣式組織，歡迎熱愛挑戰、勇於創新的人才加入國泰，共創更好的未來金融。",
+        "en": "Cathay Financial Holdings (FHC) is committed to becoming a technology company with finance at its core. Through digitalization, data, and technology, we actively develop and adopt international innovations to build new platforms and services.<br><br>From a group-level strategic perspective, Cathay FHC integrates resources to harness our strengths in agile innovation, intelligent applications, and technological leadership. At the same time, we continue expanding across Asia-Pacific, aligning with global trends and advancing toward our vision of becoming the leading financial institution in the region.<br><br>Cathay FHC fosters a data-driven culture and welcomes talents in digital, data, and technology to join our agile and collaborative matrix organization. We invite those who are passionate about challenge and innovation to join Cathay in shaping a better future of finance together.",
+        "ja": "Cathay Financial Holdings (FHC) is committed to becoming a technology company with finance at its core. Through digitalization, data, and technology, we actively develop and adopt international innovations to build new platforms and services.<br><br>From a group-level strategic perspective, Cathay FHC integrates resources to harness our strengths in agile innovation, intelligent applications, and technological leadership. At the same time, we continue expanding across Asia-Pacific, aligning with global trends and advancing toward our vision of becoming the leading financial institution in the region.<br><br>Cathay FHC fosters a data-driven culture and welcomes talents in digital, data, and technology to join our agile and collaborative matrix organization. We invite those who are passionate about challenge and innovation to join Cathay in shaping a better future of finance together."
+      }
+    },
+    {
+      "id": "cmj",
+      "groupId": "partner",
+      "order": 9,
+      "name": {
+        "zh-Hant": "CMJ",
+        "en": "CMJ",
+        "ja": "CMJ"
+      },
+      "marquee": true,
+      "links": []
+    },
+    {
+      "id": "min_jiun",
+      "groupId": "partner",
+      "order": 10,
+      "name": {
+        "zh-Hant": "脆瓜",
+        "en": "脆瓜",
+        "ja": "脆瓜"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/min-jiun-tsai-8396aa13b"
+        }
+      ],
+      "description": {
+        "zh-Hant": "我是第一次參加的麻瓜>< <br>希望有機會認識大家！",
+        "en": "I'm a first-time attendee and a Muggle! >< <br>Hope to have a chance to meet everyone!",
+        "ja": "初めて参加するマグルです！ >< <br>皆さんと知り合える機会があれば嬉しいです！"
+      }
+    },
+    {
+      "id": "gobby",
+      "groupId": "partner",
+      "order": 11,
+      "name": {
+        "zh-Hant": "Gobby",
+        "en": "Gobby",
+        "ja": "Gobby"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/gobby-chen-helloworld/"
         }
       ]
     },
     {
-      "id": "future_tech",
-      "groupId": "gold",
-      "order": 2,
-      "name": {
-        "zh-Hant": "未來科技"
-      },
-      "description": {
-        "zh-Hant": "專注於 AI 與資料分析。\n提供企業級的解決方案。"
-      },
-      "marquee": true,
-      "links": []
-    },
-    {
-      "id": "cloud_labs",
-      "groupId": "silver",
-      "order": 1,
-      "name": {
-        "zh-Hant": "雲端實驗室"
-      },
-      "description": {
-        "zh-Hant": "新創雲端服務團隊。"
-      },
-      "marquee": false,
-      "links": []
-    },
-    {
-      "id": "dev_studio",
-      "groupId": "silver",
-      "order": 2,
-      "name": {
-        "zh-Hant": "開發者工作室"
-      },
-      "description": {
-        "zh-Hant": "軟體開發外包服務。"
-      },
-      "marquee": false,
-      "links": []
-    },
-    {
-      "id": "ai_valley",
-      "groupId": "silver",
-      "order": 3,
-      "name": {
-        "zh-Hant": "AI 谷"
-      },
-      "description": {
-        "zh-Hant": "AI 產品孵化基地。"
-      },
-      "marquee": true,
-      "links": []
-    },
-    {
-      "id": "kh_incubator",
+      "id": "lays",
       "groupId": "partner",
-      "order": 1,
+      "order": 12,
       "name": {
-        "zh-Hant": "高雄新創育成中心"
-      },
-      "description": {
-        "zh-Hant": "提供新創團隊完整資源。"
+        "zh-Hant": "Lays",
+        "en": "Lays",
+        "ja": "Lays"
       },
       "marquee": true,
-      "links": []
-    },
-    {
-      "id": "community_hub",
-      "groupId": "partner",
-      "order": 2,
-      "name": {
-        "zh-Hant": "社群交流中心"
-      },
+      "links": [
+        {
+          "platform": "linkedin",
+          "label": {
+            "zh-Hant": "Linkedin"
+          },
+          "url": "https://www.linkedin.com/in/laysdragon"
+        }
+      ],
       "description": {
-        "zh-Hant": "串連南部技術社群。"
-      },
-      "links": [],
-      "marquee": true
+        "zh-Hant": "熱愛動手玩各種有趣的技術，曾有多年全端開發經驗，現在專注在後端架構設計與 DevOps，也在學習 AI，期待將技術應用在更多可能性中。",
+        "en": "Passionate about hands-on experimentation with various interesting technologies. Has multiple years of experience in Full-Stack development, now focusing on Backend Architecture Design and DevOps. Also learning AI, with the expectation of applying technology to a wider range of possibilities.",
+        "ja": "様々な面白い技術に触れることが好きな、熱心な実践家です。過去に長年のフルスタック開発経験があり、現在はバックエンドのアーキテクチャ設計と DevOps に注力し、AI も学んでいます。技術をさらに多くの可能性に応用することを目指しています。"
+      }
     }
   ],
   "boothGroups": [
@@ -742,85 +1579,343 @@
       "id": "community",
       "order": 1,
       "name": {
-        "zh-Hant": "社群攤位"
+        "zh-Hant": "社群攤位",
+        "en": "Community Booths",
+        "ja": "コミュニティブース"
       }
     },
     {
       "id": "sponsor",
       "order": 2,
       "name": {
-        "zh-Hant": "贊助攤位"
+        "zh-Hant": "贊助攤位",
+        "en": "Sponsor Booths",
+        "ja": "スポンサーブース"
       }
     }
   ],
   "booths": [
     {
-      "id": "kotlin_tw",
+      "id": "mantou",
       "groupId": "community",
       "order": 1,
       "name": {
-        "zh-Hant": "Kotlin 台灣"
+        "zh-Hant": "饅頭圖形筆記",
+        "en": "Mantou Graphic Notes",
+        "ja": "Mantou 視覚的ノート"
       },
+      "links": [],
       "description": {
-        "zh-Hant": "推廣 Kotlin 語言的在地社群。"
-      },
-      "links": []
+        "zh-Hant": "不知道要寫什麼 XD",
+        "en": "I don't know what to write 🙂",
+        "ja": "何を書いたらいいか分からない XD"
+      }
     },
     {
-      "id": "flutter_kh",
+      "id": "mantou_friends",
       "groupId": "community",
       "order": 2,
       "name": {
-        "zh-Hant": "Flutter 高雄"
+        "zh-Hant": "饅頭與他的快樂夥伴鐵人研究室",
+        "en": "Mantou and His Happy Ironman Research Lab",
+        "ja": "饅頭（マントウ）とその愉快な仲間たち アイアンマン研究室"
       },
+      "links": [],
       "description": {
-        "zh-Hant": "Flutter 開發者的南台灣聚點。"
-      },
-      "links": []
+        "zh-Hant": "饅頭與身邊一群參加 2025 ithome 寫到上癮的鐵人們的聚集地。<br>從 AI 到設計、從前後端到命令列，甚至是刷題，什麼都寫、什麼都玩。<br>我們用每天一篇的毅力，把靈感變成程式，把鐵人賽變成生活方式！",
+        "en": "This is the gathering place for Mantou and a group of \"Ironmen\" who participated in the 2025 iThome \"Write-Until-Addicted\" Ironman Challenge. We write about and play with everything: from AI to design, from front-end/back-end to the command line, and even competitive programming. With the perseverance of writing one article every day, we turn inspiration into code and the Ironman Challenge into a way of life!",
+        "ja": "ここは、饅頭（マントウ）と、2025年の iThome 「書くことに夢中になる」アイアンマン・チャレンジに参加した仲間たちが集まる場所です。 AI からデザイン、フロントエンド・バックエンドからコマンドライン、さらには競技プログラミングまで、何でも書いて、何でも遊びます。 私たちは「毎日一篇」の忍耐力で、インスピレーションをコードに変え、アイアンマン・チャレンジをライフスタイルに変えています！"
+      }
     },
     {
-      "id": "gdsc_nsysu",
+      "id": "tkug",
       "groupId": "community",
       "order": 3,
       "name": {
-        "zh-Hant": "GDSC 中山大學"
+        "zh-Hant": "Taiwan Kotlin User Group 攤位展示",
+        "en": "Taiwan Kotlin User Group Booth",
+        "ja": "Taiwan Kotlin User Group ブース展示"
       },
+      "links": [],
       "description": {
-        "zh-Hant": "Google 學生開發者社群。"
-      },
-      "links": []
+        "zh-Hant": "Taiwan Kotlin User Group 致力於推廣 Kotlin 語言與生態，無論是後端開發、Android、KMP 還是伺服器框架 Ktor，都能找到實用與有趣的應用。<br><br>我們在技術創作市集準備了 Kotlin 教學材料與開發案例，讓開發者快速上手並體驗 Kotlin 的優雅與高效。歡迎來攤位交流、分享學習經驗，或一起討論如何用 Kotlin 打造更好的軟體產品！<br><br>預計販售物品：個人技術創作本、個人設計小物。",
+        "en": "The Taiwan Kotlin User Group is dedicated to promoting the Kotlin language and its ecosystem. Whether it's backend development, Android, KMP, or the Ktor server framework, you can find practical and interesting applications.<br><br>At the Tech Creation Market, we have prepared Kotlin learning materials and development case studies to help developers get started quickly and experience the elegance and efficiency of Kotlin. We welcome you to come to our booth to exchange ideas, share learning experiences, or discuss how to build better software products with Kotlin!<br><br>Expected items for sale: Personal technical zines, custom-designed small items.",
+        "ja": "Taiwan Kotlin User Group は Kotlin 言語とエコシステムの推進に取り組んでいます。バックエンド開発、Android、KMP、サーバーフレームワーク Ktor など、実用的で興味深いアプリケーションを見つけることができます。<br><br>技術創作マーケットでは、開発者が素早く始められ、Kotlin の優雅さと効率性を体験できるよう、Kotlin 学習教材と開発事例を用意しています。ぜひブースにお越しいただき、アイデアを交換し、学習経験を共有し、Kotlin でより良いソフトウェア製品を構築する方法について議論しましょう！<br><br>販売予定商品：個人技術創作誌、個人デザイン小物。"
+      }
     },
     {
-      "id": "sample_corp",
-      "groupId": "sponsor",
-      "order": 1,
+      "id": "anoni_net",
+      "groupId": "community",
+      "order": 4,
       "name": {
-        "zh-Hant": "示範企業"
-      },
-      "description": {
-        "zh-Hant": "現場招募與產品展示。"
+        "zh-Hant": "匿名網絡社群 anoni.net",
+        "en": "Anonymous Network Community anoni.net",
+        "ja": "匿名ネットワークコミュニティ anoni.net"
       },
       "links": [
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "官方網站"
+            "zh-Hant": "官方網站",
+            "en": "Website",
+            "ja": "公式サイト"
           },
-          "url": "https://sample-corp.com"
+          "url": "https://anoni.net"
+        },
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://anoni.net/"
         }
-      ]
+      ],
+      "description": {
+        "zh-Hant": "關於匿名網路、網路自由，如何介紹 Tor/Tails、OONI 相關的設定與臺灣區域間的網路自由現況。",
+        "en": "Regarding anonymous networks and internet freedom, how to introduce the settings for Tor/Tails and OONI, and the current status of internet freedom in the Taiwan region.",
+        "ja": "匿名ネットワークとインターネットの自由に関して、Tor/Tails や OONI の関連設定、および台湾地域のインターネットの自由の現状をどのように紹介するか。"
+      }
     },
     {
-      "id": "demo_startup",
-      "groupId": "sponsor",
-      "order": 2,
+      "id": "v_lab_online",
+      "groupId": "community",
+      "order": 5,
       "name": {
-        "zh-Hant": "示範新創"
+        "zh-Hant": "vLAB Online",
+        "en": "vLAB Online",
+        "ja": "vLAB Online"
       },
+      "links": [
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "Linktree"
+          },
+          "url": "https://linktr.ee/vLabOnline"
+        }
+      ],
       "description": {
-        "zh-Hant": "新一代雲端工具展示。"
+        "zh-Hant": "vLAB Online（ 台灣路由網路實驗中心 ）是一個由熱愛技術的工程師自發組成的技術社群，早期以 Cisco 與路由網路技術為核心，提供線上交流與實驗環境，協助成員學習與實作。隨著技術演進與社群需求轉變，vLAB 逐步擴大討論主題，涵蓋資安、雲端、開源工具、AI 與數位治理等多元領域，並轉型為以 Line 群為中心的即時交流平台。成員來自各行各業，包含資安研究員、網管工程師、系統架構師與資訊主管，透過日常分享與互助討論，形成高信任度的知識網絡。自 2024 年起，vLAB 啟動「每月聚會計畫」，結合主題演講、書籍導讀與 Social Time，不僅強化技術深度，也促進人脈經營與職涯成長。vLAB 堅持「共學共創」理念，是面對快速變遷技術時代的重要支點，亦是推動在地技術自主與社群韌性的實驗平台。",
+        "en": "vLAB Online (Taiwan Routing Network Lab Center) is a technical community spontaneously formed by engineers passionate about technology. Initially focused on Cisco and routing network technologies, it provided an online exchange and lab environment to help members learn and practice. As technology evolved and community needs changed, vLAB gradually expanded its discussion topics to cover diverse fields such as cybersecurity, cloud, open-source tools, AI, and digital governance, and transitioned into a real-time communication platform centered around a Line group. Members come from various professions, including security researchers, network engineers, system architects, and IT managers, forming a high-trust knowledge network through daily sharing and mutual discussion. Since 2024, vLAB has launched a \"Monthly Meetup Plan,\" combining themed speeches, book readings, and Social Time, which not only deepens technical knowledge but also promotes networking and career growth. vLAB adheres to the philosophy of \"Collaborative Learning and Co-creation,\" serving as a crucial pillar in an era of rapidly changing technology and an experimental platform for fostering local technological autonomy and community resilience.",
+        "ja": "vLAB Online（台湾ルーティングネットワーク実験センター） は、技術を愛するエンジニアが自発的に設立した技術コミュニティです。初期は Cisco とルーティングネットワーク技術を核として、メンバーの学習と実践を支援するためのオンライン交流および実験環境を提供していました。技術の進化とコミュニティのニーズの変化に伴い、vLAB は討議テーマを徐々に拡大し、サイバーセキュリティ、クラウド、オープンソースツール、AI、デジタルガバナンスなど多様な分野を網羅するようになり、現在は Line グループを中心としたリアルタイム交流プラットフォームへと変貌しました。メンバーは、セキュリティ研究者、ネットワークエンジニア、システムアーキテクト、ITマネージャーなど、様々な業界から集まっており、日々の情報共有と相互扶助の議論を通じて、高い信頼性を持つ知識ネットワークを形成しています。2024年からは「月例ミートアップ計画」を開始し、テーマ講演、読書会、およびソーシャルタイムを組み合わせて、技術的な深みを強化するだけでなく、人脈形成とキャリアの成長を促進しています。vLAB は「共に学び、共に創る」という理念を貫き、急速に変化する技術時代において重要な支点であるとともに、地域社会の技術的自律性とコミュニティのレジリエンスを推進する実験プラットフォームでもあります。"
+      }
+    },
+    {
+      "id": "sticon",
+      "groupId": "community",
+      "order": 6,
+      "name": {
+        "zh-Hant": "SITCON",
+        "en": "SITCON",
+        "ja": "SITCON"
       },
-      "links": []
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://sitcon.org/"
+        },
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://sitcon.org/fb"
+        },
+        {
+          "platform": "instagram",
+          "label": {
+            "zh-Hant": "Instagram"
+          },
+          "url": "https://sitcon.org/ig"
+        },
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "Telegram"
+          },
+          "url": "https://sitcon.org/tg"
+        }
+      ],
+      "description": {
+        "zh-Hant": "SITCON 學生計算機年會是台灣最大的學生資訊社群之一，自 2012 年發起，完全由學生自發籌辦與執行。我們的核心宗旨在於建立一個屬於學生的資訊技術交流平台，透過舉辦年會、夏令營與工作坊，促進跨校、跨領域的知識共享與經驗傳承。<br><br>SITCON 2026 將於 2026 年 3 月 28 日，在中央研究院人文社會科學館盛大舉行。",
+        "en": "SITCON stands for Students’ Information Technology Conference, originated in 2012 by students from various FLOSS communities. It all started from a simple idea: to hold a conference of the students, by the students, for the students. Since 2013, SITCON has become an annual conference with over 1,000 participants across Asia and sessions spanning programming, cybersecurity, game development,  and open-source communities.  SITCON strives to become the stepping portal toward the open source world, the honored stage of home-brew projects and research, and the intersection where newcomers and skilled developers collide and sparkle.<br><br>SITCON 2026 will be held on March 28, 2026, at the Humanities and Social Sciences Building, Academia Sinica.",
+        "ja": "SITCONは「Students’ Information Technology Conference」の略で、2012年に様々なFLOSSコミュニティの学生たちによって発足しました。すべては「学生による、学生のための、学生のカンファレンスを開く」という、一つのシンプルなアイデアから始まりました。2013年以降、SITCONは毎年開催されるカンファレンスとなり、アジア全域から1,000人以上が参加。プログラミング、サイバーセキュリティ、ゲーム開発、オープンソースコミュニティなど、そのセッションは多岐にわたります。SITCONは、オープンソースの世界への登竜門であり、自作プロジェクトや研究成果を発表する晴れの舞台、そして初心者と熟練開発者が出会い、互いに刺激し合う交差点となることを目指しています。<br><br>SITCON 2026は、2026年3月28日に中央研究院人文社会科学館にて盛大に開催されます。"
+      }
+    },
+    {
+      "id": "kalug",
+      "groupId": "community",
+      "order": 7,
+      "name": {
+        "zh-Hant": "KaLUG 高雄 Linux User Group",
+        "en": "KaLUG Kaohsiung Linux User Group",
+        "ja": "KaLUG Kaohsiung Linux User Group"
+      },
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://kalug.tw/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "KaLUG 活動大多舉辦在 Second Space (中央公園站 3 號出口) 活動時間為每月第三週週六下午 (實際依講者狀況微調，偶爾線上) 偶爾雙語，主要討論 Linux & opensource 相關主題，以演說與討論並重形式進行。",
+        "en": "KaLUG (Kaohsiung Linux User Group) events are mostly held at Second Space (Exit 3 of Central Park Station). Event times are usually on the third Saturday afternoon of every month (actual time is slightly adjusted based on the speaker's availability; occasionally held online). Events are sometimes bilingual and primarily focus on topics related to Linux & Open Source, conducted in a format that emphasizes both presentations and discussions.",
+        "ja": "KaLUG (高雄 Linux ユーザーグループ) のイベントは、主に **Second Space（中央公園駅 3番出口）**で開催されます。開催時間は、毎月第3土曜日の午後です（実際は登壇者の都合により微調整があり、時々オンライン開催もあります）。イベントは時々バイリンガルで行われ、主に Linux とオープンソースに関連するテーマについて、講演と議論を両立させる形式で進行されます。"
+      }
+    },
+    {
+      "id": "kimu",
+      "groupId": "community",
+      "order": 8,
+      "name": {
+        "zh-Hant": "KIMU 高雄獨立遊戲開發者聚會",
+        "en": "KIMU Kaohsiung Indies Meet Up",
+        "ja": "KIMU 高雄インディーゲーム開発者ミートアップ"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/groups/109004249259586"
+        }
+      ],
+      "description": {
+        "zh-Hant": "KIMU 高雄獨立遊戲開發者聚會為 IGDA Taiwan 所屬 SIG（Special Interesting Group)，以高雄為據點在南台灣推動獨立遊戲開發交流活動的非營利組織，我們長期舉辦工作坊、Game Jam 以及分享會，不管您是業界、教育界、學生或遊戲愛好者，只要您對獨立遊戲開發感興趣，都歡迎您來參加。",
+        "en": "KIMU Kaohsiung Indie Game Developers Meetup is a SIG (Special Interest Group) affiliated with IGDA Taiwan. We are a non-profit organization based in Kaohsiung dedicated to promoting indie game development networking and activities in Southern Taiwan. We regularly organize workshops, Game Jams, and sharing sessions. Whether you are from the industry, education, a student, or a game enthusiast, if you are interested in indie game development, you are welcome to join us.",
+        "ja": "KIMU 高雄インディーゲーム開発者ミートアップは、IGDA Taiwan に所属する SIG（Special Interest Group）であり、高雄を拠点に南台湾でインディーゲーム開発の交流活動を推進する非営利団体です。私たちは、定期的にワークショップ、ゲームジャム、共有会を開催しています。業界、教育関係者、学生、ゲーム愛好家など、インディーゲーム開発に興味のある方ならどなたでもご参加を歓迎します。"
+      }
+    },
+    {
+      "id": "kaohsiung_wordpress",
+      "groupId": "community",
+      "order": 9,
+      "name": {
+        "zh-Hant": "Kaohsiung WordPress Meetup",
+        "en": "Kaohsiung WordPress Meetup",
+        "ja": "Kaohsiung WordPress Meetup"
+      },
+      "links": [
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "Meetup"
+          },
+          "url": "https://www.meetup.com/kaohsiung-wordpress-meetup/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "我們是一群位於高雄的 WordPress 愛好者，我們之中包含了開發者、設計師、內容產製者以及各式各樣與 WordPress 相關的人。藉由這個社群，我們希望能夠與同樣對 WordPress 有興趣的你，分享我們的想法與經驗。這個 WordPress Meetup Group 竭誠歡迎所有喜愛 WordPress 的人們加入",
+        "en": "We are a group of WordPress enthusiasts based in Kaohsiung. We include developers, designers, content creators, and all sorts of other people related to WordPress. Through this community, we hope to share our ideas and experiences with anyone else who is interested in WordPress. This WordPress Meetup Group warmly welcomes everyone who loves WordPress to join us!",
+        "ja": "私たちは、高雄を拠点とするWordPress 愛好家のグループです。開発者、デザイナー、コンテンツ制作者、その他様々な WordPress 関連のメンバーが参加しています。このコミュニティを通じて、同じく WordPress に興味を持つ皆様と、私たちのアイデアや経験を共有したいと考えています。この WordPress ミートアップグループは、WordPress を愛するすべての人々の参加を心より歓迎します。"
+      }
+    },
+    {
+      "id": "dddtw",
+      "groupId": "community",
+      "order": 10,
+      "name": {
+        "zh-Hant": "DDDTW",
+        "en": "DDDTW",
+        "ja": "DDDTW"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/groups/dddesigntw"
+        }
+      ],
+      "description": {
+        "zh-Hant": "我們是一群熱愛軟體開發的開發人員，我們主要是推廣領域驅動設計(Domain-Driven Design)的社群，除此之外，對於敏捷開發和軟體架構設計以及商業組織轉型方面都有涉獵。<br>我們喜歡與各個社群一起協同推廣軟體開發，希望台灣軟體實力能夠在世界被看見。",
+        "en": "We are a group of developers passionate about software development. Our main focus is promoting the Domain-Driven Design (DDD) community. In addition, we are also involved in Agile development, software architecture design, and business organizational transformation.<br><br>We enjoy collaborating with other communities to promote software development, with the hope that Taiwan's software capabilities can gain global recognition.",
+        "ja": "私たちは、ソフトウェア開発を愛する開発者のグループです。主にドメイン駆動設計（Domain-Driven Design, DDD）の普及を推進しており、そのほかにも、アジャイル開発やソフトウェアアーキテクチャ設計、ビジネス組織の変革といった分野も手掛けています。<br>私たちは、様々なコミュニティと協力してソフトウェア開発を推進することを重視しており、台湾のソフトウェア実力が世界で認められることを願っています。"
+      }
+    },
+    {
+      "id": "gdg_on_campus",
+      "groupId": "community",
+      "order": 11,
+      "name": {
+        "zh-Hant": "GDG on Campus",
+        "en": "GDG on Campus",
+        "ja": "GDG on Campus"
+      },
+      "links": [
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "GDG on Campus NUK"
+          },
+          "url": "https://gdg.community.dev/gdg-on-campus-national-university-of-kaohsiung-kaohsiung-city-taiwan/"
+        },
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "GDG on Campus NKUST"
+          },
+          "url": "https://gdg.community.dev/gdg-on-campus-national-kaohsiung-university-of-science-and-technology-kaohsiung-taiwan/"
+        },
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "GDG on Campus NSYSU"
+          },
+          "url": "https://gdg.community.dev/gdg-on-campus-national-sun-yat-sen-university-kaohsiung-city-taiwan/"
+        },
+        {
+          "platform": "link",
+          "label": {
+            "zh-Hant": "GDG on Campus NCKU"
+          },
+          "url": "https://gdg.community.dev/gdg-on-campus-national-cheng-kung-university-tainan-city-taiwan/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "對 Google 技術充滿好奇？想在大學找到一起玩轉程式碼、激發創意的夥伴嗎？<br><br>GDG on Campus (Google 開發者社群) 就是專為學生打造的技術社群！我們舉辦技術工作坊、讀書會，有機會邀請業界專家分享最新趨勢，主題涵蓋 AI、雲端、行動與網頁開發等。<br><br>在這裡，你不只能學習最新技術、累積專案經驗，更能與來自不同學校的開發者交流，找到志同道合的夥伴一起參加黑客松、挑戰 Google Solution Challenge！",
+        "en": "Curious about Google's technology? Want to find partners in university to play with code and spark creativity?<br><br>GDG on Campus (Google Developer Groups on Campus) is a technology community built just for students! We host technical workshops, study groups, and invite industry experts to share the latest trends on topics covering AI, Cloud, Mobile, and Web development.<br><br>Here, you can not only learn the latest technologies and gain project experience but also connect with developers from different schools and find like-minded partners to join hackathons and take on the Google Solution Challenge!",
+        "ja": "Google のテクノロジーに興味がありますか？大学で一緒にコーディングを楽しみ、クリエイティブなアイデアを刺激し合える仲間を見つけたいですか？<br><br>GDG on Campus (Google Developer Groups on Campus) は、まさに学生のために作られた技術コミュニティです！私たちは技術ワークショップや勉強会を開催し、業界の専門家を招いてAI、クラウド、モバイル、ウェブ開発などの最新トレンドを共有する機会も設けています。<br><br>ここでは、最新技術を学び、プロジェクト経験を積むだけでなく、様々な大学の開発者と交流し、ハッカソンに参加したり、Google Solution Challenge に挑戦したりする、志を同じくする仲間を見つけることができます！"
+      }
+    },
+    {
+      "id": "py_ladies_kaohsiung",
+      "groupId": "community",
+      "order": 12,
+      "name": {
+        "zh-Hant": "PyLadies Kaohsiung",
+        "en": "PyLadies Kaohsiung",
+        "ja": "PyLadies Kaohsiung"
+      },
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Homepage"
+          },
+          "url": "https://kaohsiung.pyladies.com/"
+        },
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "Facebook"
+          },
+          "url": "https://www.facebook.com/pyladies.kaohsiung/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "PyLadies Kaohsiung 是 PyLadies 國際組織的一員，以高雄為基地推動女性技術社群的發展， 致力於打造讓女性能安心、自信地學習、交流與成長的環境。我們舉辦各種工作坊、經驗分享等交流活動，讓大家能透過 Python 提升技術、拓展人脈與視野， 進而在科技領域中成為主動的參與者與領導者。同時也積極與在地及全台社群建立連結、相互支持，讓整體技術社群更加茁壯。",
+        "en": "PyLadies Kaohsiung is a local chapter of the global PyLadies organization, based in Kaohsiung. We are dedicated to fostering the growth of the women-in-tech community by creating a safe and encouraging environment where women can learn, connect, and grow with confidence. Through Python workshops, experience sharing, and networking events, we empower participants to enhance their technical skills, expand their networks and perspectives, and become active contributors and leaders in the tech community.",
+        "ja": "PyLadies Kaohsiung（パイレディース高雄）は、国際的な PyLadies 組織の一員として、高雄を拠点に女性のための技術コミュニティの発展を推進しています。女性が安心して自信を持って学び、交流し、成長できる環境づくりに力を入れています。ワークショップや経験共有などの交流イベントを通じて、Python をきっかけに技術力を高め、人脈や視野を広げ、テクノロジー分野で主体的に活躍できる人材を育成しています。"
+      }
     }
   ],
   "virtualSpace": {
