@@ -1,4 +1,4 @@
-import { el, clear, mount } from './core/dom.js';
+import { el, clear, mount, setRichText } from './core/dom.js';
 import { loadData, getConfig, getContent, getSpeakerById } from './core/store.js';
 import { initI18n, t } from './core/i18n.js';
 import { initAnalytics, track } from './core/analytics.js';
@@ -49,7 +49,7 @@ function renderSectionTitles() {
       continue;
     }
     const item = findMenuItem(menuId);
-    node.textContent = item ? t(item.label) : '';
+    setRichText(node, item ? t(item.label) : '');
   }
 }
 
@@ -58,15 +58,15 @@ function renderHero() {
   const site = (config && config.site) || {};
   const titleNode = byId('gk-hero-title');
   if (titleNode) {
-    titleNode.textContent = t(site.eventName);
+    setRichText(titleNode, t(site.eventName));
   }
   const dateNode = byId('gk-hero-date');
   if (dateNode) {
-    dateNode.textContent = typeof site.eventDate === 'string' ? site.eventDate : '';
+    setRichText(dateNode, typeof site.eventDate === 'string' ? site.eventDate : '');
   }
   const venueNode = byId('gk-hero-venue');
   if (venueNode) {
-    venueNode.textContent = t(site.venue);
+    setRichText(venueNode, t(site.venue));
   }
 
   const actions = byId('gk-hero-actions');

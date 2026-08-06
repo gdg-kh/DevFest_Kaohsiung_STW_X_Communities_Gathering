@@ -1,3 +1,29 @@
+const LINE_BREAK_PATTERN = /<br\s*\/?>|\r\n|\r|\n/gi;
+
+function stripNewlineChars(text) {
+  return text.replace(/\r?\n|\r/g, '');
+}
+
+function appendTextWithBreaks(parent, text) {
+  if (typeof text !== 'string' || text.length === 0) {
+    return;
+  }
+  let lastIndex = 0;
+  LINE_BREAK_PATTERN.lastIndex = 0;
+  let match = LINE_BREAK_PATTERN.exec(text);
+  while (match !== null) {
+    const segment = stripNewlineChars(text.slice(lastIndex, match.index));
+    parent.appendChild(document.createTextNode(segment));
+    parent.appendChild(document.createElement('br'));
+    lastIndex = match.index + match[0].length;
+    match = LINE_BREAK_PATTERN.exec(text);
+  }
+  const tail = stripNewlineChars(text.slice(lastIndex));
+  if (tail.length > 0) {
+    parent.appendChild(document.createTextNode(tail));
+  }
+}
+
 function appendChildValue(parent, value) {
   if (value === null || value === undefined) {
     return;
@@ -9,7 +35,7 @@ function appendChildValue(parent, value) {
     return;
   }
   if (typeof value === 'string') {
-    parent.appendChild(document.createTextNode(value));
+    appendTextWithBreaks(parent, value);
     return;
   }
   if (value instanceof Node) {
@@ -30,7 +56,7 @@ export function el(tag, opts = {}, children = []) {
   }
 
   if (typeof options.text === 'string') {
-    node.textContent = options.text;
+    appendTextWithBreaks(node, options.text);
   }
 
   if (options.attrs && typeof options.attrs === 'object') {
@@ -63,6 +89,14 @@ export function clear(node) {
   while (node.firstChild) {
     node.removeChild(node.firstChild);
   }
+}
+
+export function setRichText(node, text) {
+  if (!node) {
+    return;
+  }
+  clear(node);
+  appendTextWithBreaks(node, typeof text === 'string' ? text : '');
 }
 
 export function mount(parent, ...children) {

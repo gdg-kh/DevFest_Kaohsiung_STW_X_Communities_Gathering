@@ -1,4 +1,4 @@
-import { el, clear, mount } from '../core/dom.js';
+import { el, clear, mount, setRichText } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import {
   getContent,
@@ -90,7 +90,7 @@ function renderMapSection(container) {
     const alt = t(map.caption);
     image.setAttribute('src', src);
     image.setAttribute('alt', alt);
-    caption.textContent = alt;
+    setRichText(caption, alt);
     for (const btn of buttons) {
       if (btn.dataset.index === String(index)) {
         btn.classList.add('gk-agenda-map-tab-active');
