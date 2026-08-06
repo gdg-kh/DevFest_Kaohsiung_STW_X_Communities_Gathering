@@ -1219,31 +1219,34 @@
   ],
   "thanksGroups": [
     {
-      "id": "gold",
-      "order": 1,
-      "name": {
-        "zh-Hant": "黃金級贊助",
-        "en": "Gold Sponsors",
-        "ja": "ゴールドスポンサー"
-      }
-    },
-    {
-      "id": "silver",
-      "order": 2,
-      "name": {
-        "zh-Hant": "白銀級贊助",
-        "en": "Silver Sponsors",
-        "ja": "シルバースポンサー"
-      }
-    },
-    {
       "id": "partner",
-      "order": 3,
+      "order": 1,
       "name": {
         "zh-Hant": "合作夥伴",
         "en": "Partners",
         "ja": "パートナー"
-      }
+      },
+      "color": "#5cdb6d"
+    },
+    {
+      "id": "company",
+      "order": 2,
+      "name": {
+        "zh-Hant": "公司贊助",
+        "en": "Company Sponsorship",
+        "ja": "企業スポンサー"
+      },
+      "color": "#57caff"
+    },
+    {
+      "id": "personal",
+      "order": 3,
+      "name": {
+        "zh-Hant": "個人贊助",
+        "en": "Personal Sponsorship",
+        "ja": "個人スポンサー"
+      },
+      "color": "#ffd427"
     }
   ],
   "thanks": [
@@ -1349,7 +1352,7 @@
     },
     {
       "id": "colosscious",
-      "groupId": "silver",
+      "groupId": "company",
       "order": 5,
       "name": {
         "zh-Hant": "嵙思科技股份有限公司",
@@ -1374,7 +1377,7 @@
     },
     {
       "id": "titansoft",
-      "groupId": "silver",
+      "groupId": "company",
       "order": 6,
       "name": {
         "zh-Hant": "新加坡商鈦坦科技股份有限公司 台灣分公司",
@@ -1399,7 +1402,7 @@
     },
     {
       "id": "jetbrains",
-      "groupId": "silver",
+      "groupId": "company",
       "order": 7,
       "name": {
         "zh-Hant": "JetBrains",
@@ -1454,7 +1457,7 @@
     },
     {
       "id": "cathayholdings",
-      "groupId": "silver",
+      "groupId": "company",
       "order": 8,
       "name": {
         "zh-Hant": "國泰金控",
@@ -1493,7 +1496,7 @@
     },
     {
       "id": "cmj",
-      "groupId": "partner",
+      "groupId": "personal",
       "order": 9,
       "name": {
         "zh-Hant": "CMJ",
@@ -1505,7 +1508,7 @@
     },
     {
       "id": "min_jiun",
-      "groupId": "partner",
+      "groupId": "personal",
       "order": 10,
       "name": {
         "zh-Hant": "脆瓜",
@@ -1530,7 +1533,7 @@
     },
     {
       "id": "gobby",
-      "groupId": "partner",
+      "groupId": "personal",
       "order": 11,
       "name": {
         "zh-Hant": "Gobby",
@@ -1550,7 +1553,7 @@
     },
     {
       "id": "lays",
-      "groupId": "partner",
+      "groupId": "personal",
       "order": 12,
       "name": {
         "zh-Hant": "Lays",

@@ -383,38 +383,28 @@ const newSessions = daySlots.map((slot) => {
 
 const newThanksGroups = [
   {
-    id: 'gold',
-    order: 1,
-    name: { 'zh-Hant': '黃金級贊助', en: 'Gold Sponsors', ja: 'ゴールドスポンサー' },
-  },
-  {
-    id: 'silver',
-    order: 2,
-    name: { 'zh-Hant': '白銀級贊助', en: 'Silver Sponsors', ja: 'シルバースポンサー' },
-  },
-  {
     id: 'partner',
-    order: 3,
+    order: 1,
     name: { 'zh-Hant': '合作夥伴', en: 'Partners', ja: 'パートナー' },
+  },
+  {
+    id: 'company',
+    order: 2,
+    name: { 'zh-Hant': '公司贊助', en: 'Company Sponsorship', ja: '企業スポンサー' },
+  },
+  {
+    id: 'personal',
+    order: 3,
+    name: { 'zh-Hant': '個人贊助', en: 'Personal Sponsorship', ja: '個人スポンサー' },
   },
 ];
 
 function thanksGroupFor(entry) {
-  if (entry.type === 'partner') {
-    return 'partner';
+  if (entry.type === 'company') {
+    return 'company';
   }
   if (entry.type === 'personal') {
-    return 'partner';
-  }
-  if (entry.type === 'company') {
-    const cat = entry.category && entry.category.zh;
-    if (typeof cat === 'string' && /金/.test(cat) && !/銀/.test(cat)) {
-      return 'gold';
-    }
-    if (typeof cat === 'string' && /銀/.test(cat)) {
-      return 'silver';
-    }
-    return 'silver';
+    return 'personal';
   }
   return 'partner';
 }
