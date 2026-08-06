@@ -157,7 +157,7 @@ function spanRow(session, tracks) {
   });
   mount(row, time, title);
   if (tracks.length >= 2) {
-    row.style.gridColumn = '2 / -1';
+    row.style.gridColumn = '1 / -1';
   }
   return row;
 }
@@ -224,7 +224,7 @@ function trackIndex(tracks, trackId) {
   return -1;
 }
 
-function renderTimelineDesktop(container, tracks, sessions) {
+function renderTimelineGrid(container, tracks, sessions) {
   const grid = el('div', { class: 'gk-agenda-grid' });
   if (tracks.length >= 4) {
     grid.classList.add('gk-agenda-grid-scroll');
@@ -232,126 +232,74 @@ function renderTimelineDesktop(container, tracks, sessions) {
 
   if (tracks.length === 1) {
     grid.classList.add('gk-agenda-grid-single');
-  } else {
-    grid.classList.add('gk-agenda-grid-multi');
-    grid.style.setProperty('--gk-agenda-track-count', String(tracks.length));
-    const header = el('div', { class: 'gk-agenda-grid-header' });
-    mount(header, el('span', { class: 'gk-agenda-grid-header-cell', text: '' }));
-    for (const trackData of tracks) {
-      const cell = el('span', {
-        class: 'gk-agenda-grid-header-cell',
-        text: t(trackData.name),
-      });
-      if (typeof trackData.color === 'string' && trackData.color.length > 0) {
-        cell.style.borderTopColor = trackData.color;
-      }
-      mount(header, cell);
-    }
-    mount(grid, header);
-  }
-
-  for (const session of sessions) {
-    const timeCell = el('div', {
-      class: 'gk-agenda-time-cell',
-      text: formatTime(session.start),
-    });
-    mount(grid, timeCell);
-    if (isSpan(session)) {
-      mount(grid, spanRow(session, tracks));
-      continue;
-    }
-    if (tracks.length === 1) {
-      mount(grid, sessionCardFor(session));
-    } else {
-      const idx = trackIndex(tracks, session.trackId);
-      const card = sessionCardFor(session);
-      if (idx >= 0) {
-        card.style.gridColumn = `${idx + 2} / span 1`;
+    for (const session of sessions) {
+      if (isSpan(session)) {
+        mount(grid, spanRow(session, tracks));
       } else {
-        card.style.gridColumn = '2 / -1';
-      }
-      mount(grid, card);
-    }
-  }
-  mount(container, grid);
-}
-
-function renderTimelineMobile(container, tracks, sessions) {
-  const wrapper = el('div', { class: 'gk-agenda-mobile' });
-  const tabs = el('div', { class: 'gk-agenda-mobile-tabs' });
-  const panels = el('div', { class: 'gk-agenda-mobile-panels' });
-  const buttons = [];
-  const panelList = [];
-
-  function show(index) {
-    for (let i = 0; i < buttons.length; i += 1) {
-      if (i === index) {
-        buttons[i].classList.add('gk-agenda-mobile-tab-active');
-        panelList[i].removeAttribute('hidden');
-      } else {
-        buttons[i].classList.remove('gk-agenda-mobile-tab-active');
-        panelList[i].setAttribute('hidden', '');
+        mount(grid, sessionCardFor(session));
       }
     }
+    mount(container, grid);
+    return;
   }
+
+  grid.classList.add('gk-agenda-grid-multi');
+  grid.style.setProperty('--gk-agenda-track-count', String(tracks.length));
 
   for (let i = 0; i < tracks.length; i += 1) {
     const trackData = tracks[i];
-    const btn = el('button', {
-      class: 'gk-agenda-mobile-tab',
-      attrs: { type: 'button' },
+    const cell = el('span', {
+      class: 'gk-agenda-grid-header-cell',
       text: t(trackData.name),
     });
-    btn.addEventListener('click', () => show(i));
-    buttons.push(btn);
-    mount(tabs, btn);
-
-    const panel = el('div', { class: 'gk-agenda-mobile-panel' });
-    for (const session of sessions) {
-      if (isSpan(session)) {
-        const row = el('div', {
-          class: 'gk-agenda-mobile-span',
-        });
-        mount(
-          row,
-          el('span', {
-            class: 'gk-agenda-mobile-span-time',
-            text: formatTime(session.start),
-          })
-        );
-        mount(
-          row,
-          el('span', {
-            class: 'gk-agenda-mobile-span-title',
-            text: t(session.title),
-          })
-        );
-        mount(panel, row);
-        continue;
-      }
-      if (session.trackId !== trackData.id) {
-        continue;
-      }
-      const row = el('div', { class: 'gk-agenda-mobile-row' });
-      mount(
-        row,
-        el('span', {
-          class: 'gk-agenda-mobile-time',
-          text: formatTime(session.start),
-        })
-      );
-      mount(row, sessionCardFor(session));
-      mount(panel, row);
+    cell.style.gridRow = '1';
+    cell.style.gridColumn = `${i + 1} / span 1`;
+    if (typeof trackData.color === 'string' && trackData.color.length > 0) {
+      cell.style.borderTopColor = trackData.color;
     }
-    panelList.push(panel);
-    mount(panels, panel);
+    mount(grid, cell);
   }
 
-  mount(wrapper, tabs, panels);
-  mount(container, wrapper);
-  if (tracks.length > 0) {
-    show(0);
+  const timeGroups = new Map();
+  const orderKeys = [];
+  for (const session of sessions) {
+    const key = typeof session.start === 'string' ? session.start : '';
+    if (!timeGroups.has(key)) {
+      timeGroups.set(key, []);
+      orderKeys.push(key);
+    }
+    timeGroups.get(key).push(session);
   }
+
+  let rowIdx = 2;
+  for (const key of orderKeys) {
+    const group = timeGroups.get(key);
+    for (const session of group.filter(isSpan)) {
+      const row = spanRow(session, tracks);
+      row.style.gridRow = String(rowIdx);
+      row.style.gridColumn = '1 / -1';
+      mount(grid, row);
+      rowIdx += 1;
+    }
+    const trackSessions = group.filter((s) => !isSpan(s));
+    if (trackSessions.length === 0) {
+      continue;
+    }
+    for (const session of trackSessions) {
+      const idx = trackIndex(tracks, session.trackId);
+      const card = sessionCardFor(session);
+      card.style.gridRow = String(rowIdx);
+      if (idx >= 0) {
+        card.style.gridColumn = `${idx + 1} / span 1`;
+      } else {
+        card.style.gridColumn = '1 / -1';
+      }
+      mount(grid, card);
+    }
+    rowIdx += 1;
+  }
+
+  mount(container, grid);
 }
 
 function renderTimeline(container, tracks, sessions) {
@@ -365,15 +313,7 @@ function renderTimeline(container, tracks, sessions) {
   mount(header, allSessionsButton());
   mount(timeline, header);
 
-  const desktopWrapper = el('div', { class: 'gk-agenda-only-desktop' });
-  renderTimelineDesktop(desktopWrapper, tracks, sessions);
-  mount(timeline, desktopWrapper);
-
-  if (tracks.length > 1) {
-    const mobileWrapper = el('div', { class: 'gk-agenda-only-mobile' });
-    renderTimelineMobile(mobileWrapper, tracks, sessions);
-    mount(timeline, mobileWrapper);
-  }
+  renderTimelineGrid(timeline, tracks, sessions);
 
   mount(container, timeline);
 }
