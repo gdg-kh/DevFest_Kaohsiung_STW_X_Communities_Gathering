@@ -68,26 +68,45 @@
   gap: var(--gk-sp-4);
 }
 
+.gk-modal-columns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gk-sp-4);
+}
+
+.gk-modal-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gk-sp-3);
+  text-align: center;
+}
+
+.gk-modal-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gk-sp-4);
+  min-width: 0;
+}
+
 .gk-modal-media {
   display: flex;
   justify-content: center;
   padding-top: var(--gk-sp-3);
 }
 
+.gk-modal-aside .gk-modal-links,
+.gk-modal-aside .gk-modal-tags {
+  justify-content: center;
+}
+
 .gk-modal-image {
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border: 2px solid var(--gk-ink);
-  background-color: var(--gk-paper);
-}
-
-.gk-modal-image-circle {
-  border-radius: var(--gk-radius-full);
-}
-
-.gk-modal-image-square {
   border-radius: var(--gk-radius-md);
+  background-color: var(--gk-paper);
 }
 
 .gk-modal-heading {
@@ -120,13 +139,13 @@
 
 .gk-modal-group-chip {
   display: inline-block;
-  padding: 2px var(--gk-sp-3);
-  border: 1px solid var(--gk-ink);
+  padding: var(--gk-sp-2) var(--gk-sp-4);
+  border: 2px solid var(--gk-ink);
   border-radius: var(--gk-radius-full);
-  font-size: var(--gk-fs-tiny);
-  font-weight: var(--gk-fw-medium);
-  color: var(--gk-ink);
-  background-color: var(--gk-paper);
+  font-family: var(--gk-font-display);
+  font-size: var(--gk-fs-small);
+  font-weight: var(--gk-fw-bold);
+  background-color: var(--gk-yellow-halftone);
 }
 
 .gk-modal-section {
@@ -234,16 +253,41 @@
   pointer-events: none;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 900px) {
   .gk-modal-overlay {
     align-items: center;
     padding: var(--gk-sp-5);
   }
 
   .gk-modal {
-    max-width: 640px;
+    max-width: 760px;
     max-height: 80vh;
     border-radius: var(--gk-radius-lg);
+  }
+
+  .gk-modal-columns {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    gap: var(--gk-sp-5);
+  }
+
+  .gk-modal-aside {
+    flex: 0 0 240px;
+    position: sticky;
+    top: 0;
+  }
+
+  .gk-modal-main {
+    flex: 1 1 auto;
+  }
+
+  .gk-modal-media {
+    padding-top: 0;
+  }
+
+  .gk-modal-image {
+    width: 240px;
+    height: 240px;
   }
 }
 

@@ -3,6 +3,7 @@ import { t } from '../core/i18n.js';
 import { getContent, getConfig, getGroupedList, assetPath } from '../core/store.js';
 import { personCard } from '../ui/card.js';
 import { openModal } from '../ui/detail-modal.js';
+import { buildBoothPayload, buildThanksPayload } from '../ui/detail-payload.js';
 import { track } from '../core/analytics.js';
 
 function renderEmptyState(container, className) {
@@ -30,18 +31,12 @@ function makeGroupHeader(group, headerClass) {
   return header;
 }
 
-function openLogoModal(type, item, group) {
+function openLogoModal(type, item) {
   const eventName = type === 'thanks' ? 'select_thanks' : 'select_booth';
   const idKey = type === 'thanks' ? 'thanks_id' : 'booth_id';
   track(eventName, { [idKey]: item.id });
-  openModal({
-    image: assetPath(type, item.id),
-    imageShape: 'square',
-    name: item.name,
-    subtitle: group ? group.name : undefined,
-    bio: item.description,
-    links: Array.isArray(item.links) ? item.links : [],
-  });
+  const payload = type === 'thanks' ? buildThanksPayload(item) : buildBoothPayload(item);
+  openModal(payload);
 }
 
 function renderLogoSection(container, groups, type) {
@@ -59,7 +54,7 @@ function renderLogoSection(container, groups, type) {
         image: assetPath(type, item.id),
         name: item.name,
         description: item.description,
-        onClick: () => openLogoModal(type, item, entry.group),
+        onClick: () => openLogoModal(type, item),
       });
       mount(grid, card);
     }

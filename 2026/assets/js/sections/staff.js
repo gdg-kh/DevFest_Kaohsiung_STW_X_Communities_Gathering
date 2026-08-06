@@ -3,18 +3,12 @@ import { t } from '../core/i18n.js';
 import { getContent, getConfig, getSortedList, assetPath } from '../core/store.js';
 import { personCard } from '../ui/card.js';
 import { openModal } from '../ui/detail-modal.js';
+import { buildStaffPayload } from '../ui/detail-payload.js';
 import { track } from '../core/analytics.js';
 
 function openStaffModal(staff) {
   track('select_staff', { staff_id: staff.id });
-  openModal({
-    image: assetPath('staff', staff.id),
-    imageShape: 'circle',
-    name: staff.name,
-    subtitle: staff.role,
-    bio: staff.bio,
-    links: Array.isArray(staff.links) ? staff.links : [],
-  });
+  openModal(buildStaffPayload(staff));
 }
 
 function makeCardFor(staff) {

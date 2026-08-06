@@ -1,4 +1,4 @@
-import { el, clear, mount } from '../core/dom.js';
+import { el, clear, mount, pickContrastColor } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { getConfig } from '../core/store.js';
 
@@ -82,15 +82,14 @@ function renderMedia(payload) {
   if (!payload.image) {
     return null;
   }
-  const shape = payload.imageShape === 'square' ? 'square' : 'circle';
   const img = el('img', {
-    class: `gk-modal-image gk-modal-image-${shape}`,
+    class: 'gk-modal-image',
     attrs: {
       src: payload.image,
       alt: t(payload.name),
       loading: 'lazy',
-      width: '160',
-      height: '160',
+      width: '512',
+      height: '512',
     },
   });
   return el('div', { class: 'gk-modal-media' }, img);
@@ -113,17 +112,23 @@ function renderHeading(payload) {
   if (hasI18nText(payload.subtitle)) {
     parts.push(el('p', { class: 'gk-modal-subtitle', text: t(payload.subtitle) }));
   }
-  if (hasI18nText(payload.groupName)) {
-    const chip = el('span', {
-      class: 'gk-modal-group-chip',
-      text: t(payload.groupName),
-    });
-    if (typeof payload.groupColor === 'string' && payload.groupColor.length > 0) {
-      chip.style.backgroundColor = payload.groupColor;
-    }
-    parts.push(chip);
-  }
   return el('div', { class: 'gk-modal-heading' }, parts);
+}
+
+function renderGroupChip(payload) {
+  if (!hasI18nText(payload.groupName)) {
+    return null;
+  }
+  const chip = el('span', {
+    class: 'gk-modal-group-chip',
+    text: t(payload.groupName),
+  });
+  if (typeof payload.groupColor === 'string' && payload.groupColor.length > 0) {
+    chip.style.backgroundColor = payload.groupColor;
+    chip.style.color = pickContrastColor(payload.groupColor);
+    chip.style.borderColor = payload.groupColor;
+  }
+  return chip;
 }
 
 function renderBio(payload) {
@@ -195,13 +200,7 @@ function renderTags(payload) {
   if (chips.length === 0) {
     return null;
   }
-  const label = labelFromUi('tagsLabel');
-  const children = [];
-  if (label) {
-    children.push(el('h3', { class: 'gk-modal-section-title', text: label }));
-  }
-  children.push(el('div', { class: 'gk-modal-tags' }, chips));
-  return el('div', { class: 'gk-modal-section' }, children);
+  return el('div', { class: 'gk-modal-section' }, [el('div', { class: 'gk-modal-tags' }, chips)]);
 }
 
 function renderLinks(payload) {
@@ -229,13 +228,7 @@ function renderLinks(payload) {
   if (anchors.length === 0) {
     return null;
   }
-  const label = labelFromUi('linksLabel');
-  const children = [];
-  if (label) {
-    children.push(el('h3', { class: 'gk-modal-section-title', text: label }));
-  }
-  children.push(el('div', { class: 'gk-modal-links' }, anchors));
-  return el('div', { class: 'gk-modal-section' }, children);
+  return el('div', { class: 'gk-modal-section' }, [el('div', { class: 'gk-modal-links' }, anchors)]);
 }
 
 function renderFooter(payload) {
@@ -279,35 +272,51 @@ function renderFooter(payload) {
 
 function renderContent(payload) {
   clear(bodyEl);
+
+  const aside = el('aside', { class: 'gk-modal-aside' });
+  const main = el('div', { class: 'gk-modal-main' });
+
   const media = renderMedia(payload);
   if (media) {
-    mount(bodyEl, media);
+    mount(aside, media);
   }
-  mount(bodyEl, renderHeading(payload));
-
-  const bio = renderBio(payload);
-  if (bio) {
-    mount(bodyEl, bio);
-  }
-  const session = renderSession(payload);
-  if (session) {
-    mount(bodyEl, session);
-  }
-  const meta = renderMeta(payload);
-  if (meta) {
-    mount(bodyEl, meta);
+  const chip = renderGroupChip(payload);
+  if (chip) {
+    mount(aside, chip);
   }
   const tags = renderTags(payload);
   if (tags) {
-    mount(bodyEl, tags);
+    mount(aside, tags);
   }
   const links = renderLinks(payload);
   if (links) {
-    mount(bodyEl, links);
+    mount(aside, links);
+  }
+
+  mount(main, renderHeading(payload));
+  const bio = renderBio(payload);
+  if (bio) {
+    mount(main, bio);
+  }
+  const session = renderSession(payload);
+  if (session) {
+    mount(main, session);
+  }
+  const meta = renderMeta(payload);
+  if (meta) {
+    mount(main, meta);
   }
   if (payload.extraNode instanceof Node) {
-    mount(bodyEl, payload.extraNode);
+    mount(main, payload.extraNode);
   }
+
+  const columns = el('div', { class: 'gk-modal-columns' });
+  if (aside.childNodes.length > 0) {
+    mount(columns, aside);
+  }
+  mount(columns, main);
+  mount(bodyEl, columns);
+
   const footer = renderFooter(payload);
   if (footer) {
     mount(bodyEl, footer);

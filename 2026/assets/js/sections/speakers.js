@@ -1,22 +1,10 @@
 import { el, clear, mount, pickContrastColor } from '../core/dom.js';
 import { t } from '../core/i18n.js';
-import { getContent, getConfig, getSortedList, getSessionById, getGroupById, assetPath } from '../core/store.js';
+import { getContent, getConfig, getSortedList, assetPath } from '../core/store.js';
 import { personCard } from '../ui/card.js';
 import { openModal } from '../ui/detail-modal.js';
+import { firstSessionOf, buildSpeakerPayload } from '../ui/detail-payload.js';
 import { track } from '../core/analytics.js';
-
-function firstSessionOf(speaker) {
-  if (!speaker || !Array.isArray(speaker.sessionIds) || speaker.sessionIds.length === 0) {
-    return null;
-  }
-  for (const sid of speaker.sessionIds) {
-    const session = getSessionById(sid);
-    if (session) {
-      return session;
-    }
-  }
-  return null;
-}
 
 function groupIdOf(speaker) {
   const session = firstSessionOf(speaker);
@@ -68,23 +56,8 @@ function makeGroupHeader(group) {
 }
 
 function openSpeakerModal(speaker) {
-  const session = firstSessionOf(speaker);
-  const group = session ? getGroupById(session.groupId) : null;
   track('select_speaker', { speaker_id: speaker.id });
-  openModal({
-    image: assetPath('speakers', speaker.id),
-    imageShape: 'circle',
-    name: speaker.name,
-    title: speaker.title,
-    org: speaker.org,
-    bio: speaker.bio,
-    sessionTitle: session ? session.title : null,
-    sessionAbstract: session ? session.abstract : null,
-    groupName: group ? group.name : null,
-    groupColor: group && typeof group.color === 'string' ? group.color : undefined,
-    tags: session && Array.isArray(session.tags) ? session.tags : [],
-    links: Array.isArray(speaker.links) ? speaker.links : [],
-  });
+  openModal(buildSpeakerPayload(speaker));
 }
 
 function makeCardFor(speaker) {

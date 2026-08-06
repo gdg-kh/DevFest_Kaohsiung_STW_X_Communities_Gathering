@@ -1,9 +1,10 @@
 import { el, clear, mount } from './core/dom.js';
-import { loadData, getConfig, getContent, getSpeakerById, assetPath } from './core/store.js';
+import { loadData, getConfig, getContent, getSpeakerById } from './core/store.js';
 import { initI18n, t } from './core/i18n.js';
 import { initAnalytics, track } from './core/analytics.js';
 import { renderNav, renderFooter, initNav, initNavOverflow } from './ui/nav.js';
 import { openModal } from './ui/detail-modal.js';
+import { buildDetailPayload } from './ui/detail-payload.js';
 import { renderAbout } from './sections/about.js';
 import { renderSponsorMarquee } from './sections/sponsor-marquee.js';
 import { renderHomeCards } from './sections/home-cards.js';
@@ -217,41 +218,6 @@ function findAutoOpenData(type, id) {
   return list.find((item) => item && item.id === id) || null;
 }
 
-function buildAutoOpenPayload(type, item) {
-  if (!item) {
-    return null;
-  }
-  if (type === 'speakers') {
-    return {
-      image: assetPath('speakers', item.id),
-      imageShape: 'circle',
-      name: item.name,
-      bio: item.bio,
-      links: Array.isArray(item.links) ? item.links : [],
-    };
-  }
-  if (type === 'staff') {
-    return {
-      image: assetPath('staff', item.id),
-      imageShape: 'circle',
-      name: item.name,
-      subtitle: item.role,
-      bio: item.bio,
-      links: Array.isArray(item.links) ? item.links : [],
-    };
-  }
-  if (type === 'thanks' || type === 'booths') {
-    return {
-      image: assetPath(type, item.id),
-      imageShape: 'square',
-      name: item.name,
-      bio: item.description,
-      links: Array.isArray(item.links) ? item.links : [],
-    };
-  }
-  return null;
-}
-
 function handleAutoOpen() {
   const info = window.__GK_AUTO_OPEN;
   if (!info || typeof info !== 'object') {
@@ -265,7 +231,7 @@ function handleAutoOpen() {
   if (!item) {
     return;
   }
-  const payload = buildAutoOpenPayload(type, item);
+  const payload = buildDetailPayload(type, item);
   if (!payload) {
     return;
   }

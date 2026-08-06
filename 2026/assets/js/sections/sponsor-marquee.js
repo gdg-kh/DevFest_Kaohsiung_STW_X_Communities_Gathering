@@ -1,8 +1,9 @@
 import { el, clear, mount } from '../core/dom.js';
 import { t } from '../core/i18n.js';
-import { getConfig, getContent, getSortedList, assetPath } from '../core/store.js';
+import { getConfig, getSortedList, getGroupById, assetPath } from '../core/store.js';
 import { ballotCard } from '../ui/ballot-card.js';
 import { openModal } from '../ui/detail-modal.js';
+import { buildThanksPayload } from '../ui/detail-payload.js';
 import { track } from '../core/analytics.js';
 
 const MOBILE_BREAKPOINT = 768;
@@ -23,17 +24,6 @@ function getMarqueeConfig() {
   return marquee;
 }
 
-function findGroup(groupId) {
-  const content = getContent();
-  const groups = content && Array.isArray(content.thanksGroups) ? content.thanksGroups : [];
-  for (const group of groups) {
-    if (group && group.id === groupId) {
-      return group;
-    }
-  }
-  return null;
-}
-
 function collectItems() {
   const list = getSortedList('thanks');
   return list.filter((item) => item && item.marquee !== false);
@@ -41,17 +31,11 @@ function collectItems() {
 
 function openSponsorModal(item) {
   track('select_sponsor', { sponsor_id: item.id, entry: 'marquee' });
-  openModal({
-    image: assetPath('thanks', item.id),
-    imageShape: 'square',
-    name: item.name,
-    bio: item.description,
-    links: Array.isArray(item.links) ? item.links : [],
-  });
+  openModal(buildThanksPayload(item));
 }
 
 function createBallot(item, decorative) {
-  const group = findGroup(item.groupId);
+  const group = item.groupId ? getGroupById(item.groupId) : null;
   return ballotCard({
     image: assetPath('thanks', item.id),
     name: item.name,

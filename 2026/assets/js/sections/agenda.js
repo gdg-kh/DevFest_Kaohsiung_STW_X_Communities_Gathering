@@ -184,7 +184,6 @@ function openSessionModal(session) {
   track('select_session', { session_id: session.id });
   openModal({
     image: firstSpeaker ? assetPath('speakers', firstSpeaker.id) : undefined,
-    imageShape: 'circle',
     name: session.title,
     subtitle,
     sessionTitle: session.title,
