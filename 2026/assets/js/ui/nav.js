@@ -739,10 +739,7 @@ function highlightActive(sectionId) {
   }
   if (mobileMoreTabEl) {
     const overflowActive =
-      sectionId &&
-      sectionId !== 'home' &&
-      mobilePrimaryIds.length > 0 &&
-      !mobilePrimaryIds.includes(sectionId);
+      sectionId && sectionId !== 'home' && mobilePrimaryIds.length > 0 && !mobilePrimaryIds.includes(sectionId);
     mobileMoreTabEl.classList.toggle('gk-nav-mobile-tab-active', !!overflowActive);
   }
 }
