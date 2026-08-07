@@ -81,7 +81,9 @@
       "Bash(kill 66688)",
       "Bash(lsof -tiTCP:8765 -sTCP:LISTEN)",
       "Bash(xargs -r kill)",
-      "Bash(awk '/const translations = \\\\{/,/^};/' /Users/andyawd/Project/GdgkhCc/2025/js/main.js)"
+      "Bash(awk '/const translations = \\\\{/,/^};/' /Users/andyawd/Project/GdgkhCc/2025/js/main.js)",
+      "Bash(git stash *)",
+      "Bash(xargs kill *)"
     ],
     "deny": [],
     "ask": []
