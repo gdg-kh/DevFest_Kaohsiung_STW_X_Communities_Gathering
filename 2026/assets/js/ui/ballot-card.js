@@ -1,4 +1,4 @@
-import { el, mount } from '../core/dom.js';
+import { el, mount, pickContrastColor } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 
 export function ballotCard(opts) {
@@ -6,6 +6,8 @@ export function ballotCard(opts) {
   const decorative = options.decorative === true;
   const nameText = t(options.name);
   const groupText = t(options.groupName);
+  const groupColor =
+    typeof options.groupColor === 'string' && options.groupColor.length > 0 ? options.groupColor : null;
   const clickable = typeof options.onClick === 'function' && !decorative;
 
   const attrs = {};
@@ -24,6 +26,10 @@ export function ballotCard(opts) {
   });
 
   const header = el('div', { class: 'gk-ballot-header' });
+  if (groupColor) {
+    header.style.backgroundColor = groupColor;
+    header.style.color = pickContrastColor(groupColor);
+  }
   const headerTitle = el('span', {
     class: 'gk-ballot-header-title',
     text: nameText,

@@ -40,6 +40,7 @@ function createBallot(item, decorative) {
     image: assetPath('thanks', item.id),
     name: item.name,
     groupName: group ? group.name : null,
+    groupColor: group && typeof group.color === 'string' ? group.color : undefined,
     description: item.description,
     decorative,
     onClick: decorative ? undefined : () => openSponsorModal(item),
