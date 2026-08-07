@@ -81,6 +81,7 @@
       "id": "speakers",
       "enabled": true,
       "order": 2,
+      "mobilePrimary": true,
       "label": {
         "zh-Hant": "講者介紹",
         "en": "Speakers",
@@ -91,6 +92,7 @@
       "id": "agenda",
       "enabled": true,
       "order": 3,
+      "mobilePrimary": true,
       "label": {
         "zh-Hant": "議程時間表",
         "en": "Agenda",
@@ -131,6 +133,7 @@
       "id": "thanks",
       "enabled": true,
       "order": 7,
+      "mobilePrimary": true,
       "label": {
         "zh-Hant": "特別感謝",
         "en": "Special Thanks",

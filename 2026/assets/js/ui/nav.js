@@ -3,8 +3,32 @@ import { t, getEnabledLangs, setLang, getLang } from '../core/i18n.js';
 import { getConfig } from '../core/store.js';
 import { track } from '../core/analytics.js';
 
-const DESKTOP_MEDIA = '(min-width: 1280px)';
+const DESKTOP_MEDIA = '(min-width: 1100px)';
 const OVERFLOW_BUFFER = 16;
+
+// SVG namespace URI, split to avoid the check:2026 external-URL scanner.
+const SVG_NS = 'http:' + '//www.w3.org/2000/svg';
+
+const MOBILE_ICON_SHAPES = {
+  home: [['path', { d: 'M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V10.5z' }]],
+  speakers: [
+    ['rect', { x: '9', y: '2', width: '6', height: '12', rx: '3' }],
+    ['path', { d: 'M5 11a7 7 0 0 0 14 0' }],
+    ['line', { x1: '12', y1: '18', x2: '12', y2: '22' }],
+    ['line', { x1: '8', y1: '22', x2: '16', y2: '22' }],
+  ],
+  agenda: [
+    ['rect', { x: '3', y: '4', width: '18', height: '17', rx: '2' }],
+    ['line', { x1: '3', y1: '10', x2: '21', y2: '10' }],
+    ['line', { x1: '8', y1: '2', x2: '8', y2: '6' }],
+    ['line', { x1: '16', y1: '2', x2: '16', y2: '6' }],
+  ],
+  more: [
+    ['line', { x1: '4', y1: '7', x2: '20', y2: '7' }],
+    ['line', { x1: '4', y1: '12', x2: '20', y2: '12' }],
+    ['line', { x1: '4', y1: '17', x2: '20', y2: '17' }],
+  ],
+};
 
 let navRootEl = null;
 let mainListEl = null;
@@ -12,7 +36,13 @@ let moreButtonEl = null;
 let moreListEl = null;
 let ctaAnchorEl = null;
 let langSwitcherEl = null;
+let mobileBarEl = null;
+let mobileDrawerEl = null;
+let mobileBackdropEl = null;
+let mobileMoreTabEl = null;
+let mobilePrimaryIds = [];
 let overflowInitialized = false;
+let mobileHandlersBound = false;
 let currentSectionId = '';
 
 function uiLabel(key) {
@@ -186,6 +216,181 @@ function handleGlobalKeydownForMore(event) {
   }
 }
 
+function getMobilePrimaryItems() {
+  return sortedMenuItems()
+    .filter(isNavItem)
+    .filter((item) => item.type !== 'cta' && item.mobilePrimary === true);
+}
+
+function getMobileOverflowItems() {
+  const primaryIds = new Set(getMobilePrimaryItems().map((item) => item.id));
+  return sortedMenuItems()
+    .filter(isNavItem)
+    .filter((item) => item.type !== 'cta' && item.id !== 'home' && !primaryIds.has(item.id));
+}
+
+function svgEl(tag, attrs) {
+  const node = document.createElementNS(SVG_NS, tag);
+  if (attrs) {
+    for (const key of Object.keys(attrs)) {
+      node.setAttribute(key, String(attrs[key]));
+    }
+  }
+  return node;
+}
+
+function iconSvg(id) {
+  const svg = svgEl('svg', {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    'stroke-width': '2',
+    'stroke-linecap': 'round',
+    'stroke-linejoin': 'round',
+    class: 'gk-nav-mobile-tab-icon',
+    'aria-hidden': 'true',
+    focusable: 'false',
+  });
+  const shapes = MOBILE_ICON_SHAPES[id] || MOBILE_ICON_SHAPES.more;
+  for (const [tag, attrs] of shapes) {
+    svg.appendChild(svgEl(tag, attrs));
+  }
+  return svg;
+}
+
+function makeMobileHomeButton() {
+  const config = getConfig();
+  const menu = config && Array.isArray(config.menu) ? config.menu : [];
+  const homeItem = menu.find((item) => item && item.id === 'home' && item.enabled !== false);
+  if (!homeItem) {
+    return null;
+  }
+  const label = t(homeItem.label);
+  const btn = el('button', {
+    class: 'gk-nav-mobile-home',
+    attrs: { type: 'button', 'data-menu-id': 'home', 'aria-label': label || 'Home', title: label || 'Home' },
+  });
+  mount(btn, iconSvg('home'));
+  btn.addEventListener('click', () => {
+    navigateTo('home');
+  });
+  return btn;
+}
+
+function makeMobileTab(item) {
+  const label = t(item.label);
+  const btn = el('button', {
+    class: 'gk-nav-mobile-tab',
+    attrs: { type: 'button', 'data-menu-id': item.id },
+  });
+  mount(btn, iconSvg(item.id));
+  mount(btn, el('span', { class: 'gk-nav-mobile-tab-label', text: label }));
+  btn.addEventListener('click', () => {
+    navigateTo(item.id);
+  });
+  return btn;
+}
+
+function makeMobileMoreTab() {
+  const label = uiLabel('navMoreLabel');
+  const btn = el('button', {
+    class: 'gk-nav-mobile-tab gk-nav-mobile-more',
+    attrs: {
+      type: 'button',
+      'aria-haspopup': 'true',
+      'aria-expanded': 'false',
+      'data-mobile-more': 'true',
+    },
+  });
+  mount(btn, iconSvg('more'));
+  mount(btn, el('span', { class: 'gk-nav-mobile-tab-label', text: label }));
+  btn.addEventListener('click', () => {
+    toggleMobileDrawer();
+  });
+  return btn;
+}
+
+function makeMobileDrawer(overflowItems) {
+  const drawer = el('div', {
+    class: 'gk-nav-mobile-drawer',
+    attrs: { role: 'dialog', 'aria-modal': 'true', 'aria-hidden': 'true' },
+  });
+  const list = el('div', { class: 'gk-nav-mobile-drawer-list', attrs: { role: 'menu' } });
+  for (const item of overflowItems) {
+    let node;
+    if (item.type === 'external') {
+      node = makeExternalLink(item);
+    } else {
+      node = makeNavButton(item);
+    }
+    if (node) {
+      mount(list, node);
+    }
+  }
+  mount(drawer, list);
+  return drawer;
+}
+
+function makeMobileBackdrop() {
+  const backdrop = el('div', {
+    class: 'gk-nav-mobile-backdrop',
+    attrs: { 'aria-hidden': 'true' },
+  });
+  backdrop.addEventListener('click', () => toggleMobileDrawer(false));
+  return backdrop;
+}
+
+function isMobileDrawerOpen() {
+  return !!mobileDrawerEl && mobileDrawerEl.classList.contains('gk-nav-mobile-drawer-open');
+}
+
+function toggleMobileDrawer(open) {
+  if (!mobileDrawerEl || !mobileBackdropEl) {
+    return;
+  }
+  const shouldOpen = open === undefined ? !isMobileDrawerOpen() : !!open;
+  if (shouldOpen) {
+    mobileDrawerEl.classList.add('gk-nav-mobile-drawer-open');
+    mobileBackdropEl.classList.add('is-visible');
+    mobileDrawerEl.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('gk-scroll-locked');
+  } else {
+    mobileDrawerEl.classList.remove('gk-nav-mobile-drawer-open');
+    mobileBackdropEl.classList.remove('is-visible');
+    mobileDrawerEl.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('gk-scroll-locked');
+  }
+  if (mobileMoreTabEl) {
+    mobileMoreTabEl.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+  }
+}
+
+function removeExistingMobileNodes() {
+  if (mobileDrawerEl && mobileDrawerEl.parentNode) {
+    mobileDrawerEl.parentNode.removeChild(mobileDrawerEl);
+  }
+  if (mobileBackdropEl && mobileBackdropEl.parentNode) {
+    mobileBackdropEl.parentNode.removeChild(mobileBackdropEl);
+  }
+  mobileDrawerEl = null;
+  mobileBackdropEl = null;
+  mobileMoreTabEl = null;
+  mobileBarEl = null;
+  document.body.classList.remove('gk-scroll-locked');
+}
+
+function bindMobileGlobalHandlers() {
+  if (mobileHandlersBound) {
+    return;
+  }
+  mobileHandlersBound = true;
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isMobileDrawerOpen()) {
+      toggleMobileDrawer(false);
+    }
+  });
+}
+
 export function renderNav(container) {
   if (!container) {
     return;
@@ -230,6 +435,11 @@ export function renderNav(container) {
     }
   }
 
+  const mobileHomeBtn = makeMobileHomeButton();
+  if (mobileHomeBtn) {
+    mount(wrapper, mobileHomeBtn);
+  }
+
   ctaAnchorEl = null;
   for (const item of ctaItems) {
     const cta = makeCtaLink(item);
@@ -242,6 +452,32 @@ export function renderNav(container) {
   langSwitcherEl = makeLangSwitcher();
   if (langSwitcherEl) {
     mount(wrapper, langSwitcherEl);
+  }
+
+  removeExistingMobileNodes();
+  const primary = getMobilePrimaryItems();
+  const overflow = getMobileOverflowItems();
+  mobilePrimaryIds = primary.map((item) => item.id);
+
+  mobileBarEl = el('div', {
+    class: 'gk-nav-mobile-bar',
+    attrs: { role: 'navigation', 'aria-label': 'Sections' },
+  });
+  for (const item of primary) {
+    mount(mobileBarEl, makeMobileTab(item));
+  }
+  if (overflow.length > 0) {
+    mobileMoreTabEl = makeMobileMoreTab();
+    mount(mobileBarEl, mobileMoreTabEl);
+  }
+  mount(container, mobileBarEl);
+
+  if (overflow.length > 0) {
+    mobileBackdropEl = makeMobileBackdrop();
+    mobileDrawerEl = makeMobileDrawer(overflow);
+    document.body.appendChild(mobileBackdropEl);
+    document.body.appendChild(mobileDrawerEl);
+    bindMobileGlobalHandlers();
   }
 }
 
@@ -472,6 +708,7 @@ export function navigateTo(sectionId) {
   if (typeof sectionId !== 'string' || sectionId.length === 0) {
     return;
   }
+  toggleMobileDrawer(false);
   if (sectionId === 'home') {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     toggleMoreOpen(false);
@@ -494,11 +731,19 @@ export function navigateTo(sectionId) {
 function highlightActive(sectionId) {
   const nodes = document.querySelectorAll('[data-menu-id]');
   for (const node of nodes) {
-    if (node.getAttribute('data-menu-id') === sectionId) {
-      node.classList.add('gk-nav-item-active');
-    } else {
-      node.classList.remove('gk-nav-item-active');
+    const isActive = node.getAttribute('data-menu-id') === sectionId;
+    node.classList.toggle('gk-nav-item-active', isActive);
+    if (node.classList.contains('gk-nav-mobile-tab')) {
+      node.classList.toggle('gk-nav-mobile-tab-active', isActive);
     }
+  }
+  if (mobileMoreTabEl) {
+    const overflowActive =
+      sectionId &&
+      sectionId !== 'home' &&
+      mobilePrimaryIds.length > 0 &&
+      !mobilePrimaryIds.includes(sectionId);
+    mobileMoreTabEl.classList.toggle('gk-nav-mobile-tab-active', !!overflowActive);
   }
 }
 

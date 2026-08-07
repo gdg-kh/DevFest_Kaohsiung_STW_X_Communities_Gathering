@@ -419,34 +419,182 @@ body.gk-loading {
   border-bottom: 2px solid var(--gk-ink);
 }
 
-/* Mobile (< 1280px) */
-@media (max-width: 1279px) {
+/* Mobile (< 1100px) */
+@media (max-width: 1099px) {
   .gk-nav {
     position: sticky;
   }
 
-  .gk-nav-list {
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+  .gk-nav-wrapper {
+    justify-content: flex-start;
   }
 
-  .gk-nav-list::-webkit-scrollbar {
-    display: none;
-  }
-
-  .gk-nav-item {
-    flex-shrink: 0;
-  }
-
+  .gk-nav-list,
   .gk-nav-more-wrapper {
     display: none;
+  }
+
+  /* Home + CTA 靠左，語言切換靠右 */
+  .gk-nav-langs {
+    margin-left: auto;
+  }
+
+  body {
+    padding-bottom: calc(var(--gk-nav-mobile-bar-h, 64px) + env(safe-area-inset-bottom, 0px));
   }
 
   .gk-section {
     padding: var(--gk-sp-6) var(--gk-sp-4);
   }
+}
+
+/* Desktop (>= 1100px) — hide mobile-only nodes */
+@media (min-width: 1100px) {
+  .gk-nav-mobile-bar,
+  .gk-nav-mobile-drawer,
+  .gk-nav-mobile-backdrop,
+  .gk-nav-mobile-home {
+    display: none !important;
+  }
+}
+
+/* --- Mobile home button (top bar) --- */
+.gk-nav-mobile-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid var(--gk-ink);
+  border-radius: var(--gk-radius-sm);
+  background-color: var(--gk-paper);
+  color: var(--gk-ink);
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: var(--gk-shadow-button);
+  transition:
+    transform var(--gk-transition),
+    box-shadow var(--gk-transition);
+}
+
+.gk-nav-mobile-home:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--gk-shadow-button-hover);
+}
+
+.gk-nav-mobile-home .gk-nav-mobile-tab-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Mobile tab bar (fixed at bottom) --- */
+.gk-nav-mobile-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: stretch;
+  background-color: var(--gk-paper);
+  border-top: 2px solid var(--gk-ink);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.gk-nav-mobile-tab {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 56px;
+  padding: var(--gk-sp-2) var(--gk-sp-1);
+  border: 0;
+  background: none;
+  color: var(--gk-ink);
+  font-family: var(--gk-font-display);
+  font-size: var(--gk-fs-tiny);
+  font-weight: var(--gk-fw-medium);
+  cursor: pointer;
+  transition: background-color var(--gk-transition);
+}
+
+.gk-nav-mobile-tab + .gk-nav-mobile-tab {
+  border-left: 1px solid var(--gk-line);
+}
+
+.gk-nav-mobile-tab-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.gk-nav-mobile-tab-label {
+  line-height: 1.1;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gk-nav-mobile-tab-active {
+  background-color: var(--gk-yellow);
+  font-weight: var(--gk-fw-bold);
+}
+
+/* --- Mobile drawer (「更多」bottom sheet) --- */
+.gk-nav-mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--gk-transition);
+}
+
+.gk-nav-mobile-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gk-nav-mobile-drawer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 110;
+  background-color: var(--gk-paper);
+  border-top: 2px solid var(--gk-ink);
+  border-radius: var(--gk-radius-md) var(--gk-radius-md) 0 0;
+  padding: var(--gk-sp-4);
+  padding-bottom: calc(var(--gk-nav-mobile-bar-h, 64px) + env(safe-area-inset-bottom, 0px) + var(--gk-sp-4));
+  box-shadow: var(--gk-shadow-card);
+  transform: translateY(100%);
+  transition: transform var(--gk-transition);
+}
+
+.gk-nav-mobile-drawer-open {
+  transform: translateY(0);
+}
+
+.gk-nav-mobile-drawer-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gk-sp-2);
+}
+
+.gk-nav-mobile-drawer .gk-nav-item {
+  width: 100%;
+  justify-content: flex-start;
+  font-size: var(--gk-fs-body);
+  padding: var(--gk-sp-3) var(--gk-sp-4);
+}
+
+body.gk-scroll-locked {
+  overflow: hidden;
 }
 
 /* Hero: 手機端 (< 900px) 縮小上下 padding；≥ 900px 沿用預設 sp-8 */

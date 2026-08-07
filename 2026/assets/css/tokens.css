@@ -57,5 +57,6 @@
 
   --gk-maxw: 1200px;
   --gk-nav-h: 64px;
+  --gk-nav-mobile-bar-h: 64px;
   --gk-transition: 180ms ease;
 }
