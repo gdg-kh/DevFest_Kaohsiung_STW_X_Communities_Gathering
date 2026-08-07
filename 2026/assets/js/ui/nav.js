@@ -472,6 +472,11 @@ export function navigateTo(sectionId) {
   if (typeof sectionId !== 'string' || sectionId.length === 0) {
     return;
   }
+  if (sectionId === 'home') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    toggleMoreOpen(false);
+    return;
+  }
   currentSectionId = sectionId;
   const newHash = `#/${sectionId}`;
   if (window.location.hash !== newHash) {
@@ -508,7 +513,7 @@ function getInitialSectionId() {
   }
   const items = sortedMenuItems()
     .filter(isNavItem)
-    .filter((i) => i.type !== 'cta');
+    .filter((i) => i.type !== 'cta' && !!document.querySelector(`[data-section-id="${i.id}"]`));
   return items.length > 0 ? items[0].id : '';
 }
 

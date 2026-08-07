@@ -58,6 +58,16 @@
   },
   "menu": [
     {
+      "id": "home",
+      "enabled": true,
+      "order": 0,
+      "label": {
+        "zh-Hant": "回首頁",
+        "en": "Home",
+        "ja": "ホーム"
+      }
+    },
+    {
       "id": "about",
       "enabled": true,
       "order": 1,
