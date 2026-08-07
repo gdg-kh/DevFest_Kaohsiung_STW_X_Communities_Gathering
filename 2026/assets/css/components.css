@@ -601,9 +601,8 @@
   min-width: 0;
   font-size: var(--gk-fs-tiny);
   line-height: 1.2;
-  height: 2.4em;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   word-break: break-word;
