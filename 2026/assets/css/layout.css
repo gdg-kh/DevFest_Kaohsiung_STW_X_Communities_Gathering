@@ -281,10 +281,10 @@ body.gk-loading {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
     grid-template-areas:
-      'title    .'
-      'date     .'
-      'venue    thanks'
-      'actions  thanks'
+      'title     .'
+      'date      thanks'
+      'venue     thanks'
+      'actions   thanks'
       'countdown thanks';
     column-gap: var(--gk-sp-6);
     align-items: start;
