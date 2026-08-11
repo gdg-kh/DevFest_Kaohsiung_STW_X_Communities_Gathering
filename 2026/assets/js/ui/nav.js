@@ -681,19 +681,7 @@ function findSection(sectionId) {
   return document.querySelector(`[data-section-id="${sectionId}"]`);
 }
 
-function showSectionDesktop(sectionId) {
-  const sections = document.querySelectorAll('[data-section-id]');
-  for (const node of sections) {
-    if (node.getAttribute('data-section-id') === sectionId) {
-      node.classList.remove('gk-section-hidden');
-    } else {
-      node.classList.add('gk-section-hidden');
-    }
-  }
-  window.scrollTo({ top: 0, behavior: 'auto' });
-}
-
-function scrollToSectionMobile(sectionId) {
+function scrollToSection(sectionId) {
   const sections = document.querySelectorAll('[data-section-id]');
   for (const node of sections) {
     node.classList.remove('gk-section-hidden');
@@ -719,12 +707,8 @@ export function navigateTo(sectionId) {
   if (window.location.hash !== newHash) {
     window.history.pushState({ sectionId }, '', newHash);
   }
-  if (isDesktop()) {
-    showSectionDesktop(sectionId);
-    track('page_view', { page_path: `/2026/#/${sectionId}` });
-  } else {
-    scrollToSectionMobile(sectionId);
-  }
+  scrollToSection(sectionId);
+  track('page_view', { page_path: `/2026/#/${sectionId}` });
   highlightActive(sectionId);
 }
 
@@ -766,9 +750,7 @@ function setupIntersectionHighlight() {
   }
   const observer = new IntersectionObserver(
     (entries) => {
-      if (isDesktop()) {
-        return;
-      }
+
       for (const entry of entries) {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('data-section-id');
@@ -789,16 +771,13 @@ function applyMode() {
   if (isDesktop()) {
     document.body.classList.add('gk-mode-desktop');
     document.body.classList.remove('gk-mode-mobile');
-    if (currentSectionId) {
-      showSectionDesktop(currentSectionId);
-    }
   } else {
     document.body.classList.add('gk-mode-mobile');
     document.body.classList.remove('gk-mode-desktop');
-    const sections = document.querySelectorAll('[data-section-id]');
-    for (const node of sections) {
-      node.classList.remove('gk-section-hidden');
-    }
+  }
+  const sections = document.querySelectorAll('[data-section-id]');
+  for (const node of sections) {
+    node.classList.remove('gk-section-hidden');
   }
   recomputeOverflow();
 }
@@ -808,11 +787,7 @@ export function initNav() {
     const id = getInitialSectionId();
     if (id) {
       currentSectionId = id;
-      if (isDesktop()) {
-        showSectionDesktop(id);
-      } else {
-        scrollToSectionMobile(id);
-      }
+      scrollToSection(id);
       highlightActive(id);
     }
   });
@@ -828,9 +803,7 @@ export function initNav() {
   currentSectionId = getInitialSectionId();
   applyMode();
   if (currentSectionId) {
-    if (isDesktop()) {
-      showSectionDesktop(currentSectionId);
-    }
+    scrollToSection(currentSectionId);
     highlightActive(currentSectionId);
   }
   setupIntersectionHighlight();
