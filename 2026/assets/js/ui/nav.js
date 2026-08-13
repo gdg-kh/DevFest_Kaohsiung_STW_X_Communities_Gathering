@@ -750,7 +750,6 @@ function setupIntersectionHighlight() {
   }
   const observer = new IntersectionObserver(
     (entries) => {
-
       for (const entry of entries) {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('data-section-id');
