@@ -736,7 +736,7 @@ function highlightActive(sectionId) {
   }
 }
 
-function getInitialSectionId() {
+function getHashSectionId() {
   const hash = window.location.hash;
   const match = hash.match(/^#\/(.+)$/);
   if (match && match[1]) {
@@ -745,6 +745,10 @@ function getInitialSectionId() {
       return candidate;
     }
   }
+  return '';
+}
+
+function getFallbackSectionId() {
   const items = sortedMenuItems()
     .filter(isNavItem)
     .filter((i) => i.type !== 'cta' && !!document.querySelector(`[data-section-id="${i.id}"]`));
@@ -790,12 +794,16 @@ function applyMode() {
 }
 
 export function initNav() {
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+
   window.addEventListener('popstate', () => {
-    const id = getInitialSectionId();
-    if (id) {
-      currentSectionId = id;
-      scrollToSection(id);
-      highlightActive(id);
+    const hashId = getHashSectionId();
+    if (hashId) {
+      currentSectionId = hashId;
+      scrollToSection(hashId);
+      highlightActive(hashId);
     }
   });
 
@@ -807,11 +815,17 @@ export function initNav() {
     mql.addListener(onChange);
   }
 
-  currentSectionId = getInitialSectionId();
+  const hashId = getHashSectionId();
   applyMode();
-  if (currentSectionId) {
-    scrollToSection(currentSectionId);
-    highlightActive(currentSectionId);
+  if (hashId) {
+    currentSectionId = hashId;
+    scrollToSection(hashId);
+    highlightActive(hashId);
+  } else {
+    currentSectionId = getFallbackSectionId();
+    if (currentSectionId) {
+      highlightActive(currentSectionId);
+    }
   }
   setupIntersectionHighlight();
 }
