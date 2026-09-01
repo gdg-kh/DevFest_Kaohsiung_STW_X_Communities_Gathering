@@ -226,6 +226,44 @@ body.gk-loading {
   margin: 0;
 }
 
+.gk-hero-venue {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--gk-sp-2);
+}
+
+.gk-hero-venue-map {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gk-ink);
+  text-decoration: none;
+  line-height: 1;
+  border-radius: var(--gk-radius-sm);
+  padding: 2px;
+  transition:
+    color var(--gk-transition),
+    transform var(--gk-transition);
+}
+
+.gk-hero-venue-map:hover,
+.gk-hero-venue-map:focus-visible {
+  color: var(--gk-red);
+  transform: translateY(-2px);
+}
+
+.gk-hero-venue-map:focus-visible {
+  outline: 2px solid var(--gk-blue);
+  outline-offset: 2px;
+}
+
+.gk-hero-venue-map-icon {
+  width: 1.25em;
+  height: 1.25em;
+  display: block;
+}
+
 .gk-hero-actions {
   display: flex;
   flex-wrap: wrap;

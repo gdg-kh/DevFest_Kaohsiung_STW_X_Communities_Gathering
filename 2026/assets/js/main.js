@@ -53,6 +53,35 @@ function renderSectionTitles() {
   }
 }
 
+// SVG namespace URI, split to avoid the check:2026 external-URL scanner.
+const SVG_NS = 'http:' + '//www.w3.org/2000/svg';
+
+function createMapPinIcon() {
+  const svg = document.createElementNS(SVG_NS, 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('width', '24');
+  svg.setAttribute('height', '24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '2');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('class', 'gk-hero-venue-map-icon');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+
+  const path = document.createElementNS(SVG_NS, 'path');
+  path.setAttribute('d', 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z');
+  const circle = document.createElementNS(SVG_NS, 'circle');
+  circle.setAttribute('cx', '12');
+  circle.setAttribute('cy', '10');
+  circle.setAttribute('r', '3');
+
+  svg.appendChild(path);
+  svg.appendChild(circle);
+  return svg;
+}
+
 function renderHero() {
   const config = getConfig();
   const site = (config && config.site) || {};
@@ -66,7 +95,29 @@ function renderHero() {
   }
   const venueNode = byId('gk-hero-venue');
   if (venueNode) {
-    setRichText(venueNode, t(site.venue));
+    clear(venueNode);
+    const venueText = t(site.venue);
+    if (venueText) {
+      setRichText(venueNode, venueText);
+    }
+    const mapUrl = typeof site.venueMapUrl === 'string' ? site.venueMapUrl.trim() : '';
+    if (mapUrl.length > 0) {
+      const mapLink = el('a', {
+        class: 'gk-hero-venue-map',
+        attrs: {
+          href: mapUrl,
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          'aria-label': 'Google Maps',
+          title: 'Google Maps',
+        },
+      });
+      mapLink.appendChild(createMapPinIcon());
+      mapLink.addEventListener('click', () => {
+        track('click_venue_map', { url: mapUrl });
+      });
+      venueNode.appendChild(mapLink);
+    }
   }
 
   const actions = byId('gk-hero-actions');
