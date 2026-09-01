@@ -1,6 +1,6 @@
 import { el, clear, mount, setRichText } from './core/dom.js';
 import { loadData, getConfig, getContent, getSpeakerById } from './core/store.js';
-import { initI18n, t } from './core/i18n.js';
+import { initI18n, t, getLang } from './core/i18n.js';
 import { initAnalytics, track } from './core/analytics.js';
 import { renderNav, renderFooter, initNav, initNavOverflow } from './ui/nav.js';
 import { openModal } from './ui/detail-modal.js';
@@ -31,6 +31,31 @@ function uiLabel(key) {
   const config = getConfig();
   const ui = config && config.ui;
   return t(ui && ui[key]);
+}
+
+function formatEventDateWithWeekday(dateStr, lang) {
+  if (typeof dateStr !== 'string' || !dateStr) {
+    return '';
+  }
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr.trim());
+  if (!match) {
+    return dateStr;
+  }
+  const year = parseInt(match[1], 10);
+  const month = parseInt(match[2], 10) - 1;
+  const day = parseInt(match[3], 10);
+  const d = new Date(year, month, day);
+  const dayOfWeek = d.getDay();
+
+  const weekdays = {
+    'zh-Hant': ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+    en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    ja: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'],
+  };
+
+  const list = weekdays[lang] || weekdays['zh-Hant'];
+  const weekdayName = list[dayOfWeek];
+  return `${dateStr} ${weekdayName}`;
 }
 
 function renderSectionTitles() {
@@ -91,7 +116,9 @@ function renderHero() {
   }
   const dateNode = byId('gk-hero-date');
   if (dateNode) {
-    setRichText(dateNode, typeof site.eventDate === 'string' ? site.eventDate : '');
+    const formattedDate =
+      typeof site.eventDate === 'string' ? formatEventDateWithWeekday(site.eventDate, getLang()) : '';
+    setRichText(dateNode, formattedDate);
   }
   const venueNode = byId('gk-hero-venue');
   if (venueNode) {
