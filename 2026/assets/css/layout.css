@@ -196,7 +196,7 @@ body.gk-loading {
 .gk-hero {
   background: linear-gradient(180deg, var(--gk-blue-pastel) 0%, var(--gk-paper) 100%);
   border-bottom: 2px solid var(--gk-ink);
-  padding: var(--gk-sp-8) var(--gk-sp-4);
+  padding: var(--gk-sp-6) var(--gk-sp-4);
 }
 
 .gk-hero-inner {
@@ -268,7 +268,7 @@ body.gk-loading {
   display: flex;
   flex-wrap: wrap;
   gap: var(--gk-sp-3);
-  margin-top: var(--gk-sp-3);
+  margin-top: var(--gk-sp-2);
 }
 
 .gk-hero-cta {
@@ -315,16 +315,21 @@ body.gk-loading {
 }
 
 @media (min-width: 900px) {
+  .gk-hero {
+    padding: var(--gk-sp-6) var(--gk-sp-4);
+  }
+
   .gk-hero-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
     grid-template-areas:
-      'title     .'
+      'title     thanks'
       'date      thanks'
       'venue     thanks'
       'actions   thanks'
       'countdown thanks';
     column-gap: var(--gk-sp-6);
+    row-gap: var(--gk-sp-4);
     align-items: start;
   }
 
@@ -342,21 +347,21 @@ body.gk-loading {
 
   .gk-hero-actions {
     grid-area: actions;
+    margin-top: 0;
   }
 
   .gk-hero-countdown {
     grid-area: countdown;
     justify-self: start;
+    align-self: end;
   }
 
   .gk-hero-thanks {
     grid-area: thanks;
-    align-self: stretch;
+    align-self: end;
     margin-top: 0;
   }
-}
 
-@media (min-width: 900px) and (max-width: 1279px) {
   .gk-hero-thanks .gk-marquee-copy > * {
     width: 200px;
   }
