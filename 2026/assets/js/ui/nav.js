@@ -708,6 +708,12 @@ export function navigateTo(sectionId) {
   if (sectionId === 'home') {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     toggleMoreOpen(false);
+    currentSectionId = 'home';
+    if (window.location.hash) {
+      window.history.pushState({ sectionId: 'home' }, '', window.location.pathname + window.location.search);
+    }
+    track('page_view', { page_path: '/2026/' });
+    highlightActive('home');
     return;
   }
   currentSectionId = sectionId;
@@ -741,6 +747,9 @@ function getHashSectionId() {
   const match = hash.match(/^#\/(.+)$/);
   if (match && match[1]) {
     const candidate = match[1];
+    if (candidate === 'home') {
+      return 'home';
+    }
     if (document.querySelector(`[data-section-id="${candidate}"]`)) {
       return candidate;
     }
@@ -749,10 +758,7 @@ function getHashSectionId() {
 }
 
 function getFallbackSectionId() {
-  const items = sortedMenuItems()
-    .filter(isNavItem)
-    .filter((i) => i.type !== 'cta' && !!document.querySelector(`[data-section-id="${i.id}"]`));
-  return items.length > 0 ? items[0].id : '';
+  return 'home';
 }
 
 function setupIntersectionHighlight() {
@@ -767,6 +773,9 @@ function setupIntersectionHighlight() {
           const id = entry.target.getAttribute('data-section-id');
           if (id) {
             highlightActive(id);
+            if (id === 'home' && window.location.hash && window.location.hash.startsWith('#/')) {
+              window.history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
           }
         }
       }
