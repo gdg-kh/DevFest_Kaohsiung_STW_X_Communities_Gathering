@@ -1,4 +1,4 @@
-import { el, clear, mount } from '../core/dom.js';
+import { el, clear, mount, attachImageFallback, LOGO_PLACEHOLDER } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { getContent } from '../core/store.js';
 
@@ -47,10 +47,12 @@ function makeImageBlock(image, altText) {
       src: image,
       alt: altText || '',
       loading: 'lazy',
+      decoding: 'async',
       width: '640',
       height: '360',
     },
   });
+  attachImageFallback(img, LOGO_PLACEHOLDER);
   mount(wrapper, img);
   return wrapper;
 }

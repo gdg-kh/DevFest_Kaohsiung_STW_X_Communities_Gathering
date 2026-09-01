@@ -1,4 +1,12 @@
-import { el, clear, mount, pickContrastColor } from '../core/dom.js';
+import {
+  el,
+  clear,
+  mount,
+  pickContrastColor,
+  attachImageFallback,
+  PERSON_PLACEHOLDER,
+  LOGO_PLACEHOLDER,
+} from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { getConfig } from '../core/store.js';
 
@@ -82,16 +90,19 @@ function renderMedia(payload) {
   if (!payload.image) {
     return null;
   }
+  const fallback = payload.type === 'thanks' || payload.type === 'booths' ? LOGO_PLACEHOLDER : PERSON_PLACEHOLDER;
   const img = el('img', {
     class: 'gk-modal-image',
     attrs: {
       src: payload.image,
       alt: t(payload.name),
       loading: 'lazy',
+      decoding: 'async',
       width: '512',
       height: '512',
     },
   });
+  attachImageFallback(img, fallback);
   return el('div', { class: 'gk-modal-media' }, img);
 }
 

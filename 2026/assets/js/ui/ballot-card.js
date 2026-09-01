@@ -1,4 +1,4 @@
-import { el, mount, pickContrastColor } from '../core/dom.js';
+import { el, mount, pickContrastColor, attachImageFallback, LOGO_PLACEHOLDER } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 
 export function ballotCard(opts) {
@@ -49,10 +49,12 @@ export function ballotCard(opts) {
         src: options.image,
         alt: nameText || '',
         loading: 'lazy',
+        decoding: 'async',
         width: '200',
         height: '200',
       },
     });
+    attachImageFallback(img, LOGO_PLACEHOLDER);
     mount(logoWrapper, img);
   }
   mount(body, logoWrapper);

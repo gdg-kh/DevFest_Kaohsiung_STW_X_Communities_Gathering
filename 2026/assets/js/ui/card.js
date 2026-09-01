@@ -1,4 +1,4 @@
-import { el, mount } from '../core/dom.js';
+import { el, mount, attachImageFallback, PERSON_PLACEHOLDER } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 
 function attachActivation(node, onClick) {
@@ -41,10 +41,12 @@ function makePersonImage(image, name) {
         src: image,
         alt: name || '',
         loading: 'lazy',
+        decoding: 'async',
         width: '320',
         height: '320',
       },
     });
+    attachImageFallback(img, PERSON_PLACEHOLDER);
     mount(wrapper, img);
   }
   return wrapper;
@@ -123,19 +125,19 @@ export function sessionCard(opts) {
       const speakerName = t(speaker.name);
       const item = el('div', { class: 'gk-session-speaker' });
       if (typeof speaker.image === 'string' && speaker.image.length > 0) {
-        mount(
-          item,
-          el('img', {
-            class: 'gk-session-speaker-avatar',
-            attrs: {
-              src: speaker.image,
-              alt: speakerName || '',
-              loading: 'lazy',
-              width: '32',
-              height: '32',
-            },
-          })
-        );
+        const avatarImg = el('img', {
+          class: 'gk-session-speaker-avatar',
+          attrs: {
+            src: speaker.image,
+            alt: speakerName || '',
+            loading: 'lazy',
+            decoding: 'async',
+            width: '32',
+            height: '32',
+          },
+        });
+        attachImageFallback(avatarImg, PERSON_PLACEHOLDER);
+        mount(item, avatarImg);
       }
       if (speakerName) {
         mount(item, el('span', { class: 'gk-session-speaker-name', text: speakerName }));

@@ -136,3 +136,32 @@ export function pickContrastColor(hex) {
   const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
   return luminance > 0.5 ? 'var(--gk-ink)' : 'var(--gk-paper)';
 }
+
+// Data URI placeholders for network fallback and image loading errors
+export const PERSON_PLACEHOLDER =
+  'data:image/svg+xml;utf8,<svg xmlns="' +
+  'http:' +
+  '//www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="rgb(240,240,240)"/><circle cx="50" cy="38" r="18" fill="rgb(208,208,208)"/><path d="M22 86c0-15.4 12.6-28 28-28s28 12.6 28 28z" fill="rgb(208,208,208)"/></svg>';
+
+export const LOGO_PLACEHOLDER =
+  'data:image/svg+xml;utf8,<svg xmlns="' +
+  'http:' +
+  '//www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="rgb(240,240,240)"/><circle cx="50" cy="50" r="22" fill="none" stroke="rgb(208,208,208)" stroke-width="4"/><path d="M38 50h24M50 38v24" stroke="rgb(208,208,208)" stroke-width="4" stroke-linecap="round"/></svg>';
+
+export function attachImageFallback(imgNode, fallbackSrc = PERSON_PLACEHOLDER) {
+  if (!imgNode) {
+    return;
+  }
+  imgNode.addEventListener(
+    'error',
+    () => {
+      if (imgNode.dataset.gkFallbackApplied === 'true') {
+        return;
+      }
+      imgNode.dataset.gkFallbackApplied = 'true';
+      imgNode.classList.add('gk-image-fallback');
+      imgNode.src = fallbackSrc;
+    },
+    { once: true }
+  );
+}

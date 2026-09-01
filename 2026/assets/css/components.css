@@ -329,6 +329,7 @@
 
 .gk-card-image {
   display: block;
+  transition: opacity var(--gk-transition);
 }
 
 .gk-card-image-person {
@@ -898,4 +899,9 @@
   padding: var(--gk-sp-6) 0;
   color: var(--gk-ink);
   opacity: 0.7;
+}
+
+.gk-image-fallback {
+  opacity: 0.8;
+  background-color: var(--gk-paper);
 }

@@ -1,4 +1,4 @@
-import { el, clear, mount, setRichText } from '../core/dom.js';
+import { el, clear, mount, setRichText, attachImageFallback, LOGO_PLACEHOLDER } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import {
   getContent,
@@ -72,6 +72,7 @@ function renderMapSection(container) {
     class: 'gk-agenda-map-image',
     attrs: {
       loading: 'lazy',
+      decoding: 'async',
       width: '720',
       height: '480',
       role: 'button',
@@ -79,6 +80,7 @@ function renderMapSection(container) {
       alt: '',
     },
   });
+  attachImageFallback(image, LOGO_PLACEHOLDER);
 
   function show(index) {
     const map = maps[index];
