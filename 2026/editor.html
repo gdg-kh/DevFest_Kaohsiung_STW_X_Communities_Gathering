@@ -1267,6 +1267,202 @@
         textarea.focus();
       }
 
+      function openEditJsonModal(initialKind) {
+        let currentKind =
+          initialKind ||
+          (() => {
+            const cat = CATEGORIES.find((c) => c.id === state.activeCategory);
+            if (cat && Array.isArray(cat.sections) && cat.sections.length > 0) {
+              return cat.sections[0].source || 'config';
+            }
+            return 'config';
+          })();
+
+        const backdrop = el('div', {
+          class: 'gk-modal-backdrop',
+          attrs: { role: 'dialog', 'aria-modal': 'true' },
+        });
+
+        const kindSelect = el(
+          'select',
+          { class: 'gk-select', attrs: { 'aria-label': '選擇要修改的 JSON 檔案' } },
+          [
+            el('option', { text: 'config.json（網站設定）', attrs: { value: 'config' } }),
+            el('option', { text: 'content.json（內容資料）', attrs: { value: 'content' } }),
+          ]
+        );
+        kindSelect.value = currentKind;
+
+        const textarea = el('textarea', {
+          class: 'gk-textarea',
+          attrs: {
+            placeholder: '此處可直接編輯 JSON 內容',
+            'aria-label': 'JSON 編輯區',
+            spellcheck: 'false',
+            style:
+              'min-height: 380px; height: 50vh; font-family: var(--gk-font-mono); font-size: 13px; line-height: 1.5; tab-size: 2;',
+          },
+        });
+        textarea.value = serialize(currentKind);
+
+        textarea.addEventListener('keydown', (event) => {
+          if (event.key === 'Tab') {
+            event.preventDefault();
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const value = textarea.value;
+            textarea.value = value.substring(0, start) + '  ' + value.substring(end);
+            textarea.selectionStart = textarea.selectionEnd = start + 2;
+          }
+        });
+
+        textarea.addEventListener('input', () => {
+          textarea.classList.remove('is-error');
+        });
+
+        kindSelect.addEventListener('change', () => {
+          currentKind = kindSelect.value;
+          textarea.value = serialize(currentKind);
+          textarea.classList.remove('is-error');
+        });
+
+        const closeModal = () => {
+          backdrop.remove();
+          document.removeEventListener('keydown', onKey);
+        };
+
+        const onKey = (event) => {
+          if (event.key === 'Escape') {
+            closeModal();
+          }
+        };
+
+        const formatBtn = el('button', {
+          class: 'gk-btn gk-btn-secondary gk-btn-small',
+          text: '格式化 JSON',
+          attrs: { type: 'button' },
+          on: {
+            click: () => {
+              try {
+                const parsed = parseJson(textarea.value);
+                textarea.value = JSON.stringify(parsed, null, 2);
+                textarea.classList.remove('is-error');
+                showToast('已完成格式化', 'success');
+              } catch (err) {
+                textarea.classList.add('is-error');
+                showToast(`JSON 格式錯誤：${err.message}`, 'error');
+              }
+            },
+          },
+        });
+
+        const resetBtn = el('button', {
+          class: 'gk-btn gk-btn-secondary gk-btn-small',
+          text: '重設內容',
+          attrs: { type: 'button' },
+          on: {
+            click: () => {
+              if (window.confirm(`確定要將 ${currentKind}.json 重設回目前編輯器中的狀態嗎？`)) {
+                textarea.value = serialize(currentKind);
+                textarea.classList.remove('is-error');
+                showToast(`已重設 ${currentKind}.json`, 'success');
+              }
+            },
+          },
+        });
+
+        const modalHeader = el('div', { class: 'gk-modal-header' }, [
+          el('h2', { class: 'gk-modal-title', text: '修改 JSON' }),
+          el('button', {
+            class: 'gk-btn gk-btn-secondary',
+            text: '關閉',
+            attrs: { type: 'button', 'aria-label': '關閉對話框' },
+            on: { click: closeModal },
+          }),
+        ]);
+
+        const controlsRow = el(
+          'div',
+          {
+            attrs: {
+              style:
+                'display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--gk-sp-2); flex-wrap: wrap; gap: var(--gk-sp-2);',
+            },
+          },
+          [
+            el('div', { attrs: { style: 'display: flex; align-items: center; gap: var(--gk-sp-2);' } }, [
+              el('label', { text: '檔案：', attrs: { style: 'font-weight: 500; font-size: 14px;' } }),
+              kindSelect,
+            ]),
+            el('div', { attrs: { style: 'display: flex; gap: var(--gk-sp-2);' } }, [
+              formatBtn,
+              resetBtn,
+            ]),
+          ]
+        );
+
+        const modalBody = el('div', { class: 'gk-modal-body' }, [
+          el('p', {
+            class: 'gk-modal-hint',
+            text: '可直接在下方編輯 JSON 內容，儲存後會即時更新編輯器資料與草稿。',
+          }),
+          controlsRow,
+          textarea,
+        ]);
+
+        const modalFooter = el('div', { class: 'gk-modal-footer' }, [
+          el('button', {
+            class: 'gk-btn gk-btn-secondary',
+            text: '取消',
+            attrs: { type: 'button' },
+            on: { click: closeModal },
+          }),
+          el('button', {
+            class: 'gk-btn gk-btn-primary',
+            text: '儲存修改',
+            attrs: { type: 'button' },
+            on: {
+              click: () => {
+                try {
+                  const parsed = parseJson(textarea.value);
+                  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+                    throw new Error('根節點必須是物件（Object）格式');
+                  }
+                  if (currentKind === 'config') {
+                    state.config = parsed;
+                  } else {
+                    state.content = parsed;
+                  }
+                  saveDraft();
+                  closeModal();
+                  renderAll();
+                  showToast(`已成功修改 ${currentKind}.json`, 'success');
+                } catch (err) {
+                  textarea.classList.add('is-error');
+                  showToast(`JSON 解析失敗：${err.message}`, 'error');
+                }
+              },
+            },
+          }),
+        ]);
+
+        const modal = el('div', { class: 'gk-modal gk-modal-wide' }, [
+          modalHeader,
+          modalBody,
+          modalFooter,
+        ]);
+
+        backdrop.appendChild(modal);
+        backdrop.addEventListener('click', (event) => {
+          if (event.target === backdrop) {
+            closeModal();
+          }
+        });
+        document.body.appendChild(backdrop);
+        document.addEventListener('keydown', onKey);
+        textarea.focus();
+      }
+
       function download(filename, text) {
         const blob = new Blob([text], { type: 'application/json;charset=utf-8' });
         const url = URL.createObjectURL(blob);
@@ -1306,16 +1502,6 @@
         }
         textarea.remove();
         return success;
-      }
-
-      async function handleCopy(source) {
-        const text = serialize(source);
-        const ok = await copyText(text);
-        if (ok) {
-          showToast(`已複製 ${source}.json 到剪貼簿`, 'success');
-        } else {
-          showToast('複製失敗，請改用下載', 'error');
-        }
       }
 
       function confirmClearDraft() {
@@ -2568,6 +2754,12 @@
               }),
               el('button', {
                 class: 'gk-btn gk-btn-secondary',
+                text: '修改 JSON',
+                attrs: { type: 'button' },
+                on: { click: () => openEditJsonModal() },
+              }),
+              el('button', {
+                class: 'gk-btn gk-btn-secondary',
                 text: '載入空白範本',
                 attrs: { type: 'button' },
                 on: {
@@ -2859,19 +3051,6 @@
         openModal('預覽 2026 首頁', body);
       }
 
-      async function handleDownload(source) {
-        const result = validate();
-        if (result.errors.length > 0) {
-          const proceed = window.confirm(
-            `目前偵測到 ${result.errors.length} 個紅色錯誤，仍要匯出 ${source}.json 嗎？`
-          );
-          if (!proceed) {
-            return;
-          }
-        }
-        download(`${source}.json`, serialize(source));
-      }
-
       function buildToolbar() {
         const toolbar = document.getElementById('toolbar');
         clear(toolbar);
@@ -2882,29 +3061,10 @@
             on: () => document.getElementById('fileInput').click(),
           },
           { label: '貼上 JSON', class: 'gk-btn', on: openPasteModal },
+          { label: '修改 JSON', class: 'gk-btn', on: () => openEditJsonModal() },
           { label: '檢查', class: 'gk-btn', on: openValidateModal },
           { label: '查看變更', class: 'gk-btn', on: openDiffModal },
           { label: '預覽', class: 'gk-btn', on: openPreviewModal },
-          {
-            label: '下載 config.json',
-            class: 'gk-btn',
-            on: () => handleDownload('config'),
-          },
-          {
-            label: '下載 content.json',
-            class: 'gk-btn',
-            on: () => handleDownload('content'),
-          },
-          {
-            label: '複製 config.json',
-            class: 'gk-btn',
-            on: () => handleCopy('config'),
-          },
-          {
-            label: '複製 content.json',
-            class: 'gk-btn',
-            on: () => handleCopy('content'),
-          },
           { label: '清空草稿', class: 'gk-btn gk-btn-danger', on: confirmClearDraft },
         ];
         buttons.forEach((btn) => {
