@@ -1390,10 +1390,17 @@
             },
           },
           [
-            el('div', { attrs: { style: 'display: flex; align-items: center; gap: var(--gk-sp-2);' } }, [
-              el('label', { text: '檔案：', attrs: { style: 'font-weight: 500; font-size: 14px;' } }),
-              kindSelect,
-            ]),
+            el(
+              'div',
+              { attrs: { style: 'display: flex; align-items: center; gap: var(--gk-sp-2);' } },
+              [
+                el('label', {
+                  text: '檔案：',
+                  attrs: { style: 'font-weight: 500; font-size: 14px;' },
+                }),
+                kindSelect,
+              ]
+            ),
             el('div', { attrs: { style: 'display: flex; gap: var(--gk-sp-2);' } }, [
               formatBtn,
               resetBtn,
