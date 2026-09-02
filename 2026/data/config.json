@@ -170,6 +170,7 @@
       "enabled": true,
       "order": 10,
       "type": "cta",
+      "placement": "home",
       "url": "https://example.com/discount",
       "label": {
         "zh-Hant": "取得折扣",
