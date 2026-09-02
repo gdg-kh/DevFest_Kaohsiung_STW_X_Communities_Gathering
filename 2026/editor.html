@@ -1371,6 +1371,32 @@
           },
         });
 
+        const copyBtn = el('button', {
+          class: 'gk-btn gk-btn-secondary gk-btn-small',
+          text: '複製 JSON',
+          attrs: { type: 'button' },
+          on: {
+            click: async () => {
+              const ok = await copyText(textarea.value);
+              if (ok) {
+                showToast('已複製到剪貼簿', 'success');
+              }
+            },
+          },
+        });
+
+        const downloadBtn = el('button', {
+          class: 'gk-btn gk-btn-secondary gk-btn-small',
+          text: '下載檔案',
+          attrs: { type: 'button' },
+          on: {
+            click: () => {
+              download(`${currentKind}.json`, textarea.value);
+              showToast(`已開始下載 ${currentKind}.json`, 'success');
+            },
+          },
+        });
+
         const modalHeader = el('div', { class: 'gk-modal-header' }, [
           el('h2', { class: 'gk-modal-title', text: '修改 JSON' }),
           el('button', {
@@ -1401,8 +1427,10 @@
                 kindSelect,
               ]
             ),
-            el('div', { attrs: { style: 'display: flex; gap: var(--gk-sp-2);' } }, [
+            el('div', { attrs: { style: 'display: flex; gap: var(--gk-sp-2); flex-wrap: wrap;' } }, [
               formatBtn,
+              copyBtn,
+              downloadBtn,
               resetBtn,
             ]),
           ]
@@ -3684,6 +3712,7 @@
           ['backToTop', '回到頂端'],
           ['langLabel', '語言標籤'],
           ['ticketCta', '購票按鈕'],
+          ['discountCta', '取得折扣按鈕'],
           ['allTracksLabel', '全部軌道'],
           ['emptyStateText', '無資料時文案'],
           ['eventStartedText', '活動已開始'],

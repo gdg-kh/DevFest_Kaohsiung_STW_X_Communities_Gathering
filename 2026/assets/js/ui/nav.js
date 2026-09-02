@@ -117,8 +117,9 @@ function makeCtaLink(item) {
   if (url.length === 0) {
     return null;
   }
+  const ctaClass = item.id ? `gk-nav-cta gk-nav-cta-${item.id}` : 'gk-nav-cta';
   const link = el('a', {
-    class: 'gk-nav-cta',
+    class: ctaClass,
     text: label,
     attrs: {
       href: url,
@@ -127,7 +128,8 @@ function makeCtaLink(item) {
     },
   });
   link.addEventListener('click', () => {
-    track('click_ticket', { entry: 'nav' });
+    const eventName = item.id === 'discount' ? 'click_discount' : 'click_ticket';
+    track(eventName, { entry: 'nav' });
   });
   return link;
 }

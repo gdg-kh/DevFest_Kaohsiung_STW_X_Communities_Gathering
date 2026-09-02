@@ -164,6 +164,18 @@
         "en": "Get Tickets",
         "ja": "チケット購入"
       }
+    },
+    {
+      "id": "discount",
+      "enabled": true,
+      "order": 10,
+      "type": "cta",
+      "url": "https://example.com/discount",
+      "label": {
+        "zh-Hant": "取得折扣",
+        "en": "Get Discount",
+        "ja": "割引を取得"
+      }
     }
   ],
   "ui": {
@@ -221,6 +233,11 @@
       "zh-Hant": "點我購票",
       "en": "Get Tickets",
       "ja": "チケット購入"
+    },
+    "discountCta": {
+      "zh-Hant": "取得折扣",
+      "en": "Get Discount",
+      "ja": "割引を取得"
     },
     "allTracksLabel": {
       "zh-Hant": "全部軌道",

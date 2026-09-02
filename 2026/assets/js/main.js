@@ -150,20 +150,36 @@ function renderHero() {
   const actions = byId('gk-hero-actions');
   if (actions) {
     clear(actions);
-    const ticket = findMenuItem('ticket');
-    const ticketUrl = ticket && typeof ticket.url === 'string' ? ticket.url : '';
-    if (ticketUrl.length > 0) {
+    const config = getConfig();
+    const menu = config && Array.isArray(config.menu) ? config.menu : [];
+    const ctaItems = menu
+      .filter((item) => item && item.enabled !== false && item.type === 'cta')
+      .slice()
+      .sort((a, b) => {
+        const ao = typeof a.order === 'number' ? a.order : Number.MAX_SAFE_INTEGER;
+        const bo = typeof b.order === 'number' ? b.order : Number.MAX_SAFE_INTEGER;
+        return ao - bo;
+      });
+
+    for (const item of ctaItems) {
+      const url = typeof item.url === 'string' ? item.url.trim() : '';
+      if (url.length === 0) {
+        continue;
+      }
+      const label = t(item.label) || (item.id ? uiLabel(`${item.id}Cta`) : '') || '';
+      const ctaClass = item.id ? `gk-hero-cta gk-hero-cta-${item.id}` : 'gk-hero-cta';
       const link = el('a', {
-        class: 'gk-hero-cta',
-        text: t(ticket.label),
+        class: ctaClass,
+        text: label,
         attrs: {
-          href: ticketUrl,
+          href: url,
           target: '_blank',
           rel: 'noopener noreferrer',
         },
       });
       link.addEventListener('click', () => {
-        track('click_ticket', { entry: 'hero' });
+        const eventName = item.id === 'discount' ? 'click_discount' : 'click_ticket';
+        track(eventName, { entry: 'hero' });
       });
       mount(actions, link);
     }
