@@ -1427,12 +1427,11 @@
                 kindSelect,
               ]
             ),
-            el('div', { attrs: { style: 'display: flex; gap: var(--gk-sp-2); flex-wrap: wrap;' } }, [
-              formatBtn,
-              copyBtn,
-              downloadBtn,
-              resetBtn,
-            ]),
+            el(
+              'div',
+              { attrs: { style: 'display: flex; gap: var(--gk-sp-2); flex-wrap: wrap;' } },
+              [formatBtn, copyBtn, downloadBtn, resetBtn]
+            ),
           ]
         );
 
