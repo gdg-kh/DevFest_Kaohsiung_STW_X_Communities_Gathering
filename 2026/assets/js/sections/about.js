@@ -57,13 +57,47 @@ function makeImageBlock(image, altText) {
   return wrapper;
 }
 
-function makeTextBlock(titleText, bodyText) {
+function makeLinksBlock(links) {
+  if (!Array.isArray(links) || links.length === 0) {
+    return null;
+  }
+  const wrapper = el('div', { class: 'gk-about-links' });
+  let count = 0;
+  for (const link of links) {
+    const url = link && typeof link.url === 'string' ? link.url.trim() : '';
+    if (url.length === 0) {
+      continue;
+    }
+    const label = t(link && link.label) || url;
+    const anchor = el('a', {
+      class: 'gk-about-link',
+      text: label,
+      attrs: {
+        href: url,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    });
+    mount(wrapper, anchor);
+    count += 1;
+  }
+  if (count === 0) {
+    return null;
+  }
+  return wrapper;
+}
+
+function makeTextBlock(titleText, bodyText, links) {
   const wrapper = el('div', { class: 'gk-about-text' });
   if (titleText) {
     mount(wrapper, el('h3', { class: 'gk-about-title', text: titleText }));
   }
   if (bodyText) {
     mount(wrapper, el('p', { class: 'gk-about-body gk-multiline', text: bodyText }));
+  }
+  const linksBlock = makeLinksBlock(links);
+  if (linksBlock) {
+    mount(wrapper, linksBlock);
   }
   return wrapper;
 }
@@ -87,7 +121,7 @@ function makeSection(section, index, columns) {
   const article = el('article', { class: classes.join(' ') });
   article.style.setProperty('--gk-about-span', String(span));
 
-  const textBlock = makeTextBlock(titleText, bodyText);
+  const textBlock = makeTextBlock(titleText, bodyText, section && section.links);
   const imageBlock = hasImage ? makeImageBlock(image, titleText) : null;
   if (index % 2 === 0) {
     mount(article, textBlock);

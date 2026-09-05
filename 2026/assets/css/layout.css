@@ -749,6 +749,37 @@ button {
   color: var(--gk-ink);
 }
 
+.gk-about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gk-sp-3);
+  margin-top: var(--gk-sp-3);
+}
+
+.gk-about-link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--gk-sp-2) var(--gk-sp-4);
+  border: 2px solid var(--gk-ink);
+  border-radius: var(--gk-radius-md);
+  background-color: var(--gk-paper);
+  color: var(--gk-ink);
+  font-family: var(--gk-font-display);
+  font-weight: var(--gk-fw-bold);
+  font-size: var(--gk-fs-small);
+  box-shadow: var(--gk-shadow-button);
+  text-decoration: none;
+  transition:
+    transform var(--gk-transition),
+    box-shadow var(--gk-transition);
+}
+
+.gk-about-link:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--gk-shadow-button-hover);
+  text-decoration: none;
+}
+
 /* --- Section: sponsor marquee --- */
 .gk-sponsor-marquee-section {
   display: flex;
